@@ -1,0 +1,9 @@
+= form_tag :admin_login do
+  = label_tag :username, t("simple_form.labels.admin.username")
+  = text_field_tag :username, params[:username]
+  
+  = label_tag :password, t("simple_form.labels.admin.password")
+  = password_field_tag :password, nil, :class => "string"
+  
+  %div
+    = submit_tag t("helpers.submit.sessions.create"), :class => "btn btn-primary btn-large"

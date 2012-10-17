@@ -1,0 +1,18 @@
+- buttons(new_link(:admin))
+- breadcrumbs do
+  = crumb(admin_t(:admins, :index))
+
+= overview do
+  = headers do
+    = actions_header
+    = header(:username, :sortable)
+    = header(:created_at, :sortable)
+
+  = rows(@admins) do |admin|
+    = actions(:two) do
+      = edit_link(admin)
+      = delete_link(admin)
+    = column(admin.username)
+    = column(l(admin.created_at, :format => :long))
+
+= will_paginate @admins

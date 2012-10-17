@@ -1,0 +1,7 @@
+- buttons(back_to(:admins))
+- breadcrumbs do
+  = crumb(admin_t(:admins, :index), [:admin, :admins])
+  = crumb(@admin.username)
+  = crumb(admin_t(:admins, :edit))
+
+= render("form")

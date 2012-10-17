@@ -1,0 +1,18 @@
+!!! HTML5
+%html
+  %head
+    %title=" CrowdRevolt"
+    <!--[if lt IE 9]>
+    = javascript_include_tag("http://html5shim.googlecode.com/svn/trunk/html5.js")
+    <![endif]-->
+    = stylesheet_link_tag("application")
+    = javascript_include_tag("application")
+    <!--[if lt IE 9]>
+    = javascript_include_tag("ie.js")
+    = stylesheet_link_tag("ie.css")
+    <![endif]-->
+    = csrf_meta_tags
+    %meta{ :name => "viewport", :content => "width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" }
+  %body.container
+    = render("header")
+    = yield

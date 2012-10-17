@@ -1,0 +1,25 @@
+- model_class = Post
+.page-header
+  %h1=t '.title', :default => model_class.model_name.human
+
+%p
+  %strong= model_class.human_attribute_name(:title) + ':'
+  %br
+  = @post.title
+%p
+  %strong= model_class.human_attribute_name(:description) + ':'
+  %br
+  = @post.description
+%p
+  %strong= model_class.human_attribute_name(:body) + ':'
+  %br
+  = @post.body
+%p
+  %strong= model_class.human_attribute_name(:published_at) + ':'
+  %br
+  = @post.published_at
+
+.form-actions
+  = link_to t('.back', :default => t("helpers.links.back")), admin_posts_path, :class => 'btn'
+  = link_to t('.edit', :default => t("helpers.links.edit")), edit_admin_post_path(@post), :class => 'btn'
+  = link_to t('.destroy', :default => t("helpers.links.destroy")), admin_post_path(@post), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'
