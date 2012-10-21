@@ -2,7 +2,7 @@ Crowdrevolt::Application.routes.draw do
 # Admin namespace
   namespace :admin do
     # Admin root
-    root :to => "pages#index"
+    root :to => "posts#index"
 
     # Inloggen
     get    "inloggen"  => "sessions#new",     :as => :login

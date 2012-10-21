@@ -1,6 +1,6 @@
 class AdminController < ActionController::Base
   before_filter :authorize_admin
-
+  layout "admin"
 private
 
   helper_method :current_admin

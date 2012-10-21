@@ -4,6 +4,7 @@
 %table.table.table-striped
   %thead
     %tr
+      / %th= model_class.human_attribute_name(:title)
       %th= model_class.human_attribute_name(:title)
       %th= model_class.human_attribute_name(:description)
       %th= model_class.human_attribute_name(:body)
@@ -12,10 +13,10 @@
   %tbody
     - @posts.each do |post|
       %tr
-        %td= link_to post.id, admin_post_path(post)
+        / %td= link_to post.id, admin_post_path(post)
         %td= post.title
-        %td= post.description
-        %td= post.body
+        %td=raw truncate(post.description, :length => 80)
+        %td=raw truncate(post.body, :length => 100)
         %td= post.published_at
         %td
           = link_to t('.edit', :default => t("helpers.links.edit")), [:edit, :admin, post], :class => 'btn btn-mini'

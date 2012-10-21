@@ -1,0 +1,180 @@
+nl:
+  admin:
+    title: "Admin"
+
+    "yes": "Ja"
+    "no": "Nee"
+    or: "of"
+    back: "Terug"
+    show: "Bekijk"
+    edit: "Bewerk"
+    delete: "Verwijder"
+    confirm: "Weet je het zeker? Als je iets verwijdert kan het niet meer teruggehaald worden."
+    cancel: "Annuleren"
+    search: "Zoeken"
+    search_term: "Vul hier een zoekterm in"
+    upload: "Uploaden"
+
+    menu:
+      categories: "Categorieën"
+      posts: "Berichten"
+      images: "Beelden"
+      tags: "Tags"
+      employees: "Medewerkers"
+      testimonials: "Ervaringen"
+      events: "Evenementen"
+      vacancies: "Vacatures"
+      texts: "Teksten"
+      settings: "Instellingen"
+      admins: "Admins"
+      pages: "Pagina's"
+      logout: "Uitloggen"
+
+    # Columns
+    columns:
+      id: "ID"
+      title: "Titel"
+      name: "Naam"
+      first_name: "Voornaam"
+      prefix: "Tussenvoegsel"
+      last_name: "Achternaam"
+      username: "Gebruikersnaam"
+      email: "E-mailadres"
+      password: "Wachtwoord"
+      description: "Omschrijving"
+      body: "Bericht"
+      image: "Beeld"
+      images: "Beelden"
+      category: "Categorie"
+      categories: "Categorieën"
+      created_at: "Aangemaakt"
+      updated_at: "Aangepast"
+      published_at: "Gepubliceerd"
+      active: "Actief"
+      address: "Adres"
+      number: "Huisnummer"
+      postcode: "Postcode"
+      residence: "Woonplaats"
+      country: "Land"
+      key: "Sleutelwoord"
+      value: "Waarde"
+      tags: "Tags"
+      optin: "Nieuwsbrief"
+      accepted: "Geaccepteerd"
+      quote: "Quote"
+
+      pages:
+        menu_title: "Menu titel"
+        page_title: "Pagina titel"
+        page_description: "Pagina omschrijving"
+        image_title: "Titel bij beeld"
+        image_description: "Omschrijving bij beeld"
+        employees: "Medewerkers"
+        testimonials: "Ervaringen"
+
+    # Settings
+    settings:
+      index: "Instellingen"
+      edit: "Bewerk instelling"
+      keys:
+        website_title: "Website titel"
+        general_email: "Algemeen e-mailadres"
+      descriptions:
+        website_title: "Vul hier de titel van de website in. Deze komt bovenin de browser te staan."
+        general_email: "Vul hier het e-mailadres in waar algemene e-mails naartoe moeten worden verstuurd."
+
+    # Teksten
+    texts:
+      index: "Teksten"
+      edit: "Bewerk tekst"
+      descriptions:
+        contact_home: "Contactblok bij Home"
+        contact_rooms: "Contactblok bij Rooms & Suites"
+        contact_wining: "Contactblok bij Wining & Dining"
+        contact_events: "Contactblok bij Meetings & Events"
+        contact_vacancies: "Contactblok bij Vacatures"
+        contact_contact: "Contactblok bij Contact"
+        contact_page_part: "Contactblok bij pagina onderdeel"
+        contact_footer: "Contactinformatie in de footer"
+        subscribe_footer: "Inschrijvingsblok in de footer"
+        location: "Tekst over lokatie bij The Hotel"
+        events: "Tekst over evenementen bij Meetings & Events"
+        press: "Persblok bij Contact"
+
+    # Divide
+    divide:
+      defaults:
+        description: "Omschrijving"
+        categories: "Categorieën"
+        images: "Beelden"
+        dates: "Data"
+        contact: "Contact informatie"
+        password: "Wachtwoord"
+        address: "Adresgegevens"
+        options: "Opties"
+        tags: "Tags"
+
+    # Resources
+    categories:
+      index: "Categorieën"
+      new: "Nieuwe categorie"
+      edit: "Bewerk categorie"
+
+    posts:
+      index: "Berichten"
+      new: "Nieuw bericht"
+      edit: "Bewerk bericht"
+
+      attributes:
+        title: "Titel"
+        description: "Omschrijving"
+        categories: "Categorieën"
+        images: "Beelden"
+        published_at: "Publiceren om"
+
+    admins:
+      index: "Admins"
+      new: "Nieuwe admin"
+      edit: "Bewerk admin"
+
+    images:
+      index: "Beelden"
+      new: "Nieuw beeld"
+      crumb: "Beelden"
+      select: "Selecteer beeld"
+      original: "Origineel"
+      thumb: "Thumbnail"
+      front: "Voorkant"
+      add: "Beeld toevoegen"
+      crop: "Crop het beeld"
+      done: "Klaar"
+      added: "Het beeld is toegevoegd."
+
+    tags:
+      index: "Tags"
+      new: "Nieuwe tag"
+      edit: "Bewerk tag"
+
+    pages:
+      edit: "Bewerk pagina"
+      home: "Home"
+      hotel: "Hotel"
+      weddings: "Weddings"
+      rooms_and_suites: "Rooms & Suites"
+      wining_and_dining: "Wining & Dining"
+      booking: "Booking"
+      meetings_and_events: "Meetings & Events"
+      news: "News"
+      contact: "Contact"
+      vacancies: "Vacatures"
+
+    employees:
+      index: "Medewerkers"
+      new: "Nieuwe medewerker"
+      edit: "Bewerk medewerker"
+
+    events:
+      index: "Evenementen"
+      new: "Nieuwe evenement"
+      edit: "Bewerk evenement"
+      add: "Datum toevoegen"
