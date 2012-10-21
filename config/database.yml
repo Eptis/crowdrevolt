@@ -33,7 +33,6 @@ test:
 
 production:
   adapter: mysql2
-  host: 127.0.0.1
   encoding: utf8
   reconnect: false
   database: crowdrevolt_production

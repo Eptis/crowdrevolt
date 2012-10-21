@@ -5,3 +5,8 @@
 require File.expand_path('../config/application', __FILE__)
 
 Crowdrevolt::Application.load_tasks
+module ::Crowdrevolt
+  class Application
+    include Rake::DSL
+  end
+end
