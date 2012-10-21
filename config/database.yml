@@ -40,3 +40,5 @@ production:
   username: root
   password:
   socket: /tmp/mysql.sock
+  host:
+
