@@ -6,7 +6,7 @@ gem 'jquery-rails'
 gem 'mysql2'
 gem 'json'
 gem 'bcrypt-ruby'
-
+gem "rake", "0.8.7"
 
 # custom:
 gem 'haml-rails'
