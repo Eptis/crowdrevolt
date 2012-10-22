@@ -20,4 +20,4 @@
 
 
   .row
-    .span12= f.submit([:admin, @post])
+    .span12= f.submit(@post.new_record? ? [:admin, :posts] : [:admin, @post])
