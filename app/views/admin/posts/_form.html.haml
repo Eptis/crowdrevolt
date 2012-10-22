@@ -1,0 +1,23 @@
+= simple_form_for([:admin, @post]) do |f|
+  .row
+    .span12
+      / = f.input :tag_list
+    .span12
+      / = f.category_select
+    .span12
+      / = f.image_select
+
+    .span12
+      = f.input :published_at, :input_html => { :value => @post.published_at_form }
+  .row
+    .span7
+      = f.input :title
+      / = f.input :description, :as => :editor
+      = f.input :description
+      / = f.input :body, :as => :editor
+      = f.input :body
+
+
+
+  .row
+    .span12= f.submit([:admin, @post])

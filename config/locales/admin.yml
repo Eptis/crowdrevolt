@@ -122,7 +122,9 @@ nl:
 
     posts:
       index: "Berichten"
-      new: "Nieuw bericht"
+      new:
+        new: "Nieuw bericht"
+        submit: "Plaats bericht"
       edit: "Bewerk bericht"
 
       attributes:
