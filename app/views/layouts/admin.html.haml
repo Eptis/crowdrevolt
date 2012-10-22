@@ -14,22 +14,23 @@
     = csrf_meta_tags
     %meta{ :name => "viewport", :content => "width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" }
   %body.container
-    .navbar.navbar-fixed-top
-      .navbar-inner
-        .container-fluid
-          %a.btn.btn-navbar{ :data => { :toggle => "collapse", :target => ".nav-collapse" } }
-            %span.icon-bar
-            %span.icon-bar
-            %span.icon-bar
+    - if current_admin
+      .navbar.navbar-fixed-top.navbar-inverse
+        .navbar-inner
+          .container-fluid
+            %a.btn.btn-navbar{ :data => { :toggle => "collapse", :target => ".nav-collapse" } }
+              %span.icon-bar
+              %span.icon-bar
+              %span.icon-bar
 
-          .brand= t("admin.title", :title => "CrowdRevolt")
-          .nav-collapse.collapse
-            %ul.nav
-              %li= link_to :posts, :posts
-              %li= link_to :users, :users
+            .brand= t("admin.title", :title => "CrowdRevolt")
+            .nav-collapse.collapse
+              %ul.nav
+                %li= link_to :posts, [:admin, :posts]
+                %li= link_to :users, [:admin, :users]
 
-            / Uitloggen
-            = link_to [:admin, :logout], :method => :delete, :class => "btn btn-inverse pull-right" do
-              %i.icon-off
-              Log uit
+              / Uitloggen
+              = link_to [:admin, :logout], :method => :delete, :class => "btn btn-inverse pull-right" do
+                %i.icon-off
+                Log uit
     = yield

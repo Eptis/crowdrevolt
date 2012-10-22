@@ -1,0 +1,13 @@
+.span12
+  = form_tag :user_login do
+    = label_tag :email, t("simple_form.labels.admin.username")
+    = email_field_tag :email, params[:username]
+
+    = label_tag :password, t("simple_form.labels.admin.password")
+    = password_field_tag :password, nil, :class => "string"
+
+    %div
+      = submit_tag t("helpers.submit.sessions.create"), :class => "btn btn-primary btn-large"
+
+.span12
+  =link_to "Geen account? meld je nu aan!", [:new, :user]

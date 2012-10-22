@@ -2,6 +2,44 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 nl:
+  # formulieren
+  helpers:
+      submit:
+        sessions:
+          create: "Inloggen"
+  errors:
+    format: ! '%{attribute} %{message}'
+    messages:
+      accepted: Moet worden geaccepteerd
+      blank: Moet opgegeven zijn
+      confirmation: Komt niet met de bevestiging overeen
+      empty: Moet opgegeven zijn
+      equal_to: Moet gelijk zijn aan %{count}
+      even: Moet even zijn
+      exclusion: Is niet beschikbaar
+      greater_than: Moet groter zijn dan %{count}
+      greater_than_or_equal_to: Moet groter dan of gelijk zijn aan %{count}
+      inclusion: Is niet in de lijst opgenomen
+      invalid: Is ongeldig
+      less_than: Moet minder zijn dan %{count}
+      less_than_or_equal_to: Moet minder dan of gelijk zijn aan %{count}
+      not_a_number: Is geen getal
+      not_an_integer: Moet een geheel getal zijn
+      odd: Moet oneven zijn
+      record_invalid: ! 'Validatie mislukt: %{errors}'
+      taken: Is al in gebruik
+      too_long: Is te lang (maximaal %{count} tekens)
+      too_short: Is te kort (minimaal %{count} tekens)
+      wrong_length: Heeft onjuiste lengte (moet %{count} tekens lang zijn)
+      email: E-mailadres is onjuist
+    template:
+      body: ! 'Controleer de volgende velden:'
+      header:
+        one: ! '%{model} niet opgeslagen: 1 fout gevonden'
+        other: ! '%{model} niet opgeslagen: %{count} fouten gevonden'
+
+
+  #algemeen
   admin:
     posts: "Berichten"
   hello: "Hello world"

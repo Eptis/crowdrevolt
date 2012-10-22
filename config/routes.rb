@@ -29,6 +29,11 @@ Crowdrevolt::Application.routes.draw do
   resources :users
   resources :posts
 
+  # gebruiker Inloggen
+  get    "inloggen"  => "sessions#new",     :as => :user_login
+  post   "inloggen" => "sessions#create",  :as => :user_login
+  delete "uitloggen" => "sessions#destroy", :as => :user_logout
+
   # Root pad
   root :to => "pages#index"
 end
