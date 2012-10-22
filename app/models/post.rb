@@ -1,5 +1,5 @@
 class Post < ActiveRecord::Base
-  attr_accessible :title, :body, :description
+  attr_accessible :title, :body, :description, :published_at
 
   # Methods
   def published_at_string
