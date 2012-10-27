@@ -5,19 +5,23 @@
 %p
   %strong= model_class.human_attribute_name(:title) + ':'
   %br
-  = @post.title
-%p
-  %strong= model_class.human_attribute_name(:description) + ':'
-  %br
-  = @post.description
-%p
-  %strong= model_class.human_attribute_name(:body) + ':'
-  %br
-  = @post.body
+  =raw @post.title
 %p
   %strong= model_class.human_attribute_name(:published_at) + ':'
   %br
-  = @post.published_at
+  =raw @post.published_at
+%p
+  %strong= model_class.human_attribute_name(:description) + ':'
+  %br
+  =raw @post.description
+%p
+  %strong= model_class.human_attribute_name(:body) + ':'
+  %br
+  =raw @post.body
+.row
+  .span12
+    - @post.blogitems.each do |item|
+      = render "item", :item => item
 
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")), admin_posts_path, :class => 'btn'

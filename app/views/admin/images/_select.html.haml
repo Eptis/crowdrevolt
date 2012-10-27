@@ -1,0 +1,8 @@
+= f.input :image_select, :wrapper_html => { :class => "image_selector_wrapper" } do
+  = f.hidden_field :image_select, :class => "image_selector_field", :data => { :total => total }
+  .image_selector= link_to t("admin.images.select"), "#", :class => "image_selector_link image_ajax btn"
+  .image_previews
+    - f.object.images.each do |image|
+      %a.image_preview.thumbnail
+        = image_thumb(image, :thumb, :data => { :id => image.id })
+        %span.delete X

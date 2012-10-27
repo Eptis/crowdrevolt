@@ -10,13 +10,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121014190034) do
+ActiveRecord::Schema.define(:version => 20121026143640) do
 
   create_table "admins", :force => true do |t|
     t.string   "username"
     t.string   "password_digest"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+  end
+
+  create_table "blogitems", :force => true do |t|
+    t.text     "body"
+    t.integer  "post_id"
+    t.string   "item_type",        :limit => 11
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+    t.text     "youtubeembedlink"
   end
 
   create_table "categories", :force => true do |t|
@@ -66,6 +75,7 @@ ActiveRecord::Schema.define(:version => 20121014190034) do
     t.datetime "published_at"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+    t.integer  "admin_id"
   end
 
   create_table "taggings", :force => true do |t|
@@ -85,6 +95,26 @@ ActiveRecord::Schema.define(:version => 20121014190034) do
     t.string "name"
   end
 
+  create_table "user_blogitems", :force => true do |t|
+    t.text     "body"
+    t.text     "youtubeembedlink"
+    t.integer  "user_post_id"
+    t.string   "item_type"
+    t.datetime "published_at"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  create_table "user_posts", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.text     "body"
+    t.datetime "published_at"
+    t.integer  "user_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
   create_table "users", :force => true do |t|
     t.string   "email"
     t.string   "password_digest"
@@ -97,6 +127,7 @@ ActiveRecord::Schema.define(:version => 20121014190034) do
     t.boolean  "password_reset",  :default => false
     t.datetime "created_at",                         :null => false
     t.datetime "updated_at",                         :null => false
+    t.string   "skypename"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"

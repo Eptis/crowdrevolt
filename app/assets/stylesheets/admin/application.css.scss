@@ -1,6 +1,39 @@
-/*
-//= require reset
-
+//= require jquery-ui
+//= require jquery.chosen
+//= require jquery.Jcrop
+//= require jquery.timepicker
+//= require jquery.tagsinput
+//= require admin/default
 //= require_self
-//= require_tree .
-*/
+
+.center{
+  width:300px;
+  margin:0 auto;
+}
+.hide{
+  display:none;
+}
+
+//can't touch this!
+.blog{
+  .afbeelding{
+    .changer,
+    .youtube_filter,
+    .text_filter{display:none;}
+    .image_filter{display:block !important;}
+  }
+  .youtubefilm{
+    .changer,
+    .image_filter,
+    .text_filter{display:none;}
+    .youtube_filter{display:block !important;}
+  }
+  .tekst{
+    .changer,
+    .youtube_filter,
+    .image_filter{display:none;}
+    .text_filter{display:block !important;}
+  }
+}
+
+//except for this, you can touch this

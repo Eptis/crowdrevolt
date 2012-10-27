@@ -34,8 +34,13 @@ class Admin::PostsController < AdminController
   end
 
   def destroy
+    @post = Post.find(params[:id])
     @post.destroy
     redirect_to([:admin, :posts], :flash => :success)
   end
+private
 
+  def find_post
+    @post = Post.find(params[:id])
+  end
 end

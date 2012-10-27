@@ -1,5 +1,13 @@
 class Post < ActiveRecord::Base
-  attr_accessible :title, :body, :description, :published_at
+  attr_accessible :title, :body, :description, :published_at, :blogitems_attributes, :image_select
+
+  # blog items
+  has_many :blogitems
+  accepts_nested_attributes_for :blogitems, :allow_destroy => true
+
+  # Images select
+  include ImageSelect
+  image_select
 
   # Methods
   def published_at_string

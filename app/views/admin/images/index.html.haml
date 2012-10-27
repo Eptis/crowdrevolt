@@ -1,0 +1,9 @@
+=link_to "Afbeelding uploaden", [:new, :admin, :image], :class => "btn btn-primary btn-large"
+
+/= form_tag [:admin, :images], :class => "well form-search input-append", :method => :get do
+/ = text_field_tag(:q, params[:q], :placeholder => t("admin.search_term"), :class => "span3 search-query") + submit_tag(t("admin.search"), :class => "btn")
+
+
+#images= render @images
+
+#image_pagination= will_paginate @images

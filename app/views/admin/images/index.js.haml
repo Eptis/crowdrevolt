@@ -1,0 +1,7 @@
+:plain
+  $("#image_wrapper").show();
+  $("#image_wrapper").html("#{j(render("selectimages"))}");
+  $("#image_loading").html("");
+  $("#image_paginate").html('#{j(paginate_images(@images))}');
+  $("#image_paginate a").attr("data-remote", "true");
+  $("#flash_messages").html("#{j(flash_messages(:close))}");
