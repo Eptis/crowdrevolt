@@ -21,6 +21,11 @@ gem 'twitter-bootstrap-rails'
 gem 'bootstrap_flash_messages', '0.0.3'
 gem "nested_form"
 
+#auth
+gem 'sorcery'
+
+
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

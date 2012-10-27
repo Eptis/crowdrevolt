@@ -1,4 +1,10 @@
 Crowdrevolt::Application.routes.draw do
+  get "user_session/new"
+
+  get "user_session/create"
+
+  get "user_session/destroy"
+
 # Admin namespace
   namespace :admin do
     # Admin root
@@ -26,13 +32,21 @@ Crowdrevolt::Application.routes.draw do
 
   get "toggle-edit"         => "application#toggle",  :as => :toggle_edit
   resources :subscribers, :only => :create
-  resources :users
+  resources :users do
+    member do
+      get :activate
+    end
+  end
+
+  resources :user_sessions
   resources :posts
 
   # gebruiker Inloggen
-  get    "inloggen"  => "sessions#new",     :as => :user_login
-  post   "inloggen" => "sessions#create",  :as => :user_login
-  delete "uitloggen" => "sessions#destroy", :as => :user_logout
+  match 'login' => 'user_sessions#new', :as => :login
+  get    "inloggen"  => "user_sessions#new",     :as => :user_login
+  get    "registreren"  => "users#new",     :as => :register
+  post   "inloggen" => "user_sessions#create",  :as => :user_login
+  delete "uitloggen" => "user_sessions#destroy", :as => :user_logout
 
   # Root pad
   root :to => "pages#index"

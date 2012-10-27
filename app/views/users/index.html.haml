@@ -1,36 +1,25 @@
-- model_class = User
-.page-header
-  %h1=t '.title', :default => model_class.model_name.human.pluralize
-%table.table.table-striped
-  %thead
-    %tr
-      %th= model_class.human_attribute_name(:id)
-      %th= model_class.human_attribute_name(:email)
-      %th= model_class.human_attribute_name(:password_digest)
-      %th= model_class.human_attribute_name(:first_name)
-      %th= model_class.human_attribute_name(:prefix)
-      %th= model_class.human_attribute_name(:last_name)
-      %th= model_class.human_attribute_name(:remember_token)
-      %th= model_class.human_attribute_name(:optin)
-      %th= model_class.human_attribute_name(:accepted)
-      %th= model_class.human_attribute_name(:password_reset)
-      %th= model_class.human_attribute_name(:created_at)
-      %th=t '.actions', :default => t("helpers.actions")
-  %tbody
-    - @users.each do |user|
-      %tr
-        %td= link_to user.id, user_path(user)
-        %td= user.email
-        %td= user.password_digest
-        %td= user.first_name
-        %td= user.prefix
-        %td= user.last_name
-        %td= user.remember_token
-        %td= user.optin
-        %td= user.accepted
-        %td= user.password_reset
-        %td
-          = link_to t('.edit', :default => t("helpers.links.edit")), edit_user_path(user), :class => 'btn btn-mini'
-          = link_to t('.destroy', :default => t("helpers.links.destroy")), user_path(user), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
+%h1 Listing users
 
-= link_to t('.new', :default => t("helpers.links.new")), new_user_path, :class => 'btn btn-primary'
+%table
+  %tr
+    %th Username
+    %th Email
+    %th Crypted password
+    %th Salt
+    %th
+    %th
+    %th
+
+  - @users.each do |user|
+    %tr
+      %td= user.username
+      %td= user.email
+      %td= user.crypted_password
+      %td= user.salt
+      %td= link_to 'Show', user
+      %td= link_to 'Edit', edit_user_path(user)
+      %td= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New User', new_user_path

@@ -5,6 +5,9 @@ class Post < ActiveRecord::Base
   has_many :blogitems
   accepts_nested_attributes_for :blogitems, :allow_destroy => true
 
+  #comments
+  has_many :comments, :dependent => :destroy
+
   # Images select
   include ImageSelect
   image_select
