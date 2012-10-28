@@ -7,8 +7,7 @@ class UserSessionsController < ApplicationController
   def create
     # raise params[:user].inspect
       if @user = login(params[:username], params[:password], params[:remember])
-        # redirect_back_or_to(:users, :notice => 'Login successful.')
-        redirect_to :root
+        redirect_back_or_to(:root, :notice => 'Login successful.')
       else
         # render :root => "new"
         redirect_to :root
@@ -18,6 +17,6 @@ class UserSessionsController < ApplicationController
 
   def destroy
     logout
-    redirect_to(:root, :notice => 'Logged out!')
+    redirect_to(request.referer, :notice => 'Logged out!')
   end
 end

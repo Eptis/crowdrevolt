@@ -2,6 +2,9 @@ class Admin < ActiveRecord::Base
   # Password
   has_secure_password
 
+  has_many :posts
+  has_many :comments
+
   # Mass-assignment
   attr_accessible :username, :password, :password_confirmation
 

@@ -1,0 +1,6 @@
+/ - raise comment.inspect
+- if comment.user_id.present?
+  %h3= comment.user.username
+- else
+  %h3= comment.name
+%p= comment.body

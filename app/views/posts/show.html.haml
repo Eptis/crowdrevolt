@@ -5,3 +5,6 @@
 
 -if FunctionConfig.allowed?(:comments)
   %h1 Comments
+  = render "commentform"
+  - @post.comments.each do |comment|
+    = render comment

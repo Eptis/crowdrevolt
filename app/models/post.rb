@@ -3,6 +3,7 @@ class Post < ActiveRecord::Base
 
   # blog items
   has_many :blogitems
+  belongs_to :user
   accepts_nested_attributes_for :blogitems, :allow_destroy => true
 
   #comments

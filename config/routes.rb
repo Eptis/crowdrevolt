@@ -1,8 +1,10 @@
 Crowdrevolt::Application.routes.draw do
+  #password reset
+  resources :password_resets
+
+  #user sessions
   get "user_session/new"
-
   get "user_session/create"
-
   get "user_session/destroy"
 
 # Admin namespace
@@ -39,7 +41,9 @@ Crowdrevolt::Application.routes.draw do
   end
 
   resources :user_sessions
-  resources :posts
+  resources :posts do
+    resources :comments
+  end
 
   # gebruiker Inloggen
   match 'login' => 'user_sessions#new', :as => :login
