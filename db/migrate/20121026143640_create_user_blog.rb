@@ -1,6 +1,6 @@
 class CreateUserBlog < ActiveRecord::Migration
   def change
-    add_column :users, :skypename, :string
+    # add_column :users, :skypename, :string
     add_column :posts, :admin_id, :integer
 
     create_table :user_posts do |t|
