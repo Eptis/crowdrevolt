@@ -17,10 +17,11 @@ class PostsController < ApplicationController
     @post = Post.new(params[:post])
     @post.user = current_user
     if @post.save
-      redirect_to([:admin, @post], :flash => :success)
+      redirect_to([@post], :flash => :success)
     else
       render("new")
     end
+    give_reward(@post)
   end
 
   def edit
@@ -30,7 +31,7 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if @post.update_attributes(params[:post])
-      redirect_to([:admin, @post])
+      redirect_to([@post])
     else
       render("edit")
     end
@@ -39,7 +40,7 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to([:admin, :posts], :flash => :success)
+    redirect_to([:posts], :flash => :success)
   end
 private
 

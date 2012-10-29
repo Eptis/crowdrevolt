@@ -1,6 +1,5 @@
 class Post < ActiveRecord::Base
   attr_accessible :title, :body, :description, :published_at, :blogitems_attributes, :image_select
-
   # blog items
   has_many :blogitems
   belongs_to :user
@@ -29,4 +28,5 @@ class Post < ActiveRecord::Base
   def to_param
     "#{id}-#{title}".parameterize
   end
+
 end

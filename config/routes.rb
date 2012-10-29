@@ -40,6 +40,7 @@ Crowdrevolt::Application.routes.draw do
     end
   end
 
+  resources :images
   resources :user_sessions
   resources :posts do
     resources :comments

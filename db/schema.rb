@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121028130948) do
+ActiveRecord::Schema.define(:version => 20121029085927) do
 
   create_table "admins", :force => true do |t|
     t.string   "username"
@@ -22,9 +22,9 @@ ActiveRecord::Schema.define(:version => 20121028130948) do
   create_table "blogitems", :force => true do |t|
     t.text     "body"
     t.integer  "post_id"
-    t.string   "item_type",        :limit => 11
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
+    t.string   "item_type"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
     t.text     "youtubeembedlink"
   end
 
@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(:version => 20121028130948) do
     t.integer  "image_file_size"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
+    t.integer  "user_id"
   end
 
   create_table "pages", :force => true do |t|
@@ -87,6 +88,15 @@ ActiveRecord::Schema.define(:version => 20121028130948) do
     t.datetime "updated_at",   :null => false
     t.integer  "admin_id"
     t.integer  "user_id"
+  end
+
+  create_table "rewards", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "points"
+    t.string   "rewardable_id"
+    t.string   "rewardable_type"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "taggings", :force => true do |t|
