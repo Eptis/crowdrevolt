@@ -1,6 +1,5 @@
 class UserSessionsController < ApplicationController
   skip_before_filter :require_login, :except => [:destroy]
-  rescue_from ActiveRecord::RecordNotFound, :with => :reset_session
 
   def new
     # @user = User.find(params[:id])
@@ -22,9 +21,5 @@ class UserSessionsController < ApplicationController
     redirect_to(request.referer, :notice => 'Logged out!')
   end
 
-  private
 
-    def reset_session
-      reset_session
-    end
 end
