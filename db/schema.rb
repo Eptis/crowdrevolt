@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121029085927) do
+ActiveRecord::Schema.define(:version => 20121101203030) do
 
   create_table "admins", :force => true do |t|
     t.string   "username"
@@ -93,7 +93,7 @@ ActiveRecord::Schema.define(:version => 20121029085927) do
   create_table "rewards", :force => true do |t|
     t.integer  "user_id"
     t.integer  "points"
-    t.string   "rewardable_id"
+    t.integer  "rewardable_id"
     t.string   "rewardable_type"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
@@ -155,6 +155,7 @@ ActiveRecord::Schema.define(:version => 20121029085927) do
     t.datetime "reset_password_token_expires_at"
     t.datetime "reset_password_email_sent_at"
     t.boolean  "optin"
+    t.string   "name"
   end
 
   add_index "users", ["activation_token"], :name => "index_users_on_activation_token"
