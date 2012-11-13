@@ -4,4 +4,4 @@ require File.expand_path('../application', __FILE__)
 # Initialize the rails application
 Crowdrevolt::Application.initialize!
 
-config.gem 'flash_messages_helper'
+
