@@ -18,7 +18,7 @@ gem 'rubyzip', :require => 'zip/zip'
 gem 'acts-as-taggable-on', '~> 2.3.1'
 gem 'meta_search'
 # gem 'twitter-bootstrap-rails'
-# gem 'bootstrap_flash_messages', '0.0.3'
+gem 'bootstrap_flash_messages', '0.0.3'
 gem "nested_form"
 
 #auth
