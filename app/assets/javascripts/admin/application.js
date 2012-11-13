@@ -4,7 +4,6 @@
 //= require jquery_nested_form
 //= require jquery.timepicker
 //= require jquery.Jcrop
-//= require twitter/bootstrap
 //= require admin/default
 
 $(document).on('nested:fieldAdded', function(event){
