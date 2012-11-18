@@ -4,6 +4,8 @@
 //= require jquery_nested_form
 //= require jquery.timepicker
 //= require jquery.Jcrop
+//= require jquery.iframe-transport
+//= require jquery.remotipart
 //= require admin/default
 
 $(document).on('nested:fieldAdded', function(event){

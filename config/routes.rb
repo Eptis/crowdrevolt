@@ -20,6 +20,9 @@ Crowdrevolt::Application.routes.draw do
     # Resources
     resources :admins
     resources :users
+    resources :channels do
+      resources :episodes
+    end
     resources :pages
     resources :posts
     resources :images
@@ -41,6 +44,16 @@ Crowdrevolt::Application.routes.draw do
   end
 
   resources :images
+  resources :channels do
+    resources :episodes
+    resources :posts
+    resources :ideas
+    resources :changemakers
+    resources :challenges do
+      resources :solutions
+    end
+  end
+
   resources :user_sessions
   resources :posts do
     resources :comments

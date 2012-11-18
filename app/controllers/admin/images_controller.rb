@@ -2,7 +2,7 @@ class Admin::ImagesController < AdminController
   before_filter :find_image, :only => [:edit, :update, :destroy]
 
   def index
-    @images = Image.order("id DESC")
+    @images = Image.where(:user_id => nil).order("id DESC")
     @images = @images.search(:name_or_tag_taggings_tag_name_contains => params[:q]) if params[:q].present?
     @images = @images.page(params[:page]).per_page(params[:total].try(:to_i) || 40)
   end

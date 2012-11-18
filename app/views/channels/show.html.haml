@@ -1,0 +1,22 @@
+%h1= @channel.title
+%p=raw @channel.description
+
+%h2= t("episodes")
+- @channel.episodes.each do |episode|
+  =link_to episode.title, [@channel, episode]
+
+%h2= t("posts")
+- @channel.posts.each do |post|
+  =link_to post.title, [@channel, post]
+
+%h2= t("challenges")
+- @channel.challenges.each do |challenge|
+  =link_to challenge.title, [@channel, challenge]
+
+%h2= t("ideas")
+- @channel.ideas.each do |idea|
+  =link_to idea.title, [@channel, idea]
+
+%h2= t("ideas")
+- @channel.ideas.each do |idea|
+  =link_to idea.title, [@channel, idea]

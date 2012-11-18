@@ -10,13 +10,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121101203030) do
+ActiveRecord::Schema.define(:version => 20121118202554) do
 
   create_table "admins", :force => true do |t|
     t.string   "username"
     t.string   "password_digest"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+  end
+
+  create_table "appreciables", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "appreciable_id"
+    t.string   "appreciable_type"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
   create_table "blogitems", :force => true do |t|
@@ -46,14 +54,58 @@ ActiveRecord::Schema.define(:version => 20121101203030) do
 
   add_index "categorizations", ["categorization_id", "categorization_type", "category_id"], :name => "index_categorizations"
 
+  create_table "challenges", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "points"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "channel_id"
+  end
+
+  create_table "changemakers", :force => true do |t|
+    t.string   "name"
+    t.text     "bio"
+    t.string   "fb_link"
+    t.string   "tw_link"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "channels", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.string   "status"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "comments", :force => true do |t|
     t.string   "name"
     t.string   "email"
     t.text     "body"
     t.integer  "user_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+  end
+
+  create_table "episodes", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.boolean  "live"
+    t.string   "livestream_embedcode"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+    t.integer  "channel_id"
+    t.datetime "airdate"
+  end
+
+  create_table "ideas", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.integer  "post_id"
+    t.integer  "channel_id"
   end
 
   create_table "image_relations", :force => true do |t|
@@ -88,6 +140,17 @@ ActiveRecord::Schema.define(:version => 20121101203030) do
     t.datetime "updated_at",   :null => false
     t.integer  "admin_id"
     t.integer  "user_id"
+    t.integer  "channel_id"
+  end
+
+  create_table "questions", :force => true do |t|
+    t.string   "question"
+    t.integer  "user_id"
+    t.string   "name"
+    t.string   "email"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "episode_id"
   end
 
   create_table "rewards", :force => true do |t|
@@ -97,6 +160,15 @@ ActiveRecord::Schema.define(:version => 20121101203030) do
     t.string   "rewardable_type"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+  end
+
+  create_table "solutions", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "user_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.integer  "challenge_id"
   end
 
   create_table "taggings", :force => true do |t|
@@ -156,6 +228,7 @@ ActiveRecord::Schema.define(:version => 20121101203030) do
     t.datetime "reset_password_email_sent_at"
     t.boolean  "optin"
     t.string   "name"
+    t.text     "bio"
   end
 
   add_index "users", ["activation_token"], :name => "index_users_on_activation_token"

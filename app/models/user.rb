@@ -7,7 +7,9 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email, :on => :create
   validates_uniqueness_of :username, :on => :create
 
-  has_many :posts
+  # has_many :posts
+  has_many :ideas
+  has_many :solutions
   has_many :rewards
   has_many :comments, :dependent => :destroy
 end

@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
   skip_before_filter :require_login, :except => [:new, :edit, :create]
+  before_filter :find_post, :only => [:show, :edit, :update, :destroy]
+  before_filter :find_channel
   def index
     @posts = Post.all
   end
@@ -46,5 +48,9 @@ private
 
   def find_post
     @post = Post.find(params[:id])
+  end
+
+  def find_channel
+    @channel = Channel.find(params[:channel_id])
   end
 end

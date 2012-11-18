@@ -1,0 +1,6 @@
+- if item.item_type == "youtubefilm"
+  =raw item.youtubeembedlink
+- if item.item_type == "afbeelding"
+  =image_tag item.image.url(:front)
+- if item.item_type == "tekst"
+  =raw item.body

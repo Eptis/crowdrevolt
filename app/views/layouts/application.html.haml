@@ -14,9 +14,10 @@
     <![endif]-->
     = csrf_meta_tags
     %meta{ :name => "viewport", :content => "width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" }
-  %body.container
+  %body.container-fluid
     = render("header")
-    = yield
+    .row-fluid
+      = yield
     #notice= notice
     #alert= alert
     =content_for(:imageselector)

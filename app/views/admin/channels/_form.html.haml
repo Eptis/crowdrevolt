@@ -1,0 +1,27 @@
+= simple_nested_form_for([:admin, @channel]) do |f|
+  .row
+    - if @channel.errors.any?
+      -@channel.errors.each do |message|
+        %p= message
+  .row
+    .span12
+      / = f.input :tag_list
+    .span12
+      / = f.category_select
+    .span12
+      = f.image_select
+    / .span12
+    /   = f.input :published_at, :as => :datetimepicker, :input_html => { :value => @channel.published_at_form }
+  .row
+    .span12
+      = f.input :title
+      = f.input :description, :as => :editor
+      = f.input :status
+      / = f.input :description
+      / = f.input :body, :as => :editor
+      / = f.input :body
+
+
+
+  .row
+    .span12= f.submit(@channel.new_record? ? [:admin, :posts] : [:admin, @channel])

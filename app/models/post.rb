@@ -3,10 +3,11 @@ class Post < ActiveRecord::Base
   # blog items
   has_many :blogitems
   belongs_to :user
+  belongs_to :channel
   accepts_nested_attributes_for :blogitems, :allow_destroy => true
 
   #comments
-  has_many :comments, :dependent => :destroy
+  has_many :comments, :as => :commentable, :dependent => :destroy
 
   # Images select
   include ImageSelect

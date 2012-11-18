@@ -1,0 +1,4 @@
+.span24
+  - @channels.each do |channel|
+    %h2= link_to channel.title, channel
+    %p=raw channel.description
