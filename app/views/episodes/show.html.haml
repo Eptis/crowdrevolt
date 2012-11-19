@@ -2,3 +2,8 @@
 %h1= @episode.title
 %p=raw @episode.description
 
+%div{:'ng-controller' => "QuestionsCtrl"}
+  %ul
+    %li{:'ng-repeat' => "question in questions"}
+      {{question.question}}
+

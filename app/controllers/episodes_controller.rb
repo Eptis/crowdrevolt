@@ -9,6 +9,11 @@ class EpisodesController < ApplicationController
 
   def show
     @episode = Episode.find(params[:id])
+    @questions = Question.all
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 private
 
