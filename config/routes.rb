@@ -67,6 +67,6 @@ Crowdrevolt::Application.routes.draw do
   delete "uitloggen" => "user_sessions#destroy", :as => :user_logout
 
   # Root pad
-  root :to => "pages#index"
+  root :to => "channels#index"
 end
 
