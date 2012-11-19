@@ -1,6 +1,7 @@
 class Episode < ActiveRecord::Base
   attr_accessible :title, :description, :image_select, :live, :airdate, :livestream_embedcode, :channel_id
   has_many :questions
+  has_many :messages, :as => :chattable
 
   belongs_to :channel
 

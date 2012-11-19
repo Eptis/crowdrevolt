@@ -6,6 +6,7 @@ class Channel < ActiveRecord::Base
   has_many :posts
   has_many :challenges
   has_many :ideas
+  has_many :messages, :as => :chattable
 
   include ImageSelect
   image_select

@@ -7,3 +7,9 @@
     %li{:'ng-repeat' => "question in questions"}
       {{question.question}}
 
+
+%ul#chat
+  = render @messages
+=form_for [@episode.channel, @episode, Message.new], :remote => true, :params => {:chattable => @episode} do |f|
+  =f.text_field :content, :id => "new_message"
+  =f.submit "Send"

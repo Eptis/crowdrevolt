@@ -43,10 +43,13 @@ Crowdrevolt::Application.routes.draw do
     end
   end
 
+  resources :messages
   resources :images
-      resources :questions
+  resources :questions
   resources :channels do
+    resources :messages
     resources :episodes do
+      resources :messages
       resources :questions
     end
     resources :posts

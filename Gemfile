@@ -7,6 +7,10 @@ gem 'mysql2'
 gem 'json'
 gem 'bcrypt-ruby'
 
+#faye messaging
+gem "faye"
+gem "thin"
+
 # custom:
 gem 'haml-rails'
 gem 'simple_form', '2.0.2'
