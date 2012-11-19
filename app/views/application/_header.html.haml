@@ -1,28 +1,28 @@
-.navbar.navbar-fixed-top
+.navbar.navbar-fixed-top.navbar-inverse
   .navbar-inner
-    .container-fluid
-      %a.btn.btn-navbar{ :data => { :toggle => "collapse", :target => ".nav-collapse" } }
-        %span.icon-bar
-        %span.icon-bar
-        %span.icon-bar
+    / .container-fluid
+    %a.btn.btn-navbar{ :data => { :toggle => "collapse", :target => ".nav-collapse" } }
+      %span.icon-bar
+      %span.icon-bar
+      %span.icon-bar
 
-      .brand CrowdRevolt
-      .nav-collapse.collapse
-        %ul.nav
-          / %li= link_to :posts, :posts
-          %li= link_to :channels, :channels
-          / %li= link_to :users, :users
+    .brand CrowdRevolt
+    .nav-collapse.collapse
+      %ul.nav
+        / %li= link_to :posts, :posts
+        %li= link_to :channels, :channels
+        / %li= link_to :users, :users
 
-        -if current_user
-          / Uitloggen
-          = link_to [:user_logout], :method => :delete, :class => "btn btn-inverse pull-right" do
-            %i.icon-off
-            Log uit
-        - else
-          = link_to [:user_login], :class => "btn btn-inverse pull-right" do
-            %i.icon-user
-            Inloggen
-          = link_to [:register], :class => "btn btn-inverse pull-right" do
-            %i.icon-user
-            registreer
-            /= admin_t(:menu, :logout)
+      -if current_user
+        / Uitloggen
+        = link_to [:user_logout], :method => :delete, :class => "btn btn-inverse pull-right" do
+          %i.icon-off
+          Log uit
+      - else
+        = link_to [:user_login], :class => "btn btn-inverse pull-right" do
+          %i.icon-user
+          Inloggen
+        = link_to [:register], :class => "btn btn-inverse pull-right" do
+          %i.icon-user
+          registreer
+          /= admin_t(:menu, :logout)
