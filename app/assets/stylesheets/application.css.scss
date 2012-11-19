@@ -4,3 +4,15 @@
 //= require_self
 //= require_tree .
 */
+
+.submenu{
+  max-width:600px;
+  li{
+  float:left;
+  margin-left: 1.5em;
+  background:red;
+  height:30px;
+  width:30px;
+  }
+
+}
