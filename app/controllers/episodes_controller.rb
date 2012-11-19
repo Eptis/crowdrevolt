@@ -1,4 +1,5 @@
 class EpisodesController < ApplicationController
+  skip_before_filter :require_login
   before_filter :find_episode, :only => [:show, :edit, :update, :destroy]
   before_filter :find_channel
 
