@@ -6,13 +6,20 @@
 */
 
 .submenu{
-  max-width:600px;
+  /*max-width:600px;*/
   li{
-  float:left;
+  float:right;
   margin-left: 1.5em;
-  background:red;
-  height:30px;
-  width:30px;
   }
 
+}
+
+
+.login {
+  float: right;
+  margin-left: 1.5em;
+}
+
+.img {
+  width: 100%;
 }
