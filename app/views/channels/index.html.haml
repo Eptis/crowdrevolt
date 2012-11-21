@@ -1,22 +1,67 @@
-%article.span18
-  %section.intro
-    %h1 Slimme oplossingen voor oude ideeen
-    .span24
-      .span20
-        %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Sed posuere consectetur est at lobortis. Nulla vitae elit libero, a pharetra augue. Meer informatie kun je vinden bij Karma & Rewards
-      .span4
-        .btn Meld je aan!
-    .span24
-      .span10
-        %img{:src => "http://placehold.it/550x310"}
-      .span14
-        %h1 Titel volgende uitzending
-        %p Maecenas faucibus mollis interdum. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Etiam porta sem malesuada magna mollis euismod. Donec ullamcorper nulla non metus auctor fringilla. Cras mattis consectetur purus sit amet fermentum.
-  - @channels.each do |channel|
-    .span12
-      %h2= link_to channel.title, channel
-      %p=raw channel.description
+.span18
+  .row-fluid
+  %section
+
+    %article.intro
+      %h1 Slimme oplossingen voor oude ideeen
+      .span24
+        .span20
+          %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Sed posuere consectetur est at lobortis. Nulla vitae elit libero, a pharetra augue. Meer informatie kun je vinden bij Karma & Rewards
+        .span4
+          .btn Meld je aan!
+
+    %article.volgende_uitzending
+      .span24
+        .span10
+          %img{:src => "http://placehold.it/550x310"}
+        .span14
+          %h2 Titel volgende uitzending
+          %p Maecenas faucibus mollis interdum. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Etiam porta sem malesuada magna mollis euismod. Donec ullamcorper nulla non metus auctor fringilla. Cras mattis consectetur purus sit amet fermentum.
+
+    %article.programma_home
+      .span12
+        %h2 Crowd fundinglab
+        %p Maecenas faucibus mollis interdum. Vivamus sagittis lacus vel augue lao- reet rutrum faucibus dolor auctor. Etiam porta sem malesuada magna mollis euismod. Donec ullamcorper nulla non metus auctor fringilla. Cras mattis consectetur purus sit amet fermentum.
+        .span24
+          .span12
+            %img{:src => "http://placehold.it/250x140"}
+          .span12
+            %h5 Volgende livestream
+            %p Maecenas faucibus mollis interdum. Vivamus sagittis.
+    %article.programma_home
+      .span12
+        %h2 Open Journalistiek
+        %p Maecenas faucibus mollis interdum. Vivamus sagittis lacus vel augue lao- reet rutrum faucibus dolor auctor. Etiam porta sem malesuada magna mollis euismod. Donec ullamcorper nulla non metus auctor fringilla. Cras mattis consectetur purus sit amet fermentum.
+        .span24
+          .span12
+            %img{:src => "http://placehold.it/250x140"}
+          .span12
+            %h5 Volgende livestream
+            %p Maecenas faucibus mollis interdum. Vivamus sagittis.
+    %article.programma_home
+      .span12
+        %h2 Keep it clean day
+        %p Maecenas faucibus mollis interdum. Vivamus sagittis lacus vel augue lao- reet rutrum faucibus dolor auctor. Etiam porta sem malesuada magna mollis euismod. Donec ullamcorper nulla non metus auctor fringilla. Cras mattis consectetur purus sit amet fermentum.
+        .span24
+          .span12
+            %img{:src => "http://placehold.it/250x140"}
+          .span12
+            %h5 Volgende livestream
+            %p Maecenas faucibus mollis interdum. Vivamus sagittis.
 
 
-%aside.span6
-  %p hoi dit dat
+    - @channels.each do |channel|
+      .span12
+        %h2= link_to channel.title, channel
+        %p=raw channel.description
+
+.span6
+  .row-fluid
+  %aside
+    %h1 Activiteiten
+    %section
+      %h2 Ingezonden idee
+      %p orem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus et turpis non mi sagittis rhoncus ac sed nisi. Aliquam et porta elit. Integer ut justo eu quam pretium condimentum vel quis justo. Cras blandit sagittis pharetra. Praesent tincidunt lorem in libero pulvinar a hendrerit velit eleifend. Lees het volledige ber.
+    %section
+      %h2 Blogpost over dit
+      %p orem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus et turpis non mi sagittis rhoncus ac sed nisi. Aliquam et porta elit. Integer ut justo eu quam pretium condimentum vel quis justo. Cras blandit sagittis pharetra. Praesent tincidunt lorem in libero pulvinar a hendrerit velit eleifend. Lees het volledige ber.
