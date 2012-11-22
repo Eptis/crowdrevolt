@@ -1,81 +1,98 @@
 .span18.content
-
-  %header 
+  %header
     %h1= @channel.title
 
-  .row-fluid
-    %section.span16.volgende_livestream
-      %article
-        %h2 Volgende livestream
-        %img{:src => "http://placehold.it/850x410"}  
-        %h3 Titel volgende livestream
-        %p Maecenas faucibus mollis interdum. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Etiam porta sem malesuada magna mollis.  
-    %section.span8.challenges
-      %article
-        %h2= t("challenges")
-        - @channel.challenges.each do |challenge|
-          =link_to challenge.title, [@channel, challenge]
-        %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Sed posuere consectetur est at porta ac consectetur ac, vestibulum at eros. Sed posuere consectetur est at porta ac consectetur ac, vestibulum at eros. Sed posuere consectetur est at lobortis. Nulla vitae elit libero, a pharetra augue. Meer informatie kun je vinden bij Karma & Rewards
-        .btn Stuur je idee in
-  
-  .row-fluid 
-    %section.span24.chat
-      %article
-        %h2 Chat mee
-        %form(action='/chat' method='POST')
-          %input(type='text' name='host' value=@host)
-          %input(type='submit' class='btn')
 
-  .row-fluid
-    %section.span24.laatste_afleveringen_klein
-      %h2 Vorige uitzendingen
-      .row-fluid
-        %article.span8
-          %img{:src => "http://placehold.it/550x410"}  
-        %article.span8
-          %img{:src => "http://placehold.it/550x410"}  
-        %article.span8
-          %img{:src => "http://placehold.it/550x410"}  
-  
-  .row-fluid
-    .span24
-      %section.span12.changemaker_blogposts
-        %h2 Changemaker Blogspots
-        %article
-          %h3 Dit is een blogpost
-          %img{:src => "http://placehold.it/110x60", :align => 'left'}
-          %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus et turpis non mi sagittis rhoncus ac sed nisi. Aliquam et porta eli
-        %article
-          %h3 Dit is een blogpost
-          %img{:src => "http://placehold.it/110x60", :align => 'left'}
-          %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus et turpis non mi sagittis rhoncus ac sed nisi. Aliquam et porta eli
-        %article
-          %h3 Dit is een blogpost
-          %img{:src => "http://placehold.it/110x60", :align => 'left'}
-          %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus et turpis non mi sagittis rhoncus ac sed nisi. Aliquam et porta eli
-        %article
-          %h3 Dit is een blogpost
-          %img{:src => "http://placehold.it/110x60", :align => 'left'}
-          %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus et turpis non mi sagittis rhoncus ac sed nisi. Aliquam et porta eli
+%ul#chat
+  = render @channel.messages
+/ -= request.original_url + "/messages/new"
+/ = request + "/messages/new"
+=form_for [@channel, Message.new], :remote => true do |f|
+  =f.text_field :content, :id => "new_message"
+  - unless current_user
+    =f.text_field :name
+    =f.text_field :email
+  =f.submit "Send"
 
-      %section.span12.ideeen
-        %h2 Ingezonden ideeen
-        %article
-          %h3 Dit is een idee
-          %img{:src => "http://placehold.it/110x60", :align => 'left'}
-          %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus et turpis non mi sagittis rhoncus ac sed nisi. Aliquam et porta eli
-        %article
-          %h3 Dit is een idee
-          %img{:src => "http://placehold.it/110x60", :align => 'left'}
-          %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus et turpis non mi sagittis rhoncus ac sed nisi. Aliquam et porta eli
-        %article
-          %h3 Dit is een idee
-          %img{:src => "http://placehold.it/110x60", :align => 'left'}
-          %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus et turpis non mi sagittis rhoncus ac sed nisi. Aliquam et porta eli
-        %article
-          %h3 Dit is een idee
-          %img{:src => "http://placehold.it/110x60", :align => 'left'}
-          %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus et turpis non mi sagittis rhoncus ac sed nisi. Aliquam et porta eli
+
+
+%h2= t("episodes")
+- @channel.episodes.each do |episode|
+  =link_to episode.title, [@channel, episode]
+
+.row-fluid
+  %section.span16.volgende_livestream
+    %article
+      %h2 Volgende livestream
+      %img{:src => "http://placehold.it/850x410"}
+      %h3 Titel volgende livestream
+      %p Maecenas faucibus mollis interdum. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Etiam porta sem malesuada magna mollis.
+  %section.span8.challenges
+    %article
+      %h2= t("challenges")
+      - @channel.challenges.each do |challenge|
+        =link_to challenge.title, [@channel, challenge]
+      %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Sed posuere consectetur est at porta ac consectetur ac, vestibulum at eros. Sed posuere consectetur est at porta ac consectetur ac, vestibulum at eros. Sed posuere consectetur est at lobortis. Nulla vitae elit libero, a pharetra augue. Meer informatie kun je vinden bij Karma & Rewards
+      .btn Stuur je idee in
+
+.row-fluid
+  %section.span24.chat
+    %article
+      %h2 Chat mee
+      %form(action='/chat' method='POST')
+        %input(type='text' name='host' value=@host)
+        %input(type='submit' class='btn')
+
+.row-fluid
+  %section.span24.laatste_afleveringen_klein
+    %h2 Vorige uitzendingen
+    .row-fluid
+      %article.span8
+        %img{:src => "http://placehold.it/550x410"}
+      %article.span8
+        %img{:src => "http://placehold.it/550x410"}
+      %article.span8
+        %img{:src => "http://placehold.it/550x410"}
+
+.row-fluid
+  .span24
+    %section.span12.changemaker_blogposts
+      %h2 Changemaker Blogspots
+      %article
+        %h3 Dit is een blogpost
+        %img{:src => "http://placehold.it/110x60", :align => 'left'}
+        %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus et turpis non mi sagittis rhoncus ac sed nisi. Aliquam et porta eli
+      %article
+        %h3 Dit is een blogpost
+        %img{:src => "http://placehold.it/110x60", :align => 'left'}
+        %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus et turpis non mi sagittis rhoncus ac sed nisi. Aliquam et porta eli
+      %article
+        %h3 Dit is een blogpost
+        %img{:src => "http://placehold.it/110x60", :align => 'left'}
+        %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus et turpis non mi sagittis rhoncus ac sed nisi. Aliquam et porta eli
+      %article
+        %h3 Dit is een blogpost
+        %img{:src => "http://placehold.it/110x60", :align => 'left'}
+        %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus et turpis non mi sagittis rhoncus ac sed nisi. Aliquam et porta eli
+
+    %section.span12.ideeen
+      %h2 Ingezonden ideeen
+      %article
+        %h3 Dit is een idee
+        %img{:src => "http://placehold.it/110x60", :align => 'left'}
+        %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus et turpis non mi sagittis rhoncus ac sed nisi. Aliquam et porta eli
+      %article
+        %h3 Dit is een idee
+        %img{:src => "http://placehold.it/110x60", :align => 'left'}
+        %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus et turpis non mi sagittis rhoncus ac sed nisi. Aliquam et porta eli
+      %article
+        %h3 Dit is een idee
+        %img{:src => "http://placehold.it/110x60", :align => 'left'}
+        %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus et turpis non mi sagittis rhoncus ac sed nisi. Aliquam et porta eli
+      %article
+        %h3 Dit is een idee
+        %img{:src => "http://placehold.it/110x60", :align => 'left'}
+        %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus et turpis non mi sagittis rhoncus ac sed nisi. Aliquam et porta eli
 
 %aside.span6
   .row-fluid
@@ -133,3 +150,17 @@
 /  - @channel.ideas.each do |idea|
 /    =link_to idea.title, [@channel, idea]
 
+%h2= t("ideas")
+- @channel.ideas.each do |idea|
+  =link_to idea.title, [@channel, idea]
+
+
+- @channel_clean = @channel.id.to_s + @channel.title.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '') + "/channel"
+:javascript
+  $(function(){
+    var faye = new Faye.Client('http://localhost:9292/faye');
+
+    faye.subscribe("/#{@channel_clean.to_s}", function(data) {
+      eval(data);
+    });
+  })

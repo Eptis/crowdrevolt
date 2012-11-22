@@ -1,0 +1,5 @@
+
+<% broadcast ("/#{@fayechannel.to_s}") do %>
+  $("#questions").append("<%= escape_javascript render(@question) %>");
+<%end%>
+$("#new_question")[0].reset();

@@ -9,7 +9,38 @@
 
 
 %ul#chat
-  = render @messages
-=form_for [@episode.channel, @episode, Message.new], :remote => true, :params => {:chattable => @episode} do |f|
-  =f.text_field :content, :id => "new_message"
-  =f.submit "Send"
+  = render @episode.messages
+/ -= request.original_url + "/messages/new"
+/ = request + "/messages/new"
+.span12
+  =form_for [@episode.channel, @episode, Message.new], :remote => true do |f|
+    =f.text_field :content, :id => "new_message"
+    - unless current_user
+      =f.text_field :name
+      =f.text_field :email
+    =f.submit "Send"
+
+.span12
+  %ul#questions
+    =render :partial => 'admin/questions/question', :collection => @episode.questions, :as => :question
+
+  =form_for [@episode.channel, @episode, Question.new], :remote => true do |f|
+    =f.text_field :question, :id => "new_question"
+    - unless current_user
+      =f.text_field :name
+      =f.text_field :email
+    =f.submit "Send"
+
+- @episode_clean = @episode.id.to_s + @episode.title.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '') + "/episode"
+:javascript
+  $(function(){
+    var faye = new Faye.Client('http://localhost:9292/faye');
+
+    faye.subscribe("/#{@episode_clean.to_s}", function(data) {
+      eval(data);
+    });
+
+    faye.subscribe("/#{@episode_clean.to_s}/questions", function(data) {
+      eval(data);
+    });
+  })

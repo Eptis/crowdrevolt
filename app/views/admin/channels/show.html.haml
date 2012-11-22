@@ -2,7 +2,7 @@
 .page-header
   %h1=t '.title', :default => model_class.model_name.human
 .form-actions
-  =link_to :episode, [:new, :admin, @channel, :episode]
+  =link_to :new_episode, [:new, :admin, @channel, :episode]
 %p
   %strong= model_class.human_attribute_name(:title) + ':'
   %br

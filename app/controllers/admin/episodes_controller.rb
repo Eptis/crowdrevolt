@@ -7,6 +7,7 @@ class Admin::EpisodesController < AdminController
 
   def show
     @episode = Episode.find(params[:id])
+    @questions = Question.where(:episode_id => @episode.id)
   end
 
   def new

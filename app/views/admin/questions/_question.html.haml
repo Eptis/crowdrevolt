@@ -1,0 +1,11 @@
+- if admin? && question.approved == false
+  =form_for [:admin, @episode.channel, @episode, question], :method => "put", :remote => true do |f|
+    %h5= question.user.username
+    %p= question.question
+    =f.check_box :approved, :class => "check_box_question"
+    =f.submit "Send"
+-if question.approved == true
+  %li
+    %h5= question.user.username
+    %p=question.question
+

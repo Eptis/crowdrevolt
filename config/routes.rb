@@ -21,7 +21,9 @@ Crowdrevolt::Application.routes.draw do
     resources :admins
     resources :users
     resources :channels do
-      resources :episodes
+      resources :episodes do
+        resources :questions
+      end
     end
     resources :pages
     resources :posts

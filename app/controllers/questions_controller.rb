@@ -9,6 +9,21 @@ class QuestionsController < ApplicationController
     end
   end
 
+  def create
+    @question = Question.new(params[:question])
+    if current_user
+      @question.user_id = current_user
+      @question.name = nil
+      @question.email = nil
+    end
+    @question.episode_id = @episode.id
+    @fayechannel = @episode.id.to_s + @episode.title.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '') + "/episode/questions/admin"
+    @question.save
+    respond_to do |format|
+      format.js
+    end
+  end
+
 
 private
 
@@ -16,3 +31,5 @@ private
     @episode = Episode.find(params[:episode_id])
   end
 end
+
+

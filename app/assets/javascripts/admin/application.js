@@ -13,11 +13,17 @@ $(document).on('nested:fieldAdded', function(event){
   var field = event.field;
   // it's a jQuery object already! Now you can find date input
   var dateField = field.find('.date');
-  // and activate datepicker on it
+  // and activate datepicker on i'button't
   dateField.datepicker();
 })
 
 $(document).ready(function(){
+
+  $('.check_box_question').change(function(){
+    $(this).closest('form').submit();
+    $(this).next('button').remove();
+    $(this).remove();
+  });
 
   $('.changer').live("change", function(){
     select = $(this);

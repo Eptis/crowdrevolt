@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121119193708) do
+ActiveRecord::Schema.define(:version => 20121120152907) do
 
   create_table "admins", :force => true do |t|
     t.string   "username"
@@ -159,9 +159,11 @@ ActiveRecord::Schema.define(:version => 20121119193708) do
     t.integer  "user_id"
     t.string   "name"
     t.string   "email"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
     t.integer  "episode_id"
+    t.boolean  "approved",   :default => false
+    t.boolean  "hide",       :default => true
   end
 
   create_table "rewards", :force => true do |t|

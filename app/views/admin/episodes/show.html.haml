@@ -20,3 +20,17 @@
   = link_to t('.destroy', :default => t("helpers.links.destroy")), admin_post_path(@channel, @episode), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'
 
 
+/ =render @questions
+.span12
+  %ul#questions
+    =render :partial => '/questions/question', :collection => @episode.questions, :as => :question
+
+
+- @episode_clean = @episode.id.to_s + @episode.title.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '') + "/episode/questions/admin"
+:javascript
+  $(function(){
+    var faye = new Faye.Client('http://localhost:9292/faye');
+    faye.subscribe("/#{@episode_clean.to_s}", function(data) {
+      eval(data);
+    });
+  })
