@@ -1,9 +1,7 @@
 .span18.content
-  .row-fluid
-  %section
-    %article.intro
-      %h1= @channel.title
-      %p=raw @channel.description
+
+  %header 
+    %h1= @channel.title
 
   .row-fluid
     %section.span16.volgende_livestream
@@ -39,32 +37,99 @@
         %article.span8
           %img{:src => "http://placehold.it/550x410"}  
   
+  .row-fluid
+    .span24
+      %section.span12.changemaker_blogposts
+        %h2 Changemaker Blogspots
+        %article
+          %h3 Dit is een blogpost
+          %img{:src => "http://placehold.it/110x60", :align => 'left'}
+          %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus et turpis non mi sagittis rhoncus ac sed nisi. Aliquam et porta eli
+        %article
+          %h3 Dit is een blogpost
+          %img{:src => "http://placehold.it/110x60", :align => 'left'}
+          %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus et turpis non mi sagittis rhoncus ac sed nisi. Aliquam et porta eli
+        %article
+          %h3 Dit is een blogpost
+          %img{:src => "http://placehold.it/110x60", :align => 'left'}
+          %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus et turpis non mi sagittis rhoncus ac sed nisi. Aliquam et porta eli
+        %article
+          %h3 Dit is een blogpost
+          %img{:src => "http://placehold.it/110x60", :align => 'left'}
+          %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus et turpis non mi sagittis rhoncus ac sed nisi. Aliquam et porta eli
 
-  %h2= t("episodes")
-  - @channel.episodes.each do |episode|
-    =link_to episode.title, [@channel, episode]
-
-  %h2= t("posts")
-  - @channel.posts.each do |post|
-    =link_to post.title, [@channel, post]
-
-  %h2= t("ideas")
-  - @channel.ideas.each do |idea|
-    =link_to idea.title, [@channel, idea]
-
-  %h2= t("ideas")
-  - @channel.ideas.each do |idea|
-    =link_to idea.title, [@channel, idea]
-
+      %section.span12.ideeen
+        %h2 Ingezonden ideeen
+        %article
+          %h3 Dit is een idee
+          %img{:src => "http://placehold.it/110x60", :align => 'left'}
+          %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus et turpis non mi sagittis rhoncus ac sed nisi. Aliquam et porta eli
+        %article
+          %h3 Dit is een idee
+          %img{:src => "http://placehold.it/110x60", :align => 'left'}
+          %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus et turpis non mi sagittis rhoncus ac sed nisi. Aliquam et porta eli
+        %article
+          %h3 Dit is een idee
+          %img{:src => "http://placehold.it/110x60", :align => 'left'}
+          %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus et turpis non mi sagittis rhoncus ac sed nisi. Aliquam et porta eli
+        %article
+          %h3 Dit is een idee
+          %img{:src => "http://placehold.it/110x60", :align => 'left'}
+          %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus et turpis non mi sagittis rhoncus ac sed nisi. Aliquam et porta eli
 
 %aside.span6
   .row-fluid
-  %h1 Activiteiten
-  %section
-    %article.ingezonden_idee
-      %h2 Ingezonden idee
-      %p orem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus et turpis non mi sagittis rhoncus ac sed nisi. Aliquam et porta elit. Integer ut justo eu quam pretium condimentum vel quis justo. Cras blandit sagittis pharetra. Praesent tincidunt lorem in libero pulvinar a hendrerit velit eleifend. Lees het volledige ber.
-  %section
-    %article.blog_post
-      %h2 Blogpost over dit
-      %p orem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus et turpis non mi sagittis rhoncus ac sed nisi. Aliquam et porta elit. Integer ut justo eu quam pretium condimentum vel quis justo. Cras blandit sagittis pharetra. Praesent tincidunt lorem in libero pulvinar a hendrerit velit eleifend. Lees het volledige ber.
+
+  %section.project-status
+    %article
+      %h4 Projectstatus
+      %p blabla babafsd asdfasdf asd
+
+  %section.over_dit_kanaal
+    %article
+      %h4= @channel.title
+      %p=raw @channel.description
+
+  %section.changemakers
+    %article
+      %h4 Changemakers
+      %img{:src => "http://placehold.it/110x150", :align => 'left'}
+      %p Lorem ipsum dolor sit amet, consectetur adi- piscing elit. Vivamus et turpis non mi sagittis rhoncus ac sed nisi. Aliquam et porta elit.
+    .row-fluid
+    %article
+      %h4 Changemakers
+      %img{:src => "http://placehold.it/110x150", :align => 'left'}
+      %p Lorem ipsum dolor sit amet, consectetur adi- piscing elit. Vivamus et turpis non mi sagittis rhoncus ac sed nisi. Aliquam et porta elit.
+
+  .row-fluid
+  %section.links
+    %article
+      %h4 Aanbevolen links
+      %ul
+        %li Dit is een link
+        %li En nog een link
+
+  .row-fluid
+  %section.twitter
+    %article
+      %h4 Twitterfeed
+      %p Hier komen de tweets
+
+
+
+/  %h2= t("episodes")
+/  - @channel.episodes.each do |episode|
+/    =link_to episode.title, [@channel, episode]
+/
+/  %h2= t("posts")
+/  - @channel.posts.each do |post|
+/    =link_to post.title, [@channel, post]
+/
+/  %h2= t("ideas")
+/  - @channel.ideas.each do |idea|
+/    =link_to idea.title, [@channel, idea]
+/
+/  %h2= t("ideas")
+/  - @channel.ideas.each do |idea|
+/    =link_to idea.title, [@channel, idea]
+
