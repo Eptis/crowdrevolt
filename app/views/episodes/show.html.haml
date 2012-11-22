@@ -1,6 +1,7 @@
-
-%h1= @episode.title
-%p=raw @episode.description
+.span18.content
+  %header
+    %h1= @episode.title
+    %p=raw @episode.description
 
 %div{:'ng-controller' => "QuestionsCtrl"}
   %ul
