@@ -1,3 +1,5 @@
-%h5= message.user.username
-
+- if message.user.present?
+  %h5= message.user.username
+- else
+  %h4= message.name
 %p=message.content
