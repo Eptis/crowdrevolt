@@ -5,6 +5,30 @@
 //= require_tree .
 */
 
+$oranje:#ff5400;
+$zwart:#0d0d0d;
+$wit:#ffffff;
+$grijs_licht:#181818;
+$grijs_donker:#151515;
+
+body{
+  background:$zwart !important;
+  color:$wit !important;
+}
+
+.span12{
+  background:$grijs_licht;
+}
+
+#searchcontent{
+          -webkit-transition: all 500ms ;
+  -moz-transition: all 500ms ;
+  -ms-transition: all 500ms ;
+  -o-transition: all 500ms ;
+  transition: all 500ms ;
+
+}
+
 .submenu{
   /*max-width:600px;*/
   li{
