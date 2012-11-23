@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121123172724) do
+ActiveRecord::Schema.define(:version => 20121123205723) do
 
   create_table "admins", :force => true do |t|
     t.string   "username"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(:version => 20121123172724) do
     t.datetime "updated_at",       :null => false
     t.text     "youtubeembedlink"
     t.string   "ownable_type"
+    t.integer  "position"
   end
 
   create_table "categories", :force => true do |t|
