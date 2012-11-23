@@ -7,3 +7,9 @@
 //= require_tree .
 
 
+$(document).ready(function(){
+  $("#search_field").bind('keyup', function(){
+    $(this).closest("form").delay(200).submit();
+    console.log('change')
+  });
+});

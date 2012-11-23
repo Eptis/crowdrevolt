@@ -1,7 +1,7 @@
 class Post < ActiveRecord::Base
-  attr_accessible :title, :body, :description, :published_at, :blogitems_attributes, :image_select
+  attr_accessible :title, :body, :description, :published_at, :blogitems_attributes, :image_select, :channel_id
   # blog items
-  has_many :blogitems
+  has_many :blogitems, :as => :ownable
   belongs_to :user
   belongs_to :channel
   accepts_nested_attributes_for :blogitems, :allow_destroy => true
@@ -12,6 +12,15 @@ class Post < ActiveRecord::Base
   # Images select
   include ImageSelect
   image_select
+
+
+  searchable do
+    text :title
+    text :description
+    text :blogitems do
+      blogitems.map { |blogitem| blogitem.body }
+    end
+  end
 
   # Methods
   def published_at_string

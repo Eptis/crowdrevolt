@@ -11,6 +11,12 @@ class Channel < ActiveRecord::Base
   include ImageSelect
   image_select
 
+  searchable do
+    text :title
+    text :description
+  end
+
+
   def to_param
     "#{id}-#{title}".parameterize
   end

@@ -30,38 +30,26 @@
 
 .header
   .row-fluid
-    .span9 
+    .span6
       %img{:src => "http://placehold.it/350x150"}
-    .span15.submenu
+    .span18.submenu
       %ul.span24
-        %li 
+        %li
           inloggen
-        %li 
+        %li
           registreren
-    .span15
+    .span18
       %ul.span24
-        %li.span8 
-          Programma 1
-        %li.span8
-          Programma 2
-        %li.span8
-          Programma 3
-    .span15
+        - @channels.each do |channel|
+          %li=link_to channel.title, channel
+
+    .span18.submenu
       %ul.span24
-        %li.span8 
-          Programma 1
-        %li.span8
-          Programma 2
-        %li.span8
-          Programma 3
-          
-    .span15.submenu
-      %ul.span24
-        %li 
+        %li
           sub
-        %li 
+        %li
           sub
-        %li 
+        %li
           sub
-        %li 
+        %li
           sub

@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :require_login
+  before_filter :retrieve_channel
 
   def give_reward(object, *points)
     @reward = Reward.new
@@ -9,6 +10,49 @@ class ApplicationController < ActionController::Base
     @reward.rewardable_type = object.class.name
     @reward.rewardable_id = object.id
     @reward.save
+  end
+
+
+  def search
+    @search = Sunspot.search(Post, Channel, Episode, Idea, Solution) do
+      fulltext params[:search] do
+        highlight :title
+        highlight :description
+      end
+    end
+    @results = @search.results
+    @searchresults = []
+    @results_posts = []
+    @results_channels = []
+    @results_episodes = []
+    @results_ideas = []
+    @results_solutions = []
+
+
+    @results.each do |result|
+      if result.class == Post
+        @results_posts << result
+      elsif result.class == Channel
+        @results_channels << result
+      elsif result.class == Episode
+        @results_episodes << result
+      elsif result.class == Idea
+        @results_ideas << result
+      elsif result.class == Solution
+        @results_solutions << result
+      end
+    end
+
+
+    @searchresults = [@results_posts , @results_channels , @results_episodes , @results_ideas , @results_solutions]
+    @searchresults.reverse!.sort_by(&:size)
+    # raise @searchresults.inspect
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
+    # raise @results.inspect
   end
 
   private
@@ -22,5 +66,8 @@ class ApplicationController < ActionController::Base
     return true if current_user
   end
 
+  def retrieve_channel
+    @channels = Channel.all
+  end
 
 end

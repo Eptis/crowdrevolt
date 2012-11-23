@@ -11,6 +11,11 @@ gem 'bcrypt-ruby'
 gem "faye"
 gem "thin"
 
+#search
+gem 'sunspot_rails'
+gem 'sunspot_solr'
+gem 'progress_bar'
+
 # custom:
 gem 'haml-rails'
 gem 'simple_form', '2.0.2'
@@ -20,7 +25,7 @@ gem 'rmagick', '2.13.1', :require => 'RMagick'
 gem 'remotipart', '~> 1.0'
 gem 'rubyzip', :require => 'zip/zip'
 gem 'acts-as-taggable-on', '~> 2.3.1'
-gem 'meta_search'
+# gem 'meta_search'
 # gem 'twitter-bootstrap-rails'
 gem 'bootstrap_flash_messages', '0.0.3'
 gem "nested_form"
