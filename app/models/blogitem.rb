@@ -5,6 +5,8 @@ class Blogitem < ActiveRecord::Base
   belongs_to :idea, :polymorphic => true
   belongs_to :solution, :polymorphic => true
 
+  acts_as_list
+
   include ImageSelect
   image_select
 

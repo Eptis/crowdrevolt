@@ -6,6 +6,8 @@ User.create(:username => "front", :email => "dennistel90@gmail.com", :crypted_pa
 
 Channel.create(:title => "Kanaal 1", :description => "Een proef kanaal.") unless Channel.exists?
 Episode.create(:title => "Aflevering 1", :description => "een proef aflevering", :channel_id => 1, :live => false ) unless Episode.exists?
+Challenge.create(:title => "Challenge 1", :description => "een proef challenge", :channel_id => 1 ) unless Challenge.exists?
+Solution.create(:title => "Solution 1", :description => "een proef oplossing", :challenge_id => 1 ) unless Solution.exists?
 
 
 

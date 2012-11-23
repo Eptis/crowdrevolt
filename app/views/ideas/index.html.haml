@@ -1,0 +1,5 @@
+.row
+  - @ideas.each do |idea|
+    %h2= idea.title
+    %p=raw idea.description
+    = link_to idea.title, idea

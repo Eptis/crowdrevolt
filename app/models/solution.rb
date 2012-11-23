@@ -1,8 +1,18 @@
 class Solution < ActiveRecord::Base
-  # attr_accessible :title, :body
-  belongs_to :challenge
-  has_many :appreciables, :as => :appreciable
+  attr_accessible :title, :body, :description, :published_at, :blogitems_attributes, :image_select, :challenge_id
   has_many :blogitems, :as => :ownable
+  belongs_to :user
+  belongs_to :challenge
+  belongs_to :channel
+  accepts_nested_attributes_for :blogitems, :allow_destroy => true
+
+  #comments
+  has_many :comments, :as => :commentable, :dependent => :destroy
+
+  # Images select
+  include ImageSelect
+  image_select
+
 
   searchable do
     text :title

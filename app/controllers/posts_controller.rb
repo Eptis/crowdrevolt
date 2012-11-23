@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_filter :find_post, :only => [:show, :edit, :update, :destroy]
   before_filter :find_channel
   def index
-    @posts = Post.all
+    @posts = Post.where(&:published_at < Time.now)
   end
 
   def show

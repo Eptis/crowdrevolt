@@ -1,10 +1,9 @@
 class Comment < ActiveRecord::Base
   attr_accessible :name, :body, :email, :user_id, :check
   attr_accessor :check
-  belongs_to :post
-  belongs_to :solution
-  belongs_to :idea
+
   belongs_to :user
+
   belongs_to :commentable, :polymorphic => true
 
   validate :comment_owner

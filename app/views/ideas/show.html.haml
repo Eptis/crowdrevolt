@@ -1,0 +1,13 @@
+%h1= @idea.title
+%p=raw @idea.description
+%div=image_tag @idea.image.url(:front)
+
+
+- @idea.blogitems.each do |item|
+  = render "item", :item => item
+
+-if FunctionConfig.allowed?(:comments)
+  %h1 Comments
+  = render "commentform"
+  - @idea.comments.each do |comment|
+    = render comment

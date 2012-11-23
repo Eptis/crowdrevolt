@@ -1,6 +1,1 @@
 $("#searchresults").html("<%= escape_javascript render('application/results') %>");
-var totalHeight = 0;
-$("#searchresults").children().each(function(){
-    totalHeight += $(this).outerHeight(true); // true = include margins
-});
-$("#searchresults").stop().css('height', totalHeight)

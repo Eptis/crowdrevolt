@@ -1,0 +1,14 @@
+= simple_nested_form_for([:admin, @channel, @challenge]) do |f|
+  .row-fluid
+    - if @challenge.errors.any?
+      -@challenge.errors.each do |message|
+        %p= message
+  .row-fluid
+    .span12
+      = f.input :title
+      = f.input :description, :as => :editor
+
+
+
+  .row-fluid
+    .span12= f.submit(@challenge.new_record? ? [:admin, :challenges] : [:admin, @challenge])

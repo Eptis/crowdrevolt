@@ -1,0 +1,5 @@
+.row
+  - @solutions.each do |post|
+    %h2= post.title
+    %p=raw post.description
+    = link_to post.title, post

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121123135602) do
+ActiveRecord::Schema.define(:version => 20121123172724) do
 
   create_table "admins", :force => true do |t|
     t.string   "username"
@@ -104,9 +104,12 @@ ActiveRecord::Schema.define(:version => 20121123135602) do
   end
 
   create_table "ideas", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.integer  "channel_id"
+    t.string   "title"
+    t.text     "description"
+    t.integer  "user_id"
   end
 
   create_table "image_relations", :force => true do |t|
@@ -146,7 +149,6 @@ ActiveRecord::Schema.define(:version => 20121123135602) do
   create_table "posts", :force => true do |t|
     t.string   "title"
     t.text     "description"
-    t.text     "body"
     t.datetime "published_at"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false

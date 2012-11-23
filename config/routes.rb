@@ -21,6 +21,7 @@ Crowdrevolt::Application.routes.draw do
     resources :admins
     resources :users
     resources :channels do
+      resources :challenges
       resources :episodes do
         resources :questions
       end
@@ -50,12 +51,21 @@ Crowdrevolt::Application.routes.draw do
   resources :questions
   resources :channels do
     resources :messages
+    resources :challenges do
+      resources :solutions do
+        resources :comments
+      end
+    end
     resources :episodes do
       resources :messages
       resources :questions
     end
-    resources :posts
-    resources :ideas
+    resources :posts do
+      resources :comments
+    end
+    resources :ideas do
+      resources :comments
+    end
     resources :changemakers
     resources :challenges do
       resources :solutions

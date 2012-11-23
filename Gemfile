@@ -16,8 +16,10 @@ gem 'sunspot_rails'
 gem 'sunspot_solr'
 gem 'progress_bar'
 
+
 # custom:
 gem 'haml-rails'
+gem 'acts_as_list'
 gem 'simple_form', '2.0.2'
 gem 'will_paginate', '~> 3.0'
 gem 'paperclip', '2.7.0'

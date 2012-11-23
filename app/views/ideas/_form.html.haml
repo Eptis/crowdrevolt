@@ -1,0 +1,45 @@
+= simple_nested_form_for([@channel, @idea]) do |f|
+  .row-fluid
+    - if @idea.errors.any?
+      -@idea.errors.each do |message|
+        %p= message
+  .row-fluid
+    .span12
+      / = f.input :tag_list
+    .span12
+      / = f.category_select
+    .span12
+      = f.image_select
+  .row-fluid
+    .span12
+      = f.input :title
+      = f.input :description, :as => :editor
+
+  .row-fluid
+    .span12
+      = f.simple_fields_for :blogitems do |item|
+        = render :partial => 'items', :locals => { :f => item }
+        = item.link_to_remove "Verwijder blok"
+      %p= f.link_to_add "Voeg een onderdeel toe", :blogitems
+
+
+
+  .row-fluid
+    .span12= f.submit(@idea.new_record? ? :ideas : @idea)
+
+
+- content_for(:imageselector) do
+  #image_popup{ :data => { :url => admin_images_path(:total => 15) } }
+    #image_popup_background
+    #image_popup_content
+      #image_search
+        = form_tag( :images, :method => :get, :remote => true, :class => "image_ajax form-search input-append") do
+          = hidden_field_tag(:total, 15)
+          / = text_field_tag(:q, params[:q], :placeholder => t("admin.search_term"), :class => "search-query") + submit_tag(t("admin.search"), :class => "btn")
+          %span.or= t("or")
+          = link_to(t("upload"), [:new, :image], :remote => true, :class => "image_ajax btn")
+      #images
+        #image_loading
+        #image_wrapper
+      #image_paginate
+      #image_done= link_to(t("admin.images.done"), "#", :class => "btn btn-primary btn-large")

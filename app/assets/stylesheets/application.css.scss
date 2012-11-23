@@ -14,11 +14,27 @@ $grijs_donker:#151515;
 body{
   background:$zwart !important;
   color:$wit !important;
+  font-family:"OpenSansRegular", "Helvetica Neue", "Helvetica", "Arial", sans-serif !important;
+  font-size:16px !important;
+  line-height:1.5 !important;
 }
 
-.span12{
-  background:$grijs_licht;
+h1, h2, h3, h4, h5, h6{
+  font-family:"OpenSansRegular" !important;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  margin-top:0 !important;
 }
+
+h1, h2{
+  color:$oranje !important;
+}
+
+// voorkom lange regels
+p, .text{
+  max-width:660px;
+}
+
 
 #searchcontent{
           -webkit-transition: all 500ms ;
@@ -29,7 +45,21 @@ body{
 }
 
 .container-fluid{
+  padding-left:50px !important;
+  padding-right:50px !important;
+}
+@media screen and (max-width:960px){
+   .container-fluid{
+    padding-left:15px !important;
+    padding-right:15px !important;
+  }
+}
 
+@media screen and (max-width:480px){
+   .container-fluid{
+    padding-left:0px !important;
+    padding-right:0px !important;
+  }
 }
 
 .submenu{

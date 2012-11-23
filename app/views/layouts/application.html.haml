@@ -21,9 +21,9 @@
       .row-fluid
         .span24= render("searchform")
       = render("header")
+      #notice= notice
+      #alert= alert
       #searchresults
       .row-fluid
         = yield
-      #notice= notice
-      #alert= alert
       =content_for(:imageselector)

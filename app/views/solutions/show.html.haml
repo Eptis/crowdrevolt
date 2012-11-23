@@ -1,0 +1,10 @@
+%h1= @solution.title
+%p=raw @solution.description
+- @solution.blogitems.each do |item|
+  = render "item", :item => item
+
+-if FunctionConfig.allowed?(:comments)
+  %h1 Comments
+  = render "commentform"
+  - @solution.comments.each do |comment|
+    = render comment

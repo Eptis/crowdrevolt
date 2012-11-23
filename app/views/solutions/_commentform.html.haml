@@ -1,0 +1,8 @@
+.row-fluid
+  = simple_form_for [@channel, @challenge,@solution, @comment] do |f|
+    .hide= f.text_field :check
+    - unless current_user
+      = f.input :name
+      = f.input :email
+    = f.input :body, :input_html => {:class => "span12"}
+    = f.submit

@@ -1,0 +1,12 @@
+// De titel, te verdienen punten en omschrijving kun je zo laten, hieromheen de layout bouwen
+%h1= @challenge.title
+.points= @challenge.points
+.text=raw @challenge.description
+
+.row-fluid
+  .span24
+    - @challenge.solutions.each do |solution|
+      =link_to solution.title, [@channel, @challenge, solution]
+
+
+=link_to t("do_challenge"), [:new, @channel, @challenge, :solution], :class => "btn"

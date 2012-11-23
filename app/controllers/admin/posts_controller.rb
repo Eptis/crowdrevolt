@@ -1,4 +1,6 @@
 class Admin::PostsController < AdminController
+  before_filter :find_channel, :except => :index
+
   def index
     @posts = Post.all
   end
@@ -42,5 +44,9 @@ private
 
   def find_post
     @post = Post.find(params[:id])
+  end
+
+  def find_channel
+    @channel = Channel.find(params[:channel_id])
   end
 end
