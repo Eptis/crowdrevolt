@@ -16,13 +16,14 @@
     <![endif]-->
     = csrf_meta_tags
     %meta{ :name => "viewport", :content => "width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" }
-  %body.container-fluid
-    .row-fluid
-      .span24= render("searchform")
-    = render("header")
-    #searchresults
-    .row-fluid
-      = yield
-    #notice= notice
-    #alert= alert
-    =content_for(:imageselector)
+  %body
+    .container-fluid
+      .row-fluid
+        .span24= render("searchform")
+      = render("header")
+      #searchresults
+      .row-fluid
+        = yield
+      #notice= notice
+      #alert= alert
+      =content_for(:imageselector)

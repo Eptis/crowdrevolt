@@ -10,7 +10,8 @@
 
 
 %ul#chat
-  = render @episode.messages
+  -if @episode.messages
+    = render @episode.messages
 / -= request.original_url + "/messages/new"
 / = request + "/messages/new"
 .span12
