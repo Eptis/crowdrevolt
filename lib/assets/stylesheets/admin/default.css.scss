@@ -1,6 +1,6 @@
 // --------------------------------------- Bootstrap changes
 body {
-  padding-top: 60px;
+  // padding-top: 60px;
 }
 
 
@@ -54,7 +54,7 @@ table.overview {
   .control-checkbox {
     margin-top: 20px;
   }
-  
+
   label.control-label {
     font-weight: bold;
     &.checkbox {
@@ -88,12 +88,12 @@ table {
     &.one { width: 98px; }
     &.two { width: 185px; }
     &.three { width: 265px; }
-    
+
     &.handle { width: 35px; }
     &.handle.one { width: 140px; }
     &.handle.two { width: 225px; }
     &.handle.three { width: 310px; }
-    
+
     img.handle { margin-right: 10px; }
   }
 }
@@ -104,7 +104,7 @@ img.handle {
 
 .association {
   margin-bottom: 18px;
-  
+
   .fields {
     position: relative;
     .remove_fields {
@@ -170,7 +170,7 @@ img.handle {
   td {
     vertical-align: top;
   }
-  
+
   #image_add {
     width: 145px;
     .thumbnail {
@@ -181,20 +181,20 @@ img.handle {
       margin-top: 5px;
       margin-left: 5px;
     }
-  } 
+  }
 }
 
 .image_previews {
   margin-top: 10px;
   overflow: auto;
-  
+
   .image_preview {
     position: relative;
     float: left;
     cursor: pointer;
     margin-right: 2px;
     margin-bottom: 2px;
-    
+
     .delete {
       display: none;
       position: absolute;
