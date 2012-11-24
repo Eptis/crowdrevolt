@@ -1,31 +1,101 @@
-.span18.content
+%section.span18.content
   %header
-    %h1= @episode.title
-    %p=raw @episode.description
+    %h1= @channel.title
 
-%ul#chat
-  -if @episode.messages.present?
-    = render @episode.messages
-/ -= request.original_url + "/messages/new"
-/ = request + "/messages/new"
-.span12
-  =form_for [@episode.channel, @episode, Message.new], :remote => true do |f|
-    =f.text_field :content, :id => "new_message"
-    - unless current_user
-      =f.text_field :name
-      =f.text_field :email
-    =f.submit "Send"
 
-.span12
-  %ul#questions
-    =render :partial => 'admin/questions/question', :collection => @episode.questions, :as => :question
+  .row-fluid
+    %section.span24.livestream
+      .row-fluid
+        %article.span24
+          %h3= @episode.title
+          %p=raw @episode.description
+          .row-fluid
+            %img.span15{:src => "http://placehold.it/850x410"}
+            .span9
+              %h3 Live chat
+              %ul#chat
+                -if @episode.messages.present?
+                  = render @episode.messages
+              / -= request.original_url + "/messages/new"
+              / = request + "/messages/new"
+              .span12
+                =form_for [@episode.channel, @episode, Message.new], :remote => true do |f|
+                  =f.text_field :content, :id => "new_message"
+                  - unless current_user
+                    =f.text_field :name
+                    =f.text_field :email
+                  =f.submit "Send"
 
-  =form_for [@episode.channel, @episode, Question.new], :remote => true do |f|
-    =f.text_field :question, :id => "new_question"
-    - unless current_user
-      =f.text_field :name
-      =f.text_field :email
-    =f.submit "Send"
+    
+  .row-fluid
+    %section.span15
+      %article.span24.vraag_stellen
+      %h3 Stel een vraag
+      %ul#questions
+        =render :partial => 'admin/questions/question', :collection => @episode.questions, :as => :question
+
+      =form_for [@episode.channel, @episode, Question.new], :remote => true do |f|
+        =f.text_field :question, :id => "new_question"
+        - unless current_user
+          =f.text_field :name
+          =f.text_field :email
+        =f.submit "Send"
+
+      %article.span24.vragen
+        %h3 Vragen van kijkers
+        %h5 Gebruikersnaam
+        %p Vraag
+        %h5 Gebruikersnaam
+        %p Vraag
+        %h5 Gebruikersnaam
+        %p Vraag
+        %h5 Gebruikersnaam
+        %p Vraag
+
+    %section.span9
+      %article.span24.twitterfeed
+        %h3 Twitterfeed
+        %p Tweet #crowdrevolt
+        %p Tweet #crowdrevolt
+        %p Tweet #crowdrevolt
+        %p Tweet #crowdrevolt
+        %p Tweet #crowdrevolt
+        %p Tweet #crowdrevolt
+        %p Tweet #crowdrevolt
+        %p Tweet #crowdrevolt
+
+
+%aside.span6
+  %section.project-status
+    %article
+      %h4 Projectstatus
+      %p blabla babafsd asdfasdf asd
+
+  %section.over_dit_kanaal
+    %article
+      %h4= @channel.title
+      %p=raw @channel.description
+
+  %section.changemakers
+    %article
+      %h4 Changemakers
+      %img{:src => "http://placehold.it/110x150", :align => 'left'}
+      %p Lorem ipsum dolor sit amet, consectetur adi- piscing elit. Vivamus et turpis non mi sagittis rhoncus ac sed nisi. Aliquam et porta elit.
+    .row-fluid
+    %article
+      %h4 Changemakers
+      %img{:src => "http://placehold.it/110x150", :align => 'left'}
+      %p Lorem ipsum dolor sit amet, consectetur adi- piscing elit. Vivamus et turpis non mi sagittis rhoncus ac sed nisi. Aliquam et porta elit.
+
+  .row-fluid
+  %section.links
+    %article
+      %h4 Aanbevolen links
+      %ul
+        %li Dit is een link
+        %li En nog een link
+
+  
 
 - @episode_clean = @episode.id.to_s + @episode.title.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '') + "/episode"
 :javascript
