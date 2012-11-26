@@ -31,18 +31,20 @@
 
   .row-fluid
     %section.span15
+    .row-fluid
       %article.span24.vraag_stellen
-      %h3 Stel een vraag
-      %ul#questions
-        =render :partial => 'admin/questions/question', :collection => @episode.questions, :as => :question
+        %h3 Stel een vraag
+        %ul#questions
+          =render :partial => 'admin/questions/question', :collection => @episode.questions, :as => :question
 
-      =form_for [@episode.channel, @episode, Question.new], :remote => true do |f|
-        =f.text_field :question, :id => "new_question"
-        - unless current_user
-          =f.text_field :name
-          =f.text_field :email
-        =f.submit "Send"
+        =form_for [@episode.channel, @episode, Question.new], :remote => true do |f|
+          =f.text_field :question, :id => "new_question"
+          - unless current_user
+            =f.text_field :name
+            =f.text_field :email
+          =f.submit "Send"
 
+    .row-fluid
       %article.span24.vragen
         %h3 Vragen van kijkers
         %h5 Gebruikersnaam

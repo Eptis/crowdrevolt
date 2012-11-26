@@ -1,5 +1,11 @@
-.row
-  - @solutions.each do |post|
-    %h2= post.title
-    %p=raw post.description
-    = link_to post.title, post
+.row-fluid
+  .span24
+    - @solutions.in_groups_of(4, false).each do |solutions|
+      .row-fluid
+        .span24
+          - solutions.each do |solution|
+            .span6
+              %h2= solution.title
+              %p=raw solution.description
+              = link_to solution.title, solution
+

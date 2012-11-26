@@ -51,6 +51,7 @@ Crowdrevolt::Application.routes.draw do
   resources :questions
   resources :channels do
     resources :messages
+    resources :solutions
     resources :challenges do
       resources :solutions do
         resources :comments
