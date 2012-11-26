@@ -2,13 +2,13 @@
 %html(ng-app)
   %head
     %title=" CrowdRevolt"
+    %meta{ :charset=>"iso-8859-1"}
     <!--[if lt IE 9]>
     = javascript_include_tag("http://html5shim.googlecode.com/svn/trunk/html5.js")
     <![endif]-->
     = stylesheet_link_tag("application")
     = javascript_include_tag("application")
     = javascript_include_tag("http://localhost:9292/faye.js")
-
     = javascript_include_tag("/ckeditor/ckeditor")
     <!--[if lt IE 9]>
     / = javascript_include_tag("ie.js")

@@ -14,13 +14,13 @@ $grijs_donker:#151515;
 body{
   background:$zwart !important;
   color:$wit !important;
-  font-family:"OpenSansRegular", "Helvetica Neue", "Helvetica", "Arial", sans-serif !important;
+  font-family:"Open Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif !important;
   font-size:16px !important;
   line-height:1.5 !important;
 }
 
 h1, h2, h3, h4, h5, h6{
-  font-family:"OpenSansRegular" !important;
+  font-family:"Open Sans" !important;
   text-transform:uppercase;
   letter-spacing:1px;
   margin-top:0 !important;
@@ -87,4 +87,8 @@ p, .text{
 
 .nomargin{
 	margin-left:0 !important;
+}
+
+a{
+  color:$oranje !important;
 }
