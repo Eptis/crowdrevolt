@@ -22,11 +22,13 @@
                 =form_for [@episode.channel, @episode, Message.new], :remote => true do |f|
                   =f.text_field :content, :id => "new_message"
                   - unless current_user
+                    = f.label :naam
                     =f.text_field :name
+                    = f.label :email
                     =f.text_field :email
                   =f.submit "Send"
 
-    
+
   .row-fluid
     %section.span15
       %article.span24.vraag_stellen
@@ -95,7 +97,7 @@
         %li Dit is een link
         %li En nog een link
 
-  
+
 
 - @episode_clean = @episode.id.to_s + @episode.title.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '') + "/episode"
 :javascript

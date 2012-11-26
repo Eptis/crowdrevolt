@@ -42,12 +42,10 @@
       %section.span24.laatste_afleveringen_klein
         %h2 Vorige uitzendingen
         .row-fluid
-          %article.span8
-            %img{:src => "http://placehold.it/550x410"}
-          %article.span8
-            %img{:src => "http://placehold.it/550x410"}
-          %article.span8
-            %img{:src => "http://placehold.it/550x410"}
+          - 3.times do
+            %article.span7
+              %img{:src => "http://placehold.it/550x410"}
+          .span8=link_to "Vorige uitzendingen", [@channel, :episodes], :class => "btn"
 
 
       .row-fluid
