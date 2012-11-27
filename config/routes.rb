@@ -54,6 +54,7 @@ Crowdrevolt::Application.routes.draw do
     resources :challenges do
       resources :solutions do
         resources :comments
+        resources :appreciables
       end
     end
     resources :episodes do
@@ -65,6 +66,7 @@ Crowdrevolt::Application.routes.draw do
     end
     resources :ideas do
       resources :comments
+        resources :appreciables
     end
     resources :changemakers
     resources :challenges do

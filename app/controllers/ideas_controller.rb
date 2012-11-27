@@ -8,6 +8,8 @@ class IdeasController < ApplicationController
   def show
     @idea = Idea.find(params[:id])
     @comment = Comment.new
+    construct_appreciable(@idea)
+    @formrout = [@channel, @idea, @appreciable]
   end
 
   def new

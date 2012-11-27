@@ -1,5 +1,5 @@
 .row-fluid
-  - @episodes.each do |episodes|
-    %h2= episodes.title
-    %p=raw episodes.description
-    = link_to episodes.title, [@channel,episodes]
+  - @episodes.each do |episode|
+    %h2= episode.title
+    %p=raw episode.description
+    = link_to episode.title, [@channel,episode]

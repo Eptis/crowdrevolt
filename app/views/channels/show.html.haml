@@ -2,9 +2,9 @@
   %header
     %h1= @channel.title
 
-  %h2= t("episodes")
-  - @channel.episodes.each do |episode|
-    =link_to episode.title, [@channel, episode]
+  / %h2= t("episodes")
+  / - @channel.episodes.each do |episode|
+  /   =link_to episode.title, [@channel, episode]
 
   .row-fluid
     %section.span16.volgende_livestream
@@ -16,6 +16,18 @@
             .span9
               %h3 Titel volgende livestream
               .text Maecenas faucibus mollis interdum. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Etiam porta sem malesuada magna mollis.
+          .row-fluid
+            %section.span24.chat
+              %article
+                %h2 Chat mee
+                =form_for [@channel, Message.new], :remote => true do |f|
+                  =f.text_field :content, :id => "new_message"
+                  - unless current_user
+                    =f.text_field :name
+                    =f.text_field :email
+                  =f.submit "Send"
+              %ul#chat
+                = render @channel.messages
     %section.span8.challenges
       %article
         %h2= t("challenges")
@@ -23,31 +35,21 @@
         %ul
           - @channel.challenges.each do |challenge|
             %li=link_to challenge.title, [@channel, challenge]
+            %li=link_to challenge.title, [@channel, challenge]
+            %li=link_to challenge.title, [@channel, challenge]
+            %li=link_to challenge.title, [@channel, challenge]
+            %li=link_to challenge.title, [@channel, challenge]
+            %li=link_to challenge.title, [@channel, challenge]
+            %li=link_to challenge.title, [@channel, challenge]
+            %li=link_to challenge.title, [@channel, challenge]
+            %li=link_to challenge.title, [@channel, challenge]
+            %li=link_to challenge.title, [@channel, challenge]
+            %li=link_to challenge.title, [@channel, challenge]
         =link_to  t("post_idea"), [:new, @channel, :idea], :class => "btn"
 
-  .row-fluid
-    %section.span24.chat
-      %article
-        %h2 Chat mee
-        =form_for [@channel, Message.new], :remote => true do |f|
-          =f.text_field :content, :id => "new_message"
-          - unless current_user
-            =f.text_field :name
-            =f.text_field :email
-          =f.submit "Send"
-      %ul#chat
-        = render @channel.messages
+
   .row-fluid
     .span24
-      %section.span24.laatste_afleveringen_klein
-        %h2 Vorige uitzendingen
-        .row-fluid
-          - 3.times do
-            %article.span7
-              %img{:src => "http://placehold.it/550x410"}
-          .span8=link_to "Vorige uitzendingen", [@channel, :episodes], :class => "btn"
-
-
       .row-fluid
         .span24
           / blogposts
@@ -104,6 +106,13 @@
                 .span16
                   %h3 Dit is een idee
                   .text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus et turpis non mi sagittis rhoncus ac sed nisi. Aliquam et porta eli
+          %section.span24.laatste_afleveringen_klein
+            %h2 Vorige uitzendingen
+            .row-fluid
+              - 3.times do
+                %article.span7
+                  %img{:src => "http://placehold.it/550x410"}
+              .span8=link_to "Vorige uitzendingen", [@channel, :episodes], :class => "btn"
 
 %aside.span6
   %section.project-status

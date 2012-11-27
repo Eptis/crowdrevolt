@@ -13,6 +13,16 @@ class ApplicationController < ActionController::Base
   end
 
 
+  def construct_appreciable(construct)
+    @record  = Appreciable.where(:appreciable_id => construct.id, :appreciable_type => construct.type).find_by_user_id([current_user].flatten)
+    if @record
+        @appreciable = @record
+    else
+      @appreciable = Appreciable.new
+    end
+  end
+
+
   def search
     @search = Sunspot.search(Post, Channel, Episode, Idea, Solution) do
       fulltext params[:search] do

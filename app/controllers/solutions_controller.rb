@@ -10,6 +10,10 @@ class SolutionsController < ApplicationController
   def show
     @solution = Solution.find(params[:id])
     @comment = Comment.new
+
+    construct_appreciable(@solution)
+    @formrout = [@channel, @challenge, @solution, @appreciable]
+
   end
 
   def new
@@ -19,7 +23,7 @@ class SolutionsController < ApplicationController
   def create
     @solution = Solution.new(params[:solution])
     @solution.user = current_user
-    @solution.challenge = challenge
+    @solution.appreciable = @solution
     if @solution.save
       redirect_to([@channel, @challenge, @solution], :flash => :success)
     else
@@ -45,6 +49,11 @@ class SolutionsController < ApplicationController
     @solution = Solution.find(params[:id])
     @solution.destroy
     redirect_to([:posts], :flash => :success)
+  end
+
+  def appreciate
+    @appreciable = Appreciable.new(params[:appreciable])
+
   end
 
 private

@@ -3,6 +3,11 @@
 - @solution.blogitems.each do |item|
   = render "item", :item => item
 
+=@solution.appreciables.count
+/ -raise @appreciable.inspect
+/ - if @appreciable.new_record?
+=render "appreciable_form"
+
 -if FunctionConfig.allowed?(:comments)
   %h1 Comments
   = render "commentform"

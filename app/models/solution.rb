@@ -1,6 +1,7 @@
 class Solution < ActiveRecord::Base
   attr_accessible :title, :body, :description, :published_at, :blogitems_attributes, :image_select, :challenge_id
   has_many :blogitems, :as => :ownable
+  has_many :appreciables, :as => :appreciable
   belongs_to :user
   belongs_to :challenge
   belongs_to :channel
