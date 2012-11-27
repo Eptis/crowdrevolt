@@ -1,9 +1,9 @@
-    - @solutions.in_groups_of(4, false).each do |solutions|
-      .row-fluid
-        .span24
-          - solutions.each do |solution|
-            .span6
-              %h2= solution.title
-              %p=raw solution.description
-              = link_to solution.title, solution
+- @solutions.in_groups_of(4, false).each do |solutions|
+  .row-fluid
+    .span24
+      - solutions.each do |solution|
+        .span6
+          %h2= solution.title
+          %p=raw solution.description
+          = link_to solution.title, solution
 
