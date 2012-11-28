@@ -23,6 +23,7 @@ class SolutionsController < ApplicationController
   def create
     @solution = Solution.new(params[:solution])
     @solution.user = current_user
+    @solution.challenge = @challenge
     if @solution.save
       redirect_to([@channel, @challenge, @solution], :flash => :success)
     else
