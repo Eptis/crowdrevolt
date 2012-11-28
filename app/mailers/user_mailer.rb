@@ -8,7 +8,7 @@ class UserMailer < ActionMailer::Base
   #
   def activation_needed_email(user)
     @user = user
-    @url  = "http://87.255.36.139/users/#{user.activation_token}/activate"
+    @url  = "http://localhost:3000/users/#{user.activation_token}/activate"
     mail(:to => user.email,
          :subject => "Welcome to My Awesome Site")
   end
