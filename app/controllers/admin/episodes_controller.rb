@@ -16,7 +16,8 @@ class Admin::EpisodesController < AdminController
 
   def create
     @episode = Episode.new(params[:episode])
-    @episode.channel = @channel.id
+    @episode.channel = @channel
+
 
     if @episode.save
       redirect_to([:admin, @channel, @episode], :flash => :success)
