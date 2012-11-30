@@ -1,12 +1,11 @@
 %h1= @idea.title
-%p=@idea.rewards.count
-
 %p=raw @idea.description
-%div=image_tag @idea.image.url(:front)
+- if @idea.image.present?
+  %div=image_tag @idea.image.url(:front)
 - @idea.blogitems.each do |item|
   .item= render "item", :item => item
 
-#appreciableCounter=@idea.appreciables.count
+#appreciableCounter= "Aantal waarderingen: " + @idea.appreciables.count.to_s
 #appreciableBtn
   .btn.appreciableBtn Karma +1
   =render "appreciable_form"

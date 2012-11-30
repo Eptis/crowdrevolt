@@ -1,26 +1,26 @@
-.header
+%header
   .row-fluid
-    .span6
+    .span4
       =link_to :root do
         =image_tag(asset_path("logo.png"))
-    .span18.submenu
-      %ul.span24
-        %li
-          inloggen
-        %li
-          registreren
-    .span18
-      %ul.span24
-        - @channels.each do |channel|
-          %li=link_to channel.title, channel
+    .span14
+      .row-fluid
+        %nav#hoofdmenu
+          %ul.span24
+            - @channels.each do |channel|
+              %li=link_to channel.title, channel
+      .row-fluid
+        %nav.submenu
+          %ul.span24
+            %li
+              sub
+            %li
+              sub
+            %li
+              sub
+            %li
+              sub
 
-    .span18.submenu
-      %ul.span24
-        %li
-          sub
-        %li
-          sub
-        %li
-          sub
-        %li
-          sub
+    .span6.submenu
+      =render :partial => "users/user", :locals => {:user => current_user}
+      .row-fluid= render("searchform")

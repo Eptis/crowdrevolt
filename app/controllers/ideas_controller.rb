@@ -19,6 +19,7 @@ class IdeasController < ApplicationController
   def create
     @idea = Idea.new(params[:idea])
     @idea.user = current_user
+    @idea.channel = @channel
     if @idea.save
       redirect_to([@channel, @idea], :flash => :success)
     else

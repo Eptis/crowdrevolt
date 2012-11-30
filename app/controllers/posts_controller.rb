@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   skip_before_filter :require_login, :except => [:new, :edit, :create]
   before_filter :find_post, :only => [:show, :edit, :update, :destroy]
   before_filter :find_channel
+
   def index
     @posts = Post.where(&:published_at < Time.now)
   end

@@ -24,6 +24,7 @@ class SolutionsController < ApplicationController
     @solution = Solution.new(params[:solution])
     @solution.user = current_user
     @solution.challenge = @challenge
+    @solution.channel = @channel
     if @solution.save
       redirect_to([@channel, @challenge, @solution], :flash => :success)
     else

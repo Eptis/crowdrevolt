@@ -1,0 +1,5 @@
+.pull-right
+  -if user.avatar.present?
+    =image_tag user.avatar.url(:medium)
+  =link_to user.username, user
+  = "Karmascore: " +" #{current_user.score}" if user

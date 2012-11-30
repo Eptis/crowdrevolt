@@ -100,3 +100,11 @@ a{
 
   }
 }
+
+#chatBox{
+  height:300px;
+  overflow: scroll;
+  ul{
+    width:100%;
+  }
+}
