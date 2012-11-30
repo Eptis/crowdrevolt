@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121127102158) do
+ActiveRecord::Schema.define(:version => 20121129221748) do
 
   create_table "admins", :force => true do |t|
     t.string   "username"
@@ -247,6 +247,7 @@ ActiveRecord::Schema.define(:version => 20121127102158) do
     t.boolean  "optin"
     t.string   "name"
     t.text     "bio"
+    t.integer  "score",                           :default => 0,    :null => false
   end
 
   add_index "users", ["activation_token"], :name => "index_users_on_activation_token"

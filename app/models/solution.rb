@@ -14,6 +14,9 @@ class Solution < ActiveRecord::Base
   include ImageSelect
   image_select
 
+  #relatie met user
+  belongs_to :appreciated_item
+
 
   searchable do
     text :title

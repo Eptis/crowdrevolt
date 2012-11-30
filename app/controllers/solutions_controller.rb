@@ -29,7 +29,7 @@ class SolutionsController < ApplicationController
     else
       render("new")
     end
-    # give_reward(@solution)
+    give_reward(@solution, @solution.challenge.points)
   end
 
   def edit

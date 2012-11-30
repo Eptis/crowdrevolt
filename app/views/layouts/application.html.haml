@@ -6,6 +6,7 @@
     = javascript_include_tag("http://html5shim.googlecode.com/svn/trunk/html5.js")
     <![endif]-->
     = stylesheet_link_tag("application")
+    %link{ :href=>'http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700', :rel=>'stylesheet', :type=>'text/css'}
     = javascript_include_tag("application")
     = javascript_include_tag("http://localhost:9292/faye.js")
     = javascript_include_tag("/ckeditor/ckeditor")
@@ -19,6 +20,7 @@
     .container-fluid
       .row-fluid
         .span24= render("searchform")
+      .pull-right= "Karmascore van " + current_user.username + ":  #{current_user.score}" if current_user
       = render("header")
       #notice= notice
       #alert= alert

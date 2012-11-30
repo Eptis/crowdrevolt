@@ -28,12 +28,9 @@ class AppreciablesController < ApplicationController
     else
       redirect_to(@rout, :flash => :error)
     end
+    update_score(@appreciated_appreciable.user)
     # give_reward(@appreciable)
   end
-
-  # def edit
-  #   @appreciable = Appreciable.find(params[:id])
-  # end
 
   def update
     @appreciable = Appreciable.find(params[:id])
@@ -46,14 +43,10 @@ class AppreciablesController < ApplicationController
      respond_to do |format|
       format.js
     end
-
+    update_score(@appreciated_appreciable.user)
   end
 
-  def destroy
-    @appreciable = Appreciable.find(params[:id])
-    @appreciable.destroy
-    redirect_to([@rout], :flash => :success)
-  end
+
 
 private
 

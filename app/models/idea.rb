@@ -3,12 +3,14 @@ class Idea < ActiveRecord::Base
   has_many :appreciables, :as => :appreciable
   # blog items
   has_many :blogitems, :as => :ownable
+  has_many :rewards, :as => :rewardable
   belongs_to :user
   belongs_to :channel
   accepts_nested_attributes_for :blogitems, :allow_destroy => true
 
   #comments
   has_many :comments, :as => :commentable, :dependent => :destroy
+
 
   # Images select
   include ImageSelect

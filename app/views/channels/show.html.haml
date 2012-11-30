@@ -21,10 +21,10 @@
               %article
                 %h2 Chat mee
                 =form_for [@channel, Message.new], :remote => true do |f|
-                  =f.text_field :content, :id => "new_message"
                   - unless current_user
                     =f.text_field :name
-                    =f.text_field :email
+                    =f.email_field :email
+                  =f.text_field :content, :id => "new_message"
                   =f.submit "Send"
               %ul#chat
                 = render @channel.messages
@@ -181,4 +181,5 @@
     faye.subscribe("/#{@channel_clean.to_s}", function(data) {
       eval(data);
     });
+
   })

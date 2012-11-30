@@ -10,7 +10,29 @@ class ApplicationController < ActionController::Base
     @reward.rewardable_type = object.class.name
     @reward.rewardable_id = object.id
     @reward.save
+    update_score(@reward.user)
   end
+
+  def update_score(user)
+    @score = 0
+    # reken idee en challenge punten uit
+    user.rewards.each do |reward|
+      @score += reward.points
+    end
+
+    #waarderingen optellen
+    user.ideas.each do |idea|
+      @score += idea.appreciables.count
+    end
+
+    user.solutions.each do |sol|
+      @score += sol.appreciables.count
+    end
+
+    user.score = @score
+    user.save
+  end
+
 
 
   def construct_appreciable(construct)

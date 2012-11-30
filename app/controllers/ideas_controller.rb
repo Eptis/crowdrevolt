@@ -24,7 +24,7 @@ class IdeasController < ApplicationController
     else
       render("new")
     end
-    give_reward(@idea)
+    give_reward(@idea, 1)
   end
 
   def edit
@@ -42,6 +42,7 @@ class IdeasController < ApplicationController
 
   def destroy
     @idea = Idea.find(params[:id])
+    update_score(@idea.user)
     @idea.destroy
     redirect_to([:ideas], :flash => :success)
   end

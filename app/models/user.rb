@@ -14,4 +14,7 @@ class User < ActiveRecord::Base
   has_many :messages
   has_many :questions
   has_many :comments, :dependent => :destroy
+  has_many :appreciables
+
+
 end

@@ -12,4 +12,9 @@ $(document).ready(function(){
     $(this).closest("form").delay(200).submit();
     console.log('change')
   });
+
+  $("#appreciableBtn").live("click", function(){
+    $("#appreciableForm").find("form").submit();
+  })
+
 });
