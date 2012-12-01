@@ -88,6 +88,12 @@ Crowdrevolt::Application.routes.draw do
   post   "inloggen" => "user_sessions#create",  :as => :user_login
   delete "uitloggen" => "user_sessions#destroy", :as => :user_logout
 
+  get    "about"  => "pages#about",     :as => :about
+  get    "karma"  => "pages#karma",     :as => :karma
+  get    "contact"  => "pages#contact",     :as => :contact
+  get    "faq"  => "pages#faq",     :as => :faq
+
+
   # Root pad
   root :to => "channels#index"
 end

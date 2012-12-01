@@ -3,24 +3,23 @@
     .span4
       =link_to :root do
         =image_tag(asset_path("logo.png"))
-    .span14
-      .row-fluid
-        %nav#hoofdmenu
+    .span13
+      %nav#hoofdmenu
+        .row-fluid
           %ul.span24
-            - @channels.each do |channel|
-              %li=link_to channel.title, channel
+            - 6.times do
+              - @channels.each do |channel|
+                %li.nomargin.span8=link_to channel.title, channel
+
+
+    .span7.usermenu
       .row-fluid
         %nav.submenu
           %ul.span24
-            %li
-              sub
-            %li
-              sub
-            %li
-              sub
-            %li
-              sub
-
-    .span6.submenu
-      =render :partial => "users/user", :locals => {:user => current_user}
+            %li=link_to t("contact"), :contact
+            %li=link_to t("faq"), :faq
+            %li=link_to t("about"), :about
+            %li=link_to t("karma"), :karma
+      .row-fluid=render :partial => "users/user", :locals => {:user => current_user}
       .row-fluid= render("searchform")
+

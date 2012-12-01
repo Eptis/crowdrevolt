@@ -16,5 +16,11 @@ $(document).ready(function(){
   $("#appreciableBtn").live("click", function(){
     $("#appreciableForm").find("form").submit();
   })
+  scrollChatbox();
 
 });
+
+function scrollChatbox(){
+  var chat = document.getElementById('chatBox');
+  chat.scrollTop = chat.scrollHeight;
+}

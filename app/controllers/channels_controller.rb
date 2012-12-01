@@ -11,7 +11,7 @@ class ChannelsController < ApplicationController
    @recent.flatten!
    @recent.sort! { |a,b| a.updated_at <=> b.updated_at }
    @recent.reverse!
-   @recent = @recent[0..5]
+   @recent = @recent[0..2]
   end
 
   def show

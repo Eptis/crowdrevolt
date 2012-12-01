@@ -1,46 +1,53 @@
-
-%section.volgende_uitzending.span24
-  %article
-    .span10
-      %img{:src => "http://placehold.it/550x310"}
-    .span14
-      %h2 Titel volgende uitzending
-      %p Maecenas faucibus mollis interdum. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Etiam porta sem malesuada magna mollis euismod. Donec ullamcorper nulla non metus auctor fringilla. Cras mattis consectetur purus sit amet fermentum.
-
+%section.span24
+  %article.intro.spacing
+    %h1 Slimme oplossingen voor oude ideeen
+    .row-fluid
+      .span20
+        %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Sed posuere consectetur est at lobortis. Nulla vitae elit libero, a pharetra augue. Meer informatie kun je vinden bij Karma & Rewards
+      .span4
+        .btn Meld je aan!
 .row-fluid
-  %section.span18
-    %article.intro
-      %h1 Slimme oplossingen voor oude ideeen
+  .slope
+.row-fluid
+  %section.volgende_uitzending.span24.v-spacing
+    %article
+      .span10
+        %img{:src => "http://placehold.it/550x310"}
+      .span14
+        %h2 Titel volgende uitzending
+        %p Maecenas faucibus mollis interdum. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Etiam porta sem malesuada magna mollis euismod. Donec ullamcorper nulla non metus auctor fringilla. Cras mattis consectetur purus sit amet fermentum.
+.row-fluid
+  %aside.span24.sidebar
+    .h-spacing
+      %h3 Activiteiten
       .row-fluid
-        .span20
-          %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Sed posuere consectetur est at lobortis. Nulla vitae elit libero, a pharetra augue. Meer informatie kun je vinden bij Karma & Rewards
-        .span4
-          .btn Meld je aan!
-
-    %section.programmas
+        - @recent.each do |recent|
+          -if recent.class == Post ||  recent.class == Idea
+            .span8
+              %h4= recent.title
+              .text=smart_truncate(strip_tags(recent.description), :words => 20).html_safe
+              =link_to "Lees meer", [recent.channel, recent]
+          - elsif recent.class == Solution
+            .span8
+              %h4= recent.title
+              .text=smart_truncate(strip_tags(recent.description), :words => 20).html_safe
+              =link_to "Lees meer", [recent.channel , recent.challenge, recent]
+.row-fluid
+  %section.programmas.span24
+    .spacing
+      %h2 Programma's
       -@channels.each do |channel|
-        %article.span24
-          %h2= channel.title
+        .row-fluid
+          %article.span24
+            %h2= channel.title
 
-          .row-fluid
-            .span12
-              .text=raw channel.description
-            .span12.nomargin
+            .row-fluid
               .span12
-                %img{:src => "http://placehold.it/250x140"}
+                .text=raw channel.description
               .span12
-                %h5 Volgende livestream
-                %p Maecenas faucibus mollis interdum. Vivamus sagittis.
-  %aside.span6
-    %h3 Activiteiten
-    - @recent.each do |recent|
-      -if recent.class == Post ||  recent.class == Idea
-        .row-fluid
-          %h4= recent.title
-          .text=smart_truncate(strip_tags(recent.description), :words => 20).html_safe
-          =link_to "Lees meer", [recent.channel, recent]
-      - elsif recent.class == Solution
-        .row-fluid
-          %h4= recent.title
-          .text=smart_truncate(strip_tags(recent.description), :words => 20).html_safe
-          =link_to "Lees meer", [recent.channel , recent.challenge, recent]
+                .span12
+                  %img{:src => "http://placehold.it/250x140"}
+                .span12
+                  %h5 Volgende livestream
+                  %p Maecenas faucibus mollis interdum. Vivamus sagittis.
+

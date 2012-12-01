@@ -17,26 +17,25 @@
   .row-fluid
     %section.alle_oplossingen
       %h3 Challenge Oplossingen
-  - 25.times do
-    - @challenge.solutions.in_groups_of(2,false).each do |solutions|
-      .row-fluid
-        %article
-          .span24
-            - solutions.each do |solution|
-              .span12
-                .span24
-                  .span8
-                    %img{:src => "http://placehold.it/710x300"}
-                  .span16
-                    %h4=link_to solution.title, [@channel, @challenge, solution]
-                    .username= solution.user.username
-                    .description= solution.description
+  - @challenge.solutions.in_groups_of(2,false).each do |solutions|
+    .row-fluid
+      %article
+        .span24
+          - solutions.each do |solution|
+            .span12
+              .span24
+                .span8
+                  %img{:src => "http://placehold.it/710x300"}
+                .span16
+                  %h4=link_to solution.title, [@channel, @challenge, solution]
+                  .username= solution.user.username
+                  .text=raw solution.description
 
 %aside.span6
   %section.challenges_box
     %article
       %h4 Andere challenges
-      %ul 
+      %ul
         %li Malesuada Aenean Adipiscing Lorem Risus
         %li Malesuada Aenean Adipiscing Lorem Risus
         %li Malesuada Aenean Adipiscing Lorem Risus

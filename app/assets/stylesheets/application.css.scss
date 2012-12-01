@@ -6,17 +6,23 @@
 */
 
 $oranje:#ff5400;
-$zwart:#0d0d0d;
+$zwart:#070707;
 $wit:#ffffff;
 $grijs_licht:#181818;
 $grijs_donker:#151515;
 
 body{
-  background:$zwart !important;
   color:$wit !important;
   font-family:"Open Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif !important;
   font-size:15px !important;
   line-height:1.5 !important;
+  padding-bottom:50px;
+  padding-top:0px !important;
+  background:$zwart !important
+}
+header{
+  padding:30px 15px;
+
 }
 
 h1, h2, h3, h4, h5, h6{
@@ -26,11 +32,8 @@ h1, h2, h3, h4, h5, h6{
   margin-top:0 !important;
 }
 
-h1, h2{
-  color:$oranje !important;
-}
 
-// voorkom lange regels
+// voorkom te lange regels
 p, .text{
   max-width:660px;
 }
@@ -45,22 +48,22 @@ p, .text{
 }
 
 .container-fluid{
-  padding-left:50px !important;
-  padding-right:50px !important;
+  padding-left:0px !important;
+  padding-right:0px !important;
 }
-@media screen and (max-width:960px){
-   .container-fluid{
-    padding-left:15px !important;
-    padding-right:15px !important;
-  }
-}
+// @media screen and (max-width:960px){
+//    .container-fluid{
+//     padding-left:15px !important;
+//     padding-right:15px !important;
+//   }
+// }
 
-@media screen and (max-width:480px){
-   .container-fluid{
-    padding-left:0px !important;
-    padding-right:0px !important;
-  }
-}
+// @media screen and (max-width:480px){
+//    .container-fluid{
+//     padding-left:0px !important;
+//     padding-right:0px !important;
+//   }
+// }
 
 .submenu{
   /*max-width:600px;*/
@@ -107,4 +110,36 @@ a{
   ul{
     width:100%;
   }
+}
+
+
+
+.h-spacing{padding:0 15px;}
+.v-spacing{padding:15px 0;}
+.spacing{padding:15px;}
+
+
+.sidebar{
+  background: $oranje
+}
+
+.wrapper{
+  // max-width:1280px;
+  margin:0 auto;
+}
+
+
+#hoofdmenu{
+  min-height:100px;
+  li{
+    a{font-size:18px; text-transform: uppercase; font-weight: bold;}
+    border-bottom:1px solid $grijs_donker;
+    padding:15px;
+    border-right:1px solid $grijs_donker;
+    text-align: center;
+  }
+}
+
+.usermenu{
+  border-left:1px solid $grijs_donker;
 }

@@ -1,4 +1,7 @@
 <% broadcast ("/#{@fayechannel.to_s}") do %>
-  $("#chat").append("<%= escape_javascript render(@message) %>");
+  $("#chatBox").append("<%= escape_javascript render(@message) %>");
 <%end%>
 $("#new_message")[0].reset();
+
+var chat = document.getElementById('chatBox');
+chat.scrollTop = chat.scrollHeight;
