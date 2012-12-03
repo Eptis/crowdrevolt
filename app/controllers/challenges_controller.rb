@@ -9,6 +9,7 @@ class ChallengesController < ApplicationController
   def show
     @challenge = Challenge.find(params[:id])
     @comment = Comment.new
+    @alternatives = Challenge.find(:all, :limit => 3, :conditions => {:id => !@challenge.id})
   end
 
 private

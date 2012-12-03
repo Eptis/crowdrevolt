@@ -3,6 +3,7 @@ class ChannelsController < ApplicationController
   def index
    @channels = Channel.all
    @recent = []
+   @upcoming = Episode.where("airdate > ?", Time.now && :channel => @channel).first
    @posts = Post.order(&:updated_at)
    @solution = Solution.order(&:updated_at)
    @idea = Idea.order(&:updated_at)

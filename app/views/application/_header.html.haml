@@ -1,9 +1,9 @@
 %header
   .row-fluid
-    .span4
+    .span3
       =link_to :root do
         =image_tag(asset_path("logo.png"))
-    .span13
+    .span14
       %nav#hoofdmenu
         .row-fluid
           %ul.span24
@@ -20,6 +20,9 @@
             %li=link_to t("faq"), :faq
             %li=link_to t("about"), :about
             %li=link_to t("karma"), :karma
-      .row-fluid=render :partial => "users/user", :locals => {:user => current_user}
+      - if current_user
+        .row-fluid=render :partial => "users/user", :locals => {:user => current_user}
       .row-fluid= render("searchform")
+/ .slopel.orange
+/   .slopershape
 

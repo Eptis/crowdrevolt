@@ -1,7 +1,13 @@
 class Solution < ActiveRecord::Base
+  # Images select
+  include ImageSelect
+  image_select
+
   attr_accessible :title, :body, :description, :published_at, :blogitems_attributes, :image_select, :challenge_id
   has_many :blogitems, :as => :ownable
   has_many :appreciables, :as => :appreciable
+  has_many :image_relations, :as => :imageable
+
   belongs_to :user
   belongs_to :challenge
   belongs_to :channel
@@ -10,9 +16,7 @@ class Solution < ActiveRecord::Base
   #comments
   has_many :comments, :as => :commentable, :dependent => :destroy
 
-  # Images select
-  include ImageSelect
-  image_select
+
 
   #relatie met user
   belongs_to :appreciated_item

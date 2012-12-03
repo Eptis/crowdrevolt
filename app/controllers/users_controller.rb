@@ -11,6 +11,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @solutions = Solution.find(:all, :limit => 3, :conditions => {:user_id => @user.id})
+    @ideas = Idea.find(:all, :limit => 3, :conditions => {:user_id => @user.id})
   end
 
   def new

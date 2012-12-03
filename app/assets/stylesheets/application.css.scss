@@ -10,6 +10,16 @@ $zwart:#070707;
 $wit:#ffffff;
 $grijs_licht:#181818;
 $grijs_donker:#151515;
+$oranje_tint:$oranje;
+$slopeheight:100px;
+
+%transition{
+  -webkit-transition: all 500ms ;
+  -moz-transition: all 500ms ;
+  -ms-transition: all 500ms ;
+  -o-transition: all 500ms ;
+  transition: all 500ms ;
+}
 
 body{
   color:$wit !important;
@@ -18,7 +28,8 @@ body{
   line-height:1.5 !important;
   padding-bottom:50px;
   padding-top:0px !important;
-  background:$zwart !important
+  background:$zwart !important;
+  max-width: 1920px;
 }
 header{
   padding:30px 15px;
@@ -26,7 +37,7 @@ header{
 }
 
 h1, h2, h3, h4, h5, h6{
-  font-family:"Open Sans" !important;
+  font-family:"Open Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif !important;
   text-transform:uppercase;
   letter-spacing:1px;
   margin-top:0 !important;
@@ -80,7 +91,7 @@ p, .text{
   margin-left: 1.5em;
 }
 
-.img {
+.importantmg {
   width: 100%;
 }
 
@@ -116,11 +127,14 @@ a{
 
 .h-spacing{padding:0 15px;}
 .v-spacing{padding:15px 0;}
-.spacing{padding:15px;}
+.spacing{padding:15px 50px;}
 
 
 .sidebar{
-  background: $oranje
+  background: $oranje_tint;
+  a{
+    color:$grijs_licht !important;
+  }
 }
 
 .wrapper{
@@ -132,14 +146,139 @@ a{
 #hoofdmenu{
   min-height:100px;
   li{
-    a{font-size:18px; text-transform: uppercase; font-weight: bold;}
-    border-bottom:1px solid $grijs_donker;
+    @extend %transition;
+    position: relative;
+    &:hover{background: $oranje; color:#fff;
+      a{color:#fff !important;}
+    }
+    a{font-size:18px; text-transform: uppercase; font-weight: bold;
+    @extend %transition;
+    position: relative; width:100%; height:100%; display: block; text-align: center;
     padding:15px;
-    border-right:1px solid $grijs_donker;
+
+    }
+    border-bottom:1px solid $grijs_licht;
+    border-right:1px solid $grijs_licht;
     text-align: center;
   }
 }
 
 .usermenu{
   border-left:1px solid $grijs_donker;
+}
+
+
+%slope{
+  height:$slopeheight;
+  width:100%;
+  // float:left;
+  // background: red
+  overflow: hidden;
+  position: relative;
+}
+
+.slopel{
+  @extend %slope;
+}
+
+.sloper{
+  @extend %slope
+}
+
+.orange{
+  .slopershape{
+    border-top: 0px solid $oranje_tint;
+    border-left: 1920px solid $oranje_tint;
+    border-right: 0px solid $oranje_tint;
+    border-bottom: $slopeheight solid transparent;
+    position: absolute;
+    top:0;
+    right:0;
+    height:0;
+    // width:100%;
+  }
+
+  .slopelshape{
+    border-top: $slopeheight solid transparent;
+    position: absolute;
+    top:0;
+    left:0px;
+    border-right: 1920px solid $oranje_tint;
+    border-bottom: 0px solid $oranje_tint;
+    border-left: 0px solid $oranje_tint;
+    height:0;
+    // width:100%;
+
+  }
+}
+
+.grey{
+
+  .slopershape{
+    border-top: 0px solid $grijs_licht;
+    border-left: 1920px solid $grijs_licht;
+    border-right: 0px solid $grijs_licht;
+    border-bottom: $slopeheight solid transparent;
+    margin-bottom:-$slopeheight;
+    position: absolute;
+    top:0;
+    left:0px;
+    height:0;
+    // width:100%;
+  }
+
+  .slopelshape{
+    border-top: $slopeheight solid transparent;
+    position: absolute;
+    top:0;
+    right:0px;
+    border-right: 1920px solid $grijs_licht;
+    border-bottom: 0px solid $grijs_licht;
+    border-left: 0px solid $grijs_licht;
+    height:0;
+    // width:100%;
+
+  }
+}
+.volgende_uitzending{
+  background: $grijs_licht
+}
+
+.clear{clear:both};
+.spacefix{margin-top:$slopeheight*-1;}
+
+a:hover{
+  text-decoration: none !important;
+}
+
+$degree:2.8deg;
+.imgmask{
+  overflow: hidden;
+  position: relative;;
+  -webkit-transform: skewY(-$degree);
+    -moz-transform: skewY(-$degree);
+    -ms-transform: skewY(-$degree);
+    -o-transform: skewY(-$degree);
+    transform: skewY(-$degree);
+  *{
+    -webkit-transform: skewY($degree);
+    -moz-transform: skewY($degree);
+    -ms-transform: skewY($degree);
+    -o-transform: skewY($degree);
+    transform: skewY($degree);
+  }
+  img{
+    height:auto;
+    width:100%;
+    -webkit-transform: scale(1.6);
+    -moz-transform: scale(1.6);
+    -ms-transform: scale(1.6);
+    -o-transform: scale(1.6);
+    transform: scale(1.6);
+    margin-top:-5%;
+  }
+}
+
+.intro{
+  h1{font-size:5em !important; line-height:1.5 !important;}
 }

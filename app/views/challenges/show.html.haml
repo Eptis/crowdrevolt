@@ -36,10 +36,8 @@
     %article
       %h4 Andere challenges
       %ul
-        %li Malesuada Aenean Adipiscing Lorem Risus
-        %li Malesuada Aenean Adipiscing Lorem Risus
-        %li Malesuada Aenean Adipiscing Lorem Risus
-        %li Malesuada Aenean Adipiscing Lorem Risus
+        - @alternatives.each do |alt|
+          %li=link_to alt.name, [@channel, @challenge, alt]
 
 
 
