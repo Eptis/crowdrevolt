@@ -1,5 +1,5 @@
 class SolutionsController < ApplicationController
-  skip_before_filter :require_login, :only => [:new, :edit, :destroy, :update]
+  skip_before_filter :require_login, :except => [:new, :edit, :destroy, :update]
   before_filter :find_channel
   before_filter :find_challenge
 

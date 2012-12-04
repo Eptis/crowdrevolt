@@ -87,7 +87,7 @@ Crowdrevolt::Application.routes.draw do
   get    "zoeken"  => "application#search",     :as => :search
   get    "registreren"  => "users#new",     :as => :register
   post   "inloggen" => "user_sessions#create",  :as => :user_login
-  delete "uitloggen" => "user_sessions#destroy", :as => :user_logout
+  get "uitloggen" => "user_sessions#destroy", :as => :user_logout
 
   get    "about"  => "pages#about",     :as => :about
   get    "karma"  => "pages#karma",     :as => :karma
