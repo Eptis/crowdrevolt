@@ -1,5 +1,5 @@
 class Channel < ActiveRecord::Base
-  attr_accessible :title, :description, :image_select
+  attr_accessible :title, :description, :image_select, :status
 
   has_many :episodes
   has_many :changemakers

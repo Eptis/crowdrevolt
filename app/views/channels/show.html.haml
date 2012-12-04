@@ -1,124 +1,139 @@
-%h1= @channel.title
-- if @live
-  .row-fluid
-    %article.span24
-      %h2= @live.title
-      .row-fluid
-        %img.span15{:src => "http://placehold.it/850x410"}
-        .span9
-          %h3= @live.title
-          .text= @live.description
-- elsif @upcoming
-  .row-fluid
-    %article.span24
-      %h2 Volgende livestream
-      .row-fluid
-        %img.span15{:src => "http://placehold.it/850x410"}
-        .span9
-          %h3= @upcoming.title
-          .text=smart_truncate(strip_tags(@upcoming.description), :words => 40).html_safe
+%h1.spacing.pageheader= @channel.title
 .row-fluid
-  %section.span18.content
-    / %h2= t("episodes")
-    / - @channel.episodes.each do |episode|
-    /   =link_to episode.title, [@channel, episode]
+  .slopel.orange
+    .slopelshape
+  .row-fluid
+    %article.span24
+      .spacing.highlight
+        - if @live
+          %h2= @live.title
+          .row-fluid
+            .span8
+              / .imgmask
+              =image_tag @live.image.url(:front)
+            .span9
+              %h2= @live.title
+              .text=smart_truncate(strip_tags(@live.description), :words => 40).html_safe
+        - elsif @upcoming
 
-    .row-fluid
+          .row-fluid
+            .rotate
+              .span8
+                / .imgmask
+                =image_tag @upcoming.image.url(:front)
+              .span16
+                %h3 Volgende livestream
+                %h2= @upcoming.title
+                .text=smart_truncate(strip_tags(@upcoming.description), :words => 40).html_safe
+  .sloper.orange
+    .slopershape
 
-      %section.span12.chat
-        %article
-          %h2 Chat mee
-          %ul#chatBox
-            = render @channel.messages
-          =form_for [@channel, Message.new], :remote => true do |f|
-            - unless current_user
-              =f.text_field :name
-              =f.email_field :email
-            =f.text_field :content, :id => "new_message"
-            =f.submit "Send"
+.spacing
+  .row-fluid
+    %section.span18.content
+      / %h2= t("episodes")
+      / - @channel.episodes.each do |episode|
+      /   =link_to episode.title, [@channel, episode]
 
-      %section.span12.challenges
-        %article
-          %h2= t("challenges")
-          %p Sed posuere consectetur est at porta ac consectetur ac, vestibulum at eros. Sed posuere consectetur est at lobortis. Nulla vitae elit libero, a pharetra augue. Meer informatie kun je vinden bij Karma & Rewards
-          %ul
-            - @channel.challenges.each do |challenge|
-              %li=link_to challenge.title, [@channel, challenge]
-
-          =link_to  t("post_idea"), [:new, @channel, :idea], :class => "btn"
-
-    .row-fluid
-      .span24
-        .row-fluid
-          .span24
-            %section.span12
-              %h2 Changemaker Blogspots
-              - @posts.each do |post|
-                .row-fluid
-                  %article.span24
-                    =link_to [@channel, post] do
-                      %h3=smart_truncate(strip_tags( post.title), :words => 5).html_safe
-                    =link_to [@channel, post] do
-                      %img.span6{:src => "http://placehold.it/110x60"}
-                    .span16
-                      .text=smart_truncate(strip_tags(post.description), :words => 20).html_safe
-
-            %section.span12
-              %h2 Changemaker Blogspots
-              - @ideas.each do |idea|
-                .row-fluid
-                  %article.span24
-                    =link_to [@channel, idea] do
-                      %h3=smart_truncate(strip_tags( idea.title), :words => 5).html_safe
-                    =link_to [@channel, idea] do
-                      %img.span6{:src => "http://placehold.it/110x60"}
-                    .span16
-                      .text=smart_truncate(strip_tags(idea.description), :words => 20).html_safe
-
-            %section.span24.laatste_afleveringen_klein
-              %h2 Vorige uitzendingen
-              .row-fluid
-                - @episodes.each do |episode|
-                  %article.span7
-                    =link_to [@channel, episode] do
-                      =image_tag episode.image.url(:front)
-                .span24=link_to "Vorige uitzendingen", [@channel, :episodes], :class => "btn"
-
-  %aside.span6
-    %section.project-status
-      %article
-        %h4 Projectstatus
-        %p= @channel.status
-
-    %section.over_dit_kanaal
-      %article
-        %h4= @channel.title
-        %p=raw @channel.description
-
-    %section.changemakers
-      %article
-        %h4 Changemakers
-        %img{:src => "http://placehold.it/110x150", :align => 'left'}
-        %p Lorem ipsum dolor sit amet, consectetur adi- piscing elit. Vivamus et turpis non mi sagittis rhoncus ac sed nisi. Aliquam et porta elit.
       .row-fluid
-      %article
-        %h4 Changemakers
-        %img{:src => "http://placehold.it/110x150", :align => 'left'}
-        %p Lorem ipsum dolor sit amet, consectetur adi- piscing elit. Vivamus et turpis non mi sagittis rhoncus ac sed nisi. Aliquam et porta elit.
 
-    .row-fluid
-    %section.links
-      %article
-        %h4 Aanbevolen links
-        %ul
-          %li Dit is een link
-          %li En nog een link
+        %section.span12.chat
+          %article
+            %h2 Chat mee
+            %ul#chatBox
+              = render @channel.messages
+            =form_for [@channel, Message.new], :remote => true do |f|
+              - unless current_user
+                =f.text_field :name
+                =f.email_field :email
+              =f.text_field :content, :id => "new_message"
+              =f.submit "Send"
 
-    .row-fluid
-    %section.twitter
-      %article
-        %h4 Twitterfeed
-        %p Hier komen de tweets
+        %section.span12.challenges
+          %article
+            %h2= t("challenges")
+            %p Sed posuere consectetur est at porta ac consectetur ac, vestibulum at eros. Sed posuere consectetur est at lobortis. Nulla vitae elit libero, a pharetra augue. Meer informatie kun je vinden bij Karma & Rewards
+            %ul
+              - @channel.challenges.each do |challenge|
+                %li=link_to challenge.title, [@channel, challenge]
+
+            =link_to  t("post_idea"), [:new, @channel, :idea], :class => "btn"
+
+      .row-fluid
+        .span24
+          .row-fluid
+            .span24
+              %section.span12
+                %h2 Changemaker Blogspots
+                %ul.itemlist
+                  - @posts.each do |post|
+                    %li
+                      .row-fluid
+                        %article.span24
+                          =link_to [@channel, post] do
+                            %h3=smart_truncate(strip_tags( post.title), :words => 5).html_safe
+                          =link_to [@channel, post] do
+                            %img.span6{:src => "http://placehold.it/110x60"}
+                          .span16
+                            .text=smart_truncate(strip_tags(post.description), :words => 20).html_safe
+
+              %section.span12
+                %h2 Ingezonden ideeën
+                - @ideas.each do |idea|
+                  .row-fluid
+                    %article.span24
+                      =link_to [@channel, idea] do
+                        %h3=smart_truncate(strip_tags( idea.title), :words => 5).html_safe
+                      =link_to [@channel, idea] do
+                        %img.span6{:src => "http://placehold.it/110x60"}
+                      .span16
+                        .text=smart_truncate(strip_tags(idea.description), :words => 20).html_safe
+
+              .row-fluid
+                %section.span24.laatste_afleveringen_klein
+                  %h2 Vorige uitzendingen
+                  .row-fluid
+                    - @episodes.each do |episode|
+                      %article.span7
+                        =link_to [@channel, episode] do
+                          =image_tag episode.image.url(:front)
+                    .span24=link_to "Vorige uitzendingen", [@channel, :episodes], :class => "btn"
+
+    %aside.span6
+      %section.project-status
+        %article
+          %h4 Projectstatus
+          %p= @channel.status
+
+      %section.over_dit_kanaal
+        %article
+          %h4= @channel.title
+          %p=raw @channel.description
+
+      %section.changemakers
+        %article
+          %h4 Changemakers
+          %img{:src => "http://placehold.it/110x150", :align => 'left'}
+          %p Lorem ipsum dolor sit amet, consectetur adi- piscing elit. Vivamus et turpis non mi sagittis rhoncus ac sed nisi. Aliquam et porta elit.
+        .row-fluid
+        %article
+          %h4 Changemakers
+          %img{:src => "http://placehold.it/110x150", :align => 'left'}
+          %p Lorem ipsum dolor sit amet, consectetur adi- piscing elit. Vivamus et turpis non mi sagittis rhoncus ac sed nisi. Aliquam et porta elit.
+
+      .row-fluid
+      %section.links
+        %article
+          %h4 Aanbevolen links
+          %ul
+            %li Dit is een link
+            %li En nog een link
+
+      .row-fluid
+      %section.twitter
+        %article
+          %h4 Twitterfeed
+          %p Hier komen de tweets
 
 
 - @channel_clean = @channel.id.to_s + @channel.title.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '') + "/channel"

@@ -1,5 +1,10 @@
-.row-fluid
-  - @episodes.each do |episode|
-    %h2= episode.title
-    %p=raw episode.description
-    = link_to episode.title, [@channel,episode]
+.spacing
+  - @episodes.in_groups_of(3, false) do |episodes|
+    .row-fluid
+      .span24
+        - @episodes.each do |episode|
+          .span8
+            %h2= episode.title
+            =image_tag episode.image.url(:front)
+            %p=smart_truncate(strip_tags(episode.description), :words => 20).html_safe
+            = link_to episode.title, [@channel,episode]

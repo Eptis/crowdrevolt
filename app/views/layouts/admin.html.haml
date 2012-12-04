@@ -17,6 +17,7 @@
     = csrf_meta_tags
     %meta{ :name => "viewport", :content => "width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" }
   %body.container-fluid
+    .adminspace
     - if current_admin
       .navbar.navbar-fixed-top.navbar-inverse
         .navbar-inner
@@ -30,7 +31,7 @@
             .nav-collapse.collapse
               %ul.nav
                 %li= link_to :channels, [:admin, :channels]
-                %li= link_to :posts, [:admin, :posts]
+                / %li= link_to :posts, [:admin, :posts]
                 %li= link_to :users, [:admin, :users]
                 %li= link_to :images, [:admin, :images]
 
@@ -38,7 +39,8 @@
               = link_to [:admin, :logout], :method => :delete, :class => "btn btn-inverse pull-right" do
                 %i.icon-off
                 Log uit
-    = yield
+    .spacing
+      = yield
     #image_popup{ :data => { :url => admin_images_path(:total => 15) } }
       #image_popup_background
       #image_popup_content

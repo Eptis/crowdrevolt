@@ -14,9 +14,7 @@
   display:none;
 }
 
-body{
-  padding-top:60px;
-}
+
 .table-striped tbody tr:nth-child(odd) td, .table-striped tbody tr:nth-child(odd) th{
   background:#000 !important;
 }
@@ -41,5 +39,8 @@ body{
     .text_filter{display:block !important;}
   }
 }
-
+.adminspace{
+  height:60px;
+  width:100%;
+}
 //except for this, you can touch this

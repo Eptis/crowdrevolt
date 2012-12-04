@@ -10,7 +10,7 @@ Crowdrevolt::Application.routes.draw do
 # Admin namespace
   namespace :admin do
     # Admin root
-    root :to => "posts#index"
+    root :to => "channels#index"
 
     # Inloggen
     get    "inloggen"  => "sessions#new",     :as => :login
@@ -21,13 +21,14 @@ Crowdrevolt::Application.routes.draw do
     resources :admins
     resources :users
     resources :channels do
+      resources :posts
+
       resources :challenges
       resources :episodes do
         resources :questions
       end
     end
     resources :pages
-    resources :posts
     resources :images
     resources :categories do
       put :sort, :on => :collection  # Sorteren van categorieën

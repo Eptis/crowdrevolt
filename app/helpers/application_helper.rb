@@ -37,4 +37,13 @@ module ApplicationHelper
     v.sub(/&nbsp;/,"")
 
   end
+
+  def karmarank(score)
+    case score
+      when(0..50)
+        return 1
+      when(51..100)
+        return 2
+    end
+  end
 end
