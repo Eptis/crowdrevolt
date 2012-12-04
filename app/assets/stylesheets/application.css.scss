@@ -315,12 +315,12 @@ ul{
 @media screen and (max-width:1440px){
   .pageheader{
     font-size:6em;
-    -webkit-transform:rotate(-$degree);
+    /*-webkit-transform:rotate(-$degree);*/
   }
 }
 
-.rotate{
+/*.rotate{
   -webkit-transform:rotate(-$degree);
   z-index:99;
   position: relative;
-}
+}*/

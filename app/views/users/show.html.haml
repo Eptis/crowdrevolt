@@ -1,3 +1,36 @@
+%section.span18.content.spacing
+  %h1= @user.name
+
+  .row-fluid
+    %section.profiel
+      .row-fluid
+        %article.span6
+          %img{:src => "http://placehold.it/710x600"}
+          %span.skype= @user.skypename
+          %span.karma Karma
+          %span.karmascore= @user.score
+        %article.span17.offset1
+          %p= @user.username
+          %p= @user.bio
+
+  .row-fuild
+    %section.boxen
+      %article.span12.ideeen
+        %h3= "Ideeen van " + @user.username
+        %ul
+          %li 
+            %span.datum 00/00/0000
+            %span.headline adsfsdfasdf asdfasdf asdf
+      %article.span12.challenges
+        %h3= "Challenges " + @user.username
+        %ul
+          %li 
+            %span.datum 00/00/0000
+            %span.headline adsfsdfasdf asdfasdf asdf
+
+
+
+
 .spacing
   .row-fluid
     .span24
@@ -40,3 +73,4 @@
                     - if idea.image.present?
                       =link_to [idea.channel, idea] do
                         %div=image_tag idea.image.url(:front)
+

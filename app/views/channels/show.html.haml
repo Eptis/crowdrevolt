@@ -1,32 +1,33 @@
 %h1.spacing.pageheader= @channel.title
-.row-fluid
-  .slopel.orange
-    .slopelshape
+-if @live || @upcoming
   .row-fluid
-    %article.span24
-      .spacing.highlight
-        - if @live
-          %h2= @live.title
-          .row-fluid
-            .span8
-              / .imgmask
-              =image_tag @live.image.url(:front)
-            .span9
-              %h2= @live.title
-              .text=smart_truncate(strip_tags(@live.description), :words => 40).html_safe
-        - elsif @upcoming
-
-          .row-fluid
-            .rotate
+    .slopel.orange
+      .slopelshape
+    .row-fluid
+      %article.span24
+        .spacing.highlight
+          - if @live
+            %h2= @live.title
+            .row-fluid
               .span8
                 / .imgmask
-                =image_tag @upcoming.image.url(:front)
-              .span16
-                %h3 Volgende livestream
-                %h2= @upcoming.title
-                .text=smart_truncate(strip_tags(@upcoming.description), :words => 40).html_safe
-  .sloper.orange
-    .slopershape
+                =image_tag @live.image.url(:front)
+              .span9
+                %h2= @live.title
+                .text=smart_truncate(strip_tags(@live.description), :words => 40).html_safe
+          - elsif @upcoming
+
+            .row-fluid
+              .rotate
+                .span8
+                  / .imgmask
+                  =image_tag @upcoming.image.url(:front)
+                .span16
+                  %h3 Volgende livestream
+                  %h2= @upcoming.title
+                  .text=smart_truncate(strip_tags(@upcoming.description), :words => 40).html_safe
+    .sloper.orange
+      .slopershape
 
 .spacing
   .row-fluid
@@ -96,7 +97,8 @@
                     - @episodes.each do |episode|
                       %article.span7
                         =link_to [@channel, episode] do
-                          =image_tag episode.image.url(:front)
+                          -if episode.image
+                            =image_tag episode.image.url(:front)
                     .span24=link_to "Vorige uitzendingen", [@channel, :episodes], :class => "btn"
 
     %aside.span6
