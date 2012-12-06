@@ -30,27 +30,40 @@
       .slopershape
 
 .spacing
-  .row-fluid
-    %section.span18.content
-      / %h2= t("episodes")
-      / - @channel.episodes.each do |episode|
-      /   =link_to episode.title, [@channel, episode]
+.row-fluid
+  %section.span18.content
+    / %h2= t("episodes")
+    / - @channel.episodes.each do |episode|
+    /   =link_to episode.title, [@channel, episode]
 
-      .row-fluid
+    .row-fluid
 
-        %section.span12.chat
-          %article
+      %section.span9.chat
+        %article
+
+          .sloper.black
+            .slopershape
+          .smallspacing
             %h2 Chat mee
             %ul#chatBox
-              = render @channel.messages
-            =form_for [@channel, Message.new], :remote => true do |f|
-              - unless current_user
-                =f.text_field :name
-                =f.email_field :email
-              =f.text_field :content, :id => "new_message"
-              =f.submit "Send"
+              -if @channel.messages.present?
+                = render @channel.messages
 
-        %section.span12.challenges
+            .chatForm
+              =form_for [@channel, Message.new], :remote => true do |f|
+                - unless current_user
+                  =f.text_field :name
+                  =f.email_field :email
+                =f.text_field :content, :id => "new_message"
+                =f.submit "Send"
+          .slopel.black
+            .slopelshape
+
+
+      %section.span15.challenges
+        .sloper.black
+          .slopershape
+        .smallspacing
           %article
             %h2= t("challenges")
             %p Sed posuere consectetur est at porta ac consectetur ac, vestibulum at eros. Sed posuere consectetur est at lobortis. Nulla vitae elit libero, a pharetra augue. Meer informatie kun je vinden bij Karma & Rewards
@@ -60,10 +73,11 @@
 
             =link_to  t("post_idea"), [:new, @channel, :idea], :class => "btn"
 
-      .row-fluid
-        .span24
-          .row-fluid
-            .span24
+    .row-fluid
+      .span24
+        .row-fluid
+          .span24
+            .spacing
               %section.span12
                 %h2 Changemaker Blogspots
                 %ul.itemlist
@@ -80,15 +94,17 @@
 
               %section.span12
                 %h2 Ingezonden ideeën
-                - @ideas.each do |idea|
-                  .row-fluid
-                    %article.span24
-                      =link_to [@channel, idea] do
-                        %h3=smart_truncate(strip_tags( idea.title), :words => 5).html_safe
-                      =link_to [@channel, idea] do
-                        %img.span6{:src => "http://placehold.it/110x60"}
-                      .span16
-                        .text=smart_truncate(strip_tags(idea.description), :words => 20).html_safe
+                %ul.itemlist
+                  - @ideas.each do |idea|
+                    %li
+                      .row-fluid
+                        %article.span24
+                          =link_to [@channel, idea] do
+                            %h3=smart_truncate(strip_tags( idea.title), :words => 5).html_safe
+                          =link_to [@channel, idea] do
+                            %img.span6{:src => "http://placehold.it/110x60"}
+                          .span16
+                            .text=smart_truncate(strip_tags(idea.description), :words => 20).html_safe
 
               .row-fluid
                 %section.span24.laatste_afleveringen_klein
@@ -101,16 +117,19 @@
                             =image_tag episode.image.url(:front)
                     .span24=link_to "Vorige uitzendingen", [@channel, :episodes], :class => "btn"
 
-    %aside.span6
+  %aside.span6.sidebar
+    .sloper.black
+      .slopershape
+    .spacing
       %section.project-status
         %article
           %h4 Projectstatus
-          %p= @channel.status
+          %p blabla babafsd asdfasdf asd
 
       %section.over_dit_kanaal
         %article
           %h4= @channel.title
-          %p=raw @channel.description
+          .text=raw @channel.description
 
       %section.changemakers
         %article
@@ -130,12 +149,8 @@
           %ul
             %li Dit is een link
             %li En nog een link
-
-      .row-fluid
-      %section.twitter
-        %article
-          %h4 Twitterfeed
-          %p Hier komen de tweets
+    .slopel.black
+      .slopelshape
 
 
 - @channel_clean = @channel.id.to_s + @channel.title.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '') + "/channel"
@@ -148,3 +163,4 @@
     });
 
   })
+  scrollChatbox();

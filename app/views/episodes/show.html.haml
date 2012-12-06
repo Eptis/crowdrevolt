@@ -1,105 +1,121 @@
 %section.span18.content
-  %header
-    %h1= @channel.title
-
-
+  / %h2= @channel.title
   .row-fluid
     %section.span24.livestream
+      .spacing
+
+        .row-fluid
+          %article.span24
+            %h1.pageheader= @episode.title
+            .row-fluid
+              .span15
+                %img{:src => "http://placehold.it/850x410"}
+                .row-fluid
+                  %article.vraag_stellen
+                    .Toggle= t("ask_question")
+                    .toggler
+                      %h3 Stel een vraag
+
+                      =form_for [@episode.channel, @episode, Question.new], :remote => true do |f|
+                        =f.text_field :question, :id => "new_question"
+                        - unless current_user
+                          =f.text_field :name
+                          =f.text_field :email
+                        =f.submit "Send"
+
+                      -if current_user
+                        =form_tag :available, :method => 'post', :remote => true do |f|
+                          =check_box_tag :available, :id => "available"
+                          =submit_tag "Send"
+
+                      .row-fluid
+                        %article.span24.vragen
+                          %ul#questions
+                            =render :partial => 'admin/questions/question', :collection => @episode.questions, :as => :question
+                          %h3 Vragen van kijkers
+                          %h5 Gebruikersnaam
+                          %p Vraag
+                          %h5 Gebruikersnaam
+                          %p Vraag
+                          %h5 Gebruikersnaam
+                          %p Vraag
+                          %h5 Gebruikersnaam
+                          %p Vraag
+
+              .span9.chat
+                .sloper.black
+                  .slopershape
+                .smallspacing
+                  %h3 Live chat
+                  %ul#chatBox
+                    -if @episode.messages.present?
+                      = render @episode.messages
+                  / -= request.original_url + "/messages/new"
+                  / = request + "/messages/new"
+                  .chatForm
+                    =form_for [@episode.channel, @episode, Message.new], :remote => true do |f|
+                      =f.text_field :content, :id => "new_message"
+                      - unless current_user
+                        = f.label :naam
+                        =f.text_field :name
+                        = f.label :email
+                        =f.text_field :email
+                      =f.submit "Send"
+                .slopel.black
+                  .slopelshape
+
+
+
+  / .row-fluid
+  /   .spacing
+  /     %section.span8
+  /       .row-fluid
+  /         %article.span24.twitterfeed
+  /           %h3 Twitterfeed
+  /           %p Tweet #crowdrevolt
+  /           %p Tweet #crowdrevolt
+  /           %p Tweet #crowdrevolt
+  /           %p Tweet #crowdrevolt
+  /           %p Tweet #crowdrevolt
+  /           %p Tweet #crowdrevolt
+  /           %p Tweet #crowdrevolt
+  /           %p Tweet #crowdrevolt
+
+
+%aside.span6.sidebar
+  .sloper.black
+    .slopershape
+  .spacing
+    %section.project-status
+      %article
+        %h4 Projectstatus
+        %p blabla babafsd asdfasdf asd
+
+    %section.over_dit_kanaal
+      %article
+        %h4= t("about_episode")
+        .text=raw @episode.description
+
+    %section.changemakers
+      %article
+        %h4 Changemakers
+        %img{:src => "http://placehold.it/110x150", :align => 'left'}
+        %p Lorem ipsum dolor sit amet, consectetur adi- piscing elit. Vivamus et turpis non mi sagittis rhoncus ac sed nisi. Aliquam et porta elit.
       .row-fluid
-        %article.span24
-          %h3= @episode.title
-          %p=raw @episode.description
-          .row-fluid
-            %img.span15{:src => "http://placehold.it/850x410"}
-            .span9
-              %h3 Live chat
-              %ul#chat
-                -if @episode.messages.present?
-                  = render @episode.messages
-              / -= request.original_url + "/messages/new"
-              / = request + "/messages/new"
-              .span12
-                =form_for [@episode.channel, @episode, Message.new], :remote => true do |f|
-                  =f.text_field :content, :id => "new_message"
-                  - unless current_user
-                    = f.label :naam
-                    =f.text_field :name
-                    = f.label :email
-                    =f.text_field :email
-                  =f.submit "Send"
+      %article
+        %h4 Changemakers
+        %img{:src => "http://placehold.it/110x150", :align => 'left'}
+        %p Lorem ipsum dolor sit amet, consectetur adi- piscing elit. Vivamus et turpis non mi sagittis rhoncus ac sed nisi. Aliquam et porta elit.
 
-
-  .row-fluid
-    %section.span15
     .row-fluid
-      %article.span16.vraag_stellen
-        %h3 Stel een vraag
-        
-        =form_for [@episode.channel, @episode, Question.new], :remote => true do |f|
-          =f.text_field :question, :id => "new_question"
-          - unless current_user
-            =f.text_field :name
-            =f.text_field :email
-          =f.submit "Send"
-
-        .row-fluid
-          %article.span24.vragen
-            %ul#questions
-              =render :partial => 'admin/questions/question', :collection => @episode.questions, :as => :question
-            %h3 Vragen van kijkers
-            %h5 Gebruikersnaam
-            %p Vraag
-            %h5 Gebruikersnaam
-            %p Vraag
-            %h5 Gebruikersnaam
-            %p Vraag
-            %h5 Gebruikersnaam
-            %p Vraag
-
-  
-      %section.span8
-        .row-fluid
-          %article.span24.twitterfeed
-            %h3 Twitterfeed
-            %p Tweet #crowdrevolt
-            %p Tweet #crowdrevolt
-            %p Tweet #crowdrevolt
-            %p Tweet #crowdrevolt
-            %p Tweet #crowdrevolt
-            %p Tweet #crowdrevolt
-            %p Tweet #crowdrevolt
-            %p Tweet #crowdrevolt
-
-
-%aside.span6
-  %section.project-status
-    %article
-      %h4 Projectstatus
-      %p blabla babafsd asdfasdf asd
-
-  %section.over_dit_kanaal
-    %article
-      %h4= @channel.title
-      %p=raw @channel.description
-
-  %section.changemakers
-    %article
-      %h4 Changemakers
-      %img{:src => "http://placehold.it/110x150", :align => 'left'}
-      %p Lorem ipsum dolor sit amet, consectetur adi- piscing elit. Vivamus et turpis non mi sagittis rhoncus ac sed nisi. Aliquam et porta elit.
-    .row-fluid
-    %article
-      %h4 Changemakers
-      %img{:src => "http://placehold.it/110x150", :align => 'left'}
-      %p Lorem ipsum dolor sit amet, consectetur adi- piscing elit. Vivamus et turpis non mi sagittis rhoncus ac sed nisi. Aliquam et porta elit.
-
-  .row-fluid
-  %section.links
-    %article
-      %h4 Aanbevolen links
-      %ul
-        %li Dit is een link
-        %li En nog een link
+    %section.links
+      %article
+        %h4 Aanbevolen links
+        %ul
+          %li Dit is een link
+          %li En nog een link
+  .slopel.black
+    .slopelshape
 
 
 
@@ -115,4 +131,8 @@
     faye.subscribe("/#{@episode_clean.to_s}/questions", function(data) {
       eval(data);
     });
+  })
+
+  $("available").change(function(){
+    $(this).closest("form").submit();
   })

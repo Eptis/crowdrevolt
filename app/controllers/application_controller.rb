@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  before_filter :require_login
-  before_filter :retrieve_channel
+  before_filter :require_login, :except => :search
+  before_filter :retrieve_channels
 
   def give_reward(object, *points)
     @reward = Reward.new
@@ -98,7 +98,7 @@ class ApplicationController < ActionController::Base
     return true if current_user
   end
 
-  def retrieve_channel
+  def retrieve_channels
     @channels = Channel.all
   end
 

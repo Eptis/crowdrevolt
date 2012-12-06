@@ -1,28 +1,33 @@
-%section.span24
-  %article.intro.spacing
-    .row-fluid
-      .span8
-        %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Sed posuere consectetur est at lobortis. Nulla vitae elit libero, a pharetra augue. Meer informatie kun je vinden bij Karma & Rewards
-        .btn Meld je aan!
-      %h1.span16 Slimme oplossingen voor oude ideeen
+.slopel.menu.black
+  .slopershape
+.row-fluid
+  %section.span24
+    %article.intro
+      .spacing
+        .row-fluid
+          .homespacefix
+          %h1.span16 Slimme oplossingen voor oude ideeen
+          .span8.pull-right.text
+            %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Sed posuere consectetur est at lobortis. Nulla vitae elit libero, a pharetra augue. Meer informatie kun je vinden bij Karma & Rewards
+            .btn Meld je aan!
+            .homespacefix
 .row-fluid.spacefix
-  .slopel.grey
+  .slopel.orange
     .slopelshape
   .row-fluid
     %section.volgende_uitzending.span24.v-spacing
       %article
-        .span8
-          .imgmask
+        .spacing
+          .span10
             %img{:src => "http://mute.rigent.com/pics/protest_crowd.jpg"}
-        .span16
-          .spacing
+          .span14
             %h2 Titel volgende uitzending
             %p Maecenas faucibus mollis interdum. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Etiam porta sem malesuada magna mollis euismod. Donec ullamcorper nulla non metus auctor fringilla. Cras mattis consectetur purus sit amet fermentum.
-  .sloper.grey
+  .sloper.orange
     .slopershape
 .clear
 .row-fluid.spacefix
-  .slopel.orange
+  .slopel.grey
     .slopelshape
   .row-fluid
     %aside.span24.sidebar
@@ -40,7 +45,7 @@
                 %h4= recent.title
                 .text=smart_truncate(strip_tags(recent.description), :words => 20).html_safe
                 =link_to "Lees meer", [recent.challenge.channel , recent.challenge, recent]
-  .sloper.orange
+  .sloper.grey
     .slopershape
 
 .row-fluid
@@ -56,9 +61,10 @@
               .span12
                 .text=raw channel.description
               .span12
-                .span12
-                  %img{:src => "http://placehold.it/250x140"}
-                .span12
-                  %h5 Volgende livestream
-                  %p Maecenas faucibus mollis interdum. Vivamus sagittis.
+                .spacing
+                  .span12
+                    %img{:src => "http://placehold.it/250x140"}
+                  .span12
+                    %h5 Volgende livestream
+                    %p Maecenas faucibus mollis interdum. Vivamus sagittis.
 

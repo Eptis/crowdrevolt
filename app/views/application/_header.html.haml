@@ -1,29 +1,39 @@
-%header
+%header.main
   .row-fluid
-    .span3
+    .span3.logo
       =link_to :root do
         =image_tag(asset_path("logo.png"))
-    .span14
-      %nav#hoofdmenu
-        .row-fluid
-          %ul.span24
-            - 9.times do
-              - @channels.each do |channel|
-                %li.nomargin.span8=link_to channel.title, channel
+    .Toggle
+      \- Menu -
+    .row-fluid.toggler
+      .span14.hoofdmenu
+        %nav.hoofdmenu
+          .row-fluid
+            %ul.span24
+              - 9.times do
+                - @channels.each do |channel|
+                  %li.nomargin.span8=link_to channel.title, channel
 
 
-    .span7.usermenu
-      .row-fluid
+      .span7.usermenu
         %nav.submenu
-          %ul.span24
-            %li=link_to t("contact"), :contact
-            %li=link_to t("faq"), :faq
-            %li=link_to t("about"), :about
-            %li=link_to t("karma"), :karma
-      - if current_user
-        .row-fluid=render :partial => "users/user", :locals => {:user => current_user}
-        =link_to "uitloggen", :user_logout
-      .row-fluid= render("searchform")
-/ .slopel.orange
-/   .slopershape
+          .row-fluid
+            %ul.span24
+              %li=link_to t("contact"), :contact
+              %li=link_to t("faq"), :faq
+              %li=link_to t("about"), :about
+              %li=link_to t("karma"), :karma
+        - if current_user
+          .user_credentials
+            .row-fluid=render :partial => "users/user", :locals => {:user => current_user}
+            / =link_to "uitloggen", :user_logout
+        -else
+          %nav.submenu.user_credentials
+            .row-fluid
+              %ul.span24
+                %li.pull-right=link_to t("inloggen"), :login
+                %li.pull-right=link_to t("registreren"), :register
+        .clear
+        .row-fluid= render("searchform")
+
 

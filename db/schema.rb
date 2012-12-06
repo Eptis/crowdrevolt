@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121130131859) do
+ActiveRecord::Schema.define(:version => 20121206145454) do
 
   create_table "admins", :force => true do |t|
     t.string   "username"
@@ -79,8 +79,9 @@ ActiveRecord::Schema.define(:version => 20121130131859) do
     t.string   "title"
     t.text     "description"
     t.string   "status"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+    t.boolean  "archived",    :default => false
   end
 
   create_table "comments", :force => true do |t|
@@ -248,7 +249,7 @@ ActiveRecord::Schema.define(:version => 20121130131859) do
     t.boolean  "optin"
     t.string   "name"
     t.text     "bio"
-    t.integer  "score",                           :default => 0
+    t.integer  "score",                           :default => 0,    :null => false
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"

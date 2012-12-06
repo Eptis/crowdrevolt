@@ -1,0 +1,15 @@
+.slopel.grey
+  .slopelshape
+%footer
+  .spacing
+    %h4= t("channels")
+    .row-fluid
+      %ul.itemlist
+        -@channels.each do |channel|
+          %li=link_to channel.title, channel
+    .row-fluid
+      %ul.itemlist.pull-right
+        %li=link_to t("contact"), :contact
+        %li=link_to t("faq"), :faq
+        %li=link_to t("about"), :about
+        %li=link_to t("karma"), :karma

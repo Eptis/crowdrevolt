@@ -82,6 +82,7 @@ Crowdrevolt::Application.routes.draw do
 
   # gebruiker Inloggen
   match 'login' => 'user_sessions#new', :as => :login
+  post 'available' => 'episodes#available', :as => :available
   get    "inloggen"  => "user_sessions#new",     :as => :user_login
 
   get    "zoeken"  => "application#search",     :as => :search

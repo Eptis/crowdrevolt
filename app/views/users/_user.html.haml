@@ -1,14 +1,13 @@
 / .pull-right
 .row-fluid
   .span24
-    .span9
+    .avatar
       -if user.avatar.present?
         =image_tag user.avatar.url(:medium)
       -else
         %img{:src=> 'http://placehold.it/300x200', :width => 75, :height => 50}
-    .span15.user
-      .span14
-        =link_to user.username, user
-        %p Karmascore:
-        %p= karmarank(user.score)
-      .karmascore.span9=user.score
+    .user_info
+      =link_to user.username, user
+      %p Karmascore:
+      %p= karmarank(user.score)
+    .karmascore=user.score

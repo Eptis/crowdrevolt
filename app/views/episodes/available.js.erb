@@ -1,0 +1,4 @@
+<% broadcast ("/available") do %>
+  $("#available").append("<%= escape_javascript render(@available, locals => {:available => @available}) %>");
+<%end%>
+$("#new_question")[0].reset();

@@ -16,7 +16,17 @@ $(document).ready(function(){
   $("#appreciableBtn").live("click", function(){
     $("#appreciableForm").find("form").submit();
   })
-  scrollChatbox();
+
+  $(".Toggle").on("click", function(){
+     $(this).next().toggleClass('open')
+  });
+
+  $(window).on("resize", function(){
+    $("menutoggler").css("display", "block")
+  })
+
+
+
 
 });
 

@@ -8,9 +8,10 @@
 $oranje:#ff5400;
 $zwart:#070707;
 $wit:#ffffff;
-$grijs_licht:#181818;
+$grijs_licht:#262626;
 $grijs_donker:#151515;
 $oranje_tint:$oranje;
+$input_grey:#3d3d3d;
 $slopeheight:100px;
 
 %transition{
@@ -26,15 +27,16 @@ body{
   font-family:"Open Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif !important;
   font-size:15px !important;
   line-height:1.5 !important;
-  padding-bottom:50px;
   padding-top:0px !important;
   background:$zwart !important;
   max-width: 1920px;
 }
 header{
-  padding:30px 15px;
+  padding:30px 15px 0 15px;
 
 }
+.slopel.menu{margin-bottom:-$slopeheight;}
+
 
 h1, h2, h3, h4, h5, h6{
   font-family:"Open Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif !important;
@@ -78,6 +80,7 @@ p, .text{
 
 .submenu{
   /*max-width:600px;*/
+  padding:12px 0;
   li{
   float:right;
   margin-left: 1.5em;
@@ -115,13 +118,18 @@ a{
   }
 }
 
+
+.chat{background: $oranje;}
+.smallspacing{padding:15px;}
 #chatBox{
   height:300px;
+  width:100%;
   overflow: scroll;
   ul{
     width:100%;
   }
 }
+
 
 
 
@@ -131,10 +139,9 @@ a{
 
 
 .sidebar{
-  background: $oranje_tint;
-  a{
-    color:$grijs_licht !important;
-  }
+  background: $grijs_licht;
+  .spacing{padding:36px !important;}
+  section{margin-bottom: 1.5em}
 }
 
 .wrapper{
@@ -143,14 +150,14 @@ a{
 }
 
 
-#hoofdmenu{
+.hoofdmenu{
+  *{@extend %transition}
   min-height:100px;
   li{
     @extend %transition;
     position: relative;
-    &:hover{background: $oranje; color:#fff;
-      a{color:#fff !important;}
-    }
+    a{color:#fff !important;}
+    &:hover{background: $oranje; color:#fff;}
     a{font-size:18px; text-transform: uppercase; font-weight: bold;
     @extend %transition;
     position: relative; width:100%; height:100%; display: block; text-align: center;
@@ -158,7 +165,6 @@ a{
 
     }
     border-bottom:1px solid $grijs_licht;
-    border-right:1px solid $grijs_licht;
     text-align: center;
   }
 }
@@ -184,12 +190,45 @@ a{
 .sloper{
   @extend %slope
 }
+.slopershape{
+  left:0;
+}
+.slopelshape{
+  right:0;
+}
 
 .orange{
   .slopershape{
     border-top: 0px solid $oranje_tint;
     border-left: 1920px solid $oranje_tint;
     border-right: 0px solid $oranje_tint;
+    border-bottom: $slopeheight solid transparent;
+    position: absolute;
+    top:0;
+    height:0;
+    // width:100%;
+  }
+
+  .slopelshape{
+    border-top: $slopeheight solid transparent;
+    position: absolute;
+    top:0;
+    border-right: 1920px solid $oranje_tint;
+    border-bottom: 0px solid $oranje_tint;
+    border-left: 0px solid $oranje_tint;
+    height:0;
+    // width:100%;
+
+  }
+}
+
+
+
+.black{
+  .slopershape{
+    border-top: 0px solid $zwart;
+    border-left: 1920px solid $zwart;
+    border-right: 0px solid $zwart;
     border-bottom: $slopeheight solid transparent;
     position: absolute;
     top:0;
@@ -203,9 +242,9 @@ a{
     position: absolute;
     top:0;
     left:0px;
-    border-right: 1920px solid $oranje_tint;
-    border-bottom: 0px solid $oranje_tint;
-    border-left: 0px solid $oranje_tint;
+    border-right: 1920px solid $zwart;
+    border-bottom: 0px solid $zwart;
+    border-left: 0px solid $zwart;
     height:0;
     // width:100%;
 
@@ -241,7 +280,7 @@ a{
   }
 }
 .volgende_uitzending{
-  background: $grijs_licht
+  background: $oranje
 }
 
 .clear{clear:both};
@@ -255,18 +294,18 @@ $degree:3deg;
 .imgmask{
   overflow: hidden;
   position: relative;;
-  -webkit-transform: skewY(-$degree);
-    -moz-transform: skewY(-$degree);
-    -ms-transform: skewY(-$degree);
-    -o-transform: skewY(-$degree);
-    transform: skewY(-$degree);
-  *{
-    -webkit-transform: skewY($degree);
-    -moz-transform: skewY($degree);
-    -ms-transform: skewY($degree);
-    -o-transform: skewY($degree);
-    transform: skewY($degree);
-  }
+  // -webkit-transform: skewY(-$degree);
+  //   -moz-transform: skewY(-$degree);
+  //   -ms-transform: skewY(-$degree);
+  //   -o-transform: skewY(-$degree);
+  //   transform: skewY(-$degree);
+  // *{
+  //   -webkit-transform: skewY($degree);
+  //   -moz-transform: skewY($degree);
+  //   -ms-transform: skewY($degree);
+  //   -o-transform: skewY($degree);
+  //   transform: skewY($degree);
+  // }
   img{
     height:auto;
     width:100%;
@@ -280,10 +319,11 @@ $degree:3deg;
 }
 
 .intro{
-  h1{font-size:5em !important; line-height:1.5 !important;}
+  h1{font-size:5em; line-height:1.5 !important; }
   background: url(image_path("home_bg.jpg")) no-repeat center center;
   min-height:500px;
   background-size:cover;
+
 }
 
 .highlight{
@@ -298,6 +338,7 @@ $degree:3deg;
 
 
 ul.itemlist{
+  padding-right:6%;
   li{padding-bottom: 15px; border-bottom: 1px solid $grijs_licht}
 }
 
@@ -313,6 +354,7 @@ ul{
 
 .pageheader{
   font-size:3em;
+  line-height: 1.5;
 }
 
 @media screen and (max-width:1440px){
@@ -322,8 +364,115 @@ ul{
   }
 }
 
-/*.rotate{
-  -webkit-transform:rotate(-$degree);
-  z-index:99;
-  position: relative;
-}*/
+.homespacefix{
+  height:$slopeheight;
+  width:100%;
+
+}
+
+input[type="text"], input[type="password"]{
+  border-radius: 0 !important;
+  border:none !important;
+  background: $input_grey !important;
+  color:#fff !important;
+}
+
+.avatar{float:left; margin-right:9px; margin-bottom: 9px}
+.karmascore{float:left; padding-left:9px ;}
+.user_info{float:left; }
+
+.Toggle{ display: none; padding:15px 0px; text-align: center; cursor: pointer; background: $oranje; }
+header .Toggle{margin-top:25px;}
+
+
+$slopefixheight:36px;
+// mobile only
+@media screen and(max-width:640px){
+  .slopel, .sloper{ height:$slopefixheight !important;}
+  .homespacefix{height:$slopefixheight;}
+  .slopel.menu{margin-bottom:-$slopefixheight;}
+  .spacefix{margin-top:-$slopefixheight;}
+  .slopershape{border-bottom: $slopefixheight solid transparent !important;}
+  .slopelshape{border-top: $slopefixheight solid transparent !important;}
+
+  .spacing{padding:15px;}
+  .Toggle{ display: block;}
+  .toggler{max-height: 0; overflow: hidden;
+  //   -webkit-transition: all 500ms ;
+  // -moz-transition: all 500ms ;
+  // -ms-transition: all 500ms ;
+  // -o-transition: all 500ms ;
+  // transition: all 500ms ;
+  }
+  .logo a{
+      width:150px;
+      display: block;
+      margin:0 auto;
+
+  }
+
+
+  .intro h1, .pageheader{font-size:2em !important; line-height:1.5 !important; }
+}
+
+// tablet en mobile
+@media screen and (max-width:960px){
+  header.main{
+    width:96%;
+    padding:30px 2% 0;
+  }
+}
+
+
+//tablet only
+@media screen and(min-width:641px) and (max-width:960px){
+
+  .hoofdmenu{
+    ul{
+      li{ width:46% !important; padding:0 2% !important; float: left !important; }
+    }
+  }
+
+  .usermenu{width:100% !important; margin-top:9px; float:left !important;
+    .submenu:first-child{ float:right; li{float:right !important; margin-right:6px;}}
+    .user_credentials{float: left;  width:50% !important;}
+  }
+  .submenu{
+    width:50%;
+    float: left
+  }
+}
+
+
+@media screen and(min-width:641px) and (max-width:960px){
+  .span14.hoofdmenu{
+    width:75% !important;
+    float:left !important;
+    margin-left:0 !important;
+  }
+  .logo{ width:25% !important; margin-bottom:15px !important; float:left !important;}
+}
+
+
+@media screen and(min-width:1024px){
+  .livestream .spacing{padding-right:0;}
+}
+
+
+
+body{overflow-x:hidden;}
+
+.toggler.open{
+  max-height:100% !important;
+}
+
+@media screen and (max-width:1280px){
+  .content{width:100% !important;}
+  .sidebar{width:100% !important; margin-left:0 !important;}
+}
+
+footer{
+  padding-bottom:50px;
+  background: $grijs_licht;
+  li{float:left; margin:12px;}
+}
