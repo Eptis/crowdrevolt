@@ -245,7 +245,7 @@ a{
 }
 
 .clear{clear:both};
-.spacefix{margin-top:$slopeheight*-1;}
+.spacefix{margin-top:$slopeheight*-1; float: left}
 
 a:hover{
   text-decoration: none !important;
@@ -281,6 +281,9 @@ $degree:3deg;
 
 .intro{
   h1{font-size:5em !important; line-height:1.5 !important;}
+  background: url(image_path("home_bg.jpg")) no-repeat center center;
+  min-height:500px;
+  background-size:cover;
 }
 
 .highlight{
