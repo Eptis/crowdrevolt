@@ -13,17 +13,17 @@ class EpisodesController < ApplicationController
     @questions = Question.all
     respond_to do |format|
       format.html
-      format.json
+      format.js
     end
   end
 
   def available
-
     @available = current_user
     respond_to do |format|
-      format.html
-      format.json
+      # format.html
+      format.js
     end
+
   end
 private
 
