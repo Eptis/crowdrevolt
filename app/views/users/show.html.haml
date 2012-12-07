@@ -1,76 +1,61 @@
-%section.span18.content.spacing
-  %h1= @user.name
-
+%section.span24.content.spacing
   .row-fluid
     %section.profiel
       .row-fluid
         %article.span6
           %img{:src => "http://placehold.it/710x600"}
-          %span.skype= @user.skypename
-          %span.karma Karma
-          %span.karmascore= @user.score
-        %article.span17.offset1
-          %p= @user.username
-          %p= @user.bio
+          / =image_tag @user.avatar.url
+        %article.span18
+          - if @user.name
+            %h1= @user.name + " " + @user.username
+          - else @user.name
+            %h1= @user.username
+          %h3= karmarank(@user.score).to_s + " " + @user.score.to_s
+          %h4= @user.skypename if @user.show_skype
 
-  .row-fuild
-    %section.boxen
-      %article.span12.ideeen
-        %h3= "Ideeen van " + @user.username
-        %ul
-          %li 
-            %span.datum 00/00/0000
-            %span.headline adsfsdfasdf asdfasdf asdf
-      %article.span12.challenges
-        %h3= "Challenges " + @user.username
-        %ul
-          %li 
-            %span.datum 00/00/0000
-            %span.headline adsfsdfasdf asdfasdf asdf
-
-
-
+          - if current_user
+            =link_to :user_logout, :class => "btn btn-danger" do
+              %i.icon-off.icon-white
+              =t("logout")
+            = link_to 'Edit', edit_user_path(@user), :class => "btn" if @user == current_user
+          .text= @user.bio
 
 .spacing
   .row-fluid
-    .span24
-      .span8
-        =image_tag @user.avatar.url
-        %h2= @user.username
-        %h3= @user.score
-      %h3= @user.name
-      %h4= @user.skypename if @user.show_skype
-
-  = link_to 'Edit', edit_user_path(@user) if @user == current_user
-
-  .row-fluid
+    %h2= t("by_this_user")
     .span24
       .span12
+        %h3= t("solutions")
         .row-fluid
-          %ul.span24
+          %ul.span24.itemlist
             .row-fluid
             - @solutions.each do |sol|
               .row-fluid
                 %li.span24
-                  .span12
-                    %h4=link_to sol.title,[sol.challenge.channel, sol.challenge, sol]
-                    .text=smart_truncate(strip_tags(sol.description), :words => 20).html_safe
-                  .span12
-                    - if sol.image.present?
-                      =link_to [sol.challenge.channel, sol.challenge, sol] do
-                        %div=image_tag sol.image.url(:front)
+                  .smallspacing
+                    .span12
+                      %h4=link_to sol.title,[sol.challenge.channel, sol.challenge, sol]
+                      .text=smart_truncate(strip_tags(sol.description), :words => 20).html_safe
+                      =link_to t("read_more"), [sol.challenge.channel, sol.challenge, sol]
+                    .span12
+                      - if sol.image.present?
+                        =link_to [sol.challenge.channel, sol.challenge, sol] do
+                          %div=image_tag sol.image.url(:front)
       .span12
+        %h3= t("ideas")
         .row-fluid
-          %ul.span24
+          %ul.span24.itemlist
             .row-fluid
             - @ideas.each do |idea|
               .row-fluid
                 %li.span24
-                  .span12
-                    %h4=link_to idea.title,[idea.channel, idea]
-                    .text=smart_truncate(strip_tags(idea.description), :words => 20).html_safe
-                  .span12
-                    - if idea.image.present?
-                      =link_to [idea.channel, idea] do
-                        %div=image_tag idea.image.url(:front)
+                  .smallspacing
+                    .span12
+                      %h4=link_to idea.title,[idea.channel, idea]
+                      .text=smart_truncate(strip_tags(idea.description), :words => 20).html_safe
+                      =link_to t("read_more"), [idea.channel, idea]
+                    .span12
+                      - if idea.image.present?
+                        =link_to [idea.channel, idea] do
+                          %div=image_tag idea.image.url(:front)
 
