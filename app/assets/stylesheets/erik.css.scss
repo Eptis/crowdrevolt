@@ -4,12 +4,16 @@
 
 
 // Challengepagina
-.challlenge_show {
+.content {
+  h1 {
+    padding:0;
+    margin:0;
+  }
   .btn {
     margin:0.9em 0 0.6em 0;
   }
-  .text {
-
+  img {
+    padding:0.5em 0 0 0;
   }
 }
 .alle_oplossingen {
@@ -19,8 +23,8 @@
   .span24 {
     margin:0;
   }
-  p {
-    font-size:0.9em;
+  .text {
+    font-size:1.0em !important
   }
   author {
   	font-size:0.9em;
