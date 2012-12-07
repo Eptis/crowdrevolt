@@ -1,15 +1,15 @@
 // De titel, te verdienen punten en omschrijving kun je zo laten, hieromheen de layout bouwen
-%section.span18.content
-  %header
-    %h1= @challenge.title
-    .points= @challenge.points
+%section.span18.content.spacing
+  %h1= @challenge.title
+  .points= @challenge.points
 
   .row-fluid
     %section.challlenge_show
       .row-fluid
         %article.span24
-          %p Mark van As - 28 oktober 2012 - 13:37 uur
-          %img{:src => "http://placehold.it/910x400", :align => 'left'}
+          %author Mark van As
+          %time= l(@challenge.created_at, :format => :full)
+          %img{:src => "http://placehold.it/910x400"}
 
           =link_to t("do_challenge"), [:new, @channel, @challenge, :solution], :class => "btn"
           %p=raw @challenge.description

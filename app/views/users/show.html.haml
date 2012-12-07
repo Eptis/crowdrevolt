@@ -31,46 +31,46 @@
 
 
 
-.spacing
-  .row-fluid
-    .span24
-      .span8
-        =image_tag @user.avatar.url
-        %h2= @user.username
-        %h3= @user.score
-      %h3= @user.name
-      %h4= @user.skypename if @user.show_skype
+/ .spacing
+/   .row-fluid
+/     .span24
+/       .span8
+/         =image_tag @user.avatar.url
+/         %h2= @user.username
+/         %h3= @user.score
+/       %h3= @user.name
+/       %h4= @user.skypename if @user.show_skype
 
-  = link_to 'Edit', edit_user_path(@user) if @user == current_user
+/   = link_to 'Edit', edit_user_path(@user) if @user == current_user
 
-  .row-fluid
-    .span24
-      .span12
-        .row-fluid
-          %ul.span24
-            .row-fluid
-            - @solutions.each do |sol|
-              .row-fluid
-                %li.span24
-                  .span12
-                    %h4=link_to sol.title,[sol.challenge.channel, sol.challenge, sol]
-                    .text=smart_truncate(strip_tags(sol.description), :words => 20).html_safe
-                  .span12
-                    - if sol.image.present?
-                      =link_to [sol.challenge.channel, sol.challenge, sol] do
-                        %div=image_tag sol.image.url(:front)
-      .span12
-        .row-fluid
-          %ul.span24
-            .row-fluid
-            - @ideas.each do |idea|
-              .row-fluid
-                %li.span24
-                  .span12
-                    %h4=link_to idea.title,[idea.channel, idea]
-                    .text=smart_truncate(strip_tags(idea.description), :words => 20).html_safe
-                  .span12
-                    - if idea.image.present?
-                      =link_to [idea.channel, idea] do
-                        %div=image_tag idea.image.url(:front)
+/   .row-fluid
+/     .span24
+/       .span12
+/         .row-fluid
+/           %ul.span24
+/             .row-fluid
+/             - @solutions.each do |sol|
+/               .row-fluid
+/                 %li.span24
+/                   .span12
+/                     %h4=link_to sol.title,[sol.challenge.channel, sol.challenge, sol]
+/                     .text=smart_truncate(strip_tags(sol.description), :words => 20).html_safe
+/                   .span12
+/                     - if sol.image.present?
+/                       =link_to [sol.challenge.channel, sol.challenge, sol] do
+/                         %div=image_tag sol.image.url(:front)
+/       .span12
+/         .row-fluid
+/           %ul.span24
+/             .row-fluid
+/             - @ideas.each do |idea|
+/               .row-fluid
+/                 %li.span24
+/                   .span12
+/                     %h4=link_to idea.title,[idea.channel, idea]
+/                     .text=smart_truncate(strip_tags(idea.description), :words => 20).html_safe
+/                   .span12
+/                     - if idea.image.present?
+/                       =link_to [idea.channel, idea] do
+/                         %div=image_tag idea.image.url(:front)
 
