@@ -418,8 +418,6 @@ $slopefixheight:36px;
   .intro h1, .pageheader{font-size:2em !important; line-height:1.5 !important; }
 }
 
-<<<<<<< HEAD
-
 .field{margin:2em 0;}
 input[type="text"], input[type="password"], input[type="email"]{
   outline:none;
@@ -450,7 +448,7 @@ label{ font-weight: 900; text-transform: uppercase;}
   }
 }
 
-=======
+
 // mobile only
 @media screen and (max-width:640px){
   header.main{
@@ -487,7 +485,6 @@ label{ font-weight: 900; text-transform: uppercase;}
 
   .user_credentials{float: left;  width:100% !important;}
 }
->>>>>>> d52446ab3e2e50267bd5e2a1ee518a68b21109f3
 
 
 // tablet en mobile
