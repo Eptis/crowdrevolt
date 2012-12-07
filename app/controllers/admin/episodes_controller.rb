@@ -20,7 +20,7 @@ class Admin::EpisodesController < AdminController
 
 
     if @episode.save
-      redirect_to([:admin, @channel, @episode], :flash => :success)
+      redirect_to([:admin, @channel], :flash => :success)
     else
       render("new")
     end
@@ -33,7 +33,7 @@ class Admin::EpisodesController < AdminController
   def update
     @episode = Episode.find(params[:id])
     if @episode.update_attributes(params[:episode])
-      redirect_to([:admin, @channel,  @episode])
+      redirect_to([:admin, @channel])
     else
       render("edit")
     end
@@ -42,7 +42,7 @@ class Admin::EpisodesController < AdminController
   def destroy
     @episode = Episode.find(params[:id])
     @episode.destroy
-    redirect_to([:admin,  @channel,  :episodes], :flash => :success)
+    redirect_to([:admin,  @channel], :flash => :success)
   end
 private
 

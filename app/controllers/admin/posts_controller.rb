@@ -18,7 +18,7 @@ class Admin::PostsController < AdminController
     @post.channel = @channel
     
     if @post.save
-      redirect_to([:admin, @channel, @post], :flash => :success)
+      redirect_to([:admin, @channel], :flash => :success)
     else
       render("new")
     end
@@ -31,7 +31,7 @@ class Admin::PostsController < AdminController
   def update
     @post = Post.find(params[:id])
     if @post.update_attributes(params[:post])
-      redirect_to([:admin, @channel, @post])
+      redirect_to([:admin, @channel])
     else
       render("edit")
     end
