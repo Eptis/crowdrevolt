@@ -11,7 +11,8 @@
             .row-fluid
               .span8
                 / .imgmask
-                =image_tag @live.image.url(:front)
+                - if @live.image
+                  =image_tag @live.image.url(:front)
               .span9
                 %h2= @live.title
                 .text=smart_truncate(strip_tags(@live.description), :words => 40).html_safe
@@ -21,7 +22,8 @@
               .rotate
                 .span8
                   / .imgmask
-                  =image_tag @upcoming.image.url(:front)
+                  - if @upcoming.image
+                    =image_tag @upcoming.image.url(:front)
                 .span16
                   %h3 Volgende livestream
                   %h2= @upcoming.title
