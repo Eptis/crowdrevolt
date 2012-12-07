@@ -46,6 +46,11 @@ nl:
   date:
     formats:
       default: "%d-%m-%Y %H:%M"
+  time:
+    formats:
+      default: "%d-%m-%Y %H:%M"
+      full: "%d %B %Y - %H:%M uur"
+      small: "%d-%m-%Y %H:%M uur"
   date:
     abbr_day_names:
     - zon

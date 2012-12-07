@@ -1,3 +1,35 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+// Challengepagina
+.challlenge_show {
+  .btn {
+    margin:0.9em 0 0.6em 0;
+  }
+  .text {
+
+  }
+}
+.alle_oplossingen {
+  h3 {
+    padding:1.4em 0 0 0;
+  }
+  .span24 {
+    margin:0;
+  }
+  p {
+    font-size:0.9em;
+  }
+  author {
+  	font-size:0.9em;
+    padding:0;
+    margin:0;
+  }
+  time {
+    font-size:0.9em;
+    padding:0;
+    margin:0;
+  }
+}

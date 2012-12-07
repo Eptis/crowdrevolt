@@ -172,6 +172,7 @@ a{
 
 .usermenu{
   border-left:1px solid $grijs_donker;
+  .user_credentials{float:right;  }
 }
 
 
@@ -411,6 +412,7 @@ $slopefixheight:36px;
   .intro h1, .pageheader{font-size:2em !important; line-height:1.5 !important; }
 }
 
+<<<<<<< HEAD
 
 .field{margin:2em 0;}
 input[type="text"], input[type="password"], input[type="email"]{
@@ -442,6 +444,44 @@ label{ font-weight: 900; text-transform: uppercase;}
   }
 }
 
+=======
+// mobile only
+@media screen and (max-width:640px){
+  header.main{
+    width:96%;
+    padding:30px 2% 0;
+  }
+  .submenu{
+    li{float:left !important; width: 33.3% !important; margin: 0 !important; text-align: center;}
+    width:100%;
+    float: left;
+  }
+
+  .searchform {
+    width: 100% !important;
+
+    form {
+      #search_field {
+        width: 75% !important;
+      }
+      #search_button {
+        width: 20% !important;
+      }
+
+    }
+
+
+  }
+
+
+
+  .searchform form #search_button {
+    width: 20% !important;
+  }
+
+  .user_credentials{float: left;  width:100% !important;}
+}
+>>>>>>> d52446ab3e2e50267bd5e2a1ee518a68b21109f3
 
 
 // tablet en mobile
@@ -464,7 +504,7 @@ label{ font-weight: 900; text-transform: uppercase;}
 
   .usermenu{width:100% !important; margin-top:9px; float:left !important;
     .submenu:first-child{ float:right; li{float:right !important; margin-right:6px;}}
-    .user_credentials{float: left;  width:50% !important;}
+    .user_credentials{float: right;  width:50% !important;}
   }
   .submenu{
     width:50%;
@@ -501,6 +541,7 @@ body{overflow-x:hidden;}
 }
 
 footer{
+  margin-top: 2em;
   padding-bottom:50px;
   background: $grijs_licht;
   li{float:left; margin:12px;}
