@@ -9,10 +9,10 @@
         %article.span24
           %author challenge.user.username -
           %time= l(@challenge.created_at, :format => :full)
-          %img{:src => "http://placehold.it/910x360"}
+          %img{:src => "http://placehold.it/900x360"}
 
           =link_to t("do_challenge"), [:new, @channel, @challenge, :solution], :class => "btn"
-          %p=raw @challenge.description
+          .text=raw @challenge.description
 
   .row-fluid
     %section.alle_oplossingen
@@ -35,13 +35,16 @@
                       .more=link_to "Lees meer >", [@channel, @challenge, solution]
 
 
-%aside.span6
-  %section.challenges_box
-    %article
-      %h4 Andere challenges
-      %ul
-        - @alternatives.each do |alt|
-          %li=link_to alt.name, [@channel, @challenge, alt]
+%aside.span6.sidebar
+  .sloper.black
+    .slopershape
+  .spacing
+    %section.challenges_box
+      %article
+        %h4 Andere challenges
+        %ul
+          - @alternatives.each do |alt|
+            %li=link_to alt.title, [@channel, @challenge, alt]
 
 
 
