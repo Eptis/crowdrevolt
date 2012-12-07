@@ -11,7 +11,8 @@ $wit:#ffffff;
 $grijs_licht:#262626;
 $grijs_donker:#151515;
 $oranje_tint:$oranje;
-$input_grey:#3d3d3d;
+// $input_grey:#3d3d3d;
+$input_grey:$grijs_licht;
 $slopeheight:100px;
 
 %transition{
@@ -370,12 +371,7 @@ ul{
 
 }
 
-input[type="text"], input[type="password"]{
-  border-radius: 0 !important;
-  border:none !important;
-  background: $input_grey !important;
-  color:#fff !important;
-}
+
 
 .avatar{float:left; margin-right:9px; margin-bottom: 9px}
 .karmascore{float:left; padding-left:9px ;}
@@ -414,6 +410,39 @@ $slopefixheight:36px;
 
   .intro h1, .pageheader{font-size:2em !important; line-height:1.5 !important; }
 }
+
+
+.field{margin:2em 0;}
+input[type="text"], input[type="password"], input[type="email"]{
+  outline:none;
+  // font-weight: 100;
+  border-radius: 0 !important;
+  border:1px solid transparent !important;
+  background: $input_grey !important;
+  color:#fff !important;
+  @extend %transition;
+  &:focus{border:1px solid $oranje !important; box-shadow: none !important; color:$oranje !important;}
+}
+
+label{ font-weight: 900; text-transform: uppercase;}
+
+@media screen and (min-width:1440px){
+  input.makeitbig{
+    font-size:4em !important;
+    width: 72%;
+    padding:4% !important;
+  }
+}
+
+@media screen and (min-width:768px){
+  input.makeitbig{
+    font-size:3em !important;
+    width: 72%;
+    padding:4% !important;
+  }
+}
+
+
 
 // tablet en mobile
 @media screen and (max-width:960px){

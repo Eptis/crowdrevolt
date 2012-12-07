@@ -1,7 +1,6 @@
-%h1 Editing user
+.spacing
+  %h1 Editing user
+  = link_to t("back"), @user
+  = render 'form'
 
-= render 'form'
 
-= link_to 'Show', @user
-\|
-= link_to 'Back', users_path

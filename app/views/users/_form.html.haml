@@ -7,12 +7,12 @@
           %li= msg
 
   .field
-    = f.input :username
+    = f.input :username, :input_html => { :class => "makeitbig"}
   .field
-    = f.input :email
+    = f.input :email, :input_html => { :class => "makeitbig"}
   .field
     = f.input :password
     = f.input :password_confirmation
 
   .actions
-    = f.submit 'Save'
+    = f.submit 'Save', :class => "btn"
