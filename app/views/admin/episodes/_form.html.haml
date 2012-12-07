@@ -26,4 +26,4 @@
 
 
   .row
-    .span12= f.submit(@episode.new_record? ? [:admin, @channel, :episodes] : [:admin, @channel, @episode])
+    .span12= f.submit(:class => 'btn btn-primary')

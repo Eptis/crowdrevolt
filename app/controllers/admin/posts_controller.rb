@@ -15,8 +15,10 @@ class Admin::PostsController < AdminController
 
   def create
     @post = Post.new(params[:post])
+    @post.channel = @channel
+    
     if @post.save
-      redirect_to([:admin, @post], :flash => :success)
+      redirect_to([:admin, @channel, @post], :flash => :success)
     else
       render("new")
     end
@@ -29,7 +31,7 @@ class Admin::PostsController < AdminController
   def update
     @post = Post.find(params[:id])
     if @post.update_attributes(params[:post])
-      redirect_to([:admin, @post])
+      redirect_to([:admin, @channel, @post])
     else
       render("edit")
     end
@@ -38,7 +40,7 @@ class Admin::PostsController < AdminController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to([:admin, :posts], :flash => :success)
+    redirect_to([:admin, @channel], :flash => :success)
   end
 private
 

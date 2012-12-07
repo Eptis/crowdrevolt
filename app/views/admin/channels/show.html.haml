@@ -3,7 +3,7 @@
   .page-header
     %h1=t '.title', :default => model_class.model_name.human
   .form-actions
-    =link_to :new_episode, [:new, :admin, @channel, :episode]
+    =link_to :new_episode, [:new, :admin, @channel, :episode], :class => 'btn btn-primary'
     %ul.page-header
       - @channel.episodes.each do |episode|
         %li=link_to episode.title, [:admin, @channel, episode]
@@ -32,10 +32,10 @@
         - @channel.challenges.each do |challenge|
           %li=link_to challenge.title, [:edit, :admin, @channel, challenge]
     .span8
-      =link_to t("admin.new_episode"), [:new, :admin, @channel, :challenge], :class => "btn"
+      =link_to t("admin.new_episode"), [:new, :admin, @channel, :episode], :class => "btn"
       %ul.page-header
         - @channel.episodes.each do |episode|
-          %li=link_to episode.title, [:admin, @channel, episode]
+          %li=link_to episode.title, [:edit, :admin, @channel, episode]
     .span8
       =link_to t("admin.new_post"), [:new, :admin, @channel, :post], :class => "btn"
       %ul.page-header

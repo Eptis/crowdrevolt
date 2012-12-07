@@ -1,4 +1,4 @@
-= simple_nested_form_for([:admin, @post]) do |f|
+= simple_nested_form_for([:admin, @channel, @post]) do |f|
   .row
     - if @post.errors.any?
       -@post.errors.each do |message|
@@ -29,4 +29,4 @@
 
 
   .row
-    .span12= f.submit(@post.new_record? ? [:admin, :posts] : [:admin, @post])
+    .span12= f.submit(:class => 'btn btn-primary')
