@@ -19,8 +19,9 @@
   %body
     .container-fluid.wrapper
       = render("header")
-      #notice= notice
-      #alert= alert
+      .spacing
+        #notice= notice
+        #alert= alert
       #searchresults
       .row-fluid
         = yield

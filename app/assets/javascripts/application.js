@@ -25,6 +25,13 @@ $(document).ready(function(){
     $("menutoggler").css("display", "block")
   })
 
+  $(".clearsearch").live("click",function(){
+    $("#searchresults").slideUp(500, function(){
+      $(this).css("display", "block").html("");
+    })
+
+  });
+
 
 
 
