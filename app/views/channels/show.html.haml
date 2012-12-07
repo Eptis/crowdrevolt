@@ -1,36 +1,4 @@
 %h1.spacing.pageheader= @channel.title
--if @live || @upcoming
-  .row-fluid
-    .slopel.orange
-      .slopelshape
-    .row-fluid
-      %article.span24
-        .spacing.highlight
-          - if @live
-            %h2= @live.title
-            .row-fluid
-              .span8
-                / .imgmask
-                - if @live.image
-                  =image_tag @live.image.url(:front)
-              .span9
-                %h2= @live.title
-                .text=smart_truncate(strip_tags(@live.description), :words => 40).html_safe
-          - elsif @upcoming
-
-            .row-fluid
-              .rotate
-                .span8
-                  / .imgmask
-                  - if @upcoming.image
-                    =image_tag @upcoming.image.url(:front)
-                .span16
-                  %h3 Volgende livestream
-                  %h2= @upcoming.title
-                  .text=smart_truncate(strip_tags(@upcoming.description), :words => 40).html_safe
-    .sloper.orange
-      .slopershape
-
 .spacing
 .row-fluid
   %section.span18.content
@@ -75,6 +43,75 @@
 
             =link_to  t("post_idea"), [:new, @channel, :idea], :class => "btn"
 
+  %aside.span6.sidebar
+    .sloper.black
+      .slopershape
+    .spacing
+      %section.project-status
+        %article
+          %h4 Projectstatus
+          %p blabla babafsd asdfasdf asd
+
+      %section.over_dit_kanaal
+        %article
+          %h4= @channel.title
+          .text=raw @channel.description
+
+      %section.changemakers
+        %article
+          %h4 Changemakers
+          %img{:src => "http://placehold.it/110x150", :align => 'left'}
+          %p Lorem ipsum dolor sit amet, consectetur adi- piscing elit. Vivamus et turpis non mi sagittis rhoncus ac sed nisi. Aliquam et porta elit.
+        .row-fluid
+        %article
+          %h4 Changemakers
+          %img{:src => "http://placehold.it/110x150", :align => 'left'}
+          %p Lorem ipsum dolor sit amet, consectetur adi- piscing elit. Vivamus et turpis non mi sagittis rhoncus ac sed nisi. Aliquam et porta elit.
+
+      .row-fluid
+      %section.links
+        %article
+          %h4 Aanbevolen links
+          %ul
+            %li Dit is een link
+            %li En nog een link
+    .slopel.black
+      .slopelshape
+
+
+-if @live || @upcoming
+  .row-fluid
+    .slopel.orange
+      .slopelshape
+    .row-fluid
+      %article.span24
+        .spacing.highlight
+          - if @live
+            %h2= @live.title
+            .row-fluid
+              .span8
+                / .imgmask
+                - if @live.image
+                  =image_tag @live.image.url(:front)
+              .span9
+                %h2= @live.title
+                .text=smart_truncate(strip_tags(@live.description), :words => 40).html_safe
+          - elsif @upcoming
+
+            .row-fluid
+              .rotate
+                .span8
+                  / .imgmask
+                  - if @upcoming.image
+                    =image_tag @upcoming.image.url(:front)
+                .span16
+                  %h3 Volgende livestream
+                  %h2= @upcoming.title
+                  .text=smart_truncate(strip_tags(@upcoming.description), :words => 40).html_safe
+    .sloper.orange
+      .slopershape
+
+
     .row-fluid
       .span24
         .row-fluid
@@ -118,42 +155,6 @@
                           -if episode.image
                             =image_tag episode.image.url(:front)
                     .span24=link_to "Vorige uitzendingen", [@channel, :episodes], :class => "btn"
-
-  %aside.span6.sidebar
-    .sloper.black
-      .slopershape
-    .spacing
-      %section.project-status
-        %article
-          %h4 Projectstatus
-          %p blabla babafsd asdfasdf asd
-
-      %section.over_dit_kanaal
-        %article
-          %h4= @channel.title
-          .text=raw @channel.description
-
-      %section.changemakers
-        %article
-          %h4 Changemakers
-          %img{:src => "http://placehold.it/110x150", :align => 'left'}
-          %p Lorem ipsum dolor sit amet, consectetur adi- piscing elit. Vivamus et turpis non mi sagittis rhoncus ac sed nisi. Aliquam et porta elit.
-        .row-fluid
-        %article
-          %h4 Changemakers
-          %img{:src => "http://placehold.it/110x150", :align => 'left'}
-          %p Lorem ipsum dolor sit amet, consectetur adi- piscing elit. Vivamus et turpis non mi sagittis rhoncus ac sed nisi. Aliquam et porta elit.
-
-      .row-fluid
-      %section.links
-        %article
-          %h4 Aanbevolen links
-          %ul
-            %li Dit is een link
-            %li En nog een link
-    .slopel.black
-      .slopelshape
-
 
 - @channel_clean = @channel.id.to_s + @channel.title.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '') + "/channel"
 :javascript
