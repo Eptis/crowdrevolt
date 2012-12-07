@@ -28,9 +28,15 @@ body{
   font-family:"Open Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif !important;
   font-size:15px !important;
   line-height:1.5 !important;
+  font-weight:lighter !important;
   padding-top:0px !important;
   background:$zwart !important;
   max-width: 1920px;
+}
+.text {
+    font-size:17px !important;
+    font-weight:lighter;
+    line-height:1.7em !important;
 }
 header{
   padding:30px 15px 0 15px;
@@ -413,7 +419,6 @@ $slopefixheight:36px;
 }
 
 
-
 .field{margin:2em 0;}
 input[type="text"], input[type="password"], input[type="email"], textarea{
   outline:none;
@@ -487,7 +492,10 @@ label{ font-weight: 900; text-transform: uppercase; margin-right: 1em;}
 
   .user_credentials{float: left;  width:100% !important;}
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 97b00d8a5af9572e5c343189dd17e75cfc9434dd
 
 
 // tablet en mobile

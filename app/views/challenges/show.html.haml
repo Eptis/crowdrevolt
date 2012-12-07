@@ -43,8 +43,9 @@
       %article
         %h4 Andere challenges
         %ul
-          - @alternatives.each do |alt|
-            %li=link_to alt.title, [@channel, @challenge, alt]
-
+          - @channel.challenges.each do |challenge|
+            %li=link_to challenge.title, [@channel, challenge]
+  .slopel.black
+    .slopelshape
 
 
