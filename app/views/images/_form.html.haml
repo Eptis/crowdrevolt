@@ -1,0 +1,39 @@
+- if request.xhr?
+  %ul.breadcrumb
+    %li
+      = link_to t("admin.images.crumb").html_safe, admin_images_path(:total => 15), :remote => true, :class => "image_ajax"
+      %span.divider /
+    %li= t("admin.images.new")
+
+= simple_form_for [:admin, @image], :html => { :multipart => true, :class => request.xhr? ? "image_ajax form-horizontal" : "form-horizontal" }, :remote => request.xhr? do |f|
+  - if !@image.new_record? && params[:crop]
+    = cropped_image(@image)
+    = f.hidden_field :thumbnail
+    = f.hidden_field :crop_x, :id => "crop_x"
+    = f.hidden_field :crop_y, :id => "crop_y"
+    = f.hidden_field :crop_w, :id => "crop_w"
+    = f.hidden_field :crop_h, :id => "crop_h"
+
+    .cropper_submit
+      = f.submit t("admin.images.crop"), :class => "btn btn-primary btn-large"
+      %span.or= t("admin.or")
+      = cancel_link([:edit, :admin, @image])
+
+  - else
+    %table.simple_form
+      = f.input :name, :input_html => { :maxlength => 50 }
+      / = f.input :tag_list, :as => :tags && !request.xhr?
+      = f.input :image, :required => @image.new_record? do
+        = f.file_field :image
+        - if !@image.new_record? && @image.image_file_name?
+          .example_image
+            %h3= t("admin.images.page")
+            = link_to(image_thumb(@image, :front), edit_admin_image_path(@image, :crop => :front), :class => "crop_thumbs")
+      .pull-right
+        = f.submit :class => "btn btn-large btn-primary"
+        - unless request.xhr?
+          %span.or= t("admin.or")
+          = link_to t("admin.buttons.terug_overzicht"), [:admin, :images]
+          - if !@image.new_record?
+            %span.or= t("admin.or")
+            = delete_link(@image, :class => "btn btn-large btn-danger")

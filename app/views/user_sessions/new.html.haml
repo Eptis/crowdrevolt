@@ -1,5 +1,9 @@
-%h1 Login
+.spacing
 
-=render 'form'
+  .center
+    .spacing
+      %h1 Login
+      = link_to t('back'), :root
+      =render 'form'
 
-= link_to 'Back', :root
+

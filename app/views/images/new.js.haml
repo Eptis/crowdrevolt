@@ -1,0 +1,6 @@
+:plain
+  $("#image_wrapper").show();
+  $("#image_wrapper").html("#{j(render("form"))}");
+  $("#image_paginate").html("");
+  $("#image_loading").html("");
+  $("#flash_messages").html("#{j(flash_messages(:close))}");

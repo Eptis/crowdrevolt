@@ -412,21 +412,27 @@ $slopefixheight:36px;
   .intro h1, .pageheader{font-size:2em !important; line-height:1.5 !important; }
 }
 
-<<<<<<< HEAD
+
 
 .field{margin:2em 0;}
-input[type="text"], input[type="password"], input[type="email"]{
+input[type="text"], input[type="password"], input[type="email"], textarea{
   outline:none;
   // font-weight: 100;
   border-radius: 0 !important;
   border:1px solid transparent !important;
   background: $input_grey !important;
+  margin-right:1em;
   color:#fff !important;
   @extend %transition;
   &:focus{border:1px solid $oranje !important; box-shadow: none !important; color:$oranje !important;}
 }
+textarea{
+  width: 96% !important;
+  padding:2% !important;
+  &:focus{color:#fff !important;}
+}
 
-label{ font-weight: 900; text-transform: uppercase;}
+label{ font-weight: 900; text-transform: uppercase; margin-right: 1em;}
 
 @media screen and (min-width:1440px){
   input.makeitbig{
@@ -444,7 +450,7 @@ label{ font-weight: 900; text-transform: uppercase;}
   }
 }
 
-=======
+
 // mobile only
 @media screen and (max-width:640px){
   header.main{
@@ -481,7 +487,7 @@ label{ font-weight: 900; text-transform: uppercase;}
 
   .user_credentials{float: left;  width:100% !important;}
 }
->>>>>>> d52446ab3e2e50267bd5e2a1ee518a68b21109f3
+
 
 
 // tablet en mobile
@@ -540,9 +546,13 @@ body{overflow-x:hidden;}
   .sidebar{width:100% !important; margin-left:0 !important;}
 }
 
+.footerspacer{height:$slopeheight; width:100%;}
 footer{
-  margin-top: 2em;
   padding-bottom:50px;
   background: $grijs_licht;
   li{float:left; margin:12px;}
+}
+.center{
+  margin:0 auto;
+  max-width:960px;
 }

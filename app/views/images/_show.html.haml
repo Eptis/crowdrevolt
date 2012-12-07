@@ -1,0 +1,22 @@
+%ul.breadcrumb
+  %li
+    = link_to t("admin.images.crumb").html_safe, admin_images_path(:total => 15), :remote => true, :class => "image_ajax"
+    %span.divider /
+  %li= @image.name
+
+%table#image_table
+  %tr
+    %td#image_add
+      = link_to image_thumb(@image, :thumb), [:edit, :admin, @image], :class => "thumbnail"
+      = link_to t("admin.images.add"), "#", :class => "image_selector_add btn", :data => { :id => @image.id, :url => @image.image.url(:thumb), :width => @image.min_w(:thumb), :height => @image.min_h(:thumb), :text => t("admin.images.added") }
+    / %td
+    /   %table.table.table-striped.table-bordered
+    /     %tr
+    /       %th= t("admin.images.original")
+    /       %td= text_field_tag :url_original, @image.image.url
+    /     %tr
+    /       %th= t("admin.images.thumb")
+    /       %td= text_field_tag :url_thumb, @image.image.url(:thumb)
+    /     %tr
+    /       %th= t("admin.images.front")
+    /       %td= text_field_tag :url_front, @image.image.url(:front)

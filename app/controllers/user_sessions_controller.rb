@@ -18,7 +18,7 @@ class UserSessionsController < ApplicationController
 
   def destroy
     logout
-    redirect_to(request.referer, :notice => 'Logged out!')
+    redirect_back_or_to(:root, :notice => 'Logged out!')
   end
 
 

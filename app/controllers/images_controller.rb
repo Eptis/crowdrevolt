@@ -9,6 +9,10 @@ class ImagesController < ActionController::Base
 
   def new
     @image = Image.new
+    respond_to do |format|
+        format.js
+        format.html { redirect_to([:new, @image], :flash => :success) }
+      end
   end
 
 
