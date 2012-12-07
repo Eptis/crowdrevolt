@@ -1,10 +1,25 @@
-%h1= @post.title
-%p=raw @post.description
-- @post.blogitems.each do |item|
-  = render "item", :item => item
+// De titel, te verdienen punten en omschrijving kun je zo laten, hieromheen de layout bouwen
+%section.span18.content.spacing
+  %h1= @post.title
 
--if FunctionConfig.allowed?(:comments)
-  %h1 Comments
-  = render "commentform"
-  - @post.comments.each do |comment|
-    = render comment
+  .row-fluid
+    %section.challlenge_show
+      .row-fluid
+        %article.span24
+          %author challenge.user.username -
+          %time= l(@post.created_at, :format => :full)
+          %img{:src => "http://placehold.it/900x360"}
+          .text=raw @post.description
+  .clear
+  .row-fluid
+    %section.comments
+      %h3 Comments
+      .row-fluid
+        %article
+        - @post.blogitems.each do |item|
+          = render "item", :item => item
+
+        -if FunctionConfig.allowed?(:comments)
+          = render "commentform"
+          - @post.comments.each do |comment|
+            = render comment
