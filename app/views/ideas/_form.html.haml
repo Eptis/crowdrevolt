@@ -5,15 +5,11 @@
         %p= message
   .row-fluid
     .span12
-      / = f.input :tag_list
-    .span12
-      / = f.category_select
-    .span12
       = f.image_select
   .row-fluid
     .span12
       = f.input :title
-      = f.input :description, :as => :editor
+      = f.input :description, :as => :text
 
   .row-fluid
     .span12
@@ -21,8 +17,6 @@
         = render :partial => 'items', :locals => { :f => item }
         = item.link_to_remove "Verwijder blok"
       %p= f.link_to_add "Voeg een onderdeel toe", :blogitems
-
-
 
   .row-fluid
     .span12= f.submit(@idea.new_record? ? :ideas : @idea)
