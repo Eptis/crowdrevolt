@@ -56,7 +56,7 @@
                 - unless current_user
                   =f.text_field :name
                   =f.email_field :email
-                =f.text_field :content, :id => "new_message"
+                =f.text_field :content, :class => "input-append"
                 =f.submit "Send"
           .slopel.black
             .slopelshape
@@ -113,7 +113,9 @@
                   %h2 Vorige uitzendingen
                   .row-fluid
                     - @episodes.each do |episode|
-                      %article.span7
+                      %article.span8.vorige_uitzending
+                        %h4.naam_uitzending Naam van de uitzending
+                        %p 8 - 12 - 2012
                         =link_to [@channel, episode] do
                           -if episode.image
                             =image_tag episode.image.url(:front)
