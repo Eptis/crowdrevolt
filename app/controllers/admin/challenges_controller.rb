@@ -38,7 +38,7 @@ class Admin::ChallengesController < AdminController
   def destroy
     @challenge = Challenge.find(params[:id])
     @challenge.destroy
-    redirect_to([:challenges], :flash => :success)
+    redirect_to([:admin, @channel], :flash => :success)
   end
 private
 

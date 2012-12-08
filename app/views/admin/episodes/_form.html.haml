@@ -1,3 +1,9 @@
+= link_to t('.back', :default => t("helpers.links.back")), [:admin, @channel], :class => 'btn'
+.page-header
+  - if @episode.new_record?
+    %h1= t('admin.episodes')
+  - else
+    %h1= @episode.title
 = simple_nested_form_for([:admin, @channel, @episode ]) do |f|
   .row
     - if @episode.errors.any?
@@ -26,4 +32,7 @@
 
 
   .row
-    .span12= f.submit(:class => 'btn btn-primary')
+    .span12
+      = f.submit(:class => 'btn btn-primary')
+      -if !@episode.new_record?
+        = link_to t('.destroy', :default => t("helpers.links.destroy")), [:admin, @channel, @episode], :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'
