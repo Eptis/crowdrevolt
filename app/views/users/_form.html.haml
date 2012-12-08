@@ -11,10 +11,10 @@
   .field
     = f.input :email, :input_html => { :class => "makeitbig"}
   .field
-    = f.input :avatar, :input_html => {:class => "btn imgselector", :style => "display:none"}
-    .input-append
-      =text_field "photoCover", "", :input_html => {:class => "input-large"}
-      %a.btn{:onclick => "$('input[id=user_avatar]').click()"}= t("select")
+    = f.file_field :avatar, :input_html => {:class => "btn imgselector", :style => "display:block"}
+    / .input-append
+    /   =text_field "photoCover", "", :input_html => {:class => "input-large"}
+    /   %a.btn{:onclick => "$('input[id=user_avatar]').click()"}= t("select")
   .field.form-inline
     .pull-left= f.input :skypename
     .pull-left= f.input :show_skype

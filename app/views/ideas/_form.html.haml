@@ -1,25 +1,22 @@
 = simple_nested_form_for([@channel, @idea]) do |f|
-  .row-fluid
-    - if @idea.errors.any?
+  - if @idea.errors.any?
+    .row-fluid
       -@idea.errors.each do |message|
         %p= message
   .row-fluid
-    .span12
+    .blogcenter
+      = f.input :title, :input_html => {:class => "makeitbig"}
       = f.image_select
-  .row-fluid
-    .span12
-      = f.input :title
-      = f.input :description, :as => :text
+      = f.input :description, :as => :text, :input_html => {:rows => 10}
 
-  .row-fluid
-    .span12
-      = f.simple_fields_for :blogitems do |item|
-        = render :partial => 'items', :locals => { :f => item }
-        = item.link_to_remove "Verwijder blok"
-      %p= f.link_to_add "Voeg een onderdeel toe", :blogitems
+      .row-fluid
+        = f.simple_fields_for :blogitems do |item|
+          = item.link_to_remove "X", :class => "dynamic_remove pull-right"
+          = render :partial => 'items', :locals => { :f => item }
+        = f.link_to_add t("+ Voeg inhoud toe"), :blogitems, :class => "nested_field_btn"
 
-  .row-fluid
-    .span12= f.submit(@idea.new_record? ? :ideas : @idea)
+
+      .row-fluid= f.submit(@idea.new_record? ? :ideas : @idea, :class => "dynamic_submit pull-right")
 
 
 - content_for(:imageselector) do

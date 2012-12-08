@@ -1,7 +1,8 @@
-.span12.blog
-  .row-fluid.blogitems{:class => (f.object.item_type if f.object.item_type.present?)}
-    .changer= f.input :item_type, :collection => ["tekst", "afbeelding", "youtubefilm"]
-    .hide.image_filter= f.image_select
-    .hide.youtube_filter= f.input :youtubeembedlink, :as => :string, :input_html => {:class => "input-xxlarge"}
-    .hide.text_filter= f.input :body, :as => :text, :input_html => { :class => "owneditor"}
+.row-fluid.dynamic_block
+  .span24.blog
+    .row-fluid.blogitems{:class => (f.object.item_type if f.object.item_type.present?)}
+      .changer= f.input :item_type, :collection => ["tekst", "afbeelding", "youtubefilm"]
+      .hide.image_filter= f.image_select
+      .hide.youtube_filter= f.input :youtubeembedlink, :as => :string, :label => t("items.youtubefilmpje"), :input_html => {:class => "input-xxlarge"}
+      .hide.text_filter= f.input :body, :as => :text, :label => t("items.tekst"), :input_html => { :class => "owneditor", :rows => 5}
 

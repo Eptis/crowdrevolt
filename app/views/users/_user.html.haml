@@ -2,10 +2,11 @@
 .row-fluid
   .span24
     .avatar
-      -if user.avatar.present?
-        =image_tag user.avatar.url(:medium)
-      -else
-        %img{:src=> 'http://placehold.it/300x200', :width => 75, :height => 50}
+      =link_to user do
+        -if user.avatar.present?
+          =image_tag user.avatar.url(:portrait), :width => 75, :height => 75
+        -else
+          %img{:src=> 'http://placehold.it/300x300', :width => 75, :height => 75}
     .user_info
       =link_to user.username, user
       %p Karmascore:

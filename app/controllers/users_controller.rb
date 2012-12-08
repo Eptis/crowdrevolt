@@ -35,16 +35,13 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+    # raise params[:user][:avatar].inspect
 
-    respond_to do |format|
       if @user.update_attributes(params[:user])
         redirect_to @user, :notice => 'User was successfully updated.'
-        head :no_content
-              else
+      else
         render :action => "edit"
-        render :json => @user.errors, :status => :unprocessable_entity
       end
-    end
   end
 
   def destroy

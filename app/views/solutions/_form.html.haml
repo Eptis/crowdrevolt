@@ -4,30 +4,22 @@
       -@solution.errors.each do |message|
         %p= message
   .row-fluid
-    .span12
-      / = f.input :tag_list
-    .span12
-      / = f.category_select
-    .span12
+    .blogcenter
+      = f.input :title, :input_html => {:class => "makeitbig"}
       = f.image_select
-  .row-fluid
-    .span12
-      = f.input :title
-      = f.input :description, :as => :editor
-      / = f.input :description
-      / = f.input :body, :as => :editor
-      / = f.input :body
-  .row-fluid
-    .span12
-      = f.simple_fields_for :blogitems do |item|
-        = render :partial => 'items', :locals => { :f => item }
-        = item.link_to_remove "Verwijder blok"
-      %p= f.link_to_add "Voeg een onderdeel toe", :blogitems
+      = f.input :description, :as => :text, :input_html => {:rows => 10}
+
+      .row-fluid
+        = f.simple_fields_for :blogitems do |item|
+          = item.link_to_remove "X", :class => "dynamic_remove pull-right"
+          = render :partial => 'items', :locals => { :f => item }
+        = f.link_to_add t("+ Voeg inhoud toe"), :blogitems, :class => "nested_field_btn"
+
+
+      .row-fluid= f.submit(@solution.new_record? ? :solutions : @solution, :class => "dynamic_submit pull-right")
 
 
 
-  .row-fluid
-    .span12= f.submit
 
 
 - content_for(:imageselector) do
