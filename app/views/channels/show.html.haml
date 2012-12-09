@@ -167,7 +167,8 @@
                         %article.span7
                           =link_to [@channel, episode] do
                             %h3= episode.title
-                          %time= l(episode.airdate, :format => :full)
+                          -if episode.airdate.present?
+                            %time= l(episode.airdate, :format => :full)
                           =link_to [@channel, episode] do
                             -if episode.image
                               =image_tag episode.image.url(:front)
