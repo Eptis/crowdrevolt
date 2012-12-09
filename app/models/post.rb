@@ -1,5 +1,10 @@
 class Post < ActiveRecord::Base
   attr_accessible :title, :body, :description, :published_at, :blogitems_attributes, :image_select, :channel_id
+
+  #validatie
+  validates_presence_of :title, :description, :image_select
+
+
   # blog items
   has_many :blogitems, :as => :ownable
   belongs_to :user

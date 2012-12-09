@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   before_filter :find_channel
 
   def index
-    @posts = Post.where(&:published_at < Time.now)
+    @posts = Post.where("published_at < ?", Time.now)
   end
 
   def show

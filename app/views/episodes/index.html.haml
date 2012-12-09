@@ -1,4 +1,7 @@
 .spacing
+  =link_to (t("back") + " naar #{@channel.title}"), @channel
+  %h2= @channel.title + " - "+ t("episodes.all_episodes")
+.spacing
   - @episodes.in_groups_of(3, false) do |episodes|
     .row-fluid
       .span24

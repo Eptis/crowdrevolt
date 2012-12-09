@@ -10,30 +10,39 @@
               =image_tag @user.avatar.url
             -else
               %img{:src => "http://placehold.it/710x600"}
+            .karmascore.center.spacing
+              .icon.grey.Karma
+              = @user.score
           %article.span18
             - if @user.name
               %h1= @user.name + " " + @user.username
             - else @user.name
               %h1= @user.username
-            %h3= karmarank(@user.score).to_s + " " + @user.score.to_s
+            %h3= karmarank(@user.score)
             %h4= @user.skypename if @user.show_skype
 
             - if current_user
               =link_to :user_logout, :class => "btn btn-danger" do
                 %i.icon-off.icon-white
                 =t("logout")
-              = link_to 'Edit', edit_user_path(@user), :class => "btn" if @user == current_user
+              -if @user == current_user
+                = link_to edit_user_path(@user), :class => "btn" do
+                  %i.icon-pencil.icon-white
+                  = t("edit")
+
             .text= @user.bio
   .sloper.orange
     .slopershape
 .homespacefix
 .row-fluid
   .spacing
-    %h2= t("by_this_user")
+    %h2= t("users.by_this_user")
 
     .span24
       .span12
-        %h3= t("solutions")
+        %h3
+          .icon.Solution
+          = t("solutions.solutions")
         .row-fluid
           %ul.span24.itemlist
             .row-fluid
@@ -50,7 +59,9 @@
                         =link_to [sol.challenge.channel, sol.challenge, sol] do
                           %div=image_tag sol.image.url(:front)
       .span12
-        %h3= t("ideas")
+        %h3
+          .icon.Idea
+          = t("ideas.ideas", :username => @user.username)
         .row-fluid
           %ul.span24.itemlist
             .row-fluid

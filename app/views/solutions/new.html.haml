@@ -1,3 +1,6 @@
 .spacing
-  %h1.pageheader= t('admin.posts')
+  %h1
+    .icon.Solution
+    = t('solution_for')
+  %h2.pageheader= @challenge.title
   = render :partial => "form"

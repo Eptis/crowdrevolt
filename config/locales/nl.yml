@@ -4,6 +4,55 @@
 nl:
   #algemeen
   more: "> Meer"
+  back: "< Terug"
+  now_live: "nu live"
+  changemakers: "Changemakers"
+
+  models:
+    channels: "Programma's"
+
+  solutions:
+    solutions: "oplossingen"
+    solution_for: "Oplossing voor:"
+  challenges:
+    challenges: "Uitdagingen"
+    challenge: "Uitdaging"
+    challenges_and_ideas: "Uitdagingen & Ideeën"
+    do_challenge: "Doe deze uitdaging"
+    other_challenges: "Andere uitdagingen"
+    points: "Karmapunten"
+    solutions: "Aantal oplossingen"
+  ideas:
+    ideas: "Ideeën"
+    submitted: "Ingezonden ideeën"
+    new_idea: "Ik heb een idee"
+  channels:
+    channels: "Programma's"
+    channel: "Programma"
+    next_episode: "Volgende livestream"
+    status: "Projectstatus"
+    previous_episodes: "Vorige livestreams"
+    articles: "Artikelen"
+    chat: "Chat mee over dit programma"
+    recommended_links: "Aanbevolen links"
+  episodes:
+    episodes: "Livestreams"
+    episode: "Livestream"
+    all_episodes: "Alle Livestreams"
+  users:
+    by_this_user: "Door %{username}"
+  posts:
+    posts: "Artikelen"
+    all_posts: "Alle artikelen"
+
+
+  #ranks
+  ranks:
+    follower: "Volger"
+    speaker: "Luidspreker"
+    unknown: "Volger"
+    changemaker: "Changemaker"
+
   # formulieren
   helpers:
       submit:

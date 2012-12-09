@@ -9,42 +9,45 @@
           -if @live || @upcoming
             .row-fluid
               %article.span24
-                .spacing
-                  - if @live
-                    %h3= t("now_live")
-                    %h2= @live.title
-                    .row-fluid
+                - if @live
+                  %h3.clearfix
+                    .icon.Episode.white
+                    = t("now_live")
+                  %h2= @live.title
+                  .row-fluid
+                    .span8
+                      / .imgmask
+                      =link_to [@channel, @live] do
+                        - if @live.image
+                          =image_tag @live.image.url(:front)
+                    .span15.offset1
+                      =link_to [@channel, @live] do
+                        %h2= @live.title
+
+                      %time= l(@live.airdate, :format => :full)
+                      .text
+                        =smart_truncate(strip_tags(@live.description), :words => 40).html_safe
+                        =link_to t("more"), [@channel, @live], :class => "btn more pull-right"
+
+                - elsif @upcoming
+
+                  .row-fluid
+                    .rotate
                       .span8
                         / .imgmask
-                        =link_to [@channel, @live] do
-                          - if @live.image
-                            =image_tag @live.image.url(:front)
-                      .span9
-                        =link_to [@channel, @live] do
-                          %h2= @live.title
-
-                        %time= l(@live.airdate, :format => :full)
+                        =link_to [@channel, @upcoming] do
+                          - if @upcoming.image
+                            =image_tag @upcoming.image.url(:front)
+                      .span15.offset1
+                        %h3.clearfix
+                          .icon.Episode.white
+                          = t("next_episode")
+                        =link_to [@channel, @upcoming] do
+                          %h2= @upcoming.title
+                        %time= l(@upcoming.airdate, :format => :full)
                         .text
-                          =smart_truncate(strip_tags(@live.description), :words => 40).html_safe
-                          =link_to t("more"), [@channel, @live]
-
-                  - elsif @upcoming
-
-                    .row-fluid
-                      .rotate
-                        .span8
-                          / .imgmask
-                          =link_to [@channel, @upcoming] do
-                            - if @upcoming.image
-                              =image_tag @upcoming.image.url(:front)
-                        .span16
-                          %h3= t("next_episode")
-                          =link_to [@channel, @upcoming] do
-                            %h2= @upcoming.title
-                          %time= l(@upcoming.airdate, :format => :full)
-                          .text
-                            =smart_truncate(strip_tags(@upcoming.description), :words => 40).html_safe
-                            =link_to t("more"), [@channel, @upcoming]
+                          =smart_truncate(strip_tags(@upcoming.description), :words => 40).html_safe
+                          =link_to t("more"), [@channel, @upcoming], :class => "btn more pull-right"
         .sloper.orange
           .slopershape
     .row-fluid
@@ -55,34 +58,48 @@
           .sloper.black
             .slopershape
           .smallspacing
-            %h2 Chat mee
+            %h2= t("channels.chat")
             %ul#chatBox
               -if @channel.messages.present?
                 = render @channel.messages
 
-            .chatForm
+            .chatForm.input-append
               =form_for [@channel, Message.new], :remote => true do |f|
                 - unless current_user
                   =f.text_field :name
                   =f.email_field :email
-                =f.text_field :content, :id => "new_message", :class => "input-append"
+                =f.text_field :content, :id => "new_message"
                 =f.submit "Send"
           .slopel.black
             .slopelshape
 
 
       %section.span15.challenges
-        .sloper.black
-          .slopershape
         .smallspacing
           %article
-            %h2= t("challenges")
-            %p Sed posuere consectetur est at porta ac consectetur ac, vestibulum at eros. Sed posuere consectetur est at lobortis. Nulla vitae elit libero, a pharetra augue. Meer informatie kun je vinden bij Karma & Rewards
-            %ul
+            %h2.clearfix
+              .icon.Challenge
+              = t("challenges.challenges_and_ideas")
+            %p.text Sed posuere consectetur est at porta ac consectetur ac, vestibulum at eros. Sed posuere consectetur est at lobortis. Nulla vitae elit libero, a pharetra augue. Meer informatie kun je vinden bij Karma & Rewards
+            .clearfix
+              =link_to [:new, @channel, :idea], :class => "btn more pull-right iconbtn" do
+                .icon.Idea.white
+                =t("ideas.new_idea")
+            / .row-fluid.challengeindex
+            /   .span14= t("challenges.challenge")
+            /   .span6= t("challenges.solutions")
+            /   .span4= t("challenges.points")
+            / %ul.clearfix.itemlist.challenges
+            %table.challenges
+              %tr
+                %th= t("challenges.challenge")
+                %th= t("challenges.solutions")
+                %th= t("challenges.points")
               - @channel.challenges.each do |challenge|
-                %li=link_to challenge.title, [@channel, challenge]
-
-            =link_to  t("post_idea"), [:new, @channel, :idea], :class => "btn"
+                %tr
+                  %td=link_to challenge.title, [@channel, challenge]
+                  %td=link_to challenge.solutions.count, [@channel, challenge]
+                  %td= challenge.points
 
       .row-fluid
         .span24
@@ -90,7 +107,9 @@
             .span24
               .spacing
                 %section.span12
-                  %h2 Changemaker Blogspots
+                  %h2
+                    .icon.Post
+                    = t("channels.articles")
                   %ul.itemlist
                     - @posts.each do |post|
                       %li
@@ -100,17 +119,22 @@
                               =link_to [@channel, post] do
                                 %h3=smart_truncate(strip_tags( post.title), :words => 5).html_safe
                               %time= l(post.updated_at, :format => :short)
+
                             =link_to [@channel, post] do
-                              %img.span6{:src => "http://placehold.it/110x60"}
-                            .span16
-                              .smallspacing.text
+                              %img.span7{:src => "http://placehold.it/110x60"}
+                            .span16.offset1
+                              .text
                                 =smart_truncate(strip_tags(post.description), :words => 20).html_safe
-                                =link_to t("more"), [@channel, post]
+                                .clearfix=link_to t("more"), [@channel, post], :class => "btn pull-right more"
+                    %li=link_to t("channels.all_articles"), [@channel,:posts]
 
 
 
                 %section.span12
-                  %h2 Ingezonden ideeën
+                  %h2
+                    .icon.Idea
+                    / %img{:src => "http://placehold.it/50x50"}
+                    =t("ideas.submitted")
                   %ul.itemlist
                     - @ideas.each do |idea|
                       %li
@@ -119,19 +143,25 @@
                             .row-fluid
                               =link_to [@channel, idea] do
                                 %h3=smart_truncate(strip_tags( idea.title), :words => 5).html_safe
-                              %time= l(idea.updated_at, :format => :short)
+                              %time= l(idea.updated_at, :format => :short) + " - "
+                              %author=link_to idea.user.username, idea.user
                             =link_to [@channel, idea] do
-                              %img.span6{:src => "http://placehold.it/110x60"}
-                            .span16
-                              .smallspacing.text
-                                =smart_truncate(strip_tags(idea.description), :words => 20).html_safe
-                                =link_to t("more"), [@channel, idea]
+                              / .span7
+
+                            / .span16.offset1
+                            -if idea.user.avatar.present?
+                              .pull-left=image_tag( idea.user.avatar.url, :style => "width:100px; margin:6px 12px 6px 0;")
+                            .text
+                              =smart_truncate(strip_tags(idea.description), :words => 20).html_safe
+                              .clearfix=link_to t("more"), [@channel, idea], :class => "btn pull-right more"
 
 
 
                 .row-fluid
                   %section.span24.laatste_afleveringen_klein
-                    %h2 Vorige uitzendingen
+                    %h2
+                      .icon.Episode
+                      = t("channels.previous_episodes")
                     .row-fluid
                       - @episodes.each do |episode|
                         %article.span7
@@ -141,7 +171,7 @@
                           =link_to [@channel, episode] do
                             -if episode.image
                               =image_tag episode.image.url(:front)
-                      .span24=link_to "Vorige uitzendingen", [@channel, :episodes], :class => "btn"
+                      .span24=link_to t("channels.previous_episodes"), [@channel, :episodes], :class => "btn pull-right more"
 
   %aside.span6.sidebar
     .sloper.black
@@ -149,7 +179,7 @@
     .spacing
       %section.project-status
         %article
-          %h4 Projectstatus
+          %h4= t("channels.status")
           %p blabla babafsd asdfasdf asd
 
       %section.over_dit_kanaal
@@ -158,20 +188,22 @@
           .text=raw @channel.description
 
       %section.changemakers
-        %article
+        %section
           %h4 Changemakers
-          %img{:src => "http://placehold.it/110x150", :align => 'left'}
-          %p Lorem ipsum dolor sit amet, consectetur adi- piscing elit. Vivamus et turpis non mi sagittis rhoncus ac sed nisi. Aliquam et porta elit.
-        .row-fluid
-        %article
-          %h4 Changemakers
-          %img{:src => "http://placehold.it/110x150", :align => 'left'}
-          %p Lorem ipsum dolor sit amet, consectetur adi- piscing elit. Vivamus et turpis non mi sagittis rhoncus ac sed nisi. Aliquam et porta elit.
+          %article
+            %h5 naam
+            %img{:src => "http://placehold.it/110x150", :align => 'left'}
+            %p Lorem ipsum dolor sit amet, consectetur adi- piscing elit. Vivamus et turpis non mi sagittis rhoncus ac sed nisi. Aliquam et porta elit.
+          %article
+            %h5 naam
+            %img{:src => "http://placehold.it/110x150", :align => 'left'}
+            %p Lorem ipsum dolor sit amet, consectetur adi- piscing elit. Vivamus et turpis non mi sagittis rhoncus ac sed nisi. Aliquam et porta elit.
+
 
       .row-fluid
       %section.links
         %article
-          %h4 Aanbevolen links
+          %h4= t("channels.recommended_links")
           %ul
             %li Dit is een link
             %li En nog een link

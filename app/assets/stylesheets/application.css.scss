@@ -9,13 +9,46 @@ $oranje:#ff5400;
 $darkorange:#c44102;
 $zwart:#070707;
 $wit:#ffffff;
-$grijs_licht:#161616;
-$grijs_donker:#111;
-$timecolor:#282828;
+$grijs_licht:#1c1c1c;
+$grijs_donker:#1c1c1c;
+$timecolor:#373737;
 $oranje_tint:$oranje;
 // $input_grey:#3d3d3d;
-$input_grey:$grijs_licht;
+$input_grey:#222222;
 $slopeheight:100px;
+
+%inlineblock{
+  display: inline-block;
+  zoom:1; /* IE 7 Hack starts here*/
+  *display:inline; /* IE 7 Hack starts here*/
+}
+
+.icon{
+  background: url(image_path("icons.png"));
+  background-position-y: -30px;
+  width:50px !important;
+  height:50px !important;
+  margin:0 6px -0.3em 0;
+  margin-bottom:-8px;
+  @extend %inlineblock;
+}
+.icon.white{background-position-y: -90px;}
+.icon.grey{background-position-y: -150px;}
+
+.icon.Channel{background-position-x: -30px}
+.icon.Episode{background-position-x: -90px}
+.icon.Challenge{background-position-x: -150px}
+.icon.Solution{background-position-x: -210px}
+.icon.Karma{background-position-x: -270px}
+.icon.Idea{background-position-x: -330px}
+.icon.Post{background-position-x: -390px}
+
+.iconbtn{
+  height: 50px;
+  padding:6px 12px;
+  line-height: 50px !important;
+  .icon{ margin-bottom:-20px;  }
+}
 
 %transition{
   -webkit-transition: all 500ms ;
@@ -23,6 +56,32 @@ $slopeheight:100px;
   -ms-transition: all 500ms ;
   -o-transition: all 500ms ;
   transition: all 500ms ;
+}
+
+.btn{
+  -webkit-transition: all 200ms;
+  -moz-transition: all 200ms;
+  -ms-transition: all 200ms;
+  -o-transition: all 200ms;
+  transition: all 200ms;
+  background: $oranje;
+  color:$grijs_licht;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.btn:hover,
+.btn:active,
+.btn.active,
+.btn.disabled,
+.btn[disabled] {
+  // color: #333333;
+  color:#fff;
+  // *background-color: #d9d9d9;
+}
+
+.more{
+  color :#fff !important;
 }
 
 body{
@@ -105,9 +164,12 @@ p, .text{
 
 
 .highlight {
-  a{color:#fff !important;}
-  .text a{ color: $grijs_donker !important; text-transform: uppercase; font-weight: 600}
+  a{color:#fff;}
+  .text a{ color: $grijs_donker; text-transform: uppercase; font-weight: 600}
   h3,h4,h5,h6{color: $grijs_licht !important;}
+
+  .btn{background:$grijs_licht !important; color:#fff !important;}
+  .btn:hover{color:$oranje !important; .icon{background-position-y: -30px }}
 }
 .text a{ color: $oranje; text-transform: uppercase; font-weight: 600}
 
@@ -172,7 +234,7 @@ p, .text{
 
 .usermenu{
   // border-left:1px solid $grijs_donker;
-  .user_credentials{float:right;  }
+  // .user_credentials{float:right;  }
 }
 
 
@@ -346,12 +408,24 @@ $degree:3deg;
   font-weight:bold;
   line-height: 1 !important;
 }
+.karmarank{
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 10px;
+}
 
 
 ul.itemlist{
-  padding-right:6%;
+  padding-right:6% !important;
   li{padding-bottom: 15px; border-bottom: 1px solid $grijs_licht}
 }
+footer ul.itemlist li{border-bottom: none}
+.challenges.itemlist{ padding-right:0% !important;}
+table.challenges{width:100% !important;
+  th{padding:1em 0;}
+  td{padding:1em 0; border-top:1px solid  $timecolor; border-bottom:1px solid  $timecolor;}
+}
+.challengeindex{ padding-right:0% !important; margin-bottom: 1em;padding-bottom: 1em; border-bottom: 1px solid $timecolor}
 
 ul{
   padding:0 !important;
@@ -384,8 +458,8 @@ ul{
 
 
 .avatar{float:left; margin-right:9px; margin-bottom: 9px}
-.karmascore{float:left; padding-left:9px ;}
-.user_info{float:left; }
+.karmascore{float:left; padding-left:9px;}
+.user_info{float:left; h2{font-size:12px !important; line-height: 1}}
 
 .Toggle{ display: none; padding:15px 0px; text-align: center; cursor: pointer; background: $oranje; }
 header .Toggle{margin-top:25px;}
@@ -483,9 +557,8 @@ div.input.text{
 }
 
 time{
-  font-weight: 900;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 1px;
   color:$timecolor;
 }
 a{@extend %transition}
@@ -501,6 +574,27 @@ body{overflow-x:hidden;}
 }
 
 .points{font-size:5em; font-weight: bold; text-align: center; }
+.chatForm.input-append{
+  input[type="submit"]{ height:34px; width:20%;}
+  input[type="text"]{margin-right:0px; width:70%; padding:6px 2%;}
+}
+input[type="submit"]{background:$timecolor !important; color:#fff !important; font-family: "Open Sans" !important; font-weight: bold; text-transform: uppercase;border:0px; border-radius:0px !important; @extend %transition;}
+input[type="submit"]:hover{background:$oranje !important}
+
+
+// geef de geselecteerde text kleur mee
+::selection {
+  background: #ff7e00; /* Safari */
+  color:#fff;
+  }
+::-moz-selection {
+  background: #ff7e00; /* Firefox */
+  color:#fff;
+}
+
+
+
+
 
 
 /*========= media queries, geen gewone css hieronder ==================================================================*/

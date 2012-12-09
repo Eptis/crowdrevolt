@@ -13,7 +13,11 @@
               =image_tag @challenge.image.url(:front)
             .text
               =raw @challenge.description
-              .pull-right=link_to t("do_challenge"), [:new, @channel, @challenge, :solution], :class => "btn"
+              .pull-right
+                =link_to  [:new, @channel, @challenge, :solution], :class => "btn iconbtn" do
+                  .icon.Solution.white
+                  =t("challenges.do_challenge")
+
           .span6.pull-right
             .center
               %h3= t("points_to_earn")
@@ -30,7 +34,9 @@
     .spacing.center
       %section.challenges_box
         %article
-          %h4 Andere challenges
+          %h4
+            .icon.Challenge
+            = t("challenges.other_challenges")
           %ul
             - @channel.challenges.each do |challenge|
               %li=link_to challenge.title, [@channel, challenge]
@@ -40,7 +46,9 @@
 .row-fluid
   .span24
     %section.alle_oplossingen.spacing
-      %h3 Challenge Oplossingen
+      %h3
+        .icon.Solution
+        = @challenge.title.to_s + " - " + t("solutions").to_s
       - @challenge.solutions.in_groups_of(2,false).each do |solutions|
         .row-fluid.collection
           .span24

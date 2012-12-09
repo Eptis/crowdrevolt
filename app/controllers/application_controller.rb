@@ -46,43 +46,45 @@ class ApplicationController < ActionController::Base
 
 
   def search
-    @search = Sunspot.search(Post, Channel, Episode, Idea, Solution) do
-      fulltext params[:search] do
-        highlight :title
-        highlight :description
+    unless params[:search] == ""
+      @search = Sunspot.search(Post, Channel, Episode, Idea, Solution) do
+        fulltext params[:search] do
+          highlight :title
+          highlight :description
+        end
       end
-    end
-    @results = @search.results
-    @searchresults = []
-    @results_posts = []
-    @results_channels = []
-    @results_episodes = []
-    @results_ideas = []
-    @results_solutions = []
+      @results = @search.results
+      @searchresults = []
+      @results_posts = []
+      @results_channels = []
+      @results_episodes = []
+      @results_ideas = []
+      @results_solutions = []
 
 
-    @results.each do |result|
-      if result.class == Post
-        @results_posts << result
-      elsif result.class == Channel
-        @results_channels << result
-      elsif result.class == Episode
-        @results_episodes << result
-      elsif result.class == Idea
-        @results_ideas << result
-      elsif result.class == Solution
-        @results_solutions << result
+      @results.each do |result|
+        if result.class == Post
+          @results_posts << result
+        elsif result.class == Channel
+          @results_channels << result
+        elsif result.class == Episode
+          @results_episodes << result
+        elsif result.class == Idea
+          @results_ideas << result
+        elsif result.class == Solution
+          @results_solutions << result
+        end
       end
-    end
 
 
-    @searchresults = [@results_posts , @results_channels , @results_episodes , @results_ideas , @results_solutions]
-    @searchresults.reverse!.sort_by(&:size)
-    # raise @searchresults.inspect
+      @searchresults = [@results_posts , @results_channels , @results_episodes , @results_ideas , @results_solutions]
+      @searchresults.reverse!.sort_by(&:size)
+      # raise @searchresults.inspect
 
-    respond_to do |format|
-      format.html
-      format.js
+      respond_to do |format|
+        format.html
+        format.js
+      end
     end
     # raise @results.inspect
   end

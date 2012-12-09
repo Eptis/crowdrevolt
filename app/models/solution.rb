@@ -1,4 +1,8 @@
 class Solution < ActiveRecord::Base
+  #validatie
+  validates_presence_of :title, :description
+  validates_length_of :description, :minimum => 25, :message => "Omschrijving moet minstens 25 karakters bevatten"
+
   # Images select
   include ImageSelect
   image_select

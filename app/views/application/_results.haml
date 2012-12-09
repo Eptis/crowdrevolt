@@ -2,24 +2,25 @@
 .btn.pull-right.clearsearch X
 .spacing
   %h1 resultaten
-  .row-fluid
-    - @searchresults.each do |results|
-      - if results.length > 0
-        .span6
-          - if results[0].class == Post
-            %h2 Artikelen
-          - elsif results[0].class == Channel
-            %h2 Programma's
-          - elsif results[0].class == Episode
-            %h2 Afleveringen
-          - elsif results[0].class == Idea
-            %h2 Ideeën
-          - elsif results[0].class == Solution
-            %h2 Challengeoplossingen
-          - results.each do |result|
-            / - if result.class == Post
-            %h3=link_to result.title, searchlink(result)
-            .text=smart_truncate(strip_tags(result.description), :words => 20).html_safe
+  -if @searchresults
+    .row-fluid
+      - @searchresults.each do |results|
+        - if results.length > 0
+          .span6
+            - if results[0].class == Post
+              %h2 Artikelen
+            - elsif results[0].class == Channel
+              %h2 Programma's
+            - elsif results[0].class == Episode
+              %h2 Afleveringen
+            - elsif results[0].class == Idea
+              %h2 Ideeën
+            - elsif results[0].class == Solution
+              %h2 Challengeoplossingen
+            - results.each do |result|
+              / - if result.class == Post
+              %h3=link_to result.title, searchlink(result)
+              .text=smart_truncate(strip_tags(result.description), :words => 20).html_safe
 
 %hr
 

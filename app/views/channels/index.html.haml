@@ -21,11 +21,12 @@
           %article.span24
             .spacing.showcenter
               - if @live
-                %h3= = t("now_live")
+                %h3
+                  .icon.Episode.white
+                  = t("now_live")
                 %h2= @live.title
                 .row-fluid
                   .span8
-                    / .imgmask
                     =link_to [@live.channel, @live] do
                       - if @live.image
                         =image_tag @live.image.url(:front)
@@ -48,7 +49,9 @@
                         - if @upcoming.image
                           =image_tag @upcoming.image.url(:front)
                     .span16
-                      %h3= t("next_episode")
+                      %h3
+                        .icon.Episode.white
+                        = t("channels.next_episode")
                       =link_to [@upcoming.channel, @upcoming] do
                         %h2= @upcoming.title
                       %time= l(@upcoming.airdate, :format => :full)
@@ -69,12 +72,16 @@
           - @recent.each do |recent|
             -if recent.class == Post ||  recent.class == Idea
               .span8
-                %h4= recent.title
+                %h4
+                  .icon{:class => "#{recent.type.to_s}"}
+                  = recent.title
                 .text=smart_truncate(strip_tags(recent.description), :words => 20).html_safe
                 =link_to "Lees meer", [recent.channel, recent]
             - elsif recent.class == Solution
               .span8
-                %h4= recent.title
+                %h4
+                  .icon{:class => "#{recent.type.to_s}"}
+                  = recent.title
                 .text=smart_truncate(strip_tags(recent.description), :words => 20).html_safe
                 =link_to "Lees meer", [recent.challenge.channel , recent.challenge, recent]
   .sloper.grey
@@ -83,7 +90,9 @@
 .row-fluid
   %section.programmas.span24
     .spacing
-      %h2 Programma's
+      %h2
+        .icon.Channel
+        = t("channels.channels")
       -@channels.each do |channel|
         .row-fluid
           %article.span24

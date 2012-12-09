@@ -40,10 +40,14 @@ module ApplicationHelper
 
   def karmarank(score)
     case score
-      when(0..50)
-        return 1
+      when(0..100)
+        return t("ranks.follower")
+      when(101..10)
+        return t("ranks.speaker")
       when(51..100)
-        return 2
+        return t("ranks.unknown")
+      when(score > 200)
+        return t("ranks.changemaker")
     end
   end
 end

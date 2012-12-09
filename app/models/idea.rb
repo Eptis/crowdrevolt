@@ -1,5 +1,11 @@
 class Idea < ActiveRecord::Base
   attr_accessible :title, :image_select, :title, :blogitems_attributes, :description, :channel_id
+
+  #validatie
+  validates_presence_of :title, :description
+  validates_length_of :description, :minimum => 25, :message => "Omschrijving moet minstens 25 karakters bevatten"
+
+
   has_many :appreciables, :as => :appreciable
   # blog items
   has_many :blogitems, :as => :ownable

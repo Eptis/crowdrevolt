@@ -1,5 +1,14 @@
-.row
-  - @posts.each do |post|
-    %h2= post.title
-    %p=raw post.description
-    = link_to post.title, post
+.spacing
+  =link_to (t("back") + " naar #{@channel.title}"), @channel
+  %h2= @channel.title + " - "+ t("posts.all_posts")
+.spacing
+  - @posts.in_groups_of(3, false) do |posts|
+    .row-fluid
+      .span24
+        - @posts.each do |post|
+          .span8
+            %h2= post.title
+            -if post.image.present?
+              =image_tag post.image.url(:front)
+            %p=smart_truncate(strip_tags(post.description), :words => 20).html_safe
+            = link_to post.title, [@channel,post]
