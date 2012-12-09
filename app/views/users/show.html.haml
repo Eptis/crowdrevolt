@@ -1,28 +1,36 @@
-%section.span24.content.spacing
-  .row-fluid
-    %section.profiel
-      .row-fluid
-        %article.span6
-          %img{:src => "http://placehold.it/710x600"}
-          / =image_tag @user.avatar.url
-        %article.span18
-          - if @user.name
-            %h1= @user.name + " " + @user.username
-          - else @user.name
-            %h1= @user.username
-          %h3= karmarank(@user.score).to_s + " " + @user.score.to_s
-          %h4= @user.skypename if @user.show_skype
+%section.span24.content
+  .slopel.orange
+    .slopelshape
+  .row-fluid.highlight
+    .spacing.blogcenter
+      %artile.profiel
+        .row-fluid
+          %article.span6
+            -if @user.avatar.url
+              =image_tag @user.avatar.url
+            -else
+              %img{:src => "http://placehold.it/710x600"}
+          %article.span18
+            - if @user.name
+              %h1= @user.name + " " + @user.username
+            - else @user.name
+              %h1= @user.username
+            %h3= karmarank(@user.score).to_s + " " + @user.score.to_s
+            %h4= @user.skypename if @user.show_skype
 
-          - if current_user
-            =link_to :user_logout, :class => "btn btn-danger" do
-              %i.icon-off.icon-white
-              =t("logout")
-            = link_to 'Edit', edit_user_path(@user), :class => "btn" if @user == current_user
-          .text= @user.bio
-
-.spacing
-  .row-fluid
+            - if current_user
+              =link_to :user_logout, :class => "btn btn-danger" do
+                %i.icon-off.icon-white
+                =t("logout")
+              = link_to 'Edit', edit_user_path(@user), :class => "btn" if @user == current_user
+            .text= @user.bio
+  .sloper.orange
+    .slopershape
+.homespacefix
+.row-fluid
+  .spacing
     %h2= t("by_this_user")
+
     .span24
       .span12
         %h3= t("solutions")
@@ -36,7 +44,7 @@
                     .span12
                       %h4=link_to sol.title,[sol.challenge.channel, sol.challenge, sol]
                       .text=smart_truncate(strip_tags(sol.description), :words => 20).html_safe
-                      =link_to t("read_more"), [sol.challenge.channel, sol.challenge, sol]
+                      =link_to t("more"), [sol.challenge.channel, sol.challenge, sol]
                     .span12
                       - if sol.image.present?
                         =link_to [sol.challenge.channel, sol.challenge, sol] do
@@ -53,7 +61,7 @@
                     .span12
                       %h4=link_to idea.title,[idea.channel, idea]
                       .text=smart_truncate(strip_tags(idea.description), :words => 20).html_safe
-                      =link_to t("read_more"), [idea.channel, idea]
+                      =link_to t("more"), [idea.channel, idea]
                     .span12
                       - if idea.image.present?
                         =link_to [idea.channel, idea] do

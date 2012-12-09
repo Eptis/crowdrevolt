@@ -10,9 +10,9 @@
         %nav.hoofdmenu
           .row-fluid
             %ul.span24
-              - 9.times do
-                - @channels.each do |channel|
-                  %li.nomargin.span8=link_to channel.title, channel
+              /- 9.times do
+              - @channels.each do |channel|
+                %li.nomargin.span8=link_to channel.title, channel
 
 
       .span7.usermenu

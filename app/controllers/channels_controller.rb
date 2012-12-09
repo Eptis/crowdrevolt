@@ -3,7 +3,8 @@ class ChannelsController < ApplicationController
   def index
    @channels = Channel.all
    @recent = []
-   @upcoming = Episode.where("airdate > ?", Time.now && :channel => @channel).first
+   @live = Episode.where("live = true").order('airdate asc').first
+   @upcoming = Episode.where("airdate > ?", Time.now).first
    @posts = Post.order(&:updated_at)
    @solution = Solution.order(&:updated_at)
    @idea = Idea.order(&:updated_at)
@@ -17,7 +18,7 @@ class ChannelsController < ApplicationController
 
   def show
     @channel = Channel.find(params[:id])
-    @live = Episode.where("live = true").order('airdate asc').first
+    @live = Episode.where(:live => true, :channel_id => @channel.id).order('airdate asc').first
     @upcoming = Episode.where("airdate > ?", Time.now && :channel => @channel).first
     @posts = Post.find(:all, :limit => 5, :order => "updated_at DESC", :conditions => {:channel_id => @channel.id})
     @ideas = Idea.find(:all, :limit => 5, :order => "updated_at DESC", :conditions => {:channel_id => @channel.id})

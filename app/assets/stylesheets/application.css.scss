@@ -6,10 +6,12 @@
 */
 
 $oranje:#ff5400;
+$darkorange:#c44102;
 $zwart:#070707;
 $wit:#ffffff;
-$grijs_licht:#262626;
-$grijs_donker:#151515;
+$grijs_licht:#161616;
+$grijs_donker:#111;
+$timecolor:#282828;
 $oranje_tint:$oranje;
 // $input_grey:#3d3d3d;
 $input_grey:$grijs_licht;
@@ -71,19 +73,7 @@ p, .text{
   padding-left:0px !important;
   padding-right:0px !important;
 }
-// @media screen and (max-width:960px){
-//    .container-fluid{
-//     padding-left:15px !important;
-//     padding-right:15px !important;
-//   }
-// }
 
-// @media screen and (max-width:480px){
-//    .container-fluid{
-//     padding-left:0px !important;
-//     padding-right:0px !important;
-//   }
-// }
 
 .submenu{
   /*max-width:600px;*/
@@ -113,9 +103,13 @@ p, .text{
 	margin-left:0 !important;
 }
 
-a{
-  color:$oranje !important;
+
+.highlight {
+  a{color:#fff !important;}
+  .text a{ color: $grijs_donker !important; text-transform: uppercase; font-weight: 600}
+  h3,h4,h5,h6{color: $grijs_licht !important;}
 }
+.text a{ color: $oranje; text-transform: uppercase; font-weight: 600}
 
 
 #appreciableBtn{
@@ -142,11 +136,11 @@ a{
 
 .h-spacing{padding:0 15px;}
 .v-spacing{padding:15px 0;}
-.spacing{padding:15px 50px;}
+.spacing{padding:21px 51px;}
 
 
 .sidebar{
-  background: $grijs_licht;
+  background: $grijs_donker;
   .spacing{padding:36px !important;}
   section{margin-bottom: 1.5em}
 }
@@ -177,7 +171,7 @@ a{
 }
 
 .usermenu{
-  border-left:1px solid $grijs_donker;
+  // border-left:1px solid $grijs_donker;
   .user_credentials{float:right;  }
 }
 
@@ -262,9 +256,9 @@ a{
 .grey{
 
   .slopershape{
-    border-top: 0px solid $grijs_licht;
-    border-left: 1920px solid $grijs_licht;
-    border-right: 0px solid $grijs_licht;
+    border-top: 0px solid $grijs_donker;
+    border-left: 1920px solid $grijs_donker;
+    border-right: 0px solid $grijs_donker;
     border-bottom: $slopeheight solid transparent;
     margin-bottom:-$slopeheight;
     position: absolute;
@@ -279,9 +273,9 @@ a{
     position: absolute;
     top:0;
     right:0px;
-    border-right: 1920px solid $grijs_licht;
-    border-bottom: 0px solid $grijs_licht;
-    border-left: 0px solid $grijs_licht;
+    border-right: 1920px solid $grijs_donker;
+    border-bottom: 0px solid $grijs_donker;
+    border-left: 0px solid $grijs_donker;
     height:0;
     // width:100%;
 
@@ -294,8 +288,16 @@ a{
 .clear{clear:both};
 .spacefix{margin-top:$slopeheight*-1; float: left}
 
+a:visited{
+  text-decoration: none !important;
+  color: $darkorange;
+  h1,h2,h3,h4,h5,h6{color: $darkorange;}
+}
+
 a:hover{
   text-decoration: none !important;
+  color: #fff !important;
+  background: $oranje !important;
 }
 
 $degree:3deg;
@@ -336,6 +338,7 @@ $degree:3deg;
 
 .highlight{
   background: $oranje;
+  h1,h2,h3,h4,h5,h6{color:#fff !important;}
 }
 
 .karmascore{
@@ -365,7 +368,7 @@ ul{
   line-height: 1.5;
 }
 
-@media screen and (max-width:1440px){
+@media screen and (min-width:1440px){
   .pageheader{
     font-size:6em;
     /*-webkit-transform:rotate(-$degree);*/
@@ -389,9 +392,123 @@ header .Toggle{margin-top:25px;}
 
 
 $slopefixheight:36px;
+
+
+
+.field{margin:2em 0;}
+input[type="text"], input[type="password"], input[type="email"], textarea{
+  outline:none;
+  // font-weight: 100;
+  border-radius: 0 !important;
+  border:1px solid transparent !important;
+  background: $input_grey !important;
+  margin-right:1em;
+  color:#fff !important;
+  @extend %transition;
+  &:focus{border:1px solid $oranje !important; box-shadow: none !important; color:$oranje !important;}
+}
+textarea{
+  width: 96% !important;
+  padding:2% !important;
+  &:focus{color:#fff !important;}
+}
+
+label{ font-weight: 900; text-transform: uppercase; margin-right: 1em;}
+
+
+
+
+.footerspacer{height:$slopeheight; width:100%;}
+footer{
+  padding-bottom:50px;
+  background: $grijs_donker;
+  li{float:left; margin:12px;}
+}
+.center{
+  margin:0 auto;
+  max-width:960px;
+}
+
+
+.blogcenter{
+  max-width: 960px;
+  margin:0 auto;
+}
+.showcenter{
+  max-width: 1440px;
+  margin:0 auto;
+}
+.dynamic_block{
+  background: $grijs_donker;
+  label{margin-left:1em; display: inline}
+}
+
+.nested_field_btn{
+  padding:15px 2%;
+  width:96%;
+  background: $oranje;
+  color:#fff !important;
+  float:left;
+  text-align:center;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+div.input.text{
+  margin:0 !important;
+  max-width:100% !important;
+
+  textarea.text{
+    width:96% !important;
+    padding:15px 2%;
+    max-width:100% !important;
+  }
+}
+
+.dynamic_submit{
+  @extend %transition;
+  background: $grijs_licht;
+  color:#fff !important;
+  border:none !important;
+  padding:1em ;
+  font-size:2em ;
+  margin:1em 0 ;
+  text-transform: uppercase;
+  &:hover{background:$oranje;}
+
+}
+.dynamic_remove{
+  @extend .dynamic_submit;
+  padding:0.2em !important;
+  margin:0.2em 0 !important;
+}
+
+time{
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color:$timecolor;
+}
+a{@extend %transition}
+.logo a:hover{ background: none !important}
+
+.collection article{
+  margin-bottom: 2em;
+}
+body{overflow-x:hidden;}
+
+.toggler.open{
+  max-height:100% !important;
+}
+
+.points{font-size:5em; font-weight: bold; text-align: center; }
+
+
+/*========= media queries, geen gewone css hieronder ==================================================================*/
+
 // mobile only
 @media screen and(max-width:640px){
   .slopel, .sloper{ height:$slopefixheight !important;}
+  .collection article{border-bottom: 1px solid $grijs_licht; padding-bottom:2em;}
   .homespacefix{height:$slopefixheight;}
   .slopel.menu{margin-bottom:-$slopefixheight;}
   .spacefix{margin-top:-$slopefixheight;}
@@ -417,27 +534,6 @@ $slopefixheight:36px;
 
   .intro h1, .pageheader{font-size:2em !important; line-height:1.5 !important; }
 }
-
-
-.field{margin:2em 0;}
-input[type="text"], input[type="password"], input[type="email"], textarea{
-  outline:none;
-  // font-weight: 100;
-  border-radius: 0 !important;
-  border:1px solid transparent !important;
-  background: $input_grey !important;
-  margin-right:1em;
-  color:#fff !important;
-  @extend %transition;
-  &:focus{border:1px solid $oranje !important; box-shadow: none !important; color:$oranje !important;}
-}
-textarea{
-  width: 96% !important;
-  padding:2% !important;
-  &:focus{color:#fff !important;}
-}
-
-label{ font-weight: 900; text-transform: uppercase; margin-right: 1em;}
 
 @media screen and (min-width:1440px){
   input.makeitbig{
@@ -539,74 +635,10 @@ label{ font-weight: 900; text-transform: uppercase; margin-right: 1em;}
 }
 
 
-
-body{overflow-x:hidden;}
-
-.toggler.open{
-  max-height:100% !important;
-}
-
-@media screen and (max-width:1280px){
+@media screen and (max-width:1024px){
   .content{width:100% !important;}
   .sidebar{width:100% !important; margin-left:0 !important;}
-}
-
-.footerspacer{height:$slopeheight; width:100%;}
-footer{
-  padding-bottom:50px;
-  background: $grijs_licht;
-  li{float:left; margin:12px;}
-}
-.center{
-  margin:0 auto;
-  max-width:960px;
-}
-
-
-.blogcenter{
-  max-width: 960px;
-  margin:0 auto;
-}
-.dynamic_block{
-  background: $grijs_donker;
-  label{margin-left:1em; display: inline}
-}
-
-.nested_field_btn{
-  padding:15px 2%;
-  width:96%;
-  background: $oranje;
-  color:#fff !important;
-  float:left;
-  text-align:center;
-  font-weight: 900;
-  text-transform: uppercase;
-}
-div.input.text{
-  margin:0 !important;
-  max-width:100% !important;
-
-  textarea.text{
-    width:96% !important;
-    padding:15px 2%;
-    max-width:100% !important;
+  .otherChallenges{
+    width:100% !important;
   }
-}
-
-.dynamic_submit{
-  @extend %transition;
-  background: $grijs_licht;
-  color:#fff !important;
-  border:none !important;
-  padding:1em ;
-  font-size:2em ;
-  margin:1em 0 ;
-  text-transform: uppercase;
-  &:hover{background:$oranje;}
-
-}
-.dynamic_remove{
-  @extend .dynamic_submit;
-  padding:0.2em !important;
-  margin:0.2em 0 !important;
 }

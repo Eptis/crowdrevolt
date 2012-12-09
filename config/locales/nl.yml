@@ -2,6 +2,8 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 nl:
+  #algemeen
+  more: "> Meer"
   # formulieren
   helpers:
       submit:
@@ -50,6 +52,7 @@ nl:
     formats:
       default: "%d-%m-%Y %H:%M"
       full: "%d %B %Y - %H:%M uur"
+      short: "%d %b %Y - %H:%M uur"
       small: "%d-%m-%Y %H:%M uur"
   date:
     abbr_day_names:

@@ -1,11 +1,52 @@
-%h1.spacing.pageheader= @channel.title
-.spacing
 .row-fluid
   %section.span18.content
-    / %h2= t("episodes")
-    / - @channel.episodes.each do |episode|
-    /   =link_to episode.title, [@channel, episode]
+    .row-fluid
+      .slopel.orange
+        .slopelshape
+      .row-fluid
+        .spacing.highlight
+          %h1.pageheader= @channel.title
+          -if @live || @upcoming
+            .row-fluid
+              %article.span24
+                .spacing
+                  - if @live
+                    %h3= t("now_live")
+                    %h2= @live.title
+                    .row-fluid
+                      .span8
+                        / .imgmask
+                        =link_to [@channel, @live] do
+                          - if @live.image
+                            =image_tag @live.image.url(:front)
+                      .span9
+                        =link_to [@channel, @live] do
+                          %h2= @live.title
 
+                        %time= l(@live.airdate, :format => :full)
+                        .text
+                          =smart_truncate(strip_tags(@live.description), :words => 40).html_safe
+                          =link_to t("more"), [@channel, @live]
+
+                  - elsif @upcoming
+
+                    .row-fluid
+                      .rotate
+                        .span8
+                          / .imgmask
+                          =link_to [@channel, @upcoming] do
+                            - if @upcoming.image
+                              =image_tag @upcoming.image.url(:front)
+                        .span16
+                          %h3= t("next_episode")
+                          =link_to [@channel, @upcoming] do
+                            %h2= @upcoming.title
+                          %time= l(@upcoming.airdate, :format => :full)
+                          .text
+                            =smart_truncate(strip_tags(@upcoming.description), :words => 40).html_safe
+                            =link_to t("more"), [@channel, @upcoming]
+        .sloper.orange
+          .slopershape
     .row-fluid
 
       %section.span9.chat
@@ -42,7 +83,64 @@
                 %li=link_to challenge.title, [@channel, challenge]
 
             =link_to  t("post_idea"), [:new, @channel, :idea], :class => "btn"
+      .row-fluid
+        .span24
+          .row-fluid
+            .span24
+              .spacing
+                %section.span12
+                  %h2 Changemaker Blogspots
+                  %ul.itemlist
+                    - @posts.each do |post|
+                      %li
+                        .row-fluid
+                          %article.span24
+                            .row-fluid
+                              =link_to [@channel, post] do
+                                %h3=smart_truncate(strip_tags( post.title), :words => 5).html_safe
+                              %time= l(post.updated_at, :format => :short)
+                            =link_to [@channel, post] do
+                              %img.span6{:src => "http://placehold.it/110x60"}
+                            .span16
+                              .smallspacing.text
+                                =smart_truncate(strip_tags(post.description), :words => 20).html_safe
+                                =link_to t("more"), [@channel, post]
 
+
+
+                %section.span12
+                  %h2 Ingezonden ideeën
+                  %ul.itemlist
+                    - @ideas.each do |idea|
+                      %li
+                        .row-fluid
+                          %article.span24
+                            .row-fluid
+                              =link_to [@channel, idea] do
+                                %h3=smart_truncate(strip_tags( idea.title), :words => 5).html_safe
+                              %time= l(idea.updated_at, :format => :short)
+                            =link_to [@channel, idea] do
+                              %img.span6{:src => "http://placehold.it/110x60"}
+                            .span16
+                              .smallspacing.text
+                                =smart_truncate(strip_tags(idea.description), :words => 20).html_safe
+                                =link_to t("more"), [@channel, idea]
+
+
+
+                .row-fluid
+                  %section.span24.laatste_afleveringen_klein
+                    %h2 Vorige uitzendingen
+                    .row-fluid
+                      - @episodes.each do |episode|
+                        %article.span7
+                          =link_to [@channel, episode] do
+                            %h3= episode.title
+                          %time= l(episode.airdate, :format => :full)
+                          =link_to [@channel, episode] do
+                            -if episode.image
+                              =image_tag episode.image.url(:front)
+                      .span24=link_to "Vorige uitzendingen", [@channel, :episodes], :class => "btn"
   %aside.span6.sidebar
     .sloper.black
       .slopershape
@@ -77,84 +175,6 @@
             %li En nog een link
     .slopel.black
       .slopelshape
-
-
--if @live || @upcoming
-  .row-fluid
-    .slopel.orange
-      .slopelshape
-    .row-fluid
-      %article.span24
-        .spacing.highlight
-          - if @live
-            %h2= @live.title
-            .row-fluid
-              .span8
-                / .imgmask
-                - if @live.image
-                  =image_tag @live.image.url(:front)
-              .span9
-                %h2= @live.title
-                .text=smart_truncate(strip_tags(@live.description), :words => 40).html_safe
-          - elsif @upcoming
-
-            .row-fluid
-              .rotate
-                .span8
-                  / .imgmask
-                  - if @upcoming.image
-                    =image_tag @upcoming.image.url(:front)
-                .span16
-                  %h3 Volgende livestream
-                  %h2= @upcoming.title
-                  .text=smart_truncate(strip_tags(@upcoming.description), :words => 40).html_safe
-    .sloper.orange
-      .slopershape
-
-
-    .row-fluid
-      .span24
-        .row-fluid
-          .span24
-            .spacing
-              %section.span12
-                %h2 Changemaker Blogspots
-                %ul.itemlist
-                  - @posts.each do |post|
-                    %li
-                      .row-fluid
-                        %article.span24
-                          =link_to [@channel, post] do
-                            %h3=smart_truncate(strip_tags( post.title), :words => 5).html_safe
-                          =link_to [@channel, post] do
-                            %img.span6{:src => "http://placehold.it/110x60"}
-                          .span16
-                            .text=smart_truncate(strip_tags(post.description), :words => 20).html_safe
-
-              %section.span12
-                %h2 Ingezonden ideeën
-                %ul.itemlist
-                  - @ideas.each do |idea|
-                    %li
-                      .row-fluid
-                        %article.span24
-                          =link_to [@channel, idea] do
-                            %h3=smart_truncate(strip_tags( idea.title), :words => 5).html_safe
-                          =link_to [@channel, idea] do
-                            %img.span6{:src => "http://placehold.it/110x60"}
-                          .span16
-                            .text=smart_truncate(strip_tags(idea.description), :words => 20).html_safe
-
-              .row-fluid
-                %section.span24.laatste_afleveringen_klein
-                  %h2 Vorige uitzendingen
-                  .row-fluid
-                    - @episodes.each do |episode|
-                      %article.span7
-                        =link_to [@channel, episode] do
-                          -if episode.image
-                            =image_tag episode.image.url(:front)
-                    .span24=link_to "Vorige uitzendingen", [@channel, :episodes], :class => "btn"
 
 - @channel_clean = @channel.id.to_s + @channel.title.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '') + "/channel"
 :javascript

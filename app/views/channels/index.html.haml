@@ -15,14 +15,46 @@
   .slopel.orange
     .slopelshape
   .row-fluid
-    %section.volgende_uitzending.span24.v-spacing
-      %article
-        .spacing
-          .span10
-            %img{:src => "http://mute.rigent.com/pics/protest_crowd.jpg"}
-          .span14
-            %h2 Titel volgende uitzending
-            %p Maecenas faucibus mollis interdum. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Etiam porta sem malesuada magna mollis euismod. Donec ullamcorper nulla non metus auctor fringilla. Cras mattis consectetur purus sit amet fermentum.
+    %section.volgende_uitzending.span24.v-spacing.highlight
+      -if @live || @upcoming
+        .row-fluid
+          %article.span24
+            .spacing.showcenter
+              - if @live
+                %h3= = t("now_live")
+                %h2= @live.title
+                .row-fluid
+                  .span8
+                    / .imgmask
+                    =link_to [@live.channel, @live] do
+                      - if @live.image
+                        =image_tag @live.image.url(:front)
+                  .span9
+                    =link_to [@live.channel, @live] do
+                      %h2= @live.title
+
+                    %time= l(@live.airdate, :format => :full)
+                    .text
+                      =smart_truncate(strip_tags(@live.description), :words => 40).html_safe
+                      =link_to t("more"), [@live.channel, @live]
+
+              - elsif @upcoming
+
+                .row-fluid
+                  .rotate
+                    .span8
+                      / .imgmask
+                      =link_to [@upcoming.channel, @upcoming] do
+                        - if @upcoming.image
+                          =image_tag @upcoming.image.url(:front)
+                    .span16
+                      %h3= t("next_episode")
+                      =link_to [@upcoming.channel, @upcoming] do
+                        %h2= @upcoming.title
+                      %time= l(@upcoming.airdate, :format => :full)
+                      .text
+                        =smart_truncate(strip_tags(@upcoming.description), :words => 40).html_safe
+                        =link_to t("more"), [@upcoming.channel, @upcoming]
   .sloper.orange
     .slopershape
 .clear

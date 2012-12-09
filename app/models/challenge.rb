@@ -4,6 +4,10 @@ class Challenge < ActiveRecord::Base
   has_many :rewards, :as => :rewardable
   belongs_to :channel
 
+  # Images select
+  include ImageSelect
+  image_select
+
   def to_param
     "#{id}-#{title}".parameterize
   end
