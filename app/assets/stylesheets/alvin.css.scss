@@ -10,6 +10,11 @@
   margin-top: 1em !important;
 }
 
+.changemakers h5 {
+  float: left;
+  width: 100% !important;
+}
+
 .naam_uitzending {
   font-weight: bold !important;
   color:#ff5400 !important;
@@ -17,10 +22,9 @@
 
 .laatste_afleveringen_klein {
   margin-top: 4em !important;
-}
-
-.vorige_uitzending {
-  padding-right: 2em !important;
+  .span24 {
+    margin: 0 !important;
+  }
 }
 
 .smallspacing {
