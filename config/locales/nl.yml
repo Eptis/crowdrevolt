@@ -24,6 +24,7 @@ nl:
     solutions: "Aantal oplossingen"
   ideas:
     ideas: "Ideeën"
+    all_ideas: "Alle Ideeën"
     submitted: "Ingezonden ideeën"
     new_idea: "Ik heb een idee"
   channels:
@@ -32,15 +33,17 @@ nl:
     next_episode: "Volgende livestream"
     status: "Projectstatus"
     previous_episodes: "Vorige livestreams"
-    articles: "Artikelen"
     chat: "Chat mee over dit programma"
     recommended_links: "Aanbevolen links"
+  articles:
+    articles: "Artikelen"
+    all_articles: "> Alle Artikelen"
   episodes:
     episodes: "Livestreams"
     episode: "Livestream"
     all_episodes: "Alle Livestreams"
   users:
-    by_this_user: "Door %{username}"
+    by_this_user: ! 'Door %{username}'
   posts:
     posts: "Artikelen"
     all_posts: "Alle artikelen"

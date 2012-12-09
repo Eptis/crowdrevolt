@@ -12,7 +12,7 @@
                 - if @live
                   %h3.clearfix
                     .icon.Episode.white
-                    = t("now_live")
+                    = t("channels.now_live")
                   %h2= @live.title
                   .row-fluid
                     .span8
@@ -41,7 +41,7 @@
                       .span15.offset1
                         %h3.clearfix
                           .icon.Episode.white
-                          = t("next_episode")
+                          = t("channels.next_episode")
                         =link_to [@channel, @upcoming] do
                           %h2= @upcoming.title
                         %time= l(@upcoming.airdate, :format => :full)
@@ -109,7 +109,7 @@
                 %section.span12
                   %h2
                     .icon.Post
-                    = t("channels.articles")
+                    = t("articles.articles")
                   %ul.itemlist
                     - @posts.each do |post|
                       %li
@@ -126,7 +126,7 @@
                               .text
                                 =smart_truncate(strip_tags(post.description), :words => 20).html_safe
                                 .clearfix=link_to t("more"), [@channel, post], :class => "btn pull-right more"
-                    %li=link_to t("channels.all_articles"), [@channel,:posts]
+                    %li.clearfix=link_to t("articles.all_articles"), [@channel,:posts], :class => "more btn pull-right"
 
 
 
@@ -154,6 +154,7 @@
                             .text
                               =smart_truncate(strip_tags(idea.description), :words => 20).html_safe
                               .clearfix=link_to t("more"), [@channel, idea], :class => "btn pull-right more"
+                    %li.clearfix=link_to t("ideas.all_ideas"), [@channel,:posts], :class => "more btn pull-right"
 
 
 
@@ -167,7 +168,8 @@
                         %article.span7
                           =link_to [@channel, episode] do
                             %h3= episode.title
-                          %time= l(episode.airdate, :format => :full)
+                          -if episode.airdate.present?
+                            %time= l(episode.airdate, :format => :full)
                           =link_to [@channel, episode] do
                             -if episode.image
                               =image_tag episode.image.url(:front)

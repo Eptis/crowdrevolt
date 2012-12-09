@@ -36,7 +36,7 @@
 .homespacefix
 .row-fluid
   .spacing
-    %h2= t("users.by_this_user")
+    %h2= t("users.by_this_user", :username => @user.username)
 
     .span24
       .span12
@@ -61,7 +61,7 @@
       .span12
         %h3
           .icon.Idea
-          = t("ideas.ideas", :username => @user.username)
+          = t("ideas.ideas")
         .row-fluid
           %ul.span24.itemlist
             .row-fluid
