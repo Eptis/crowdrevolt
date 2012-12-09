@@ -167,7 +167,7 @@
                       = t("channels.previous_episodes")
                     .row-fluid
                       - @episodes.each do |episode|
-                        %article.span7
+                        %article.span8
                           =link_to [@channel, episode] do
                             %h3= episode.title
                           -if episode.airdate.present?
