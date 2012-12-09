@@ -15,12 +15,18 @@ $timecolor:#373737;
 $oranje_tint:$oranje;
 // $input_grey:#3d3d3d;
 $input_grey:#222222;
-$slopeheight:100px;
+$slopeheight:70px;
 
 %inlineblock{
   display: inline-block;
   zoom:1; /* IE 7 Hack starts here*/
   *display:inline; /* IE 7 Hack starts here*/
+}
+
+.logo{
+  position: relative;
+  overflow: hidden;
+
 }
 
 .icon{
@@ -84,6 +90,25 @@ $slopeheight:100px;
   color :#fff !important;
 }
 
+.pagination{
+  border-top:1px solid $grijs_licht;
+  text-align: center;
+  margin-top:51px;
+  padding-top:12px;
+  font-size: 1.3em;
+  a,.current{@extend %inlineblock; margin:0 0.2em;text-align: center; width:50px; height:50px; line-height: 50px;}
+  .disabled{color: $timecolor;}
+  .current{font-weight: bold;font-style: normal; background:$oranje; }
+}
+.pagination.top{
+  border-bottom:1px solid $grijs_licht;
+  border-top:0px solid $grijs_licht;
+  margin-bottom:51px;
+  padding-bottom:12px;
+  margin-top:0;
+  padding-top:0;
+}
+
 body{
   color:$wit !important;
   font-family:"Open Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif !important;
@@ -99,9 +124,28 @@ body{
     font-weight:lighter;
     line-height:1.7em !important;
 }
+.line{
+  border-bottom: $grijs_donker 1px solid;
+  margin: 0px 2em !important;
+  padding: 0px 0px !important
+}
 header{
   padding:30px 15px 0 15px;
 
+  // background:$oranje;
+  position: relative;
+  border-top:9px $oranje solid;
+  // overflow: hidden;
+  .background{
+    border-top: 320px solid $grijs_donker;
+    border-right: 320px solid transparent;
+    border-left: 0px solid $grijs_donker;
+    border-bottom: 0px $slopeheight solid $grijs_donker;
+    position: absolute;
+    top:0;
+    left:0;
+    height:0;
+  }
 }
 .slopel.menu{margin-bottom:-$slopeheight;}
 
@@ -148,6 +192,7 @@ p, .text{
 .login {
   float: right;
   margin-left: 1.5em;
+
 }
 
 .importantmg {
@@ -199,6 +244,7 @@ p, .text{
 .h-spacing{padding:0 15px;}
 .v-spacing{padding:15px 0;}
 .spacing{padding:21px 51px;}
+.spacing.nov{padding:0px 51px;}
 
 
 .sidebar{
@@ -216,12 +262,14 @@ p, .text{
 .hoofdmenu{
   *{@extend %transition}
   min-height:100px;
+  float: left;
   li{
     @extend %transition;
     position: relative;
+    border-left:1px solid $timecolor;
     a{color:#fff !important;}
     &:hover{background: $oranje; color:#fff;}
-    a{font-size:18px; text-transform: uppercase; font-weight: bold;
+    a{font-size:15px; text-transform: uppercase; font-weight: normal;
     @extend %transition;
     position: relative; width:100%; height:100%; display: block; text-align: center;
     padding:15px 0;
@@ -405,7 +453,7 @@ $degree:3deg;
 
 .karmascore{
   font-size:3em;
-  font-weight:bold;
+  font-weight:200;
   line-height: 1 !important;
 }
 .karmarank{
@@ -608,7 +656,9 @@ input[type="submit"]:hover{background:$oranje !important}
   .spacefix{margin-top:-$slopefixheight;}
   .slopershape{border-bottom: $slopefixheight solid transparent !important;}
   .slopelshape{border-top: $slopefixheight solid transparent !important;}
-
+  .hoofdmenu{float:none; li{border-left:none;}}
+  .activity{margin-bottom: 2em; border-bottom: 1px solid $timecolor}
+  .icon{float:left;}
   .spacing{padding:15px;}
   .Toggle{ display: block;}
   .toggler{max-height: 0; overflow: hidden;
@@ -735,4 +785,8 @@ input[type="submit"]:hover{background:$oranje !important}
   .otherChallenges{
     width:100% !important;
   }
+  .spacing, .spacing.nov{padding:21px 1em;}
+  .smallspacing{margin-left:1em !important;margin-right:1em !important; padding:15px 0 !important;}
+  ul.itemlist{padding-right:0 !important;}
 }
+

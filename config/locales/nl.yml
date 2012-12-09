@@ -14,6 +14,7 @@ nl:
   solutions:
     solutions: "oplossingen"
     solution_for: "Oplossing voor:"
+    all_solutions: "Alle oplossingen"
   challenges:
     challenges: "Uitdagingen"
     challenge: "Uitdaging"
@@ -44,6 +45,8 @@ nl:
     all_episodes: "Alle Livestreams"
   users:
     by_this_user: ! 'Door %{username}'
+    more_solutions: "Meer oplossingen van %{username}"
+    more_ideas: "Meer ideeën van %{username}"
   posts:
     posts: "Artikelen"
     all_posts: "Alle artikelen"

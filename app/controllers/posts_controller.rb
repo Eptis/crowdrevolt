@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   before_filter :find_channel
 
   def index
-    @posts = Post.where("published_at < ?", Time.now)
+    @posts = Post.where("published_at < ?", Time.now).where( :channel_id => @channel.id).paginate(:page => params[:page], :per_page => 6)
   end
 
   def show

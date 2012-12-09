@@ -16,6 +16,16 @@ class UsersController < ApplicationController
     @ideas = Idea.find(:all, :limit => 3, :conditions => {:user_id => @user.id})
   end
 
+  def solutions
+    @user = User.find(params[:id])
+    @solutions = Solution.where(:user_id => @user.id).paginate(:page => params[:page], :per_page => 6)
+  end
+
+  def ideas
+    @user = User.find(params[:id])
+    @ideas = Idea.where(:user_id => @user.id).paginate(:page => params[:page], :per_page => 6)
+  end
+
   def new
     @user = User.new
   end

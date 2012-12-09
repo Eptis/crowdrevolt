@@ -23,5 +23,7 @@ class User < ActiveRecord::Base
   has_many :comments, :dependent => :destroy
   has_many :appreciables
 
-
+  def to_param
+    "#{id}-#{username}".parameterize
+  end
 end

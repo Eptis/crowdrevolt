@@ -59,7 +59,7 @@
 
           .sloper.black
             .slopershape
-          .smallspacing
+          .spacing
             %h2= t("channels.chat")
             %ul#chatBox
               -if @channel.messages.present?
@@ -77,14 +77,14 @@
 
 
       %section.span15.challenges
-        .smallspacing
+        .spacing
           %article
             %h2.clearfix
               .icon.Challenge
               = t("challenges.challenges_and_ideas")
             %p.text Sed posuere consectetur est at porta ac consectetur ac, vestibulum at eros. Sed posuere consectetur est at lobortis. Nulla vitae elit libero, a pharetra augue. Meer informatie kun je vinden bij Karma & Rewards
             .clearfix
-              =link_to [:new, @channel, :idea], :class => "btn more pull-right iconbtn" do
+              =link_to [:new, @channel, :idea], :class => "btn more iconbtn" do
                 .icon.Idea.white
                 =t("ideas.new_idea")
             / .row-fluid.challengeindex
@@ -156,7 +156,7 @@
                             .text
                               =smart_truncate(strip_tags(idea.description), :words => 20).html_safe
                               .clearfix=link_to t("more"), [@channel, idea], :class => "btn pull-right more"
-                    %li.clearfix=link_to t("ideas.all_ideas"), [@channel,:posts], :class => "more btn pull-right"
+                    %li.clearfix=link_to t("ideas.all_ideas"), [@channel,:ideas], :class => "more btn pull-right"
 
 
 
@@ -194,11 +194,11 @@
       %section.changemakers
         %section
           %h4 Changemakers
-          %article
+          %article.row-fluid.activity
             %h5 naam
             %img{:src => "http://placehold.it/110x150", :align => 'left'}
             %p Lorem ipsum dolor sit amet, consectetur adi- piscing elit. Vivamus et turpis non mi sagittis rhoncus ac sed nisi. Aliquam et porta elit.
-          %article
+          %article.row-fluid.activity
             %h5 naam
             %img{:src => "http://placehold.it/110x150", :align => 'left'}
             %p Lorem ipsum dolor sit amet, consectetur adi- piscing elit. Vivamus et turpis non mi sagittis rhoncus ac sed nisi. Aliquam et porta elit.

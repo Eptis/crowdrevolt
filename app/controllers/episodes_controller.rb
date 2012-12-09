@@ -4,7 +4,7 @@ class EpisodesController < ApplicationController
   before_filter :find_channel, :except => [:available]
 
   def index
-   @episodes = Episode.all
+   @episodes = Episode.where(:channel_id => @channel.id).paginate(:page => params[:page], :per_page => 6)
   end
 
   def show

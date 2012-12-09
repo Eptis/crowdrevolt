@@ -38,6 +38,9 @@ Crowdrevolt::Application.routes.draw do
   # Hier komen de publieke resources
   get "page/:id"            => "pages#show",          :as => :page
   get "home"                => "pages#index",         :as => :home
+  # get "users"                => "users#solutions",         :as => :user_solutions
+  match '/users/:id/solutions', :controller => 'users', :action => 'solutions', :as => :user_solutions
+  match '/users/:id/ideas', :controller => 'users', :action => 'ideas', :as => :user_ideas
 
   get "toggle-edit"         => "application#toggle",  :as => :toggle_edit
   resources :subscribers, :only => :create

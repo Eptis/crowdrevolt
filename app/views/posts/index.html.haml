@@ -1,14 +1,22 @@
 .spacing
   =link_to (t("back") + " naar #{@channel.title}"), @channel
-  %h2= @channel.title + " - "+ t("posts.all_posts")
-.spacing
-  - @posts.in_groups_of(3, false) do |posts|
-    .row-fluid
-      .span24
-        - @posts.each do |post|
-          .span8
-            %h2= post.title
-            -if post.image.present?
-              =image_tag post.image.url(:front)
-            %p=smart_truncate(strip_tags(post.description), :words => 20).html_safe
-            = link_to post.title, [@channel,post]
+  %h2
+    .icon.Idea
+    = @channel.title + " - "+ t("posts.all_posts")
+.spacing.nov
+  .row-fluid
+    .pagination.top
+      = will_paginate @posts,  :previous_label => "<",:next_label => ">", :container => false
+
+    - @posts.in_groups_of(3, false) do |posts|
+      .row-fluid.collection
+        - posts.each do |post|
+          %article.span8
+            .smallspacing
+              %h2= post.title
+              -if post.image.present?
+                =image_tag post.image.url(:front)
+              .text=smart_truncate(strip_tags(post.description), :words => 45).html_safe
+              = link_to t("more"), [post.channel, post], :class => "btn more pull-right"
+    .pagination
+      = will_paginate @posts,  :previous_label => "<",:next_label => ">", :container => false

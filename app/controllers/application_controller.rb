@@ -35,7 +35,7 @@ class ApplicationController < ActionController::Base
 
 
 
-  def construct_appreciable(construct)
+  def construct_appreciable(construct_appreciableonstruct)
     @record  = Appreciable.where(:appreciable_id => construct.id, :appreciable_type => construct.type).find_by_user_id([current_user].flatten)
     if @record
         @appreciable = @record
@@ -78,7 +78,7 @@ class ApplicationController < ActionController::Base
 
 
       @searchresults = [@results_posts , @results_channels , @results_episodes , @results_ideas , @results_solutions]
-      @searchresults.reverse!.sort_by(&:size)
+      # @searchresults.reverse!.sort_by(&:size)
       # raise @searchresults.inspect
 
       respond_to do |format|

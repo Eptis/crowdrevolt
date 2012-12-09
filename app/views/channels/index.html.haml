@@ -72,19 +72,19 @@
         .row-fluid
           - @recent.each do |recent|
             -if recent.class == Post ||  recent.class == Idea
-              .span8
+              .span8.activity
                 %h4
                   .icon{:class => "#{recent.type.to_s}"}
                   = recent.title
                 .text=smart_truncate(strip_tags(recent.description), :words => 20).html_safe
-                =link_to "Lees meer", [recent.channel, recent]
+                .clearfix.smallspacing=link_to t("more"), [recent.channel, recent], :class => "btn more pull-right"
             - elsif recent.class == Solution
-              .span8
+              .span8.activity
                 %h4
                   .icon{:class => "#{recent.type.to_s}"}
                   = recent.title
                 .text=smart_truncate(strip_tags(recent.description), :words => 20).html_safe
-                =link_to "Lees meer", [recent.challenge.channel , recent.challenge, recent]
+                .clearfix.smallspacing=link_to t("more"), [recent.challenge.channel , recent.challenge, recent], :class => "btn more pull-right"
   .sloper.grey
     .slopershape
 

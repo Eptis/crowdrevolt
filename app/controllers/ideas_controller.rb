@@ -2,7 +2,7 @@ class IdeasController < ApplicationController
   skip_before_filter :require_login, :except => [:new, :edit, :create]
   before_filter :find_channel
   def index
-    @ideas = Idea.all
+    @ideas = Idea.where(:channel_id => @channel.id).paginate(:page => params[:page], :per_page => 6)
   end
 
   def show

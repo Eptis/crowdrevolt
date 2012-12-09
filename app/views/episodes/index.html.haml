@@ -1,13 +1,22 @@
 .spacing
   =link_to (t("back") + " naar #{@channel.title}"), @channel
-  %h2= @channel.title + " - "+ t("episodes.all_episodes")
-.spacing
-  - @episodes.in_groups_of(3, false) do |episodes|
-    .row-fluid
-      .span24
-        - @episodes.each do |episode|
-          .span8
-            %h2= episode.title
-            =image_tag episode.image.url(:front)
-            %p=smart_truncate(strip_tags(episode.description), :words => 20).html_safe
-            = link_to episode.title, [@channel,episode]
+  %h2
+    .icon.Idea
+    = @channel.title + " - "+ t("episodes.all_episodes")
+.spacing.nov
+  .row-fluid
+    .pagination.top
+      = will_paginate @episodes,  :previous_label => "<",:next_label => ">", :container => false
+
+    - @episodes.in_groups_of(3, false) do |episodes|
+      .row-fluid.collection
+        - episodes.each do |episode|
+          %article.span8
+            .smallspacing
+              %h2= episode.title
+              -if episode.image.present?
+                =image_tag episode.image.url(:front)
+              .text=smart_truncate(strip_tags(episode.description), :words => 45).html_safe
+              = link_to t("more"), [episode.channel, episode], :class => "btn more pull-right"
+    .pagination
+      = will_paginate @episodes,  :previous_label => "<",:next_label => ">", :container => false
