@@ -1,17 +1,72 @@
-%h1= @idea.title
-%p=raw @idea.description
-- if @idea.image.present?
-  %div=image_tag @idea.image.url(:front)
-- @idea.blogitems.each do |item|
-  .item= render "item", :item => item
+%section.span18.content.spacing
+ 
 
-#appreciableCounter= "Aantal waarderingen: " + @idea.appreciables.count.to_s
-#appreciableBtn
-  .btn.appreciableBtn Karma +1
-  =render "appreciable_form"
+  .row-fluid
+    %section.idea_show
+      %article
+        .general
+          %h1= @idea.title
+          %author challenge.user.username -
+          %time= l(@idea.created_at, :format => :full)
 
--if FunctionConfig.allowed?(:comments)
-  %h1 Comments
-  = render "commentform"
-  - @idea.comments.each do |comment|
-    = render comment
+        .span24
+          .span18.image
+
+            %img{:src => "http://placehold.it/700x360"}
+          .span6.karma
+            %h4 Waardering voor dit idee
+            #appreciableCounter= "Aantal waarderingen: " + @idea.appreciables.count.to_s
+            #appreciableBtn
+            .btn.appreciableBtn Karma +1
+            =render "appreciable_form"
+        
+        .row-fluid
+          .span24
+            .text=raw @idea.description
+  .clear
+  .row-fluid
+    %section.comments
+      %h3 Comments
+      .row-fluid
+        %article
+        - @idea.blogitems.each do |item|
+          = render "item", :item => item
+
+        -if FunctionConfig.allowed?(:comments)
+          = render "commentform"
+          - @idea.comments.each do |comment|
+            = render comment
+
+%aside.span6.sidebar
+  .sloper.black
+    .slopershape
+  .spacing
+    %section.ideeen_box
+      %article
+        %h4 Andere ideeen
+        %ul
+          - @channel.ideas.each do |challenge|
+            %li=link_to challenge.title, [@channel, challenge]
+  .slopel.black
+    .slopelshape
+
+
+
+
+/ %h1= @idea.title
+/ %p=raw @idea.description
+/ - if @idea.image.present?
+/   %div=image_tag @idea.image.url(:front)
+/ - @idea.blogitems.each do |item|
+/   .item= render "item", :item => item
+
+/ #appreciableCounter= "Aantal waarderingen: " + @idea.appreciables.count.to_s
+/ #appreciableBtn
+/   .btn.appreciableBtn Karma +1
+/   =render "appreciable_form"
+
+/ -if FunctionConfig.allowed?(:comments)
+/   %h1 Comments
+/   = render "commentform"
+/   - @idea.comments.each do |comment|
+/     = render comment
