@@ -24,7 +24,8 @@
                       =link_to [@channel, @live] do
                         %h2= @live.title
 
-                      %time= l(@live.airdate, :format => :full)
+                      -if @live.airdate.present?
+                        %time= l(@live.airdate, :format => :full)
                       .text
                         =smart_truncate(strip_tags(@live.description), :words => 40).html_safe
                         =link_to t("more"), [@channel, @live], :class => "btn more pull-right"
