@@ -44,7 +44,8 @@
                           = t("channels.next_episode")
                         =link_to [@channel, @upcoming] do
                           %h2= @upcoming.title
-                        %time= l(@upcoming.airdate, :format => :full)
+                        -if @upcoming.airdate.present?
+                          %time= l(@upcoming.airdate, :format => :full)
                         .text
                           =smart_truncate(strip_tags(@upcoming.description), :words => 40).html_safe
                           =link_to t("more"), [@channel, @upcoming], :class => "btn more pull-right"
