@@ -65,7 +65,7 @@
                 - unless current_user
                   =f.text_field :name
                   =f.email_field :email
-                =f.text_field :content, :id => "new_message"
+                =f.text_field :content, :id => "new_message", :class => "input-append"
                 =f.submit "Send"
           .slopel.black
             .slopelshape
@@ -83,6 +83,7 @@
                 %li=link_to challenge.title, [@channel, challenge]
 
             =link_to  t("post_idea"), [:new, @channel, :idea], :class => "btn"
+
       .row-fluid
         .span24
           .row-fluid
@@ -141,6 +142,7 @@
                             -if episode.image
                               =image_tag episode.image.url(:front)
                       .span24=link_to "Vorige uitzendingen", [@channel, :episodes], :class => "btn"
+
   %aside.span6.sidebar
     .sloper.black
       .slopershape

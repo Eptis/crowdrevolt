@@ -9,3 +9,41 @@
 .changemakers h4, .links h4 {
   margin-top: 1em !important;
 }
+
+.naam_uitzending {
+  font-weight: bold !important;
+  color:#ff5400 !important;
+}
+
+.laatste_afleveringen_klein {
+  margin-top: 4em !important;
+}
+
+.vorige_uitzending {
+  padding-right: 2em !important;
+}
+
+.smallspacing {
+  margin-left: 2em !important;
+}
+#chatBox{
+  background-color: #E64D00;
+  width:95%;
+  overflow: scroll;
+  ul{
+    width:100%;
+  }
+  h5, p {
+    margin-left: 1em;
+  }
+  h5 {
+    margin-bottom: 0 !important;
+  }
+
+}
+
+/* article.vorige_uitzending:last-of-type
+{
+padding-right: 0 !important;
+}
+*/
