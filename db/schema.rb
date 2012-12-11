@@ -249,7 +249,7 @@ ActiveRecord::Schema.define(:version => 20121206145454) do
     t.boolean  "optin"
     t.string   "name"
     t.text     "bio"
-    t.integer  "score",                           :default => 0
+    t.integer  "score",                           :default => 0,    :null => false
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
