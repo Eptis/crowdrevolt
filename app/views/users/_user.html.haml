@@ -1,15 +1,16 @@
 / .pull-right
 .span24
-  .avatar
-    =link_to user do
-      -if user.avatar.present?
-        =image_tag user.avatar.url(:portrait), :width => 75, :height => 75
-      -else
-        %img{:src=> 'http://placehold.it/300x300', :width => 75, :height => 75}
-  .user_info
-    %h2=link_to user.username, user
-    %p.karmarank= karmarank(user.score)
-  .pull-right
-    .karmascore
-      .icon.Karma
-      =user.score
+  .user
+    .avatar
+      =link_to user do
+        -if user.avatar.present?
+          =image_tag user.avatar.url(:portrait), :width => 75, :height => 75
+        -else
+          %img{:src=> 'http://placehold.it/300x300', :width => 75, :height => 75}
+    .user_info
+      %h2=link_to user.username, user
+      %p.karmarank= karmarank(user.score)
+    .pull-right
+      .karmascore
+        .icon.Karma
+        =user.score

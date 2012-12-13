@@ -531,7 +531,7 @@ input[type="text"], input[type="password"], input[type="email"], textarea{
 }
 textarea{
   width: 96% !important;
-  padding:2% !important;
+  padding:0.5em 2% !important;
   &:focus{color:#fff !important;}
 }
 
@@ -640,8 +640,21 @@ input[type="submit"]:hover{background:$oranje !important}
   color:#fff;
 }
 
+.user{max-width:420px; float: left; width:100%;}
+.karma{
+  author{margin:2em 0; float:left;}
+}
 
-
+.comment{
+  border-bottom: 1px solid $grijs_licht;
+  float: left;
+  width:100%;
+  padding-left:2%;
+  border-left: 3px solid $oranje;
+  .content{float: left; }
+  .useravatar{float: left; margin:0 1em 1em 0; width:150px;}
+}
+.ideacontent{padding-top:1em;}
 
 
 
@@ -649,6 +662,7 @@ input[type="submit"]:hover{background:$oranje !important}
 
 // mobile only
 @media screen and(max-width:640px){
+  .comment .useravatar{width:75px;}
   .slopel, .sloper{ height:$slopefixheight !important;}
   .collection article{border-bottom: 1px solid $grijs_licht; padding-bottom:2em;}
   .homespacefix{height:$slopefixheight;}

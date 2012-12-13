@@ -7,7 +7,7 @@
     .blogcenter
       = f.input :title, :input_html => {:class => "makeitbig"}
       = f.image_select
-      = f.input :description, :as => :text, :input_html => {:rows => 10}
+      = f.input :description, :as => :text, :input_html => {:rows => 2}
 
       .row-fluid
         = f.simple_fields_for :blogitems do |item|

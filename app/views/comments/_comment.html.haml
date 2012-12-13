@@ -8,14 +8,19 @@
 
 / - raise comment.inspect
 %article.comment
-  .span24
-    .span3
+  .useravatar
+    - if comment.user
+      =image_tag comment.user.avatar.url(:portrait)
+    -else
       %img{:src => "http://placehold.it/150x150"}
-    .span19
-      - if comment.user_id.present?
-        %h3= comment.user.username
-      - else
-        %h3= comment.name
-      %blockquote= comment.body
+  - if comment.user == current_user
+    =link_to "X", [@channel, @idea, comment], :method => :delete, :class => "pull-right"
+  .content
+
+    - if comment.user_id.present?
+      %h3=link_to comment.user.username, comment.user
+    - else
+      %h3= comment.name
+    .text= comment.body
 
 

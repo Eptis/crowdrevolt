@@ -28,6 +28,7 @@ nl:
     all_ideas: "Alle Ideeën"
     submitted: "Ingezonden ideeën"
     new_idea: "Ik heb een idee"
+    edit_idea: "Bewerk idee"
   channels:
     channels: "Programma's"
     channel: "Programma"

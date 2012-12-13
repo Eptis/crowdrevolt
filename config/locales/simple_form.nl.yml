@@ -1,0 +1,127 @@
+nl:
+  simple_form:
+    "yes": 'Ja'
+    "no": 'Nee'
+    required:
+      text: 'verplicht'
+      mark: '*'
+    error_notification:
+      default_message: "Er zijn een aantal fouten gevonden, neem een kijkje:"
+
+    labels:
+      trip:
+        trip_categories: "Reiscategorieën"
+        country: "Land"
+        continent: "Continent"
+        start_date: "Begin datum"
+        end_date: "Eind datum"
+        timeset: "Activeren met tijd"
+        price: "Prijsklasse"
+        days:
+          day_number: "Dag nummer."
+          day_tekst: "Dag nummering."
+          activity: "Activiteit"
+      comment:
+        body: "Wat vind je hier van?"
+
+      trip_category:
+        trips: "Reizen"
+        attractions: "Hoogtepunten"
+
+      defaults:
+        title: "Titel"
+        name: "Naam"
+        description: "Omschrijving"
+        body: "Bericht"
+        active: "Maak het actief"
+        image: "Beeld"
+        image_select: "Beeld selecteren"
+        key: "Sleutelwoord"
+        value: "Waarde"
+        seo_title: "Titel voor de zoekmachine"
+        seo_desc: "Omschrijving voor de zoekmachine"
+        contact_title: "Titel voor Contactblok"
+        contact_body: "Tekst voor Contactblok"
+        item_type: "Selecteer een type"
+
+      employee:
+        active_on_about: "Laat deze persoon zien op de over ons pagina?"
+
+      image:
+        source: "Bron"
+
+      post:
+        categories: "Categorieën"
+        published_at: "Publiceren om"
+        employee: "Auteur"
+        home_start: "Vanaf hoe laat moet het op de homepagina getoond worden?"
+        home_end: "Wanneer moet het niet meer getoond worden op de homepagina?"
+
+      category:
+        category: "Categorie"
+
+      continent:
+        description: "Korte omschrijving"
+        body: "Omschrijving"
+        is_country: "Is een land"
+
+      attraction:
+        attraction_type: "Soort hoogtepunt"
+        children: "Accomodatie"
+        trips: "Reizen"
+
+      recommendation:
+        employee: "Medewerker"
+        description: "Extra info"
+        recommended_objects:
+          object_reference: "Kies object"
+          description: "Aanbevolen omdat"
+
+      admin:
+        username: "Gebruikersnaam"
+        password: "Wachtwoord"
+        password_confirmation: "Wachtwoord bevestigen"
+
+
+
+    hints:
+      image:
+        image: "Kies een groot beeld, zodat je gemakkelijker uitsneden kunt maken (max. 10MB JPG, PNG of GIF). Upload een ZIP met meerdere beelden om meerdere beelden tegelijk toe te voegen."
+      trip:
+        trip_categories: "Onder welke categorieën valt deze reis?"
+        start_date: "Begin datum vanaf wanneer de reis te zien is op de site"
+        end_date: "Eind datum waarna de reis moet verwijnen op de website"
+        timeset: "Wilt u de opgegeven begin- en einddatum van kracht laten zijn? Als dit niet is aangevinkt gelden de opgegeven data niet."
+        days:
+          day_number: "Dag nummering. Dit getal wordt gebruikt voor de volgorde."
+          day_tekst: "Bijv. '1-6'"
+          activity: "De activiteit van die dag."
+      trip_category:
+        trips: "Welke reizen vallen hieronder?"
+        attractions: "Welke hoogtepunten vallen hieronder?"
+
+    placeholders:
+      admin:
+        username: "Voer hier een gebruikersnaam in"
+        password: "Voer hier een wachtwoord in voor deze gebruiker"
+        password_confirmation: "Bevestig hier het wachtwoord door hetzelfde in te vullen als hierboven"
+
+    paperclip:
+      defaults:
+        default: "Er gaat iets fout bij het uploaden van het bestand"
+        size: "Het geselecteerde bestand is te groot"
+        content: "Het geselecteerde bestand heeft niet het juiste formaat"
+        blank: "Je moet een bestand selecteren"
+      image:
+        image:
+          blank: "Je moet een bestand kiezen om een beeld aan te maken."
+          content: "Je mag alleen JPG, GIF en PNG bestanden uploaden."
+          size: "Het beeld mag niet groter zijn dan 10MB."
+
+  helpers:
+    submit:
+      create: "Opslaan"
+      update: "Aanpassingen opslaan"
+
+      sessions:
+        create: "Inloggen"

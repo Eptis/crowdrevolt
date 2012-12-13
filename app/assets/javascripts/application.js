@@ -16,6 +16,7 @@ $(document).ready(function(){
   });
 
   $("#appreciableBtn").live("click", function(){
+    console.log($("#appreciableForm").find("form"))
     $("#appreciableForm").find("form").submit();
   })
 
@@ -59,7 +60,7 @@ $('.changer').live("change", function(){
   });
 
 // stretch textarea's
-$('textarea').live('keyup keypress', function() {
+  $('textarea').live('keyup keypress', function() {
       $(this).height('');
       var brCount = this.value.split('\n').length;
       this.rows = brCount+1; //++ To remove twitching

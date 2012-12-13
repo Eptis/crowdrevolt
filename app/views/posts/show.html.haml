@@ -1,38 +1,40 @@
 // De titel, te verdienen punten en omschrijving kun je zo laten, hieromheen de layout bouwen
-%section.span18.content.spacing
-  %h1= @post.title
+.row-fluid
+  %section.span18.content
+    .spacing
+      %h1= @post.title
 
-  .row-fluid
-    %section.challlenge_show
       .row-fluid
-        %article.span24
-          %author challenge.user.username -
-          %time= l(@post.created_at, :format => :full)
-          %img{:src => "http://placehold.it/900x360"}
-          .text=raw @post.description
-  .clear
-  .row-fluid
-    %section.comments
-      %h3 Comments
+        %section.challlenge_show
+          .row-fluid
+            %article.span24
+              %author challenge.user.username -
+              %time= l(@post.created_at, :format => :full)
+              %img{:src => "http://placehold.it/900x360"}
+              .text=raw @post.description
+      .clear
       .row-fluid
+        %section.comments
+          %h3 Comments
+          .row-fluid
+            %article
+            - @post.blogitems.each do |item|
+              = render "item", :item => item
+
+            -if FunctionConfig.allowed?(:comments)
+              = render "commentform"
+              - @post.comments.each do |comment|
+                = render comment
+
+  %aside.span6.sidebar
+    .sloper.black
+      .slopershape
+    .spacing
+      %section.blogs_box
         %article
-        - @post.blogitems.each do |item|
-          = render "item", :item => item
-
-        -if FunctionConfig.allowed?(:comments)
-          = render "commentform"
-          - @post.comments.each do |comment|
-            = render comment
-
-%aside.span6.sidebar
-  .sloper.black
-    .slopershape
-  .spacing
-    %section.blogs_box
-      %article
-        %h4 Andere blogs
-        %ul
-          - @channel.posts.each do |challenge|
-            %li=link_to challenge.title, [@channel, challenge]
-  .slopel.black
-    .slopelshape
+          %h4 Andere blogs
+          %ul
+            - @channel.posts.each do |challenge|
+              %li=link_to challenge.title, [@channel, challenge]
+    .slopel.black
+      .slopelshape
