@@ -58,7 +58,7 @@
                         %time= l(@upcoming.airdate, :format => :full)
                       .text
                         =smart_truncate(strip_tags(@upcoming.description), :words => 40).html_safe
-                        =link_to t("more"), [@upcoming.channel, @upcoming]
+                        .clearfix=link_to t("more"), [@upcoming.channel, @upcoming], :class => "btn more pull-right"
   .sloper.orange
     .slopershape
 .clear

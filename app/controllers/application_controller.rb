@@ -35,7 +35,7 @@ class ApplicationController < ActionController::Base
 
 
 
-  def construct_appreciable(construct_appreciableonstruct)
+  def construct_appreciable(construct)
     @record  = Appreciable.where(:appreciable_id => construct.id, :appreciable_type => construct.type).find_by_user_id([current_user].flatten)
     if @record
         @appreciable = @record
