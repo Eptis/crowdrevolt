@@ -4,5 +4,5 @@
       .changer= f.input :item_type, :collection => ["tekst", "afbeelding", "youtubefilm"]
       .hide.image_filter= f.image_select
       .hide.youtube_filter= f.input :youtubeembedlink, :as => :string, :label => t("items.youtubefilmpje"), :input_html => {:class => "input-xxlarge"}
-      .hide.text_filter= f.input :body, :as => :text, :label => t("items.tekst"), :input_html => { :class => "owneditor", :rows => 5}
+      .hide.text_filter= f.input :body, :as => :text, :label => t("items.tekst"), :input_html => { :class => "owneditor", :rows => 2}
 

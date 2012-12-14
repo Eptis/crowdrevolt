@@ -8,25 +8,44 @@ nl:
     error_notification:
       default_message: "Er zijn een aantal fouten gevonden, neem een kijkje:"
 
+    attributes:
+      solution:
+        title: "titel"
+        description: "omschrijving"
+        blogitems: "inhoud"
+        blogitem: "inhoud"
+
+    errors:
+      blogitems:
+        accepted: Moet worden geaccepteerd
+        blank: "asd is nog niet ingevuld"
+        confirmation: Komt niet met de bevestiging overeen
+        empty: Moet opgegeven zijn
+        equal_to: Moet gelijk zijn aan %{count}
+        even: Moet even zijn
+        exclusion: Is niet beschikbaar
+        greater_than: Moet groter zijn dan %{count}
+        greater_than_or_equal_to: Moet groter dan of gelijk zijn aan %{count}
+        inclusion: Is niet in de lijst opgenomen
+        invalid: Is ongeldig
+        less_than: Moet minder zijn dan %{count}
+        less_than_or_equal_to: Moet minder dan of gelijk zijn aan %{count}
+        not_a_number: Is geen getal
+        not_an_integer: Moet een geheel getal zijn
+        odd: Moet oneven zijn
+        record_invalid: ! 'Validatie mislukt: %{errors}'
+        taken: Is al in gebruik
+        too_long: Is te lang (maximaal %{count} tekens)
+        too_short: Is te kort (minimaal %{count} tekens)
+        wrong_length: Heeft onjuiste lengte (moet %{count} tekens lang zijn)
+        email: E-mailadres is onjuist
+
     labels:
-      trip:
-        trip_categories: "Reiscategorieën"
-        country: "Land"
-        continent: "Continent"
-        start_date: "Begin datum"
-        end_date: "Eind datum"
-        timeset: "Activeren met tijd"
-        price: "Prijsklasse"
-        days:
-          day_number: "Dag nummer."
-          day_tekst: "Dag nummering."
-          activity: "Activiteit"
+
       comment:
         body: "Wat vind je hier van?"
 
-      trip_category:
-        trips: "Reizen"
-        attractions: "Hoogtepunten"
+
 
       defaults:
         title: "Titel"
@@ -43,9 +62,9 @@ nl:
         contact_title: "Titel voor Contactblok"
         contact_body: "Tekst voor Contactblok"
         item_type: "Selecteer een type"
+        blogitems: "inhoud"
 
-      employee:
-        active_on_about: "Laat deze persoon zien op de over ons pagina?"
+
 
       image:
         source: "Bron"
@@ -57,25 +76,6 @@ nl:
         home_start: "Vanaf hoe laat moet het op de homepagina getoond worden?"
         home_end: "Wanneer moet het niet meer getoond worden op de homepagina?"
 
-      category:
-        category: "Categorie"
-
-      continent:
-        description: "Korte omschrijving"
-        body: "Omschrijving"
-        is_country: "Is een land"
-
-      attraction:
-        attraction_type: "Soort hoogtepunt"
-        children: "Accomodatie"
-        trips: "Reizen"
-
-      recommendation:
-        employee: "Medewerker"
-        description: "Extra info"
-        recommended_objects:
-          object_reference: "Kies object"
-          description: "Aanbevolen omdat"
 
       admin:
         username: "Gebruikersnaam"

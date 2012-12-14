@@ -8,8 +8,31 @@ nl:
   now_live: "nu live"
   changemakers: "Changemakers"
 
-  models:
-    channels: "Programma's"
+
+  activerecord:
+    models:
+      channel: "Programma's"
+      blogitem: inhoud
+      ownable: inhoud
+    attributes:
+      blogitems: "inhoud"
+
+      ownable: "inhoud"
+
+      solution:
+        ownable:
+          blogitems: "inhoud"
+        ownable: "inhoud"
+
+
+
+  attributes:
+
+    solution:
+      title: "titel"
+      description: "omschrijving"
+      blogitems: "inhoud"
+      blogitem: "inhoud"
 
   solutions:
     solutions: "oplossingen"
@@ -71,10 +94,11 @@ nl:
         sessions:
           create: "Inloggen"
   errors:
-    format: ! '%{attribute} %{message}'
+
+    format: ! '%{message}'
     messages:
       accepted: Moet worden geaccepteerd
-      blank: Moet opgegeven zijn
+      blank: " is nog niet ingevuld"
       confirmation: Komt niet met de bevestiging overeen
       empty: Moet opgegeven zijn
       equal_to: Moet gelijk zijn aan %{count}

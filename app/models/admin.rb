@@ -15,6 +15,7 @@ class Admin < ActiveRecord::Base
 
   # Validation
   validates :username, :presence => true, :uniqueness => true, :length => { :in => 2..30 }
+  validates_presence_of :avatar, :bio
   validates_presence_of :password, :password_confirmation, :on => :create
   validates_length_of :password, :in => 6..20, :allow_blank => true
 
