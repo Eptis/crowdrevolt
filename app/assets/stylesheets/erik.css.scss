@@ -48,16 +48,39 @@
     margin:0 0 1em 0;
   }
 }
-// Eposide {
-.vragen {
-  li {
-    list-style-type: none;
+// Eposide 
+.vraag_stellen {
+  .orangebg {
+    background:#1c1c1c;
+    margin:0.8em 0 0 0;
+    padding:1em 1em 0.1em 1em;
+  }
+  input {
+    border: solid 1px #303030!important;
+  }
+  .naam {
+  height:400px;
+  }
+  #new_question {
+    clear:left;
+    width:98%;
+  }
+  .btn {
+    background:#ff5800!important;
   }
 }
-.vraag_text {
-  padding:0;
+
+.vragen {
+  .vraag_text {
+  padding:0.2em 0 0 0;
+  margin:0 0 5.2em 0;
+  list-style-type: none;
+  }
   .vraag {
     margin:0;
-    padding:0 2.5em 0 0;
+    padding:0 2.5em 1em 0;
+  }
+  time {
+    display:inline;
   }
 }
