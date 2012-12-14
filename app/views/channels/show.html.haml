@@ -197,7 +197,7 @@
           %article.row-fluid.activity
             %h5=link_to changemaker.username, changemaker
             -if changemaker.avatar.present?
-              =image_tag changemaker.avatar.url(:portrait)
+              .avatar=image_tag changemaker.avatar.url(:portrait), :width => 75
             -if changemaker.bio
               .text=smart_truncate(strip_tags(changemaker.bio), :words => 20).html_safe
 
