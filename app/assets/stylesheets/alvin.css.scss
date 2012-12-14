@@ -61,7 +61,6 @@
   // margin-left: 2em !important;
 }
 #chatBox{
-  background-color: #E64D00;
   width:100%;
   overflow: scroll;
   ul{
@@ -72,12 +71,15 @@
   }
   h5 {
     margin-bottom: 0 !important;
+    margin-top: 1.5em !important;
+  }
+  .divider {
+    height: 1px;
+    background-color: #FFF !important;
+    width: 90%;
+    margin-left: 1em !important;
   }
 
 }
 
-/* article.vorige_uitzending:last-of-type
-{
-padding-right: 0 !important;
-}
-*/
+
