@@ -2,6 +2,26 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.chatForm form .span24 {
+  margin-top: 10px !important;
+}
+
+.chatForm.input-append input[type="submit"]  {
+  height: 30px !important;
+
+}
+
+.chatForm.input-append input[type="text"] ,
+.chatForm.input-append input[type="email"] {
+  left: -2px;
+  padding: 4px 0px !important;
+  margin-right: 0px !important;
+  width: 100% !important;
+}
+.chatForm.input-append input[type="submit"] {
+  width: auto !important;
+}
+
 .inleiding {
   font-size: 1.4em;
   margin-bottom: 3em;
