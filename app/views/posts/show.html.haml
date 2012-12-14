@@ -2,13 +2,12 @@
 .row-fluid
   %section.span18.content
     .spacing
-      %h1= @post.title
-
       .row-fluid
-        %section.challlenge_show
+        %section.blog_show
           .row-fluid
             %article.span24
               .general
+                %h1= @post.title
                 %author challenge.user.username -
                 %time= l(@post.created_at, :format => :full)
               %img{:src => "http://placehold.it/900x360"}
