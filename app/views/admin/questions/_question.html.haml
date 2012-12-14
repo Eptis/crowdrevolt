@@ -6,6 +6,9 @@
     =f.submit "Send"
 -if question.approved == true
   %li
-    %h5= question.user.username
-    %p=question.question
-
+    .span3
+      %img{:src => "http://placehold.it/450x410"}
+    .span21.vraag_text
+      .username= question.user.username
+      %time= l(question.updated_at, :format => :short)
+      .vraag=question.question
