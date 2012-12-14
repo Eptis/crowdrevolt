@@ -34,7 +34,7 @@
                           %article.span24.vragen
                             #questions
                               =render :partial => 'admin/questions/question', :collection => @episode.questions, :as => :question
-                              
+
 
                 .span9.chat
                   .sloper.black
@@ -74,15 +74,14 @@
           .text=raw @episode.description
 
       %section.changemakers
-        %article
-          %h4 Changemakers
-          %img{:src => "http://placehold.it/110x150", :align => 'left'}
-          %p Lorem ipsum dolor sit amet, consectetur adi- piscing elit. Vivamus et turpis non mi sagittis rhoncus ac sed nisi. Aliquam et porta elit.
-        .row-fluid
-        %article
-          %h4 Changemakers
-          %img{:src => "http://placehold.it/110x150", :align => 'left'}
-          %p Lorem ipsum dolor sit amet, consectetur adi- piscing elit. Vivamus et turpis non mi sagittis rhoncus ac sed nisi. Aliquam et porta elit.
+        %h4= t("channels.changemakers")
+        -@channel.admins.each do |changemaker|
+          %article.row-fluid.activity
+            %h5=link_to changemaker.username, changemaker
+            -if changemaker.avatar.present?
+              =image_tag changemaker.avatar.url(:portrait)
+            -if changemaker.bio
+              .text=smart_truncate(strip_tags(changemaker.bio), :words => 20).html_safe
 
       .row-fluid
       %section.links

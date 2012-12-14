@@ -32,6 +32,7 @@ nl:
   channels:
     channels: "Programma's"
     channel: "Programma"
+    changemakers: "Changemakers"
     next_episode: "Volgende livestream"
     status: "Projectstatus"
     previous_episodes: "Vorige livestreams"
@@ -43,6 +44,7 @@ nl:
   episodes:
     episodes: "Livestreams"
     episode: "Livestream"
+    changemakers: "Changemakers"
     all_episodes: "Alle Livestreams"
   users:
     by_this_user: ! 'Door %{username}'

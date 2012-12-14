@@ -53,6 +53,7 @@ Crowdrevolt::Application.routes.draw do
   resources :messages
   resources :images
   resources :questions
+  resources :admins, :path => "changemakers"
   resources :channels do
     resources :messages
     resources :challenges do

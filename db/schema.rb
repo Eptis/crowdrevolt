@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121214112944) do
+ActiveRecord::Schema.define(:version => 20121214123226) do
 
   create_table "admins", :force => true do |t|
     t.string   "username"
@@ -94,6 +94,7 @@ ActiveRecord::Schema.define(:version => 20121214112944) do
     t.datetime "created_at",                     :null => false
     t.datetime "updated_at",                     :null => false
     t.boolean  "archived",    :default => false
+    t.text     "links"
   end
 
   create_table "comments", :force => true do |t|
@@ -116,6 +117,7 @@ ActiveRecord::Schema.define(:version => 20121214112944) do
     t.datetime "updated_at",           :null => false
     t.integer  "channel_id"
     t.datetime "airdate"
+    t.text     "links"
   end
 
   create_table "ideas", :force => true do |t|

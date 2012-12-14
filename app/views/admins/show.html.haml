@@ -1,0 +1,48 @@
+%section.span24.content
+  .slopel.orange
+    .slopelshape
+  .row-fluid.highlight
+    .spacing.blogcenter
+      %artile.profiel
+        .row-fluid
+          %article.span6
+            -if @admin.avatar.url
+              =image_tag @admin.avatar.url(:portrait)
+            -else
+              =image_tag "no_avatar.jpg"
+          %article.span18
+            %h1= @admin.username
+            / %h4= @admin.skypename
+            .text= @admin.bio
+  .sloper.orange
+    .slopershape
+.homespacefix
+.row-fluid
+  .spacing
+    %h2= t("users.by_this_user", :username => @admin.username)
+
+
+    .row-fluid
+      %ul.span24.itemlist
+        - @articles.in_groups_of(2,false) do |articles|
+          .row-fluid
+            - articles.each do |article|
+
+              %li.span12
+                .smallspacing
+                  .span24
+                    %h4=link_to article.title,[article.channel, article]
+                    .text
+                      - if article.image.present?
+                        =link_to [article.channel, article], :class => "span12 pull-right " do
+                          =image_tag article.image.url(:front)
+                      =smart_truncate(strip_tags(article.description), :words => 20).html_safe
+                    =link_to t("more"), [article.channel, article], :class => "btn more pull-right"
+
+    = will_paginate @articles,  :previous_label => "<",:next_label => ">"
+
+
+
+
+
+
