@@ -8,6 +8,7 @@
 
 .chatForm.input-append input[type="submit"]  {
   height: 30px !important;
+  margin-bottom: 1em !important;
 
 }
 
@@ -61,7 +62,7 @@
 }
 #chatBox{
   background-color: #E64D00;
-  width:95%;
+  width:100%;
   overflow: scroll;
   ul{
     width:100%;
