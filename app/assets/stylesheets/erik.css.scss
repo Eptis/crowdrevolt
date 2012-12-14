@@ -48,3 +48,16 @@
     margin:0 0 1em 0;
   }
 }
+// Eposide {
+.vragen {
+  li {
+    list-style-type: none;
+  }
+}
+.vraag_text {
+  padding:0;
+  .vraag {
+    margin:0;
+    padding:0 2.5em 0 0;
+  }
+}
