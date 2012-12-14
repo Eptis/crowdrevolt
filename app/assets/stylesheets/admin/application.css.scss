@@ -1,4 +1,5 @@
-//= require jquery-ui
+
+//= require bootstrap
 //= require jquery.chosen
 //= require jquery.Jcrop
 //= require jquery.timepicker
@@ -18,6 +19,7 @@
 .table-striped tbody tr:nth-child(odd) td, .table-striped tbody tr:nth-child(odd) th{
   background:#000 !important;
 }
+
 //can't touch this!
 .blog{
   .afbeelding{
@@ -39,8 +41,151 @@
     .text_filter{display:block !important;}
   }
 }
+
 .adminspace{
   height:60px;
   width:100%;
 }
 //except for this, you can touch this
+
+
+/*******************************************************************
+************************ STRUCTURE STYLING *************************
+*******************************************************************/
+
+body {
+  background:rgb(240,240,240)!important;
+}
+
+.container-fluid {
+  padding-left:0px;
+  padding-right:0px;
+}
+
+.spacing {
+  padding-left:20px;
+  padding-right:20px;
+}
+
+/*******************************************************************
+************************* NAV STYLING ******************************
+*******************************************************************/
+
+.adminspace {
+  background:rgb(220,220,220)!important;
+  border-bottom:1px solid rgb(200,200,200);
+  outline:1px solid white;
+}
+
+.navbar-inner {
+  background:rgb(220,220,220)!important;
+  border-bottom:none!important;
+  -webkit-box-shadow:none!important;
+  box-shadow:none!important;
+}
+
+.nav li {
+  height:60px!important;
+  -webkit-transition: background 300ms ease;
+  -moz-transition: background 300ms ease;
+  -ms-transition: background 300ms ease;
+  -o-transition: background 300ms ease;
+  transition: background 300ms ease;
+  a {
+    height:60px!important;
+    padding:0px!important;
+    line-height:60px!important;
+    padding-left:20px!important;
+    padding-right:20px!important;
+    color:rgb(100,100,100)!important;
+    text-shadow: 0px 1px 1px #ffffff!important;
+    filter: dropshadow(color=#ffffff, offx=0, offy=1)!important;
+  }
+}
+
+.nav li:hover {
+  background: #ff5800;
+}
+
+.nav li:hover a {
+  height:60px!important;
+  padding:0px!important;
+  line-height:60px!important;
+  padding-left:20px!important;
+  padding-right:20px!important;
+  color:white!important;
+  text-shadow: 0px 1px 1px #646464!important;
+  filter: dropshadow(color=#646464, offx=0, offy=1)!important;
+}
+
+.brand {
+  height:60px!important;
+  padding:0px!important;
+  line-height:60px!important;
+  padding-left:40px!important;
+  padding-right:20px!important;
+  color:rgb(100,100,100)!important;
+  text-shadow: 0px 1px 1px #ffffff!important;
+  filter: dropshadow(color=#ffffff, offx=0, offy=1)!important;
+}
+
+.brand:hover {
+  color:white!important;
+  text-shadow: 0px 1px 1px #646464!important;
+  filter: dropshadow(color=#646464, offx=0, offy=1)!important;
+}
+
+.navbar .btn {
+  margin-top:15px!important;
+  margin-right:20px;
+  background:rgb(100,100,100);
+  color:rgb(250,250,250)!important;
+  text-shadow: 0px 1px 1px #646464!important;
+  filter: dropshadow(color=#646464, offx=0, offy=1)!important;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-transition: background 300ms ease;
+  -moz-transition: background 300ms ease;
+  -ms-transition: background 300ms ease;
+  -o-transition: background 300ms ease;
+  transition: background 300ms ease;
+}
+
+.navbar .btn:hover {
+  background:#ff5800;
+}
+
+/*******************************************************************
+********************** PAGINA STYLING ******************************
+*******************************************************************/
+
+.page-header h1 {
+  color:rgb(100,100,100);
+  text-shadow: 0px 1px 1px #ffffff!important;
+  filter: dropshadow(color=#ffffff, offx=0, offy=1)!important;
+}
+
+.table {
+  background: white;
+  color:rgb(100,100,100);
+  text-shadow: 0px 1px 1px #ffffff;
+  filter: dropshadow(color=#ffffff, offx=0, offy=1);
+  border:1px solid rgb(200,200,200);
+  outline:1px solid white;
+}
+
+.table tr th {
+  background:rgb(220,220,220);
+  border-bottom: 1px solid rgb(200,200,200);
+  padding:5px 10px 5px 10px;
+  border-top:none!important;
+}
+
+.table tr td {
+  background: white;
+  border-bottom: 1px solid rgb(200,200,200);
+  padding:5px 10px 5px 10px;
+  border-top:none!important;
+}
+
+
