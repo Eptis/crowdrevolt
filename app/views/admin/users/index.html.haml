@@ -1,7 +1,7 @@
 - model_class = User
 .page-header
   %h1=t '.title', :default => model_class.model_name.human.pluralize
-%table.table.table-striped
+%table.table
   %thead
     %tr
       %th= model_class.human_attribute_name(:id)
@@ -9,7 +9,6 @@
       %th= model_class.human_attribute_name(:username)
       %th= model_class.human_attribute_name(:activation_state)
       %th= model_class.human_attribute_name(:optin)
-      %th= model_class.human_attribute_name(:bio)
       %th= model_class.human_attribute_name(:skypename)
       %th= model_class.human_attribute_name(:show_skype)
       %th= model_class.human_attribute_name(:created_at)
@@ -22,7 +21,6 @@
         %td= user.username
         %td= user.activation_state
         %td= user.optin
-        %td= user.bio
         %td= user.skypename
         %td= user.show_skype
         %td= user.created_at

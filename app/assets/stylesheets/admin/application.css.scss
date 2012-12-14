@@ -156,7 +156,7 @@ body {
 }
 
 /*******************************************************************
-********************** PAGINA STYLING ******************************
+********************** TABLE STYLING ******************************
 *******************************************************************/
 
 .page-header h1 {
@@ -172,6 +172,7 @@ body {
   filter: dropshadow(color=#ffffff, offx=0, offy=1);
   border:1px solid rgb(200,200,200);
   outline:1px solid white;
+  margin-top:10px;
 }
 
 .table tr th {
@@ -183,9 +184,17 @@ body {
 
 .table tr td {
   background: white;
-  border-bottom: 1px solid rgb(200,200,200);
   padding:5px 10px 5px 10px;
   border-top:none!important;
+  vertical-align: middle!important;
+}
+
+.table tr:nth-child(even) td {
+  background: rgb(240,240,240);
+}
+
+.table tr td p {
+  margin:0px!important;
 }
 
 /*******************************************************************
@@ -193,7 +202,7 @@ body {
 *******************************************************************/
 
 .btn-primary {
-  background: #1427e3!important;
+  background: #0c7f00!important;
   padding-left:20px!important;
   padding-right:20px!important;
   color:white!important;
@@ -204,7 +213,49 @@ body {
 }
 
 .btn-primary:hover {
-  background: #3b4dff!important;
+  background: #249a18!important;
 }
 
+.btn-mini {
+  background: #ff5800!important;
+  padding-left:20px!important;
+  padding-right:20px!important;
+  color:white!important;
+  text-shadow: 0px 1px 1px #646464!important;
+  filter: dropshadow(color=#646464, offx=0, offy=1)!important;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  margin-top:3px!important;
+  margin-bottom:3px!important;
+}
 
+.btn-mini:hover {
+  background: #fd7229!important;
+}
+
+.btn-danger {
+  background:#e02020!important;
+}
+
+.btn-danger:hover {
+  background:#e24545!important;
+}
+
+/*******************************************************************
+********************** IMAGES STYLING ******************************
+*******************************************************************/
+
+#images {
+  a {
+    margin-top:20px;
+    margin-right: 20px;
+  }
+}
+
+/*******************************************************************
+********************** DENNIS STYLING ******************************
+*******************************************************************/
+
+span.checkbox {
+  display: block;
+}
