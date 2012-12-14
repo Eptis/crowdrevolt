@@ -1,9 +1,15 @@
-.spacing
-
-  .center
-    .spacing
-      %h1 Login
-      = link_to t('back'), :root
-      =render 'form'
-
-
+.spacing.vertical-spacing
+  = link_to t('back'), :back, :class => 'btn back'
+  %h1 Login
+  .row-fluid
+    .span12
+      .spacing        
+        =render 'form'
+    .registerinfo.span12
+      .spacing
+        %h3 Crowdrevolt
+        %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed libero mauris, consequat ac convallis id, blandit et dui. Fusce tempor rhoncus erat, a euismod libero pretium lobortis. Nunc dictum, justo eu pharetra cursus, turpis eros commodo massa, ut rutrum mauris lorem a lectus. Suspendisse molestie nisl vitae augue pulvinar aliquam.
+        .register_toggle
+          %span 
+            = "Nog niet lid?"
+            =link_to "registreer nu", :register

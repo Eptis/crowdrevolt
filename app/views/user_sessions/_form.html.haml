@@ -6,8 +6,9 @@
     = label_tag :password
     = password_field_tag :password
   .field
-    = check_box_tag :remember
-    = label_tag :remember
-  .actions
+    = check_box_tag :remember, 1, false, :class => 'pull-left'
+    = label_tag :remember, nil, :class => 'pull-left checkbox'
+  .clear
+  .pull-left.actions
     = submit_tag "Login"
-  .password_toggle= link_to "wachtwoord vergeten?", new_password_reset_path
+  .pull-left.password_toggle= link_to "wachtwoord vergeten?", new_password_reset_path

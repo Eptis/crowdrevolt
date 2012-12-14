@@ -196,7 +196,18 @@ p, .text{
 .login {
   float: right;
   margin-left: 1.5em;
+}
 
+.back {
+  margin-bottom: 20px;
+}
+
+.password_toggle {
+  margin-left: 1.5em;
+}
+
+.registerinfo {
+  border-left:1px solid $timecolor;
 }
 
 .importantmg {
