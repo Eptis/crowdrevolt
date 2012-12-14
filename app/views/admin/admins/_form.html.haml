@@ -1,6 +1,26 @@
 = simple_form_for([:admin, @admin]) do |f|
-  = f.input :username
-  = f.input :password, :as => :password
-  = f.input :password_confirmation, :as => :password
+  -if @admin.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@admin.errors.count, "error")} prohibited this user from being saved:"
+      %ul
+        - @admin.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.input :username, :input_html => { :class => "makeitbig"}
+  .field
+    = f.input :email, :input_html => { :class => "makeitbig"}
+  .field
+    = f.file_field :avatar, :input_html => {:class => "btn imgselector", :style => "display:block"}
+  .clear
+  .field.form-inline
+    .pull-left= f.input :password, :as => :password
+    .pull-left= f.input :password_confirmation, :as => :password
+  .clear
+  .field.form-inline
+    .pull-left= f.input :skypename
+  .clear
+  .field
+    =f.input :bio, :input_html => {:rows => 10}
 
   = f.submit_block([:admin, :admins])
