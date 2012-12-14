@@ -8,6 +8,7 @@
 
 .chatForm.input-append input[type="submit"]  {
   height: 30px !important;
+  margin-bottom: 1em !important;
 
 }
 
@@ -60,9 +61,11 @@
   // margin-left: 2em !important;
 }
 #chatBox{
-  background-color: #E64D00;
-  width:95%;
+  background-color: #DE4900;
+  width:100%;
   overflow: scroll;
+  overflow-x: hidden;
+  box-shadow: inset -6px 0px 12px 3px rgba(0,0,0,0.1);
   ul{
     width:100%;
   }
@@ -71,12 +74,15 @@
   }
   h5 {
     margin-bottom: 0 !important;
+    margin-top: 1.5em !important;
+  }
+  .divider {
+    height: 1px;
+    background-color: #BD3E00 !important;
+    width: 90%;
+    margin-left: 1em !important;
   }
 
 }
 
-/* article.vorige_uitzending:last-of-type
-{
-padding-right: 0 !important;
-}
-*/
+

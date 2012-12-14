@@ -1,3 +1,9 @@
+= link_to t('back', :default => t("helpers.links.back")), [:admin, @channel], :class => 'btn back'
+.page-header
+  - if @channel.new_record?
+    %h1= t('admin.channels')
+  - else
+    %h1= @channel.title
 = simple_nested_form_for([:admin, @channel]) do |f|
   .row
     - if @channel.errors.any?
