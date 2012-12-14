@@ -124,6 +124,7 @@ nl:
 
   helpers:
 
+
     submit:
       create: "Opslaan"
       update: "Aanpassingen opslaan"
@@ -131,5 +132,7 @@ nl:
         create: "Plaats oplossing"
         update: "Aanpassingen opslaan"
 
+      comment:
+        create: "reageer"
       sessions:
         create: "Inloggen"

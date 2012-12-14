@@ -14,6 +14,7 @@ nl:
   solutions:
     solutions: "oplossingen"
     solution_for: "Oplossing voor:"
+    edit_solution: "Bewerk oplossing"
     all_solutions: "Alle oplossingen"
   challenges:
     challenges: "Uitdagingen"

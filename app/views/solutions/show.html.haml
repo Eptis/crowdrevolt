@@ -13,7 +13,7 @@
               %aside.span7.karma
                 %author#author= render :partial => "users/user", :locals => {:user => @solution.user}
                 -if @solution.user == current_user
-                  .clearfix=link_to t("solutions.edit_idea"), [:edit, @channel, @solution] ,:class => "pull-right btn"
+                  .clearfix=link_to t("solutions.edit_solution"), [:edit, @channel, @solution.challenge, @solution] ,:class => "pull-right btn"
                 -elsif logged_in?
                   %h4 Karma op deze oplossing
 
@@ -40,7 +40,7 @@
             .row-fluid
               = render "commentform"
               - @solution.comments.each do |comment|
-                = render :partial => "comments/comment", :locals => {:path => [@channel, @solution, comment], :comment => comment}
+                = render :partial => "comments/comment", :locals => {:path => [@channel, @solution.challenge, @solution, comment], :comment => comment}
 
   %aside.span6.sidebar
     .sloper.black
