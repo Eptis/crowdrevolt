@@ -7,6 +7,17 @@
 //= require admin/default
 //= require_self
 
+$oranje:#ff5400;
+$darkorange:#c44102;
+$zwart:#070707;
+$wit:#ffffff;
+$grijs_licht:#1c1c1c;
+$grijs_donker:#1c1c1c;
+$timecolor:#666666;
+$oranje_tint:$oranje;
+// $input_grey:#3d3d3d;
+$input_grey:#222222;
+
 .center{
   width:300px;
   margin:0 auto;
@@ -290,6 +301,11 @@ body {
 
 .btn-danger:hover {
   background:#e24545!important;
+}
+
+.btn.back {
+  margin-top: 20px;
+  color: $oranje;
 }
 
 /*******************************************************************

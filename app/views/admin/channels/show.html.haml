@@ -1,6 +1,6 @@
 .spacing
   - model_class = Channel
-  = link_to t('.back', :default => t("helpers.links.back")), admin_root_path
+  = link_to t('back', :default => t("helpers.links.back")), admin_root_path, :class => 'btn back'
   .page-header
     %h1=t '.title', :default => model_class.model_name.human
   
