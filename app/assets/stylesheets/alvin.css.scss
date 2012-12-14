@@ -61,8 +61,10 @@
   // margin-left: 2em !important;
 }
 #chatBox{
+  background-color: #DE4900;
   width:100%;
   overflow: scroll;
+  overflow-x: hidden;
   ul{
     width:100%;
   }
@@ -75,7 +77,7 @@
   }
   .divider {
     height: 1px;
-    background-color: #FFF !important;
+    background-color: #BD3E00 !important;
     width: 90%;
     margin-left: 1em !important;
   }
