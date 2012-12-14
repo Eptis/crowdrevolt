@@ -8,8 +8,9 @@
         %section.challlenge_show
           .row-fluid
             %article.span24
-              %author challenge.user.username -
-              %time= l(@post.created_at, :format => :full)
+              .general
+                %author challenge.user.username -
+                %time= l(@post.created_at, :format => :full)
               %img{:src => "http://placehold.it/900x360"}
               .text=raw @post.description
       .clear
