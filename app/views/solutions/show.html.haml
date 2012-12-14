@@ -14,4 +14,4 @@
   %h1 Comments
   = render "commentform"
   - @solution.comments.each do |comment|
-    = render comment
+    = render :partial => "comments/comment", :locals => {:path => [@channel, @solution.challenge, @solution, comment], :comment => comment}

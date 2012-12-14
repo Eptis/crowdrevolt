@@ -34,7 +34,7 @@
             .row-fluid
               = render "commentform"
               - @idea.comments.each do |comment|
-                = render comment
+                = render :partial => "comments/comment", :locals => {:path => [@channel, @idea, comment], :comment => comment}
 
   %aside.span6.sidebar
     .sloper.black

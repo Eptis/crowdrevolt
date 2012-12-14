@@ -484,7 +484,7 @@ $degree:3deg;
 
 ul.itemlist{
   padding-right:6% !important;
-  li{padding-bottom: 15px; border-bottom: 1px solid $grijs_licht}
+  li{padding-bottom: 15px !important; border-bottom: 1px solid $grijs_licht}
 }
 footer ul.itemlist li{border-bottom: none}
 .challenges.itemlist{ padding-right:0% !important;}
