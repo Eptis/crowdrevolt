@@ -14,13 +14,13 @@
     = f.hidden_field :crop_w, :id => "crop_w"
     = f.hidden_field :crop_h, :id => "crop_h"
 
-    .cropper_submit
-      = f.submit t("admin.images.crop"), :class => "btn btn-primary btn-large"
+    .cropper_submit.mt10
+      = f.submit t("admin.images.crop"), :class => "btn btn-primary"
       %span.or= t("admin.or")
       = cancel_link([:edit, :admin, @image])
 
   - else
-    %table.simple_form
+    %table.simple_form.mt10
       = f.input :name, :input_html => { :maxlength => 50 }
       / = f.input :tag_list, :as => :tags && !request.xhr?
       = f.input :image, :required => @image.new_record? do
@@ -29,11 +29,11 @@
           .example_image
             %h3= t("admin.images.page")
             = link_to(image_thumb(@image, :front), edit_admin_image_path(@image, :crop => :front), :class => "crop_thumbs")
-      .pull-right
-        = f.submit :class => "btn btn-large btn-primary"
+      .pull-left.mt10
+        = f.submit :class => "btn btn-primary"
         - unless request.xhr?
           %span.or= t("admin.or")
           = link_to t("admin.buttons.terug_overzicht"), [:admin, :images]
           - if !@image.new_record?
             %span.or= t("admin.or")
-            = delete_link(@image, :class => "btn btn-large btn-danger")
+            = delete_link(@image, :class => "btn btn-danger")

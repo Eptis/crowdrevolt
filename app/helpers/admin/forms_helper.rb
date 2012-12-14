@@ -35,7 +35,7 @@ module Admin::FormsHelper
     # Add a submit block to a form.
     def submit_block(link)
       @template.content_tag(:div, :class => "pull-right") do
-        submit(:class => "btn btn-large btn-primary") + @template.content_tag(:span, @template.admin_t(:or), :class => "or") + @template.cancel_link(link)
+        submit(:class => "btn btn-primary") + @template.content_tag(:span, @template.admin_t(:or), :class => "or") + @template.cancel_link(link)
       end
     end
 

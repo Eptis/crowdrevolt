@@ -15,21 +15,19 @@
     / .input-append
     /   =text_field "photoCover", "", :input_html => {:class => "input-large"}
     /   %a.btn{:onclick => "$('input[id=user_avatar]').click()"}= t("select")
-  .field.form-inline
-    .pull-left= f.input :skypename
-    .pull-left= f.input :show_skype
-  .clear
-  .field.form-inline
-    .pull-left= f.input :password
-    .pull-left= f.input :password_confirmation
-  .clear
+  .field
+    = f.input :skypename
+    = f.input :show_skype
+  .field
+    = f.input :password
+    = f.input :password_confirmation
   .field
     =f.input :bio, :input_html => {:rows => 10}
   .field
     =f.input :optin
 
   .actions
-    = f.submit 'Save', :class => "btn"
+    = f.submit 'Save', :class => "btn btn-primary"
 
 :javascript
   $("input[id=user_avatar]").change(function(){

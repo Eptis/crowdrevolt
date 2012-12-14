@@ -12,15 +12,12 @@
     = f.input :email, :input_html => { :class => "makeitbig"}
   .field
     = f.file_field :avatar, :input_html => {:class => "btn imgselector", :style => "display:block"}
-  .clear
-  .field.form-inline
-    .pull-left= f.input :password, :as => :password
-    .pull-left= f.input :password_confirmation, :as => :password
-  .clear
-  .field.form-inline
-    .pull-left= f.input :skypename
-  .clear
+  .field
+    = f.input :password, :as => :password
+    = f.input :password_confirmation, :as => :password
+  .field
+    = f.input :skypename
   .field
     =f.input :bio, :input_html => {:rows => 10}
 
-  = f.submit_block([:admin, :admins])
+  .pull-left= f.submit_block([:admin, :admins])
