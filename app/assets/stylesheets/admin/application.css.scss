@@ -306,6 +306,11 @@ body {
 .btn.back {
   margin-top: 20px;
   color: $oranje;
+
+  &:active {
+    background-color: none !important;
+    box-shadow: none !important;
+  }
 }
 
 /*******************************************************************
