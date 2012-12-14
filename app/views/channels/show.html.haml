@@ -64,10 +64,22 @@
             .chatForm.input-append
               =form_for [@channel, Message.new], :remote => true do |f|
                 - unless current_user
-                  =f.text_field :name
-                  =f.email_field :email
-                =f.text_field :content, :id => "new_message"
-                =f.submit "Send"
+                  .span24
+                    .span6
+                      %label Naam
+                    .span14
+                      =f.text_field :name
+                  .span24
+                    .span6
+                      %label E-mail
+                    .span14
+                      =f.email_field :email
+
+                .span24
+                  .span16
+                    =f.text_field :content, :id => "new_message"
+                  .span4
+                    .pull-right=f.submit "Send"
           .slopel.black
             .slopelshape
 
