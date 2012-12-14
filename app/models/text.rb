@@ -1,6 +1,6 @@
 class Text < ActiveRecord::Base
   # Image select
-  image_select
+  # image_select
 
   # Scopes
   default_scope order(:position)
