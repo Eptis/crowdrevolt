@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121213125540) do
+ActiveRecord::Schema.define(:version => 20121214101105) do
 
   create_table "admins", :force => true do |t|
     t.string   "username"
@@ -220,6 +220,19 @@ ActiveRecord::Schema.define(:version => 20121213125540) do
     t.string "name"
   end
 
+  create_table "texts", :force => true do |t|
+    t.string   "key"
+    t.text     "description"
+    t.string   "title"
+    t.text     "body"
+    t.boolean  "allow_title"
+    t.boolean  "allow_body"
+    t.integer  "position"
+    t.boolean  "allow_images"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
   create_table "user_blogitems", :force => true do |t|
     t.text     "body"
     t.text     "youtubeembedlink"
@@ -261,7 +274,7 @@ ActiveRecord::Schema.define(:version => 20121213125540) do
     t.boolean  "optin"
     t.string   "name"
     t.text     "bio"
-    t.integer  "score",                           :default => 0
+    t.integer  "score",                           :default => 0,    :null => false
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
