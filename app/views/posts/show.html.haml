@@ -1,40 +1,55 @@
-// De titel, te verdienen punten en omschrijving kun je zo laten, hieromheen de layout bouwen
 .row-fluid
-  %section.span18.content
+  %section.span18
     .spacing
       .row-fluid
-        %section.blog_show
-          .row-fluid
-            %article.span24
-              .general
-                %h1= @post.title
-                %author challenge.user.username -
-                %time= l(@post.created_at, :format => :full)
-              %img{:src => "http://placehold.it/900x360"}
-              .text=raw @post.description
-      .clear
-      .row-fluid
-        %section.comments
-          %h3 Comments
-          .row-fluid
-            %article
-            - @post.blogitems.each do |item|
-              = render "item", :item => item
+        %section
+          %article
+            .general
+              %h1= @post.title
+              %time= l(@post.created_at, :format => :full)
 
-            -if FunctionConfig.allowed?(:comments)
+            .row-fluid
+              %aside.span7.karma
+                / %author#author= render :partial => "users/user", :locals => {:user => @post.user}
+                -if @post.user == current_user
+                  .clearfix=link_to t("posts.edit_post"), [:edit, @channel, @post] ,:class => "pull-right btn"
+                -elsif logged_in?
+                  %h4 Karma op dit artikel
+
+                  / #appreciableCounter= "Aantal waarderingen: " + @post.appreciables.count.to_s
+                  / .btn.appreciableBtn#appreciableBtn{:class => ("holy" if @post.appreciables.collect(&:user_id).include?(current_user.id))} Karma +1
+                  / =render "appreciable_form"
+                / -else
+                /   %p.text
+                /     Wil je dit waarderen? Meld je dan nu aan bij CrowdRevolt!
+                /     =link_to "registreren", :register
+              .span16.offset1.postcontent
+                .text=raw @post.description
+                .image
+                  %img{:src => "http://placehold.it/700x360"}
+            .row-fluid
+    -if FunctionConfig.allowed?(:comments)
+      .row-fluid
+        %section.blogcenter
+          .spacing
+            %h3 Comments
+            .row-fluid
               = render "commentform"
               - @post.comments.each do |comment|
-                = render :partial => "comments/comment", :locals => {:path => [@post.channel, @post, comment], :comment => comment}
+                = render :partial => "comments/comment", :locals => {:path => [@channel, @post, comment], :comment => comment}
 
   %aside.span6.sidebar
     .sloper.black
       .slopershape
     .spacing
-      %section.blogs_box
+      %section.ideeen_box
         %article
-          %h4 Andere blogs
+          %h4 Andere artikelen
           %ul
             - @channel.posts.each do |challenge|
               %li=link_to challenge.title, [@channel, challenge]
     .slopel.black
       .slopelshape
+
+
+
