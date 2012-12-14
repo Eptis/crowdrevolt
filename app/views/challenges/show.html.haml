@@ -13,15 +13,15 @@
               =image_tag @challenge.image.url(:front)
             .text
               =raw @challenge.description
-              .pull-right
-                =link_to  [:new, @channel, @challenge, :solution], :class => "btn iconbtn" do
-                  .icon.Solution.white
-                  =t("challenges.do_challenge")
 
           .span6.pull-right
             .center
               %h3= t("points_to_earn")
               .points= @challenge.points
+          .pull-right
+            =link_to  [:new, @channel, @challenge, :solution], :class => "btn iconbtn" do
+              .icon.Solution.white
+              =t("challenges.do_challenge")
 
 
 
@@ -54,17 +54,18 @@
           .span24
             - solutions.each do |solution|
               %article.span12
-                %h4=link_to solution.title, [@channel, @challenge, solution]
-                %author=link_to solution.user.username, solution.user
-                %time= l(solution.created_at, :format => :small)
-                .span24
-                  .span6
-                    - if solution.user.avatar.present?
-                      =image_tag solution.user.avatar.url(:portrait)
-                  .span17.offset1
-                    .text
-                      =smart_truncate(strip_tags(solution.description), :words => 45).html_safe
-                    =link_to t("more"), [@channel, @challenge, solution], :class => "more btn pull-right"
+                .smallspacing
+                  %h4=link_to solution.title, [@channel, @challenge, solution]
+                  %author=link_to solution.user.username, solution.user
+                  %time= l(solution.created_at, :format => :small)
+                  .row-fluid.content
+                    %div
+                      - if solution.user.avatar.present?
+                        .avatar
+                          =image_tag solution.user.avatar.url(:portrait)
+                      .text
+                        =smart_truncate(strip_tags(solution.description), :words => 45).html_safe
+                      =link_to t("more"), [@channel, @challenge, solution], :class => "more btn pull-right"
 
 
 

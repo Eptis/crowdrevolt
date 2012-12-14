@@ -2,7 +2,9 @@
 //= require reset
 //= require fontface
 //= require bootstrap
+//= require admin/default
 //= require_self
+
 
 //= require erik
 //= require alvin
@@ -529,6 +531,8 @@ ul{
 
 
 .avatar{float:left; margin-right:9px; margin-bottom: 9px}
+.highlight .nextup{ color:$zwart !important;}
+.floatleft{float:left !important;}
 .karmascore{float:left; padding-left:9px;}
 .user_info{float:left; h2{font-size:12px !important; line-height: 1}}
 
@@ -633,8 +637,14 @@ time{
   color:$timecolor;
 }
 a{@extend %transition}
-.logo a:hover{ background: none !important}
+.logo a:hover{ background: none !important;}
 
+.collection {
+  .avatar{
+    width:105px;
+  }
+  .content{margin-top:0.5em;}
+}
 .collection article{
   margin-bottom: 2em;
 }

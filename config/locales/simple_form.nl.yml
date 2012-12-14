@@ -117,11 +117,19 @@ nl:
           blank: "Je moet een bestand kiezen om een beeld aan te maken."
           content: "Je mag alleen JPG, GIF en PNG bestanden uploaden."
           size: "Het beeld mag niet groter zijn dan 10MB."
+  solutions:
+    helpers:
+      submit:
+        create: "Plaats oplossing"
 
   helpers:
+
     submit:
       create: "Opslaan"
       update: "Aanpassingen opslaan"
+      solution:
+        create: "Plaats oplossing"
+        update: "Aanpassingen opslaan"
 
       sessions:
         create: "Inloggen"

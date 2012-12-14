@@ -102,11 +102,19 @@
             .row-fluid
               .span12
                 .text=raw channel.description
-              .span12
-                .spacing
-                  .span12
-                    %img{:src => "http://placehold.it/250x140"}
-                  .span12
-                    %h5 Volgende livestream
-                    %p Maecenas faucibus mollis interdum. Vivamus sagittis.
+              -if channel.episodes.present?
+                .span12
+                  .spacing
+                    %h5= t("channels.next_episode")
+                    %h4=link_to channel.episodes.first.title, [channel, channel.episodes.first]
+                    .row-fluid
+                      .span12
+                        %img{:src => "http://placehold.it/250x140"}
+                      .span12
+
+                        %time= l(channel.episodes.first.airdate, :format => :full)
+                        .text=smart_truncate(strip_tags(channel.episodes.first.description), :words => 20).html_safe
+
+                        .clearfix.smallspacing=link_to t("more"), [channel, channel.episodes.first], :class => "btn more pull-right"
+        .spacing
 

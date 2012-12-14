@@ -16,7 +16,7 @@
         = f.link_to_add t("+ Voeg inhoud toe"), :blogitems, :class => "nested_field_btn"
 
 
-      .row-fluid= f.submit(@solution.new_record? ? :solutions : @solution, :class => "dynamic_submit pull-right")
+      .row-fluid= f.submit :class => "dynamic_submit pull-right"
 
 
 
