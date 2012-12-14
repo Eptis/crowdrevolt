@@ -5,10 +5,10 @@
     =f.check_box :approved, :class => "check_box_question"
     =f.submit "Send"
 -if question.approved == true
-  %li
+  %li.vraag_text
     .span3
       %img{:src => "http://placehold.it/450x410"}
-    .span21.vraag_text
-      .username= question.user.username
-      %time= l(question.updated_at, :format => :short)
+    .span21
+      %author=link_to question.user.username, question.user
+      %time= " - "+l(question.updated_at, :format => :short)
       .vraag=question.question

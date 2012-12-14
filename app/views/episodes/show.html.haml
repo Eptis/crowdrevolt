@@ -19,11 +19,12 @@
                         %h3 Stel een vraag
 
                         =form_for [@episode.channel, @episode, Question.new], :remote => true do |f|
-                          =f.text_field :question, :id => "new_question"
                           - unless current_user
-                            =f.text_field :name
-                            =f.text_field :email
-                          =f.submit "Send"
+                            =f.text_field :name, :placeholder => "Je naam"
+                            =f.text_field :email, :placeholder => "Je E-mail adres"
+                          =f.text_field :question, :id => "new_question", :placeholder => "Welke vraag heb jij voor Crowdrevolt?"
+
+                          =f.submit "Stuur vraag in", :class => "btn"
 
                         -if current_user
                           =form_tag :available, :method => 'post', :remote => true do |f|
@@ -32,6 +33,7 @@
 
                         .row-fluid
                           %article.span24.vragen
+                            %h3 Onlangs gestelde vragen
                             #questions
                               =render :partial => 'admin/questions/question', :collection => @episode.questions, :as => :question
                               
