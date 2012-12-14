@@ -12,13 +12,18 @@
             .row-fluid
               %aside.span7.karma
                 %author#author= render :partial => "users/user", :locals => {:user => @solution.user}
-                %h4 Karma op deze oplossing
                 -if @solution.user == current_user
                   .clearfix=link_to t("solutions.edit_idea"), [:edit, @channel, @solution] ,:class => "pull-right btn"
                 -elsif logged_in?
+                  %h4 Karma op deze oplossing
+
                   #appreciableCounter= "Aantal waarderingen: " + @solution.appreciables.count.to_s
                   .btn.appreciableBtn#appreciableBtn{:class => ("holy" if @solution.appreciables.collect(&:user_id).include?(current_user.id))} Karma +1
                   =render "appreciable_form"
+                -else
+                  %p.text
+                    Wil je dit waarderen? Meld je dan nu aan bij CrowdRevolt!
+                    =link_to "registreren", :register
               .span16.offset1.ideacontent
                 .text=raw @solution.description
                 .image

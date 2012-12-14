@@ -10,7 +10,7 @@
             .row-fluid
               %article.span24
                 - if @live
-                  %h3.clearfix
+                  %h3.clearfix.nextup
                     .icon.Episode.white
                     = t("channels.now_live")
                   %h2= @live.title
@@ -40,7 +40,7 @@
                           - if @upcoming.image
                             =image_tag @upcoming.image.url(:front)
                       .span15.offset1
-                        %h3.clearfix
+                        %h3.clearfix.nextup
                           .icon.Episode.white
                           = t("channels.next_episode")
                         =link_to [@channel, @upcoming] do

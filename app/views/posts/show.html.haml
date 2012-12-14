@@ -24,7 +24,7 @@
             -if FunctionConfig.allowed?(:comments)
               = render "commentform"
               - @post.comments.each do |comment|
-                = render :partial => "comments/comment", :locals => {:path => [@channel, @post, comment], :comment => comment}
+                = render :partial => "comments/comment", :locals => {:path => [@post.channel, @post, comment], :comment => comment}
 
   %aside.span6.sidebar
     .sloper.black

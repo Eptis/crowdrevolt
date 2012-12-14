@@ -2,6 +2,7 @@ class CommentsController < ApplicationController
   skip_before_filter :require_login
   before_filter :find_channel
 
+
   def create
     @comment = Comment.new(params[:comment])
     @comment.user = current_user
