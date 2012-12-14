@@ -22,10 +22,10 @@
                 .text=raw @idea.description
                 .image
                   %img{:src => "http://placehold.it/700x360"}
-            .row-fluid
-              %article
-              - @idea.blogitems.each do |item|
-                = render "item", :item => item
+                .row-fluid
+                  %article
+                  - @idea.blogitems.each do |item|
+                    = render "item", :item => item
     -if FunctionConfig.allowed?(:comments)
       .row-fluid
         %section.blogcenter
