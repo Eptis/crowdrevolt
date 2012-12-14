@@ -257,6 +257,8 @@ p, .text{
   height:300px;
   width:100%;
   overflow: scroll;
+  overflow-x: hidden;
+  overflow-y: scroll;
   ul{
     width:100%;
   }
