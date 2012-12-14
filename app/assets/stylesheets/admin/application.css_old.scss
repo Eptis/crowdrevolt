@@ -1,0 +1,46 @@
+//= require jquery-ui
+//= require jquery.chosen
+//= require jquery.Jcrop
+//= require jquery.timepicker
+//= require jquery.tagsinput
+//= require admin/default
+//= require_self
+
+.center{
+  width:300px;
+  margin:0 auto;
+}
+.hide{
+  display:none;
+}
+
+
+.table-striped tbody tr:nth-child(odd) td, .table-striped tbody tr:nth-child(odd) th{
+  background:#000 !important;
+}
+//can't touch this!
+.blog{
+  .afbeelding{
+    .changer,
+    .youtube_filter,
+    .text_filter{display:none;}
+    .image_filter{display:block !important;}
+  }
+  .youtubefilm{
+    .changer,
+    .image_filter,
+    .text_filter{display:none;}
+    .youtube_filter{display:block !important;}
+  }
+  .tekst{
+    .changer,
+    .youtube_filter,
+    .image_filter{display:none;}
+    .text_filter{display:block !important;}
+  }
+}
+.adminspace{
+  height:60px;
+  width:100%;
+}
+//except for this, you can touch this
