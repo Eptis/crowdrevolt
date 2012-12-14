@@ -48,23 +48,23 @@
     %section.alle_oplossingen.spacing
       %h3
         .icon.Solution
-        = @challenge.title.to_s + " - " + t("solutions").to_s
+        = @challenge.title.to_s + " - " + t("solutions.solutions").to_s
       - @challenge.solutions.in_groups_of(2,false).each do |solutions|
         .row-fluid.collection
           .span24
             - solutions.each do |solution|
               %article.span12
                 %h4=link_to solution.title, [@channel, @challenge, solution]
+                %author=link_to solution.user.username, solution.user
+                %time= l(solution.created_at, :format => :small)
                 .span24
-                  .span8
-                    %img{:src => "http://placehold.it/150x150"}
-                    %author= solution.user.username
-                    %div
-                    %time= l(solution.created_at, :format => :small)
-                  .span16
+                  .span6
+                    - if solution.user.avatar.present?
+                      =image_tag solution.user.avatar.url(:portrait)
+                  .span17.offset1
                     .text
                       =smart_truncate(strip_tags(solution.description), :words => 45).html_safe
-                      =link_to t("more"), [@channel, @challenge, solution]
+                    =link_to t("more"), [@channel, @challenge, solution], :class => "more btn pull-right"
 
 
 

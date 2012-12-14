@@ -89,10 +89,9 @@
       .row-fluid
       %section.links
         %article
-          %h4 Aanbevolen links
-          %ul
-            %li Dit is een link
-            %li En nog een link
+          - if @episode.links.present?
+            %h4= t("channels.recommended_links")
+            .text=raw @episode.links
     .slopel.black
       .slopelshape
 
