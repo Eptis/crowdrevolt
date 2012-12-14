@@ -10,15 +10,17 @@
 
 
 $(document).ready(function(){
-  $("#search_field").bind('keyup', function(){
-    $(this).closest("form").delay(200).submit();
-    console.log('change')
+
+  $("#appreciableBtn").on("click", function(){
+    $(this).toggleClass("holy");
+    $("#appreciableForm").find("form").submit();
   });
 
-  $("#appreciableBtn").live("click", function(){
-    console.log($("#appreciableForm").find("form"))
-    $("#appreciableForm").find("form").submit();
-  })
+  $("#search_field").bind('keyup', function(){
+    $(this).closest("form").delay(200).submit();
+  });
+
+
 
   $(".Toggle").on("click", function(){
      $(this).next().toggleClass('open')
@@ -70,9 +72,6 @@ $('.changer').live("change", function(){
       this.rows = calcRows;
   });
 
-
-
-
 });
 
 function scrollChatbox(){
@@ -80,3 +79,12 @@ function scrollChatbox(){
   chat.scrollTop = chat.scrollHeight;
 }
 
+function update_author_score(mode){
+
+  var current_score = parseInt($("#author .karmascore span").html());
+  if(mode == "add"){
+    $("#author .karmascore span").html(current_score+1)
+  }else if(mode == "sub"){
+    $("#author .karmascore span").html(current_score-1)
+  }
+}

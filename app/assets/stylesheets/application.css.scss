@@ -220,10 +220,13 @@ p, .text{
 
 
 #appreciableBtn{
+  -webkit-box-shadow:0px 0px 0px $oranje;
+  -webkit-transition: all 2000ms ;
+  -moz-transition: all 2000ms ;
+  -ms-transition: all 2000ms ;
+  -o-transition: all 2000ms ;
+  transition: all 2000ms ;
   form {display: none}
-  .appreciableBtn{
-
-  }
 }
 
 
@@ -655,6 +658,48 @@ input[type="submit"]:hover{background:$oranje !important}
   .useravatar{float: left; margin:0 1em 1em 0; width:150px;}
 }
 .ideacontent{padding-top:1em;}
+
+
+
+//holy button
+@-webkit-keyframes pulsate
+{
+  0%{
+    -webkit-box-shadow:0px 0px 21px $oranje;
+  -moz-box-shadow:0px 0px 21px $oranje;
+  -o-box-shadow:0px 0px 21px $oranje;
+  -ms-box-shadow:0px 0px 21px $oranje;
+  box-shadow:0px 0px 21px $oranje;
+  }
+50% {
+  -webkit-box-shadow:0px 0px 45px $oranje;
+  -moz-box-shadow:0px 0px 45px $oranje;
+  -o-box-shadow:0px 0px 45px $oranje;
+  -ms-box-shadow:0px 0px 45px $oranje;
+  box-shadow:0px 0px 45px $oranje;
+  }
+
+100%{
+  -webkit-box-shadow:0px 0px 21px $oranje;
+    -moz-box-shadow:0px 0px 21px $oranje;
+    -o-box-shadow:0px 0px 21px $oranje;
+    -ms-box-shadow:0px 0px 21px $oranje;
+    box-shadow:0px 0px 21px $oranje;
+  }
+}
+
+.holy{
+  -webkit-box-shadow:0px 0px 21px $oranje;
+  -moz-box-shadow:0px 0px 21px $oranje;
+  -o-box-shadow:0px 0px 21px $oranje;
+  -ms-box-shadow:0px 0px 21px $oranje;
+  box-shadow:0px 0px 21px $oranje;
+  color:#fff !important;
+  animation: pulsate 2s infinite;
+  -moz-animation: pulsate 2s; /* Firefox */
+  -webkit-animation: pulsate 2s infinite; /* Safari and Chrome */
+  -o-animation: pulsate 2s; /* Opera */
+}
 
 
 

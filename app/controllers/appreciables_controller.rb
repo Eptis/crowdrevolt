@@ -3,6 +3,7 @@ class AppreciablesController < ApplicationController
   before_filter :find_channel
   # before_filter :find_challenge
   before_filter :determine_appreciable
+  before_filter :allowed, :only => [:create]
 
 
 
@@ -11,24 +12,27 @@ class AppreciablesController < ApplicationController
   # end
 
   def create
-    @appreciable = Appreciable.new(params[:appreciable])
-    @appreciable.user = current_user
-    @appreciable.appreciable = @appreciated_appreciable
-    if @appreciable.save
-      # redirect_to(@rout, :flash => :success)
-      if params[:solution_id]
-        @formrout = [@channel, @challenge, @solution, @appreciable]
-      elsif
-        @formrout = [@channel, @idea, @appreciable]
+    # @appreciable = Appreciable.find(params[:appreciable])
+    if @allowed.empty?
+      @appreciable = Appreciable.new(params[:appreciable])
+      @appreciable.user = current_user
+      @appreciable.appreciable = @appreciated_appreciable
+      if @appreciable.save
+        # redirect_to(@rout, :flash => :success)
+        if params[:solution_id]
+          @formrout = [@channel, @challenge, @solution, @appreciable]
+        elsif
+          @formrout = [@channel, @idea, @appreciable]
+        end
+        # raise @formrout.inspect
+         respond_to do |format|
+          format.js
+        end
+      else
+        redirect_to(@rout, :flash => :error)
       end
-      # raise @formrout.inspect
-       respond_to do |format|
-        format.js
-      end
-    else
-      redirect_to(@rout, :flash => :error)
+      update_score(@appreciated_appreciable.user)
     end
-    update_score(@appreciated_appreciable.user)
     # give_reward(@appreciable)
   end
 
@@ -70,5 +74,10 @@ private
       @rout = [@channel, @challenge, @idea]
       @idea = @appreciated_appreciable
     end
+  end
+
+  def allowed
+    @allowed = Appreciable.where(:appreciable_id => @appreciated_appreciable.id, :user_id => current_user.id)
+    # raise @allowed.inspect
   end
 end

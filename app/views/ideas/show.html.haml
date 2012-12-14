@@ -9,17 +9,16 @@
               %time= l(@idea.created_at, :format => :full)
 
             .row-fluid
-              %aside.span6.karma
-                %author= render :partial => "users/user", :locals => {:user => @idea.user}
-                %h4 Waardering voor dit idee
+              %aside.span7.karma
+                %author#author= render :partial => "users/user", :locals => {:user => @idea.user}
+                %h4 Karma op dit idee
                 -if @idea.user == current_user
                   .clearfix=link_to t("ideas.edit_idea"), [:edit, @channel, @idea] ,:class => "pull-right btn"
-                -else
+                -elsif logged_in?
                   #appreciableCounter= "Aantal waarderingen: " + @idea.appreciables.count.to_s
-                  #appreciableBtn
-                  .btn.appreciableBtn Karma +1
+                  .btn.appreciableBtn#appreciableBtn{:class => ("holy" if @idea.appreciables.collect(&:user_id).include?(current_user.id))} Karma +1
                   =render "appreciable_form"
-              .span17.offset1.ideacontent
+              .span16.offset1.ideacontent
                 .text=raw @idea.description
                 .image
                   %img{:src => "http://placehold.it/700x360"}
