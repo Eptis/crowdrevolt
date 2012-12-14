@@ -117,13 +117,14 @@
                               =link_to [@channel, post] do
                                 %h3=smart_truncate(strip_tags( post.title), :words => 5).html_safe
                               %time= l(post.updated_at, :format => :short)
-
-                            =link_to [@channel, post] do
-                              %img.span7{:src => "http://placehold.it/110x60"}
-                            .span16.offset1
-                              .text
-                                =smart_truncate(strip_tags(post.description), :words => 20).html_safe
-                                .clearfix=link_to t("more"), [@channel, post], :class => "btn pull-right more"
+                            .row-fluid
+                              - if post.images.present?
+                                =link_to [@channel, post], :class => "span8" do
+                                  =image_tag post.images.first.url(:front)
+                              .offset1{:class => post.images.present? ? "span15" : "span23"}
+                                .text
+                                  =smart_truncate(strip_tags(post.description), :words => 20).html_safe
+                                  .clearfix=link_to t("more"), [@channel, post], :class => "btn pull-right more"
                     %li.clearfix=link_to t("articles.all_articles"), [@channel,:posts], :class => "more btn pull-right"
 
 

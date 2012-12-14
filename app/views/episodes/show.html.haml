@@ -25,12 +25,15 @@
                               =f.text_field :email, :placeholder => "Je E-mail adres"
                             =f.text_field :question, :id => "new_question", :placeholder => "Welke vraag heb jij voor Crowdrevolt?"
 
-                            =f.submit "Stuur vraag in", :class => "btn"
+                            =f.submit "Stuur vraag in", :class => "btn pull-right"
 
-                          -if current_user
-                            =form_tag :available, :method => 'post', :remote => true do |f|
-                              =check_box_tag :available, :id => "available"
-                              =submit_tag "Send"
+                          -if current_user && current_user.skypename
+                            #skypeBtn
+                              .skypeBtn.btn= t("available_for_skype")
+                              #skypeForm
+                                =form_tag :available, :method => 'post', :remote => true do |f|
+                                  / =check_box_tag :available, :id => "available"
+                                  =submit_tag "Send", :class => "btn"
 
                         .row-fluid
                           %article.span24.vragen

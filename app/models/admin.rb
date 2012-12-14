@@ -11,7 +11,7 @@ class Admin < ActiveRecord::Base
   attr_accessible :username, :password, :password_confirmation, :email, :skypename, :bio, :avatar, :channel_ids
   has_attached_file :avatar, :styles => {
     :portrait => ["300x300#", :jpg],
-  }, :url => "/uploads/avatars/:id/:style.:extension"
+  }, :url => "/uploads/admin_avatars/:id/:style.:extension"
 
   # Validation
   validates :username, :presence => true, :uniqueness => true, :length => { :in => 2..30 }

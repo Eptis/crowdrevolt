@@ -16,6 +16,11 @@ $(document).ready(function(){
     $("#appreciableForm").find("form").submit();
   });
 
+  $(".skypeBtn").on("click", function(){
+    $(this).html("Beschikbaar voor skype").addClass("skypeAvailable");
+    $("#skypeForm").find("form").submit().remove();
+  });
+
   $("#search_field").bind('keyup', function(){
     $(this).closest("form").delay(200).submit();
   });

@@ -6,10 +6,10 @@
       %artile.profiel
         .row-fluid
           %article.span6
-            -if @user.avatar.url
-              =image_tag @user.avatar.url
+            -if @user.avatar.present?
+              =image_tag @user.avatar.url(:portrait)
             -else
-              %img{:src => "http://placehold.it/710x600"}
+              =image_tag "no_avatar.jpg"
             - if current_user
               =link_to :user_logout, :class => "btn btn-danger" do
                 %i.icon-off.icon-white
@@ -57,8 +57,8 @@
                       - if sol.image.present?
                         =link_to [sol.challenge.channel, sol.challenge, sol] do
                           %div=image_tag sol.image.url(:front)
-              - if @solutions.empty?
-                %p=t("user.no_solutions")
+            - if @solutions.empty?
+              %p=t("user.no_solutions")
 
             - if @user.solutions.present?
               %li.clearfix

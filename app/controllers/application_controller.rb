@@ -102,6 +102,7 @@ class ApplicationController < ActionController::Base
 
   def retrieve_channels
     @channels = Channel.all
+
   end
 
 end
