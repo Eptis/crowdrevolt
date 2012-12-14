@@ -16,20 +16,21 @@
                     %article.vraag_stellen
                       .Toggle= t("ask_question")
                       .toggler
-                        %h3 Stel een vraag
+                        .orangebg
+                          %h3 Stel een vraag
 
-                        =form_for [@episode.channel, @episode, Question.new], :remote => true do |f|
-                          - unless current_user
-                            =f.text_field :name, :placeholder => "Je naam"
-                            =f.text_field :email, :placeholder => "Je E-mail adres"
-                          =f.text_field :question, :id => "new_question", :placeholder => "Welke vraag heb jij voor Crowdrevolt?"
+                          =form_for [@episode.channel, @episode, Question.new], :remote => true do |f|
+                            - unless current_user
+                              =f.text_field :name, :placeholder => "Je naam"
+                              =f.text_field :email, :placeholder => "Je E-mail adres"
+                            =f.text_field :question, :id => "new_question", :placeholder => "Welke vraag heb jij voor Crowdrevolt?"
 
-                          =f.submit "Stuur vraag in", :class => "btn"
+                            =f.submit "Stuur vraag in", :class => "btn"
 
-                        -if current_user
-                          =form_tag :available, :method => 'post', :remote => true do |f|
-                            =check_box_tag :available, :id => "available"
-                            =submit_tag "Send"
+                          -if current_user
+                            =form_tag :available, :method => 'post', :remote => true do |f|
+                              =check_box_tag :available, :id => "available"
+                              =submit_tag "Send"
 
                         .row-fluid
                           %article.span24.vragen
