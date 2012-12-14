@@ -6,7 +6,7 @@
         -if user.avatar.present?
           =image_tag user.avatar.url(:portrait), :width => 75, :height => 75
         -else
-          =image_tag "no_avatar.jpg"
+          =image_tag "no_avatar.jpg",:width => 75, :height => 75
           / %img{:src=> 'http://placehold.it/300x300', :width => 75, :height => 75}
     .user_info
       %h2=link_to user.username, user

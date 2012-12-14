@@ -4,9 +4,11 @@ class Admin < ActiveRecord::Base
 
   has_many :posts
   has_many :comments
+  has_and_belongs_to_many :channels
+
 
   # Mass-assignment
-  attr_accessible :username, :password, :password_confirmation
+  attr_accessible :username, :password, :password_confirmation, :channel_ids
 
   # Validation
   validates :username, :presence => true, :uniqueness => true, :length => { :in => 2..30 }

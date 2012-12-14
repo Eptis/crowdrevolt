@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121214101105) do
+ActiveRecord::Schema.define(:version => 20121214112944) do
 
   create_table "admins", :force => true do |t|
     t.string   "username"
@@ -24,6 +24,11 @@ ActiveRecord::Schema.define(:version => 20121214101105) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+  end
+
+  create_table "admins_channels", :id => false, :force => true do |t|
+    t.integer "channel_id"
+    t.integer "admin_id"
   end
 
   create_table "appreciables", :force => true do |t|
@@ -80,11 +85,6 @@ ActiveRecord::Schema.define(:version => 20121214101105) do
     t.string   "tw_link"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-  end
-
-  create_table "channel_admins", :force => true do |t|
-    t.integer "channel_id"
-    t.integer "admin_id"
   end
 
   create_table "channels", :force => true do |t|

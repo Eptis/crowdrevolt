@@ -1,11 +1,11 @@
 class Channel < ActiveRecord::Base
-  attr_accessible :title, :description, :image_select, :status
+  attr_accessible :title, :description, :image_select, :status, :admin_ids
 
   #validatie
   validates_presence_of :title, :description, :image_select
 
   has_many :episodes
-  has_many :changemakers
+  has_and_belongs_to_many :admins
   has_many :posts
   has_many :challenges
   has_many :ideas
