@@ -1,3 +1,9 @@
+= link_to t('back', :default => t("helpers.links.back")), [:admin, :admins], :class => 'btn back'
+.page-header
+  - if @admin.new_record?
+    %h1 Admins
+  - else
+    %h1= @admin.username
 = simple_form_for([:admin, @admin]) do |f|
   -if @admin.errors.any?
     #error_explanation
