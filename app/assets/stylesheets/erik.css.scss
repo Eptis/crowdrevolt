@@ -2,7 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+// Idee pagina
 
+.idea_show {
+  h1 {
+    margin:0;
+    padding:0;
+  }
+}
 // Challenge pagina
 .ideacontent, .postcontent, .challengecontent {
   h1 {
@@ -52,7 +59,7 @@
 .vraag_stellen {
   .orangebg {
     background:#1c1c1c;
-    margin:0.8em 0 0 0;
+    margin:0.8em 0 0.3em 0;
     padding:1em 1em 0.1em 1em;
   }
   input {
