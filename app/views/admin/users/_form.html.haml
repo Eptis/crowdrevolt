@@ -1,0 +1,37 @@
+= simple_form_for [:admin, @user] do |f|
+  -if @user.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@user.errors.count, "error")} prohibited this user from being saved:"
+      %ul
+        - @user.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.input :username, :input_html => { :class => "makeitbig"}
+  .field
+    = f.input :email, :input_html => { :class => "makeitbig"}
+  .field
+    = f.file_field :avatar, :input_html => {:class => "btn imgselector", :style => "display:block"}
+    / .input-append
+    /   =text_field "photoCover", "", :input_html => {:class => "input-large"}
+    /   %a.btn{:onclick => "$('input[id=user_avatar]').click()"}= t("select")
+  .field.form-inline
+    .pull-left= f.input :skypename
+    .pull-left= f.input :show_skype
+  .clear
+  .field.form-inline
+    .pull-left= f.input :password
+    .pull-left= f.input :password_confirmation
+  .clear
+  .field
+    =f.input :bio, :input_html => {:rows => 10}
+  .field
+    =f.input :optin
+
+  .actions
+    = f.submit 'Save', :class => "btn"
+
+:javascript
+  $("input[id=user_avatar]").change(function(){
+  $("#photoCover_").val($(this).val());
+  });

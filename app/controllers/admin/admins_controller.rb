@@ -2,9 +2,10 @@ class Admin::AdminsController < AdminController
   before_filter :find_admin, :only => [:edit, :update, :destroy]
 
   def index
-    @search = Admin.search(params[:search])
-    @admins = @search.page(params[:page])
-    @admins = @admins.order("id DESC") if params[:search].blank?
+    # @search = Admin.search(params[:search])
+    # @admins = @search.page(params[:page])
+    # @admins = @admins.order("id DESC") if params[:search].blank?
+    @admins = Admin.all
   end
 
   def new
