@@ -50,6 +50,8 @@ nl:
   users:
     by_this_user: ! 'Door %{username}'
     more_solutions: "Meer oplossingen van %{username}"
+    no_ideas: "%{username} heeft nog geen ideeën geplaatst"
+    no_solutions: "%{username} heeft nog geen oplossingen geplaatst"
     more_ideas: "Meer ideeën van %{username}"
   posts:
     posts: "Artikelen"

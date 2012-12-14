@@ -7,7 +7,7 @@ class Post < ActiveRecord::Base
 
   # blog items
   has_many :blogitems, :as => :ownable
-  belongs_to :user
+  belongs_to :admin
   belongs_to :channel
   accepts_nested_attributes_for :blogitems, :allow_destroy => true
 

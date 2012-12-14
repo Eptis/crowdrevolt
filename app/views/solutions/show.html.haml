@@ -29,7 +29,6 @@
                 .image
                   %img{:src => "http://placehold.it/700x360"}
             .row-fluid
-              %article
               - @solution.blogitems.each do |item|
                 = render "item", :item => item
     -if FunctionConfig.allowed?(:comments)

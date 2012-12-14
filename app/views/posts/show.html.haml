@@ -10,23 +10,19 @@
 
             .row-fluid
               %aside.span7.karma
-                / %author#author= render :partial => "users/user", :locals => {:user => @post.user}
-                -if @post.user == current_user
-                  .clearfix=link_to t("posts.edit_post"), [:edit, @channel, @post] ,:class => "pull-right btn"
-                -elsif logged_in?
-                  %h4 Karma op dit artikel
-
-                  / #appreciableCounter= "Aantal waarderingen: " + @post.appreciables.count.to_s
-                  / .btn.appreciableBtn#appreciableBtn{:class => ("holy" if @post.appreciables.collect(&:user_id).include?(current_user.id))} Karma +1
-                  / =render "appreciable_form"
-                / -else
-                /   %p.text
-                /     Wil je dit waarderen? Meld je dan nu aan bij CrowdRevolt!
-                /     =link_to "registreren", :register
+                %author#author
+                  %h2=link_to @post.admin.username, @post.admin
+                  -if @post.admin.avatar.present?
+                    =image_tag @post.admin.avatar(:portrait)
               .span16.offset1.postcontent
                 .text=raw @post.description
-                .image
-                  %img{:src => "http://placehold.it/700x360"}
+                -if @post.images.present?
+                  .image
+                    =image_tag @post.image.url(:front)
+                .row-fluid
+                  - @post.blogitems.each do |item|
+                    = render "item", :item => item
+
             .row-fluid
     -if FunctionConfig.allowed?(:comments)
       .row-fluid
@@ -44,9 +40,9 @@
     .spacing
       %section.ideeen_box
         %article
-          %h4 Andere artikelen
+          %h4= t("posts.related")
           %ul
-            - @channel.posts.each do |challenge|
+            - @channel.posts[0..4].each do |challenge|
               %li=link_to challenge.title, [@channel, challenge]
     .slopel.black
       .slopelshape

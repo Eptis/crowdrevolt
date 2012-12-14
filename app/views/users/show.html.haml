@@ -57,11 +57,15 @@
                       - if sol.image.present?
                         =link_to [sol.challenge.channel, sol.challenge, sol] do
                           %div=image_tag sol.image.url(:front)
-            %li.clearfix
-              .smallspacing
-                =link_to :user_solutions,:class => "btn iconbtn more pull-right" do
-                  .icon.Solution.white
-                  =t("users.more_solutions", :username => @user.username)
+              - if @solutions.empty?
+                %p=t("user.no_solutions")
+
+            - if @user.solutions.present?
+              %li.clearfix
+                .smallspacing
+                  =link_to :user_solutions,:class => "btn iconbtn more pull-right" do
+                    .icon.Solution.white
+                    =t("users.more_solutions", :username => @user.username)
 
 
       .span12
@@ -70,7 +74,6 @@
           = t("ideas.ideas")
         .row-fluid
           %ul.span24.itemlist
-            .row-fluid
             - @ideas.each do |idea|
               .row-fluid
                 %li.span24
@@ -83,10 +86,13 @@
                       - if idea.image.present?
                         =link_to [idea.channel, idea] do
                           %div=image_tag idea.image.url(:front)
+            - if @ideas.empty?
+              %p=t("user.no_ideas")
 
-            %li.clearfix
-              .smallspacing
-                =link_to :user_solutions,:class => "btn iconbtn more pull-right" do
-                  .icon.Idea.white
-                  =t("users.more_ideas", :username => @user.username)
+            - if @user.ideas.present?
+              %li.clearfix
+                .smallspacing
+                  =link_to :user_solutions,:class => "btn iconbtn more pull-right" do
+                    .icon.Idea.white
+                    =t("users.more_ideas", :username => @user.username)
 
