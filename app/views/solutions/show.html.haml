@@ -5,6 +5,7 @@
         %section.idea_show
           %article
             .general
+              %h3.nom=link_to @solution.challenge.title, [@channel, @solution.challenge]
               %h1= @solution.title
               %time= l(@solution.created_at, :format => :full)
 
