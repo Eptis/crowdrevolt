@@ -16,12 +16,10 @@
     .span12
       = f.input :title
       = f.input :description, :as => :editor, :required => false
-<<<<<<< HEAD
+
       .spacing= f.association :admins,:label_method => :username,   :as => :check_boxes
       = f.input :status, :as => :text
-=======
-      = f.input :status, :as => :text, :input_html => {:rows=>2}
->>>>>>> backend afgemaakt
+
       / = f.input :description
       / = f.input :body, :as => :editor
       / = f.input :body
