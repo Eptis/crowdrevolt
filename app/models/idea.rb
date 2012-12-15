@@ -3,7 +3,8 @@ class Idea < ActiveRecord::Base
 
   #validatie
   validates_presence_of :title, :description
-  validates_length_of :description, :minimum => 25, :message => "Omschrijving moet minstens 25 karakters bevatten"
+  validates_presence_of :blogitems, :message => "Er is nog geen inhoud"
+  validates_length_of :description, :minimum => 25, :message => "De omschrijving moet minstens 25 karakters bevatten"
 
 
   has_many :appreciables, :as => :appreciable

@@ -19,9 +19,15 @@ $grijs_licht:#1c1c1c;
 $grijs_donker:#1c1c1c;
 $timecolor:#666666;
 $oranje_tint:$oranje;
+$red:#d7281f;
 // $input_grey:#3d3d3d;
 $input_grey:#222222;
 $slopeheight:90px;
+
+.error{
+  *{color:$red;}
+  color:$red;
+}
 
 %inlineblock{
   display: inline-block;

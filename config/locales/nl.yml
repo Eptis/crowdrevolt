@@ -7,32 +7,27 @@ nl:
   back: "< Terug"
   now_live: "nu live"
   changemakers: "Changemakers"
+  error_message: "Er zijn wat dingen fout gegaan:"
 
 
   activerecord:
     models:
       channel: "Programma's"
       blogitem: inhoud
+      episode: "Aflevering"
+      episodes: "Afleveringen"
       ownable: inhoud
     attributes:
-      blogitems: "inhoud"
-
-      ownable: "inhoud"
-
-      solution:
-        ownable:
-          blogitems: "inhoud"
-        ownable: "inhoud"
-
+      user:
+        password: "wachtwoord"
+        password_confirmation: "wachtwoord bevestiging"
+        show_skype: "Toon mijn skypenaam aan andere gebruikers"
+        skype_name: "Skype gebruikersnaam"
+        bio: "Vertel wat over jezelf"
+        optin: "Ja ik wil de nieuwsbrief ontvangen"
 
 
-  attributes:
 
-    solution:
-      title: "titel"
-      description: "omschrijving"
-      blogitems: "inhoud"
-      blogitem: "inhoud"
 
   solutions:
     solutions: "oplossingen"
@@ -71,6 +66,9 @@ nl:
     changemakers: "Changemakers"
     all_episodes: "Alle Livestreams"
   users:
+    password: "wachtwoord"
+    new_user: "Nieuwe gebruiker"
+    password_confirmation: "wachtwoord bevestiging"
     by_this_user: ! 'Door %{username}'
     more_solutions: "Meer oplossingen van %{username}"
     no_ideas: "%{username} heeft nog geen ideeën geplaatst"

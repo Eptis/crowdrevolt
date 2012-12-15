@@ -1,8 +1,10 @@
 = simple_nested_form_for([@channel, @challenge, @solution]) do |f|
   .row-fluid
-    - if @solution.errors.any?
-      -@solution.errors.full_messages.each do |message|
-        %p= message
+    .center
+      - if @solution.errors.any?
+        %h5=t("error_message")
+        -@solution.errors.full_messages.each do |message|
+          %p.error= message
   .row-fluid
     .blogcenter
       = f.input :title, :input_html => {:class => "makeitbig"}
