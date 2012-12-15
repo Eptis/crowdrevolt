@@ -52,15 +52,25 @@
                         = render @episode.messages
                     / -= request.original_url + "/messages/new"
                     / = request + "/messages/new"
-                    .chatForm
+                    .chatForm.input-append
                       =form_for [@episode.channel, @episode, Message.new], :remote => true do |f|
-                        =f.text_field :content, :id => "new_message"
                         - unless current_user
-                          = f.label :naam
-                          =f.text_field :name
-                          = f.label :email
-                          =f.text_field :email
-                        =f.submit "Send"
+                          .span24
+                            .span6
+                              %label Naam
+                            .span18
+                              =f.text_field :name
+                          .span24
+                            .span6
+                              %label E-mail
+                            .span18
+                              =f.email_field :email
+
+                        .span24
+                          .span20
+                            =f.text_field :content, :id => "new_message"
+                          .span4
+                            .pull-right=f.submit "Send"
                   .slopel.black
                     .slopelshape
 
