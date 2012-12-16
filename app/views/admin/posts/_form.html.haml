@@ -5,37 +5,28 @@
   - else
     %h1= @post.title
 = simple_nested_form_for([:admin, @channel, @post]) do |f|
-  .row
+  .row-fluid
     - if @post.errors.any?
       -@post.errors.each do |message|
         %p= message
-  .row
-    .span12
-      / = f.input :tag_list
-    .span12
-      / = f.category_select
-    .span12
-      = f.image_select
-    .span12
-      = f.input :published_at, :as => :datetimepicker, :input_html => { :value => @post.published_at_form }
-  .row
-    .span12
+  .row-fluid
+    .span6
       = f.input :title
+      = f.input :published_at, :as => :datetimepicker, :input_html => { :value => @post.published_at_form }
+      = f.image_select
+
+    .span18
       = f.input :description, :as => :editor, :required => false
-      / = f.input :description
-      / = f.input :body, :as => :editor
-      / = f.input :body
-  .row
-    .span12
-      = f.simple_fields_for :blogitems do |item|
-        = render :partial => 'items', :locals => { :f => item }
-        = item.link_to_remove "Verwijder blok"
-      %p= f.link_to_add "Voeg een onderdeel toe", :blogitems
+      .row-fluid
+        = f.simple_fields_for :blogitems do |item|
+          = item.link_to_remove "Verwijder blok", :class => "btn-danger pull-right"
+          = render :partial => 'items', :locals => { :f => item }
+        %p.clear= f.link_to_add "Voeg inhoud toe", :blogitems, :class => "btn-mini clear"
 
 
 
-  .row
-    .span12
+  .row-fluid
+    .pull-right
       = f.submit(:class => 'btn btn-primary')
       - if !@post.new_record?
         = link_to t('.destroy', :default => t("helpers.links.destroy")), [:admin, @channel, @post], :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'

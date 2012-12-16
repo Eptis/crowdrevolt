@@ -8,6 +8,9 @@ class Solution < ActiveRecord::Base
   include ImageSelect
   image_select
 
+  default_scope order('updated_at DESC')
+
+
   attr_accessible :title, :body, :description, :published_at, :blogitems_attributes, :image_select, :challenge_id
   has_many :blogitems, :as => :ownable
   has_many :appreciables, :as => :appreciable

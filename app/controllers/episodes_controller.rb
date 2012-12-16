@@ -7,6 +7,8 @@ class EpisodesController < ApplicationController
    @episodes = Episode.where(:channel_id => @channel.id).paginate(:page => params[:page], :per_page => 6)
   end
 
+
+
   def show
     @episode = Episode.find(params[:id])
     @message = Message.new

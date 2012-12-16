@@ -6,10 +6,13 @@
 //= require jquery_nested_form
 //= require jquery.iframe-transport
 //= require jquery.remotipart
+//= require bootstrap.min
+//= require animation_and_svg_check
 //= require admin/default
 
 
 $(document).ready(function(){
+
 
   $("#appreciableBtn").on("click", function(){
     $(this).toggleClass("holy");
@@ -21,19 +24,37 @@ $(document).ready(function(){
     $("#skypeForm").find("form").submit().remove();
   });
 
+
+  var timer;
+  var loadertime = 1500
+
   $("#search_field").bind('keyup', function(){
-    $(this).closest("form").delay(200).submit();
+    $("#searchloader").slideDown(1000, function(){
+      timer = setTimeout(submitSearch, loadertime)
+    })
+    $("#searchresults").slideUp(500)
+    // if($(".loaderholder").length < 1){
+    //   $("#searchresults").html("<div class='loaderholder'><img class='ajaxloader' src='/ajax-loader.gif'/><div class='loader'></div><div class='loader2'></div><div class='loader4'></div></div>")
+    // }
+  });
+  $("#search_field").bind('keydown', function(){
+     clearTimeout(timer);
   });
 
-
-
-  $(".Toggle").on("click", function(){
-     $(this).next().toggleClass('open')
+  $(window).resize(function() {
+    toggleSlides();
   });
+  toggleSlides();
 
-  $(window).on("resize", function(){
-    $("menutoggler").css("display", "block")
-  })
+
+
+  // $(".Toggle").on("click", function(){
+  //    $(this).next().toggleClass('open')
+  // });
+
+  // $(window).on("resize", function(){
+  //   $("menutoggler").css("display", "block")
+  // })
 
 //verwijder zoekresultaten
   $(".clearsearch").live("click",function(){
@@ -77,6 +98,16 @@ $('.changer').live("change", function(){
       this.rows = calcRows;
   });
 
+  $('textarea').each(function(){
+    $(this).height('');
+      var brCount = this.value.split('\n').length;
+      this.rows = brCount+1; //++ To remove twitching
+      var areaH = this.scrollHeight,
+          lineHeight = $(this).css('line-height').replace('px',''),
+          calcRows = Math.floor(areaH/lineHeight);
+      this.rows = calcRows;
+  })
+
 });
 
 function scrollChatbox(){
@@ -87,9 +118,30 @@ function scrollChatbox(){
 function update_author_score(mode){
 
   var current_score = parseInt($("#author .karmascore span").html());
+  console.log(current_score)
   if(mode == "add"){
-    $("#author .karmascore span").html(current_score+1)
+    var score = String(current_score + 1)
+    console.log(score)
+    $("#author .karmascore span").html(score)
   }else if(mode == "sub"){
-    $("#author .karmascore span").html(current_score-1)
+    var score = String(current_score - 1)
+    console.log(score)
+
+    $("#author .karmascore span").html(score)
   }
+
+}
+
+
+function toggleSlides(){
+  if($(window).width() <= 640){
+    $("#collapseOne").removeClass('in').css('height', 0)
+    $("#collapseEleven").removeClass('in').css('height', 0)
+  }else{
+    $("#collapseEleven").css('height', 'auto').addClass('in')
+    $("#collapseOne").css('height', 'auto').addClass('in')
+  }
+}
+function submitSearch(){
+    $("#search_field").closest("form").submit();
 }

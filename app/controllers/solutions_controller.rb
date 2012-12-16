@@ -2,6 +2,7 @@ class SolutionsController < ApplicationController
   skip_before_filter :require_login, :except => [:new, :edit, :destroy, :update]
   before_filter :find_channel
   before_filter :find_challenge
+  before_filter :find_solution, :only => [:edit, :update, :destroy]
 
   def index
    @solutions = Solution.all
@@ -34,22 +35,27 @@ class SolutionsController < ApplicationController
   end
 
   def edit
-    @solution = Solution.find(params[:id])
+    # @solution = Solution.find(params[:id])
   end
 
   def update
-    @solution = Solution.find(params[:id])
+    # raise params[:solution].inspect
+    # @solution = Solution.find(@user_solution.id)
     if @solution.update_attributes(params[:solution])
-      redirect_to([@solution])
+      redirect_to([@solution.challenge.channel, @solution.challenge, @solution])
     else
       render("edit")
     end
   end
 
   def destroy
-    @solution = Solution.find(params[:id])
-    @solution.destroy
-    redirect_to([:posts], :flash => :success)
+    # @solution = Solution.find(params[:id])
+    if @solution
+      @solution.destroy
+      redirect_to([@challenge], :flash => :success)
+    else
+      redirect_to([@channel])
+    end
   end
 
   def appreciate
@@ -64,5 +70,9 @@ private
 
   def find_channel
     @channel = Channel.find(params[:channel_id])
+  end
+
+  def find_solution
+    @solution = current_user.solutions.find(params[:id])
   end
 end

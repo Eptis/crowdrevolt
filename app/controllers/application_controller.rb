@@ -3,50 +3,8 @@ class ApplicationController < ActionController::Base
   before_filter :require_login, :except => :search
   before_filter :retrieve_channels
 
-  def give_reward(object, *points)
-    @reward = Reward.new
-    @reward.user = current_user
-    @reward.points = points.present? ? points : 1000
-    @reward.rewardable_type = object.class.name
-    @reward.rewardable_id = object.id
-    @reward.save
-    update_score(@reward.user)
-  end
-
-  def update_score(user)
-    @score = 0
-    # reken idee en challenge punten uit
-    user.rewards.each do |reward|
-      @score += reward.points
-    end
-
-    #waarderingen optellen
-    user.ideas.each do |idea|
-      @score += idea.appreciables.count
-    end
-
-    user.solutions.each do |sol|
-      @score += sol.appreciables.count
-    end
-
-    user.score = @score
-    user.save
-  end
-
-
-
-  def construct_appreciable(construct)
-    @record  = Appreciable.where(:appreciable_id => construct.id, :appreciable_type => construct.type).find_by_user_id([current_user].flatten)
-    if @record
-        @appreciable = @record
-    else
-      @appreciable = Appreciable.new
-    end
-  end
-
-
   def search
-    unless params[:search] == ""
+    # unless params[:search] == ""
       @search = Sunspot.search(Post, Channel, Episode, Idea, Solution) do
         fulltext params[:search] do
           highlight :title
@@ -54,6 +12,7 @@ class ApplicationController < ActionController::Base
         end
       end
       @results = @search.results
+
       @searchresults = []
       @results_posts = []
       @results_channels = []
@@ -85,15 +44,69 @@ class ApplicationController < ActionController::Base
         format.html
         format.js
       end
-    end
+    # end
     # raise @results.inspect
   end
+
+private
+  def mobile_device?
+    # raise request.env['HTTP_USER_AGENT'].inspect
+    request.user_agent =~ /Mobile|webOS/
+  end
+  helper_method :mobile_device?
+
+  def give_reward(object, *points)
+    @reward = Reward.new
+    @reward.user = current_user
+    @reward.points = points.present? ? points : 1000
+    @reward.rewardable_type = object.class.name
+    @reward.rewardable_id = object.id
+    @reward.save
+    update_score(@reward.user)
+  end
+  helper_method :give_reward
+
+  def update_score(user)
+    @score = 0
+    # reken idee en challenge punten uit
+    user.rewards.each do |reward|
+      @score += reward.points
+    end
+
+    #waarderingen optellen
+    user.ideas.each do |idea|
+      @score += idea.appreciables.count
+    end
+
+    user.solutions.each do |sol|
+      @score += sol.appreciables.count
+    end
+
+    user.score = @score
+    user.save
+  end
+  helper_method :update_score
+
+
+
+
+  def construct_appreciable(construct)
+    @record  = Appreciable.where(:appreciable_id => construct.id, :appreciable_type => construct.type).find_by_user_id([current_user].flatten)
+    if @record
+        @appreciable = @record
+    else
+      @appreciable = Appreciable.new
+    end
+  end
+
+
+
 
   private
 
   protected
   def not_authenticated
-    redirect_to :user_login, :alert => "Please login first."
+    redirect_to :user_login, :alert => "Voor deze pagina is een inlog vereist."
   end
 
   def signed_in

@@ -5,32 +5,21 @@
   - else
     %h1= @channel.title
 = simple_nested_form_for([:admin, @channel]) do |f|
-  .row
+  .row-fluid
     - if @channel.errors.any?
       -@channel.errors.each do |message|
         %p= message
-  .row
-    .span12
-      / = f.input :tag_list
-    .span12
-      / = f.category_select
-    .span12
-      = f.image_select
-    / .span12
-    /   = f.input :published_at, :as => :datetimepicker, :input_html => { :value => @channel.published_at_form }
-  .row
-    .span12
+  .row-fluid
+    .span6
       = f.input :title
+      = f.image_select
+    .span18
+      = f.input :status, :as => :text, :input_html =>{:rows => 2}
+
       = f.input :description, :as => :editor, :required => false
+  .row-fluid
+    .span18.offset6
+      .spacing
+      .collection= f.association :admins,:label_method => :username,   :as => :check_boxes
 
-      .spacing= f.association :admins,:label_method => :username,   :as => :check_boxes
-      = f.input :status, :as => :text
-
-      / = f.input :description
-      / = f.input :body, :as => :editor
-      / = f.input :body
-
-
-
-  .row
-    .span12= f.submit(:class => "btn btn-primary")
+    .pull-right= f.submit(:class => "btn btn-primary")

@@ -35,7 +35,7 @@ class IdeasController < ApplicationController
   def update
     @idea = Idea.find(params[:id])
     if @idea.update_attributes(params[:idea])
-      redirect_to([@idea])
+      redirect_to([@idea.channel, @idea])
     else
       render("edit")
     end

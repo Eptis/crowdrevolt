@@ -21,6 +21,6 @@
       %h3=link_to comment.user.username, comment.user
     - else
       %h3= comment.name
-    .text= comment.body
+    .text= clean(comment.body)
 
 

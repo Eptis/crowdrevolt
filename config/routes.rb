@@ -14,6 +14,10 @@ Crowdrevolt::Application.routes.draw do
 
     # Inloggen
     get    "inloggen"  => "sessions#new",     :as => :login
+    get    "archived"  => "channels#archived",     :as => :archived
+    get    "live"  => "episodes#live",     :as => :live
+    match '/channels/archive/:id' => "channels#archive", :as => 'archive'
+    match '/channels/unarchive/:id' => "channels#unarchive", :as => 'unarchive'
     post   "inloggen" => "sessions#create",  :as => :login
     delete "uitloggen" => "sessions#destroy", :as => :logout
 
@@ -51,38 +55,31 @@ Crowdrevolt::Application.routes.draw do
   end
 
   resources :messages
-  resources :images
-  resources :questions
+  resources :images, :path => "fotos"
+  resources :questions, :path => "kijkersvragen"
   resources :admins, :path => "changemakers"
-  resources :channels do
+  resources :channels, :path => "programmas" do
     resources :messages
-    resources :challenges do
-      resources :solutions do
+    resources :challenges, :path => "uitdagingen" do
+      resources :solutions, :path => "oplossingen" do
         resources :comments
         resources :appreciables
       end
     end
-    resources :episodes do
+    resources :episodes, :path => "afleveringen" do
       resources :messages
       resources :questions
     end
-    resources :posts do
+    resources :posts, :path => "artikelen", :only => [:index, :show] do
       resources :comments
     end
-    resources :ideas do
+    resources :ideas, :path => "ideeen" do
       resources :comments
-        resources :appreciables
-    end
-    resources :changemakers
-    resources :challenges do
-      resources :solutions
+      resources :appreciables
     end
   end
 
   resources :user_sessions
-  resources :posts do
-    resources :comments
-  end
 
   # gebruiker Inloggen
   match 'login' => 'user_sessions#new', :as => :login

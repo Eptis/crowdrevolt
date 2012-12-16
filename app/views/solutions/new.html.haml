@@ -1,6 +1,11 @@
 .spacing
-  %h1
-    .icon.Solution
-    = t('solution_for')
-  %h2.pageheader= @challenge.title
+  = link_to t('back'), :back, :class => 'btn back'
+  .row-fluid
+    %h2
+      .icon.Solution
+      = t('solutions.solution_for')
+    %h1.pageheader= @challenge.title
+    .blogcenter
+      .text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+      .spacing
   = render :partial => "form"

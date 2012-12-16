@@ -22,8 +22,14 @@
     .container-fluid.wrapper
       = render("header")
       .vertical-spacing
-        #notice= notice
-        #alert= alert
+        #notice= notice if notice.present?
+        #alert= alert if alert.present?
+      #searchloader
+        .loaderholder
+          =image_tag "ajax-loader.gif", :class => "ajaxloader"
+          .loader
+          .loader2
+          .loader4
       #searchresults
       .row-fluid
         / .spacing

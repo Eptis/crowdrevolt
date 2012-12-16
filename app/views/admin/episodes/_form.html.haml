@@ -5,34 +5,20 @@
   - else
     %h1= @episode.title
 = simple_nested_form_for([:admin, @channel, @episode ]) do |f|
-  .row
+  .row-fluid
     - if @episode.errors.any?
       -@episode.errors.each do |message|
         %p= message
-  .row
-    .span12
-      / = f.input :tag_list
-    .span12
-      / = f.category_select
-    .span12
-      = f.image_select
-    / .span12
-    /   = f.input :published_at, :as => :datetimepicker, :input_html => { :value => @episode.published_at_form }
-  .row
-    .span12
+  .row-fluid
+    .span6
       = f.input :title
-      = f.input :description, :as => :editor, :required => false
-      = f.input :live
-      = f.input :livestream_embedcode
+      = f.image_select
       = f.input :airdate, :as => :datetimepicker
-      / = f.input :description
-      / = f.input :body, :as => :editor
-      / = f.input :body
+    .span18
 
-
-
-  .row
-    .span12
-      = f.submit(:class => 'btn btn-primary')
-      -if !@episode.new_record?
-        = link_to t('.destroy', :default => t("helpers.links.destroy")), [:admin, @channel, @episode], :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'
+      = f.input :description, :as => :editor, :required => false
+      = f.input :livestream_embedcode
+      = f.input :live
+    .pull-right= f.submit(:class => 'btn btn-primary')
+    -if !@episode.new_record?
+      = link_to t('.destroy', :default => t("helpers.links.destroy")), [:admin, @channel, @episode], :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'

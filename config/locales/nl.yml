@@ -8,6 +8,8 @@ nl:
   now_live: "nu live"
   changemakers: "Changemakers"
   error_message: "Er zijn wat dingen fout gegaan:"
+  appreciate: "Beloon dit!"
+  no_results: "Helaas, we hebben niks kunnen vinden"
 
 
   activerecord:
@@ -15,9 +17,12 @@ nl:
       channel: "Programma's"
       blogitem: inhoud
       episode: "Aflevering"
-      episodes: "Afleveringen"
+
       ownable: inhoud
     attributes:
+      episode:
+        one:"Aflevering"
+        other: "Afleveringen"
       user:
         password: "wachtwoord"
         password_confirmation: "wachtwoord bevestiging"
@@ -46,8 +51,9 @@ nl:
     ideas: "Ideeën"
     all_ideas: "Alle Ideeën"
     submitted: "Ingezonden ideeën"
-    new_idea: "Ik heb een idee"
-    edit_idea: "Bewerk idee"
+    new_idea: "stuur je idee in"
+    new_ideas: "Ik heb een idee"
+    edit_idea: "Bewerk je idee"
   channels:
     channels: "Programma's"
     channel: "Programma"
@@ -63,6 +69,10 @@ nl:
   episodes:
     episodes: "Livestreams"
     episode: "Livestream"
+    ask_question: "Stel een vraag"
+    ask_question_header: "Laat vragen zien"
+    about_episode: "Over deze aflevering"
+    about_channel: "Over dit programma"
     changemakers: "Changemakers"
     all_episodes: "Alle Livestreams"
   users:
@@ -88,9 +98,13 @@ nl:
 
   # formulieren
   helpers:
-      submit:
-        sessions:
-          create: "Inloggen"
+    submit:
+      sessions:
+        create: "Inloggen"
+    links:
+      edit: "Bewerk"
+      destroy: "Verwijder"
+
   errors:
 
     format: ! '%{message}'

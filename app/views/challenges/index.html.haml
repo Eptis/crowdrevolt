@@ -1,8 +1,7 @@
 .row
-  - @channels.each do |channel|
-    %h2= channel.title
-    %p=raw channel.description
-    = link_to channel.title, channel
+  - @challenges.each do |challenges|
+    %h2= challenge.title
+    %p=raw challenge.description
+    = link_to challenge.title, [:edit, :admin, challenge]
 
 
-    

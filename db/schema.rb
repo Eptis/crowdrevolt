@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121214123226) do
+ActiveRecord::Schema.define(:version => 20121215133455) do
 
   create_table "admins", :force => true do |t|
     t.string   "username"
@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(:version => 20121214123226) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.integer  "channel_id"
+    t.boolean  "active"
   end
 
   create_table "changemakers", :force => true do |t|
@@ -276,7 +277,7 @@ ActiveRecord::Schema.define(:version => 20121214123226) do
     t.boolean  "optin"
     t.string   "name"
     t.text     "bio"
-    t.integer  "score",                           :default => 0
+    t.integer  "score",                           :default => 0,    :null => false
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"

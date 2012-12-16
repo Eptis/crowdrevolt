@@ -13,10 +13,10 @@
     .span12
       = f.input :title
       = f.input :description, :as => :editor, :required => false
+      = f.input :points
+      = f.input :active
 
 
-
-  .row-fluid
     .span12
       = f.submit(:class => 'btn btn-primary')
       - if !@challenge.new_record?

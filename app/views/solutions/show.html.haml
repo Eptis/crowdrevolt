@@ -13,21 +13,29 @@
               %aside.span7.karma
                 %author#author= render :partial => "users/user", :locals => {:user => @solution.user}
                 -if @solution.user == current_user
-                  .clearfix=link_to t("solutions.edit_solution"), [:edit, @channel, @solution.challenge, @solution] ,:class => "pull-right btn"
+                  .clearfix=link_to t("solutions.edit_solution"), [:edit, @channel, @solution.challenge, @solution] ,:class => "pull-right btn more"
                 -elsif logged_in?
-                  %h4 Karma op deze oplossing
+                  .clear.appreciable
+                    %h4.motivation= t("appreciate")
 
-                  #appreciableCounter= "Aantal waarderingen: " + @solution.appreciables.count.to_s
-                  .btn.appreciableBtn#appreciableBtn{:class => ("holy" if @solution.appreciables.collect(&:user_id).include?(current_user.id))} Karma +1
-                  =render "appreciable_form"
+                    #appreciableCounter= "Aantal waarderingen: " + @solution.appreciables.count.to_s
+                    .btn.appreciableBtn#appreciableBtn.radius{:class => ("holy" if @solution.appreciables.collect(&:user_id).include?(current_user.id))}
+                      .icon.Karma.white{:style => "margin:0 auto !important;"}
+                      .label.add Karma +1
+                      .label.sub Je hebt dit beloond
+                    =render "appreciable_form"
+                    .clear
                 -else
                   %p.text
-                    Wil je dit waarderen? Meld je dan nu aan bij CrowdRevolt!
-                    =link_to "registreren", :register
+                    Wil je de auteur van deze oplossing belonen? Meld je dan nu aan of log in!
+                    .clear
+                    =link_to "registreren", :register,:class => "btn more"
+                    =link_to "inloggen", :login,:class => "btn more"
               .span16.offset1.ideacontent
-                .text=raw @solution.description
-                .image
-                  %img{:src => "http://placehold.it/700x360"}
+                .text=simple_format(clean(@solution.description))
+                -if @solution.images.present?
+                  .image
+                    =image_tag @solution.images.first.url(:front)
                 .row-fluid
                   - @solution.blogitems.each do |item|
                     = render "item", :item => item
@@ -54,21 +62,3 @@
     .slopel.black
       .slopelshape
 
-
-/ %h1= @solution.title
-/ %p=raw @solution.description
-/ - @solution.blogitems.each do |item|
-/   = render "item", :item => item
-
-/ =@solution.appreciables.count
-/ / -raise @appreciable.inspect
-/ / - if @appreciable.new_record?
-/ #appreciableBtn
-/   .btn.appreciableBtn Karma +1
-/   =render "appreciable_form"
-
-/ -if FunctionConfig.allowed?(:comments)
-/   %h1 Comments
-/   = render "commentform"
-/   - @solution.comments.each do |comment|
-/     = render :partial => "comments/comment", :locals => {:path => [@channel, @solution.challenge, @solution, comment], :comment => comment}

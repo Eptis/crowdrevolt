@@ -1,4 +1,4 @@
 .searchform.pull-right.input-append
   = form_tag :search, :controller => "application", :action => "search", :method => 'get', :remote => true do
     = text_field_tag :search, params[:search], :id => 'search_field'
-    = submit_tag "search", :name => nil, :class => 'search_button'
+    = image_submit_tag "search.png", :name => nil, :class => 'search_button'

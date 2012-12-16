@@ -6,6 +6,7 @@
 //= require_self
 
 
+//= require loader
 //= require erik
 //= require alvin
 
@@ -13,20 +14,40 @@
 
 $oranje:#ff5400;
 $darkorange:#c44102;
-$zwart:#070707;
+$zwart:#1b1b1b;
 $wit:#ffffff;
 $grijs_licht:#1c1c1c;
-$grijs_donker:#1c1c1c;
+$grijs_donker:#141414;
 $timecolor:#666666;
 $oranje_tint:$oranje;
 $red:#d7281f;
-// $input_grey:#3d3d3d;
 $input_grey:#222222;
 $slopeheight:90px;
 
+.chatfield{width:80% !important;}
+.chatsend{width:20% !important;}
+.hint{color:$timecolor;}
+
+.back{color:#fff !important;}
 .error{
   *{color:$red;}
   color:$red;
+}
+.field_with_errors{
+  border-top:1px solid $red;
+  border-bottom:1px solid $red;
+}
+
+#search_field{margin-right:0 !important;}
+.search_button{background: $grijs_donker; padding:0  12px;}
+
+%noselect{
+  -webkit-touch-callout: none;
+-webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
 }
 
 %inlineblock{
@@ -40,6 +61,8 @@ $slopeheight:90px;
   overflow: hidden;
 
 }
+
+
 
 .icon{
   background: url(image_path("icons.png"));
@@ -129,6 +152,7 @@ body{
   font-weight:lighter !important;
   padding-top:0px !important;
   background:$zwart !important;
+  overflow-x:hidden;
   max-width: 1920px;
 }
 .text {
@@ -200,6 +224,11 @@ p, .text{
 
 }
 
+#alert, #notice{
+  text-align: center;
+  padding:0 1em;
+}
+
 
 .login {
   float: right;
@@ -245,16 +274,46 @@ p, .text{
 }
 .text a{ color: $oranje; text-transform: uppercase; font-weight: 600}
 
-
+.appreciable{*{text-align: center; width:300px;}}
 #appreciableBtn{
+  @extend %noselect;
   -webkit-box-shadow:0px 0px 0px $oranje;
   -webkit-transition: all 2000ms ;
   -moz-transition: all 2000ms ;
   -ms-transition: all 2000ms ;
   -o-transition: all 2000ms ;
   transition: all 2000ms ;
+  border-radius: 150px;
+  margin:1em 0 0 125px !important;
+  height:50px;
+  width:50px;
+  padding:8px !important;
+  position: relative;
+  cursor: pointer;
+  .label{
+    @extend %transition;
+    position: absolute;
+    // right:66px;
+  cursor: pointer;
+    right:26px;
+    text-shadow:1px 1px 1px $zwart;
+    text-align: right;
+    float:right;
+    background:none !important;
+    top:25px;
+    text-align: center; right:-70px; width:200px;
+    &.sub{opacity: 0; *display: none; }
+    &.add{opacity: 1; *display: block;}
+  }
+  &.holy{
+    .sub{opacity: 1; *display: block; }
+    .add{opacity: 0; *display: none;}
+  }
+
   form {display: none}
 }
+
+
 
 
 .chat{background: $oranje;}
@@ -495,11 +554,14 @@ $degree:3deg;
   font-size: 10px;
 }
 
+.helper{color:$timecolor;}
 
+input.fullwidth{width:96%; padding:2%; margin-right:0 !important;}
 ul.itemlist{
   padding-right:6% !important;
-  li{padding-bottom: 15px !important; border-bottom: 1px solid $grijs_licht}
+  li{padding-bottom: 15px !important; border-bottom: 1px solid $timecolor; margin-bottom:1.5em;}
 }
+.resultheader{margin:1em 0 !important; background-color:$grijs_donker !important; padding:6px;}
 footer ul.itemlist li{border-bottom: none}
 .challenges.itemlist{ padding-right:0% !important;}
 table.challenges{width:100% !important;
@@ -525,7 +587,7 @@ ul{
 
 @media screen and (min-width:1440px){
   .pageheader{
-    font-size:6em;
+    font-size:5em;
     /*-webkit-transform:rotate(-$degree);*/
   }
 }
@@ -627,7 +689,7 @@ div.input.text{
   color:#fff !important;
   border:none !important;
   padding:1em ;
-  font-size:2em ;
+  font-size:1em ;
   margin:1em 0 ;
   text-transform: uppercase;
   &:hover{background:$oranje;}
@@ -658,9 +720,6 @@ a{@extend %transition}
 }
 body{overflow-x:hidden;}
 
-.toggler.open{
-  max-height:100% !important;
-}
 
 .points{font-size:5em; font-weight: bold; text-align: center; }
 .chatForm.input-append{
@@ -687,7 +746,7 @@ input[type="submit"]:hover{background:$oranje !important}
 }
 
 .comment{
-  border-bottom: 1px solid $grijs_licht;
+  // border-bottom: 1px solid $grijs_licht;
   margin-top:0.5em;
   float: left;
   width:100%;
@@ -757,13 +816,35 @@ input[type="submit"]:hover{background:$oranje !important}
   }
 } //class wanneer je geklikt hebt
 .imgselect a{color:#fff;}
+.vraag_text {border-bottom: 1px solid $timecolor; .avatar{width:20% !important; }}
 
+#menuaccordion, #accordion2{
+  .accordion-group{border:0px;}
+  .accordion-inner{padding:0; border-top:0px;}
 
+}
+#menuToggle, .toggleBtn{display: none;}
+.toggleBtn{background: $oranje; a{color:#fff; text-align: center}}
+
+.hideforlive{
+  .toggleBtn a h3{color:#fff !important;}
+}
 
 /*========= media queries, geen gewone css hieronder ==================================================================*/
 
 // mobile only
 @media screen and(max-width:640px){
+  .toggleBtn, #menuToggle{display: block;}
+  #menuaccordion .accordion-inner{border-bottom:1px solid $oranje;}
+  .appreciable{
+    .motivation{font-size:1em !important; float:left; text-align:left; width:auto;}
+    #appreciableBtn{margin-left:80px !important; margin-top:0px !important;}
+    #appreciableCounter{font-size:1em !important; float:left; text-align:left; width:auto; clear:left;}
+    border-bottom: 1px solid $oranje
+  }
+  input[type="text"]{width:96% !important;}
+  #author{margin:0.5em 0!important; width:100%; max-width:100%; .user{width:100%; max-width:100%;}}
+
   .comment .useravatar{width:75px;}
   .slopel, .sloper{ height:$slopefixheight !important;}
   .collection article{border-bottom: 1px solid $grijs_licht; padding-bottom:2em;}
@@ -798,6 +879,7 @@ input[type="submit"]:hover{background:$oranje !important}
 @media screen and (min-width:1440px){
   input.makeitbig{
     font-size:4em !important;
+    line-height: 1;
     width: 92%;
 
     padding:4% !important;
@@ -808,6 +890,7 @@ input[type="submit"]:hover{background:$oranje !important}
   input.makeitbig{
     font-size:3em !important;
     width: 92%;
+    line-height: 1;
     padding:4% !important;
   }
 }
@@ -831,9 +914,11 @@ input[type="submit"]:hover{background:$oranje !important}
     form {
       #search_field {
         width: 75% !important;
+        width:280px;
       }
       #search_button {
         width: 20% !important;
+        min-width: 30px;
       }
 
     }
@@ -906,3 +991,30 @@ input[type="submit"]:hover{background:$oranje !important}
   ul.itemlist{padding-right:0 !important;}
 }
 
+
+
+
+
+// video fix
+
+.videoWrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  padding-top: 25px;
+  height: 0;
+}
+.videoWrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.videoWrapper object,
+.videoWrapper embed,  {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}

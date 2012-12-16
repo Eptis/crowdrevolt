@@ -1,8 +1,8 @@
-class ImagesController < ActionController::Base
+class ImagesController < ApplicationController
   before_filter :find_image, :only => [:edit, :update, :destroy]
 
   def index
-    @images = Image.order("id DESC")
+    @images = Image.where(:user_id => current_user.id).order("id DESC")
     @images = @images.search(:name_or_tag_taggings_tag_name_contains => params[:q]) if params[:q].present?
     @images = @images.page(params[:page]).per_page(params[:total].try(:to_i) || 40)
   end
@@ -30,19 +30,19 @@ class ImagesController < ActionController::Base
     end
   end
 
-  def edit
-    @image.thumbnail = params[:crop]
-  end
+  # def edit
+  #   @image.thumbnail = params[:crop]
+  # end
 
-  def update
-    if @image.update_attributes(params[:image])
-      redirect_to([:edit, :admin, @image], :flash => :success)
-    else
-      raise
-      flash_now!(:error)
-      render("edit")
-    end
-  end
+  # def update
+  #   if @image.update_attributes(params[:image])
+  #     redirect_to([:edit, :admin, @image], :flash => :success)
+  #   else
+  #     raise
+  #     flash_now!(:error)
+  #     render("edit")
+  #   end
+  # end
 
   def destroy
     @image.destroy

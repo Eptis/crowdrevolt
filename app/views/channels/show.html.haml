@@ -10,8 +10,6 @@
             .row-fluid
               %article.span24
                 - if @live
-                  %h3.nextup.clearfix= t("channels.now_live")
-                  %h2= @live.title
                   .row-fluid
                     .span8
                       / .imgmask
@@ -19,6 +17,8 @@
                         - if @live.image
                           =image_tag @live.image.url(:front)
                     .span15.offset1
+                      %h3.nextup.clearfix= t("channels.now_live")
+
                       =link_to [@channel, @live] do
                         %h2= @live.title
 
@@ -68,18 +68,18 @@
                     .span6
                       %label Naam
                     .span18
-                      =f.text_field :name
+                      =f.text_field :name, :required => true
                   .span24
                     .span6
                       %label E-mail
                     .span18
-                      =f.email_field :email
+                      =f.email_field :email, :required => true
 
                 .span24
-                  .span20
-                    =f.text_field :content, :id => "new_message"
-                  .span4
-                    .pull-right=f.submit "Send"
+                  .chatfield.nom.pull-left
+                    =f.text_field :content, :class => "message_clear"
+
+                  =f.submit "Send", :class => "chatsend nom pull-left"
           .slopel.black
             .slopelshape
 
@@ -106,10 +106,11 @@
                 %th= t("challenges.solutions")
                 %th= t("challenges.points")
               - @channel.challenges.each do |challenge|
-                %tr
-                  %td=link_to challenge.title, [@channel, challenge]
-                  %td=link_to challenge.solutions.count, [@channel, challenge]
-                  %td= challenge.points
+                -if challenge.active
+                  %tr
+                    %td=link_to (challenge.title + " >"), [@channel, challenge]
+                    %td=link_to challenge.solutions.count, [@channel, challenge]
+                    %td= challenge.points
 
       .row-fluid
         .span24
@@ -168,23 +169,23 @@
                     %li.clearfix=link_to t("ideas.all_ideas"), [@channel,:ideas], :class => "more btn pull-right"
 
 
-
-                .row-fluid
-                  %section.span24.laatste_afleveringen_klein
-                    %h2
-                      .icon.Episode
-                      = t("channels.previous_episodes")
-                    .row-fluid
-                      - @episodes.each do |episode|
-                        %article.span8
-                          =link_to [@channel, episode] do
-                            %h3= episode.title
-                          -if episode.airdate.present?
-                            %time= l(episode.airdate, :format => :full)
-                          =link_to [@channel, episode] do
-                            -if episode.image
-                              =image_tag episode.image.url(:front)
-                      .span24.smallspacing=link_to t("channels.previous_episodes"), [@channel, :episodes], :class => "btn pull-right more "
+                -if @episodes.present?
+                  .row-fluid
+                    %section.span24.laatste_afleveringen_klein
+                      %h2
+                        .icon.Episode
+                        = t("channels.previous_episodes")
+                      .row-fluid
+                        - @episodes.each do |episode|
+                          %article.span8
+                            =link_to [@channel, episode] do
+                              %h3= episode.title
+                            -if episode.airdate.present?
+                              %time= l(episode.airdate, :format => :full)
+                            =link_to [@channel, episode] do
+                              -if episode.image
+                                =image_tag episode.image.url(:front)
+                        .span24.smallspacing=link_to t("channels.previous_episodes"), [@channel, :episodes], :class => "btn pull-right more "
 
   %aside.span6.sidebar
     .sloper.black
@@ -193,7 +194,7 @@
       %section.project-status
         %article
           %h4= t("channels.status")
-          %p blabla babafsd asdfasdf asd
+          %p= @channel.status
 
       %section.over_dit_kanaal
         %article

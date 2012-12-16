@@ -9,8 +9,6 @@
           .span18
             %h1= @challenge.title
             %time= l(@challenge.created_at, :format => :full)
-            -if @challenge.image.present?
-              =image_tag @challenge.image.url(:front)
             .text
               =raw @challenge.description
 

@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   validates_length_of :password, :minimum => 3, :message => "Je wachtwoord moet minstens 6 karakters lang zijn"
   validates_confirmation_of :password, :message => "Je bevestiging was niet gelijk aan je ingevulde wachtwoord"
   validates_uniqueness_of :email, :on => :create
-  validates_uniqueness_of :username, :on => :create
+  validates_uniqueness_of :username, :on => :create, :message => "Deze gebruikersnaam is al in gebruik"
 
 
 

@@ -1,6 +1,6 @@
 class Admin::ChannelsController < AdminController
   def index
-    @channels = Channel.all
+    @channels = Channel.where(:archived => false)
   end
 
   def show
@@ -33,10 +33,22 @@ class Admin::ChannelsController < AdminController
     end
   end
 
-  def destroy
+  def archived
+    @channels = Channel.where(:archived => true)
+  end
+
+  def archive
     @channel = Channel.find(params[:id])
-    @channel.destroy
+    @channel.archived = true
+    @channel.save
     redirect_to([:admin, :channels], :flash => :success)
+  end
+
+  def unarchive
+    @channel = Channel.find(params[:id])
+    @channel.archived = false
+    @channel.save
+    redirect_to([:admin, :archived], :flash => :success)
   end
 private
 

@@ -1,8 +1,11 @@
 class Admin::EpisodesController < AdminController
   before_filter :find_episode, :only => [:show, :edit, :update, :destroy]
-  before_filter :find_channel
+  before_filter :find_channel, :except => [:live]
   def index
     @episodes = Episode.all
+  end
+   def live
+   @episodes = Episode.where(:live => true).paginate(:page => params[:page], :per_page => 6)
   end
 
   def show
@@ -20,7 +23,11 @@ class Admin::EpisodesController < AdminController
 
 
     if @episode.save
-      redirect_to([:admin, @channel], :flash => :success)
+      if @episode.live == true
+        redirect_to([:admin, @channel, @episode], :flash => :success)
+      else
+        redirect_to([:admin, @channel], :flash => :success)
+      end
     else
       render("new")
     end

@@ -1,8 +1,6 @@
-= link_to t('back', :default => t("helpers.links.back")), [:admin, @channel], :class => 'btn back'
 - model_class = Episode
 .page-header
-  %h1="Afleveringen van " + @channel.title
-= link_to t('.new', :default => t("helpers.links.new")), [:new, :admin,@channel, :episode], :class => 'btn btn-primary'
+  %h1=t '.title', :default => model_class.model_name.human.pluralize
 %table.table
   %thead
     %tr
@@ -10,17 +8,18 @@
       %th= model_class.human_attribute_name(:title)
       %th= model_class.human_attribute_name(:description)
       %th= model_class.human_attribute_name(:airdate)
-      %th= model_class.human_attribute_name(:live)
       %th=t '.actions', :default => t("helpers.actions")
   %tbody
     - @episodes.each do |episode|
       %tr
         / %td= link_to episode.id, admin_episode_path(episode)
-        %td=link_to episode.title, [:admin, episode.channel, episode]
-        %td=raw truncate(episode.description, :length => 80)
+        %td=link_to episode.title
+        %td=raw truncate(strip_tags(episode.description), :length => 80)
         %td= l(episode.airdate, :format => :full)
-        %td= episode.live
         %td
           = link_to t('.edit', :default => t("helpers.links.edit")), [:edit, :admin,episode.channel, episode], :class => 'btn btn-mini'
           = link_to t('.destroy', :default => t("helpers.links.destroy")), [:admin,episode.channel, episode], :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
+
+
+
 

@@ -1,12 +1,14 @@
 = simple_nested_form_for([@channel, @idea]) do |f|
   - if @idea.errors.any?
     .row-fluid
-      -@idea.errors.each do |message|
-        %p= message
+      .blogcenter
+        %h5=t("error_message")
+        -@idea.errors.full_messages.each do |message|
+          %p.error= message
   .row-fluid
     .blogcenter
       = f.input :title, :input_html => {:class => "makeitbig"}
-      .smallspacing.imgselect= f.image_select
+      .smallspacing.imgselect= f.front_image_select
       = f.input :description, :as => :text, :input_html => {:rows => 2}
 
       .row-fluid
@@ -16,11 +18,11 @@
         = f.link_to_add t("+ Voeg inhoud toe"), :blogitems, :class => "nested_field_btn"
 
 
-      .row-fluid= f.submit(@idea.new_record? ? :ideas : @idea, :class => "dynamic_submit pull-right")
+      .row-fluid= f.submit :class => "dynamic_submit pull-right"
 
 
 - content_for(:imageselector) do
-  #image_popup{ :data => { :url => admin_images_path(:total => 15) } }
+  #image_popup{ :data => { :url => images_path(:total => 15) } }
     #image_popup_background
     #image_popup_content
       #image_search

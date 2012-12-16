@@ -1,0 +1,230 @@
+#searchloader{display: none}
+//verberg
+.loader2, .loader3, .loader4{display: none}
+//laat zien wanneer css animations ondersteund is
+.cssanimations{
+  .loader2, .loader3, .loader4{display: block}
+  .ajaxloader{display: none;}
+}
+
+.ajaxloader{
+  width:50px; height:50px;
+}
+
+
+
+
+.loaderholder {
+  width:50px;
+  height:50px;
+  margin:15px auto;
+  position: relative;
+}
+
+.loader {
+  height: 46px;
+  width: 46px;
+  border: 2px solid #ff5800;
+  border-radius: 46px;
+animation: myfirst 1.5s linear 0s infinite;
+/* Firefox: */
+-moz-animation: myfirst 1.5s linear 0s infinite;
+/* Safari and Chrome: */
+-webkit-animation: myfirst 1.5s linear 0s infinite;
+/* Opera: */
+-o-animation: myfirst 1.5s linear 0s infinite ;
+  position: absolute;
+
+}
+
+
+
+.loader2 {
+  height: 46px;
+  width: 46px;
+  border: 2px solid #ff5800;
+  border-radius: 46px;
+  -webkit-transform:scale(0);
+  -moz-transform: scale(0);
+  transform: scale(0);
+  -o-transform:scale(0);
+animation: myfirst 1.5s linear 0.5s infinite;
+/* Firefox: */
+-moz-animation: myfirst 1.5s linear 0.5s infinite;
+/* Safari and Chrome: */
+-webkit-animation: myfirst 1.5s linear 0.5s infinite;
+/* Opera: */
+-o-animation: myfirst 1.5s linear 0.5s infinite;
+  position: absolute;
+}
+
+.loader3 {
+  height: 3px;
+  width: 3px;
+  background: #ff5800;
+  border-radius: 2px;
+  position: absolute;
+  left:18px;
+  top:18px;
+
+  animation: mysecond 1s linear 0s infinite;
+/* Firefox: */
+-moz-animation: mysecond 1s linear 0s infinite;
+/* Safari and Chrome: */
+-webkit-animation: mysecond 1s linear 0s infinite;
+/* Opera: */
+-o-animation: mysecond 1s linear 0s infinite;
+
+}
+
+.loader4 {
+  height: 46px;
+  width: 46px;
+  border: 2px solid #ff5800;
+  border-radius: 46px;
+  position: absolute;
+  -webkit-transform:scale(0);
+  -moz-transform: scale(0);
+  transform: scale(0);
+  -o-transform:scale(0);
+  animation: myfirst 1.5s linear 1s infinite;
+/* Firefox: */
+-moz-animation: myfirst 1.5s linear 1s infinite;
+/* Safari and Chrome: */
+-webkit-animation: myfirst 1.5s linear 1s infinite;
+/* Opera: */
+-o-animation: myfirst 1.5s linear 1s infinite;
+
+}
+
+@keyframes myfirst {
+0%  {
+  -webkit-transform:scale(0);
+  -moz-transform: scale(0);
+  transform: scale(0);
+  -o-transform:scale(0);
+  opacity: 0;
+  }
+70% {
+  opacity: 1;
+}
+100%{
+  -webkit-transform:scale(1);
+  -moz-transform: scale(1);
+  transform: scale(1);
+  -o-transform:scale(1);
+  opacity: 0;
+  }
+}
+
+
+
+@-moz-keyframes myfirst {
+0%  {
+  -webkit-transform:scale(0);
+  -moz-transform: scale(0);
+  transform: scale(0);
+  -o-transform:scale(0);
+  opacity: 0;
+  }
+70% {
+  opacity: 1;
+}
+100%{
+  -webkit-transform:scale(1);
+  -moz-transform: scale(1);
+  transform: scale(1);
+  -o-transform:scale(1);
+  opacity: 0;
+  }
+}
+
+@-webkit-keyframes myfirst {
+0%  {
+  -webkit-transform:scale(0);
+  -moz-transform: scale(0);
+  transform: scale(0);
+  -o-transform:scale(0);
+  opacity: 0;
+  }
+70% {
+  opacity: 1;
+}
+100%{
+  -webkit-transform:scale(1);
+  -moz-transform: scale(1);
+  transform: scale(1);
+  -o-transform:scale(1);
+  opacity: 0;
+  }
+}
+
+@-o-keyframes myfirst {
+0%  {
+  -webkit-transform:scale(0);
+  -moz-transform: scale(0);
+  transform: scale(0);
+  -o-transform:scale(0);
+  opacity: 0;
+  }
+70% {
+  opacity: 1;
+}
+100%{
+  -webkit-transform:scale(1);
+  -moz-transform: scale(1);
+  transform: scale(1);
+  -o-transform:scale(1);
+  opacity: 0;
+  }
+}
+
+
+
+
+/*************************************************
+****************** ANIMATIE 2 ********************
+*************************************************/
+
+@keyframes mysecond {
+0%  {
+  opacity: 0;
+  }
+50%{
+  opacity: 1;
+  }
+100%{
+  opacity: 0;
+  }
+}
+
+
+@-moz-keyframes mysecond {
+0%  {
+  opacity: 0;
+  }
+100%{
+  opacity: 1;
+  }
+}
+
+@-webkit-keyframes mysecond {
+0%  {
+  opacity: 0;
+  }
+50%{
+  opacity: 1;
+  }
+100%{
+  opacity: 0;
+  }
+}
+
+@-o-keyframes mysecond {
+0%  {
+  opacity: 0;
+  }
+100%{
+  opacity: 1;
+  }
+}

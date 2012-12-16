@@ -2,7 +2,9 @@ class Post < ActiveRecord::Base
   attr_accessible :title, :body, :description, :published_at, :blogitems_attributes, :image_select, :channel_id
 
   #validatie
-  validates_presence_of :title, :description, :image_select
+  validates_presence_of :title, :description, :image_select, :published_at
+  validates_presence_of :blogitems, :message => "Er is nog geen inhoud"
+
 
 
   # blog items

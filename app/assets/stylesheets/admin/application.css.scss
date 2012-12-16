@@ -1,5 +1,6 @@
 
 //= require bootstrap
+//= require jquery-ui
 //= require jquery.chosen
 //= require jquery.Jcrop
 //= require jquery.timepicker
@@ -81,7 +82,10 @@ body {
 /*******************************************************************
 ************************* NAV STYLING ******************************
 *******************************************************************/
-
+.btn{
+  padding:15px;
+  background:#d0d0d0;
+}
 .adminspace {
   background:rgb(220,220,220)!important;
 }
@@ -349,6 +353,15 @@ span.checkbox {
   display: block;
 }
 
+ul.itemlist{
+  padding-right:6% !important;
+  li{padding:6px 2% !important; border-bottom: 1px solid #e8e8e8; width:96% !important;}
+}
+
+textarea{width:96%;}
+.spacing{padding:15px;}
+
+.collection .checkbox{ float:left; margin-right:15px; width:150px;}
 /*******************************************************************
 ********************** STYLEHACKZ STYLING **************************
 *******************************************************************/
@@ -356,3 +369,4 @@ span.checkbox {
 .mt10 {
   margin-top:10px!important;
 }
+

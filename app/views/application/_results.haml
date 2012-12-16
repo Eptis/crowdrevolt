@@ -1,26 +1,34 @@
 %hr
 .btn.pull-right.clearsearch X
 .spacing
-  %h1 resultaten
-  -if @searchresults
+  -if @searchresults.empty?
+    .noresults= t("no_results")
+  -if @searchresults.present?
+    %h1 resultaten
+
     .row-fluid
+
       - @searchresults.each do |results|
         - if results.length > 0
-          .span6
+          %ul.itemlist
             - if results[0].class == Post
-              %h2 Artikelen
+              %h3.resultheader Artikelen
             - elsif results[0].class == Channel
-              %h2 Programma's
+              %h3.resultheader Programma's
             - elsif results[0].class == Episode
-              %h2 Afleveringen
+              %h3.resultheader Livestreams
             - elsif results[0].class == Idea
-              %h2 Ideeën
+              %h3.resultheader Ideeën
             - elsif results[0].class == Solution
-              %h2 Challengeoplossingen
+              %h3.resultheader Oplossingen
             - results.each do |result|
-              / - if result.class == Post
-              %h3=link_to result.title, searchlink(result)
-              .text=smart_truncate(strip_tags(result.description), :words => 20).html_safe
+              %li
+                %h3=link_to result.title, searchlink(result)
+                .text=smart_truncate(strip_tags(result.description), :words => 20).html_safe
+                =link_to t("more"), searchlink(result), :class => "btn more pull-right"
+                .clear
+
+
 
 %hr
 

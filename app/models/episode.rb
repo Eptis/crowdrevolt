@@ -8,7 +8,7 @@ class Episode < ActiveRecord::Base
   has_many :messages, :as => :chattable
 
   belongs_to :channel
-  default_scope order('airdate DESC')
+  default_scope order('airdate ASC')
 
   include ImageSelect
   image_select

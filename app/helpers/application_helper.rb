@@ -10,6 +10,10 @@ module ApplicationHelper
     controller.class.name.split("::").first=="Admin"
   end
 
+  def clean(text)
+    sanitize text, :tags => %w(p h2 h3 h4 h5 h6 blockquote em)
+  end
+
   def searchlink(obj)
     case obj
     when Post

@@ -50,7 +50,7 @@ nl:
       defaults:
         title: "Titel"
         name: "Naam"
-        description: "Omschrijving"
+        description: "Inleiding"
         body: "Bericht"
         active: "Maak het actief"
         image: "Beeld"
@@ -64,7 +64,8 @@ nl:
         item_type: "Selecteer een type"
         blogitems: "inhoud"
 
-
+      channel:
+        admins: "Changemakers van dit kanaal"
 
       image:
         source: "Bron"
@@ -85,26 +86,24 @@ nl:
 
 
     hints:
-      image:
-        image: "Kies een groot beeld, zodat je gemakkelijker uitsneden kunt maken (max. 10MB JPG, PNG of GIF). Upload een ZIP met meerdere beelden om meerdere beelden tegelijk toe te voegen."
-      trip:
-        trip_categories: "Onder welke categorieën valt deze reis?"
-        start_date: "Begin datum vanaf wanneer de reis te zien is op de site"
-        end_date: "Eind datum waarna de reis moet verwijnen op de website"
-        timeset: "Wilt u de opgegeven begin- en einddatum van kracht laten zijn? Als dit niet is aangevinkt gelden de opgegeven data niet."
-        days:
-          day_number: "Dag nummering. Dit getal wordt gebruikt voor de volgorde."
-          day_tekst: "Bijv. '1-6'"
-          activity: "De activiteit van die dag."
-      trip_category:
-        trips: "Welke reizen vallen hieronder?"
-        attractions: "Welke hoogtepunten vallen hieronder?"
+      user:
+        skypename: "Als je een skypenaam opgeeft kan je makkelijk via skype meedoen tijdens de livestreams"
+    #   image:
+    #     image: "Kies een groot beeld, zodat je gemakkelijker uitsneden kunt maken (max. 10MB JPG, PNG of GIF). Upload een ZIP met meerdere beelden om meerdere beelden tegelijk toe te voegen."
 
     placeholders:
       admin:
         username: "Voer hier een gebruikersnaam in"
         password: "Voer hier een wachtwoord in voor deze gebruiker"
         password_confirmation: "Bevestig hier het wachtwoord door hetzelfde in te vullen als hierboven"
+      idea:
+        title: "Vul hier een titel voor jouw idee in"
+        description: "Een korte inleiding van jouw idee"
+      solution:
+        title: "Vul hier een titel voor jouw oplossing in"
+        description: "Een korte inleiding van jouw oplossing"
+      user:
+        bio: "Wat vind jij belangrijk dat er veranderd?"
 
     paperclip:
       defaults:
@@ -134,5 +133,7 @@ nl:
 
       comment:
         create: "reageer"
+      idea:
+        create: "stuur je idee in"
       sessions:
         create: "Inloggen"

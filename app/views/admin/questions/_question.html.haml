@@ -6,9 +6,11 @@
     =f.submit "Send"
 -if question.approved == true
   %li.vraag_text
-    .span3
-      %img{:src => "http://placehold.it/450x410"}
-    .span21
+    .pull-left.avatar
+      -if question.user.avatar.present?
+        =image_tag question.user.avatar.url(:portrait)
+    .text
       %author=link_to question.user.username, question.user
       %time= " - "+l(question.updated_at, :format => :short)
       .vraag=question.question
+      .clear

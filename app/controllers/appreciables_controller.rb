@@ -77,7 +77,9 @@ private
   end
 
   def allowed
-    @allowed = Appreciable.where(:appreciable_id => @appreciated_appreciable.id, :user_id => current_user.id)
-    # raise @allowed.inspect
+    @allowed = Appreciable.where(
+      :appreciable_id => @appreciated_appreciable.id,
+      :appreciable_type =>  @appreciated_appreciable.type.to_s,
+      :user_id => current_user.id)
   end
 end

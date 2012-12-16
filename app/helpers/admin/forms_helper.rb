@@ -44,6 +44,10 @@ module Admin::FormsHelper
       @template.render("admin/images/select", :f => self, :total => total)
     end
 
+    def front_image_select(total=nil)
+      @template.render("images/select", :f => self, :total => total)
+    end
+
     # Category selector
     def category_select
       if AdminConfig.allowed?(object.class.name.underscore.pluralize, :subcategories)

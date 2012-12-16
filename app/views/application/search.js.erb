@@ -1,1 +1,9 @@
-$("#searchresults").html("<%= escape_javascript render('application/results') %>");
+$("#searchloader").slideUp(1000, function(){
+  $("#searchresults").css("display", 'none').slideDown(1000, function(){
+      $(this).html("<%= escape_javascript render('application/results') %>");
+    })
+})
+
+
+
+  // ).html("<%= escape_javascript render('application/results') %>")

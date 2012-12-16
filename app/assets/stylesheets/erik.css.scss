@@ -2,6 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+$zwart:#1b1b1b;
+$wit:#ffffff;
+$grijs_licht:#1c1c1c;
+$grijs_donker:#141414;
+
 // Idee pagina
 .idea_show {
   h1 {
@@ -71,10 +77,10 @@
     margin:0 0 1em 0;
   }
 }
-// Eposide 
+// Eposide
 .vraag_stellen {
   .orangebg {
-    background:#1c1c1c;
+    background:$grijs_donker !important;
     margin:0.8em 0 0.3em 0;
     padding:1em 1em 0.1em 1em;
   }
@@ -82,11 +88,11 @@
     text-transform: uppercase;
   }
   input {
-    border: solid 1px #303030!important;
+    // border: solid 1px #303030!important;
   }
   #new_question {
     clear:left;
-    width:98%;
+    width:96%;
   }
   .btn {
     background:#ff5800!important;

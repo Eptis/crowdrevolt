@@ -3,40 +3,46 @@
     .span4.logo
       =link_to :root do
         =image_tag(asset_path("logo.png"))
-    .Toggle
-      \- Menu -
-    .row-fluid.toggler
-      .span13.hoofdmenu
-        %nav.hoofdmenu
-          .row-fluid
-            %ul.span24
-              - if @channel.nil?
-                -@current_channel = 0
-              -else @current_channel = @channel.id
+    #menuaccordion.accordion.hideforlive.span20
+      .accordion-group
+        #menuToggle.accordion-heading.toggleBtn
+          %a{ :class=>"accordion-toggle", :href =>"#collapseEleven", :data=> {:toggle=>"collapse", :parent=>"#menuaccordion"}}
+            \- Menu -
 
-              - @channels.each do |channel|
-                %li.nomargin.span8{:class => (channel.id == @current_channel ? "active" : "" )}=link_to channel.title, channel
-
-
-      .span7.usermenu
-        %nav.submenu
-          .row-fluid
-            %ul.span24
-              %li=link_to t("contact"), :contact
-              %li=link_to t("about"), :about
-              %li=link_to t("karma"), :karma
-        - if current_user
-          .user_credentials
-            .row-fluid=render :partial => "users/user", :locals => {:user => current_user}
-            / =link_to "uitloggen", :user_logout
-        -else
-          %nav.submenu.user_credentials
+        #collapseEleven.accordion-body.collapse.in
+          .accordion-inner
             .row-fluid
-              %ul.span24
-                %li.pull-right=link_to t("inloggen"), :login
-                %li.pull-right=link_to t("registreren"), :register
-        .clear
-        .row-fluid= render("searchform")
+              .span15.hoofdmenu
+                %nav.hoofdmenu
+                  .row-fluid
+                    %ul.span24
+                      - if @channel.nil?
+                        -@current_channel = 0
+                      -else @current_channel = @channel.id
+
+                      - @channels.each do |channel|
+                        %li.nomargin.span8{:class => (channel.id == @current_channel ? "active" : "" )}=link_to channel.title, channel
+
+
+              .span9.usermenu
+                %nav.submenu
+                  .row-fluid
+                    %ul.span24
+                      %li=link_to t("contact"), :contact
+                      %li=link_to t("about"), :about
+                      %li=link_to t("karma"), :karma
+                - if current_user
+                  .user_credentials
+                    .row-fluid=render :partial => "users/user", :locals => {:user => current_user}
+                    / =link_to "uitloggen", :user_logout
+                -else
+                  %nav.submenu.user_credentials
+                    .row-fluid
+                      %ul.span24
+                        %li.pull-right=link_to t("inloggen"), :login
+                        %li.pull-right=link_to t("registreren"), :register
+                .clear
+                .row-fluid= render("searchform")
   .spacing.line
 
 

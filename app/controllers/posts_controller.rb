@@ -8,7 +8,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
+    @post = Post.find(params[:post_id])
     @comment = Comment.new
   end
 
@@ -48,7 +48,7 @@ class PostsController < ApplicationController
 private
 
   def find_post
-    @post = Post.find(params[:id])
+    @post = Post.find(params[:post_id])
   end
 
   def find_channel
