@@ -1,5 +1,5 @@
 .page-header
-  %h1= t(:text)
+  %h1 Teksten
 %table.table
   %thead
     %tr
@@ -12,7 +12,7 @@
     - @texts.each do |text|
       %tr
         / %td= link_to text.id, admin_text_path(text)
-        %td=link_to text.title, [:edit, :admin, text]
+        %td=link_to text.key_title, [:edit, :admin, text]
         %td=text.description
         %td=raw truncate(text.body, :length => 80)
         %td

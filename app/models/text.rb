@@ -2,7 +2,7 @@ class Text < ActiveRecord::Base
   include ImageSelect
   image_select
 
-  attr_accessible :title, :allow_body, :allow_title, :allow_images, :description, :body, :image_select
+  attr_accessible :title, :allow_body, :allow_title, :allow_images, :description, :body, :image_select, :key_title
 
 
   # Scopes
