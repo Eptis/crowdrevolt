@@ -133,6 +133,9 @@ nl:
 
       comment:
         create: "reageer"
+
+      contact:
+        create: "Verstuur"
       idea:
         create: "stuur je idee in"
       sessions:

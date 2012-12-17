@@ -33,3 +33,6 @@ Text.update_by_key("karma_col_1", :description => "Dit is de tekst voor het eers
 Text.update_by_key("karma_col_2", :description => "Dit is de tekst voor het tweede karma niveau.", :body => "nog in te vullen", :allow_title => true, :allow_body => true, :allow_images => false, :key_title => "karma fase 2")
 Text.update_by_key("karma_col_3", :description => "Dit is de tekst voor het derde karma niveau.", :body => "nog in te vullen", :allow_title => true, :allow_body => true, :allow_images => false, :key_title => "karma fase 3")
 Text.update_by_key("karma_col_4", :description => "Dit is de tekst voor het vierde karma niveau.", :body => "nog in te vullen", :allow_title => true, :allow_body => true, :allow_images => false, :key_title => "karma fase 4")
+
+#settings
+Setting.update_by_key("contact_email", :description => "Dit is het e-mailadres waar ingevulde vraag-formulieren naartoe worden gestuurd.", :value => "dennistel90@gmail.com")

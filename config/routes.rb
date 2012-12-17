@@ -24,6 +24,7 @@ Crowdrevolt::Application.routes.draw do
     # Resources
     resources :admins
     resources :users
+    resources :contacts
     resources :texts, :only => [:edit, :update, :index]
     resources :channels do
       resources :posts
@@ -56,6 +57,7 @@ Crowdrevolt::Application.routes.draw do
   end
 
   resources :messages
+  resources :contacts, :only => [:create]
   resources :images, :path => "fotos"
   resources :questions, :path => "kijkersvragen"
   resources :admins, :path => "changemakers"

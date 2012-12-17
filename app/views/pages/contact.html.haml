@@ -1,0 +1,13 @@
+.spacing
+  .span15
+    = simple_form_for @contact, :controller => "contacts", :action => "message" do |f|
+      .row-fluid
+        .span8
+          =f.input :name
+          =f.input :email
+        .span15.offset1
+          =f.input :message
+        =f.submit :class => "pull-right btn more"
+  .span7
+
+

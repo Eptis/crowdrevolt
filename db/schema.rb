@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121215133455) do
+ActiveRecord::Schema.define(:version => 20121217115959) do
 
   create_table "admins", :force => true do |t|
     t.string   "username"
@@ -109,6 +109,14 @@ ActiveRecord::Schema.define(:version => 20121215133455) do
     t.string   "commentable_type"
   end
 
+  create_table "contacts", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.text     "message"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "episodes", :force => true do |t|
     t.string   "title"
     t.text     "description"
@@ -196,6 +204,14 @@ ActiveRecord::Schema.define(:version => 20121215133455) do
     t.datetime "updated_at",      :null => false
   end
 
+  create_table "settings", :force => true do |t|
+    t.string   "key"
+    t.string   "description"
+    t.string   "value"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "solutions", :force => true do |t|
     t.string   "title"
     t.text     "description"
@@ -234,6 +250,7 @@ ActiveRecord::Schema.define(:version => 20121215133455) do
     t.boolean  "allow_images"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+    t.string   "key_title"
   end
 
   create_table "user_blogitems", :force => true do |t|
