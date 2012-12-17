@@ -3,18 +3,26 @@
 
   %section.span24
     %article.span12
-      %h1 About Crowdrevolt
-      %p.inleiding Inleiding karma tekst - Morbi elit odio, tempus vel accumsan sit amet, pharetra in metus. Sed sollicitudin arcu at metus blandit eu elementum justo accumsan. Maecenas sit amet ante vitae eros egestas fringilla ut quis elit. Ut metus tortor, tempor ut bibendum vitae, faucibus nec nisl. Vivamus et mattis velit. Donec feugiat, neque eu tempor mollis, mauris dolor fermentum elit, in pulvinar eros purus id neque. Donec massa augue, laoreet non lobortis eu, tristique eu elit. Donec sit amet turpis et quam vulputate posuere a sit amet nisi. Nulla ac pharetra tortor. Pellentesque felis erat, tempus et dapibus sed, facilisis blandit eros.
+      %h1=raw text_values(:about).title
+      - if text_values(:about).images.first 
+        =image_tag text_values(:about).images.first.url(:front)
+      %p.inleiding=raw text_values(:about).body
 
 
     %section.span12
       %article
-        %h3 Persoon 1
-        %p.karmapagina Nunc at fermentum eros. Fusce ac fringilla orci. Sed commodo fringilla quam a pulvinar. Nullam nec velit justo, non egestas diam. Vivamus rutrum posuere pellentesque. Cras luctus, augue quis adipiscing varius, quam purus semper urna, eu viverra felis massa vitae sem. Phasellus pharetra venenatis consequat. Sed et nisi mi. Phasellus mattis mauris sed neque luctus tincidunt. Sed quis quam accumsan velit mollis placerat vel a lorem. Mauris fringilla adipiscing tristique. Aliquam vel sodales risus. Ut eros lacus, dictum et dapibus id, consectetur a leo.
+        %h3=raw text_values(:about_person_1).title
+        - if text_values(:about_person_1).images.first
+          =image_tag text_values(:about_person_1).images.first.url(:front)
+        %p.karmapagina=raw text_values(:about_person_1).body
+
 
       %article
-        %h3 Persoon 2
-        %p.karmapagina Luidspreker uitleg - Nunc at fermentum eros. Fusce ac fringilla orci. Sed commodo fringilla quam a pulvinar. Nullam nec velit justo, non egestas diam. Vivamus rutrum posuere pellentesque. Cras luctus, augue quis adipiscing varius, quam purus semper urna, eu viverra felis massa vitae sem. Phasellus pharetra venenatis consequat. Sed et nisi mi. Phasellus mattis mauris sed neque luctus tincidunt. Sed quis quam accumsan velit mollis placerat vel a lorem. Mauris fringilla adipiscing tristique. Aliquam vel sodales risus. Ut eros lacus, dictum et dapibus id, consectetur a leo.
+        %h3=raw text_values(:about_person_2).title
+        - if text_values(:about_person_2).images.first
+          =image_tag text_values(:about_person_2).images.first.url(:front)
+        %p.karmapagina=raw text_values(:about_person_2).body
+
 
 
 

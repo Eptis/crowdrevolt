@@ -2,7 +2,6 @@
   = link_to t('back'), :back, :class => 'btn back'
   %h1.pageheader= t('ideas.new_ideas')
   .blogcenter
-    .text
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue. Maecenas sed diam eget risus varius blandit sit amet non magna.
+    .text=raw text_values(:new_idea).body
   .smallspacing
   .clear= render :partial => "form"

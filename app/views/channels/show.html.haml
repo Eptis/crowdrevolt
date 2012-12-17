@@ -90,7 +90,7 @@
             %h2.clearfix
               .icon.Challenge
               = t("challenges.challenges_and_ideas")
-            %p.text Sed posuere consectetur est at porta ac consectetur ac, vestibulum at eros. Sed posuere consectetur est at lobortis. Nulla vitae elit libero, a pharetra augue. Meer informatie kun je vinden bij Karma & Rewards
+            %p.text=raw text_values(:ideas_and_challenges).body
             .clearfix
               =link_to [:new, @channel, :idea], :class => "btn more iconbtn" do
                 .icon.Idea.white

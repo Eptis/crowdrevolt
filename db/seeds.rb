@@ -25,6 +25,8 @@ Text.update_by_key("homepage", :description => "Deze tekst komt bovenaan de home
 
 #statische paginas
 Text.update_by_key("about", :description => "Deze tekst komt op de 'about' pagina te staan.", :allow_title => true, :allow_body => true, :allow_images => true, :key_title => "about")
+Text.update_by_key("about_person_1", :description => "Dit is de eerste persoon op de about pagina.", :allow_title => true, :allow_body => true, :allow_images => true, :key_title => "about persoon 1")
+Text.update_by_key("about_person_2", :description => "Dit is de tweede persoon op de about pagina.", :allow_title => true, :allow_body => true, :allow_images => true, :key_title => "about persoon 2")
 Text.update_by_key("contact", :description => "Deze tekst komt op de 'contact' pagina te staan.", :allow_title => true, :allow_body => true, :allow_images => true, :key_title => "contact")
 Text.update_by_key("karma", :description => "Deze tekst komt op de 'karma' pagina te staan.", :allow_title => true, :allow_body => true, :allow_images => false, :key_title => "karma")
 
@@ -33,6 +35,3 @@ Text.update_by_key("karma_col_1", :description => "Dit is de tekst voor het eers
 Text.update_by_key("karma_col_2", :description => "Dit is de tekst voor het tweede karma niveau.", :body => "nog in te vullen", :allow_title => true, :allow_body => true, :allow_images => false, :key_title => "karma fase 2")
 Text.update_by_key("karma_col_3", :description => "Dit is de tekst voor het derde karma niveau.", :body => "nog in te vullen", :allow_title => true, :allow_body => true, :allow_images => false, :key_title => "karma fase 3")
 Text.update_by_key("karma_col_4", :description => "Dit is de tekst voor het vierde karma niveau.", :body => "nog in te vullen", :allow_title => true, :allow_body => true, :allow_images => false, :key_title => "karma fase 4")
-
-#settings
-Setting.update_by_key("contact_email", :description => "Dit is het e-mailadres waar ingevulde vraag-formulieren naartoe worden gestuurd.", :value => "dennistel90@gmail.com")

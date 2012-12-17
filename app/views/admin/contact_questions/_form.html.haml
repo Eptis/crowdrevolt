@@ -1,0 +1,20 @@
+= link_to t('back', :default => t("helpers.links.back")), [:admin, :contact_questions], :class => 'btn back'
+.page-header
+  - if @contact_question.new_record?
+    %h1 Contact Question
+  - else
+    %h1= @contact_question.question
+= simple_form_for([:admin, @contact_question]) do |f|
+  -if @contact_question.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@contact_question.errors.count, "error")} prohibited this user from being saved:"
+      %ul
+        - @contact_question.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.input :question, :input_html => { :class => "makeitbig"}
+  .field
+    =f.input :answer, :input_html => {:rows => 10}
+
+  .pull-left= f.submit_block([:admin, :contact_questions])

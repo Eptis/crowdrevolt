@@ -6,6 +6,6 @@
       = t('solutions.solution_for')
     %h1.pageheader= @challenge.title
     .blogcenter
-      .text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+      .text=raw text_values(:new_solution).body
       .spacing
   = render :partial => "form"
