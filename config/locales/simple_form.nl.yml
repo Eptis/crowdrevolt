@@ -104,6 +104,10 @@ nl:
         description: "Een korte inleiding van jouw oplossing"
       user:
         bio: "Wat vind jij belangrijk dat er veranderd?"
+      contact:
+        name: "je naam"
+        email: "je email"
+        message: "je vraag of opmerking"
 
     paperclip:
       defaults:

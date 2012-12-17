@@ -818,6 +818,13 @@ input[type="submit"]:hover{background:$oranje !important}
 .imgselect a{color:#fff;}
 .vraag_text {border-bottom: 1px solid $timecolor; .avatar{width:20% !important; }}
 
+.shadow {
+   -moz-box-shadow:    inset 0 0 10px #222;
+   -webkit-box-shadow: inset 0 0 10px #222;
+   box-shadow:         inset 0 0 10px #222;
+}
+a.accordion-toggle{text-align: center !important;  background:$grijs_donker !important; }
+.accordion-inner.faq{ padding:6px 4% !important; border-left:1px solid $grijs_donker; border-right: 1px solid $grijs_donker; background: #ce4700}
 #menuaccordion, #accordion2{
   .accordion-group{border:0px;}
   .accordion-inner{padding:0; border-top:0px;}
@@ -829,6 +836,7 @@ input[type="submit"]:hover{background:$oranje !important}
 .hideforlive{
   .toggleBtn a h3{color:#fff !important;}
 }
+noscript p{ text-align: center !important; color: $red; max-width:100% !important;}
 
 /*========= media queries, geen gewone css hieronder ==================================================================*/
 

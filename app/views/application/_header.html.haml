@@ -28,7 +28,7 @@
                 %nav.submenu
                   .row-fluid
                     %ul.span24
-                      %li=link_to t("contact"), :contact
+                      %li=link_to t("contact.contact"), :contact
                       %li=link_to t("about"), :about
                       %li=link_to t("karma"), :karma
                 - if current_user
@@ -44,5 +44,7 @@
                 .clear
                 .row-fluid= render("searchform")
   .spacing.line
+%noscript
+  %p.spacing Je hebt javascript uitgeschakeld. Bepaalde functionaliteiten zullen hierdoor niet werken
 
 

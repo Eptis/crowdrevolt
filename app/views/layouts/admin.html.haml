@@ -37,6 +37,7 @@
                 %li= link_to :live, [:admin, :live]
                 %li= link_to :images, [:admin, :images]
                 %li= link_to :texts, [:admin, :texts]
+                %li= link_to "faq", [:admin, :contact_questions]
 
               / Uitloggen
               = link_to [:admin, :logout], :method => :delete, :class => "btn btn-inverse pull-right" do

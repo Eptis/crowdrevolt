@@ -11,5 +11,6 @@ class PagesController < ApplicationController
 
   def contact
     @contact = Contact.new
+    @faqs = ContactQuestion.all
   end
 end

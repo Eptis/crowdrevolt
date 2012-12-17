@@ -23,6 +23,7 @@ Crowdrevolt::Application.routes.draw do
 
     # Resources
     resources :admins
+    resources :contact_questions
     resources :users
     resources :contacts
     resources :texts, :only => [:edit, :update, :index]

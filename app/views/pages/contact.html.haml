@@ -1,13 +1,23 @@
 .spacing
-  .span15
+  .span13
     = simple_form_for @contact, :controller => "contacts", :action => "message" do |f|
       .row-fluid
-        .span8
-          =f.input :name
-          =f.input :email
-        .span15.offset1
-          =f.input :message
+        .span11=f.input :name, :input_html => {:class => "fullwidth"}
+        .span12.offset1=f.input :email, :input_html => {:class => "fullwidth"}
+        =f.input :message
         =f.submit :class => "pull-right btn more"
-  .span7
+  .span10.offset1
+    %h2= t("contact.faq")
+    #accordion2.accordion
+      -@faqs.each_with_index do |faq, i|
+        .accordion-group
+          .accordion-heading.faq
+            %a{ :class=>"accordion-toggle", :href =>"#collapse#{i}", :data=> {:toggle=>"collapse", :parent=>"#accordion2"}}
+              =faq.question
+
+          .accordion-body.collapse{:id => "collapse#{i}"}
+            .accordion-inner.faq.shadow
+              =raw faq.answer
+
 
 

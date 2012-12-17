@@ -32,7 +32,9 @@ nl:
         bio: "Vertel wat over jezelf"
         optin: "Ja ik wil de nieuwsbrief ontvangen"
 
-
+  contact:
+    faq: "Veel gestelde vragen"
+    contact: "Contact"
 
 
   solutions:
