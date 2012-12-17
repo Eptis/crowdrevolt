@@ -109,6 +109,13 @@ ActiveRecord::Schema.define(:version => 20121217115959) do
     t.string   "commentable_type"
   end
 
+  create_table "contact_questions", :force => true do |t|
+    t.string   "question"
+    t.text     "answer"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "contacts", :force => true do |t|
     t.string   "name"
     t.string   "email"
