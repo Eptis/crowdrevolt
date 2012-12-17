@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
   before_filter :require_login, :except => :search
   before_filter :retrieve_channels
 
+
+
   def search
     # unless params[:search] == ""
       @search = Sunspot.search(Post, Channel, Episode, Idea, Solution) do
@@ -88,7 +90,11 @@ private
   helper_method :update_score
 
 
-
+  helper_method :text_values
+  def text_values(key)
+    text = all_texts.detect { |text| text.key == key.to_s }
+    text ? text : Text.new
+  end
 
   def construct_appreciable(construct)
     @record  = Appreciable.where(:appreciable_id => construct.id, :appreciable_type => construct.type).find_by_user_id([current_user].flatten)

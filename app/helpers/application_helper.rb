@@ -10,6 +10,10 @@ module ApplicationHelper
     controller.class.name.split("::").first=="Admin"
   end
 
+  def get_text(key)
+    Text.find_by_key(key).value
+  end
+
   def clean(text)
     sanitize text, :tags => %w(p h2 h3 h4 h5 h6 blockquote em)
   end
