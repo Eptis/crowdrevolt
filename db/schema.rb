@@ -109,6 +109,13 @@ ActiveRecord::Schema.define(:version => 20121217104610) do
     t.string   "commentable_type"
   end
 
+  create_table "contact_questions", :force => true do |t|
+    t.string   "question"
+    t.text     "answer"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "episodes", :force => true do |t|
     t.string   "title"
     t.text     "description"
@@ -278,7 +285,7 @@ ActiveRecord::Schema.define(:version => 20121217104610) do
     t.boolean  "optin"
     t.string   "name"
     t.text     "bio"
-    t.integer  "score",                           :default => 0
+    t.integer  "score",                           :default => 0,    :null => false
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
