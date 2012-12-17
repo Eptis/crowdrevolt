@@ -81,6 +81,9 @@ Crowdrevolt::Application.routes.draw do
   end
 
   resources :user_sessions
+  resources :posts do
+    resources :comments
+  end
 
   # gebruiker Inloggen
   match 'login' => 'user_sessions#new', :as => :login

@@ -89,6 +89,9 @@ private
   end
   helper_method :update_score
 
+  def all_texts
+    @all_texts ||= Text.all
+  end
 
   helper_method :text_values
   def text_values(key)
