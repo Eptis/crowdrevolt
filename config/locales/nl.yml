@@ -16,6 +16,7 @@ nl:
     models:
       channel: "Programma's"
       blogitem: inhoud
+      # text: Tekst
       episode: "Aflevering"
 
       ownable: inhoud

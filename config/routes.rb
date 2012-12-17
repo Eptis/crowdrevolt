@@ -24,6 +24,7 @@ Crowdrevolt::Application.routes.draw do
     # Resources
     resources :admins
     resources :users
+    resources :texts, :only => [:edit, :update, :index]
     resources :channels do
       resources :posts
 

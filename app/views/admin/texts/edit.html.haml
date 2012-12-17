@@ -1,0 +1,15 @@
+
+
+= simple_form_for([:admin, @text]) do |f|
+  / = f.input :key do
+  / = admin_t(:text_keys, @text.key)
+  / = f.input :description do
+  %h2= @text.description
+  - if @text.allow_title
+    = f.input :title
+  - if @text.allow_body
+    = f.input :body, :as => :editor
+  - if @text.allow_images
+    = f.image_select
+
+  = f.submit_block([:admin, :texts])

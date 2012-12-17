@@ -13,7 +13,7 @@
     - @episodes.each do |episode|
       %tr
         / %td= link_to episode.id, admin_episode_path(episode)
-        %td=link_to episode.title
+        %td=link_to episode.title, [:admin, episode.channel, episode]
         %td=raw truncate(strip_tags(episode.description), :length => 80)
         %td= l(episode.airdate, :format => :full)
         %td

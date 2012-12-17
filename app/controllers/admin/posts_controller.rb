@@ -1,5 +1,5 @@
 class Admin::PostsController < AdminController
-  before_filter :find_channel, :except => :index
+  before_filter :find_channel
 
   def index
     @posts = Post.all
@@ -16,7 +16,7 @@ class Admin::PostsController < AdminController
   def create
     @post = Post.new(params[:post])
     @post.channel = @channel
-    
+
     if @post.save
       redirect_to([:admin, @channel], :flash => :success)
     else

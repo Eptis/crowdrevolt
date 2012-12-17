@@ -1,4 +1,4 @@
-= link_to t('back', :default => t("helpers.links.back")), [:admin, @channel], :class => 'btn back'
+= link_to t('back', :default => t("helpers.links.back")), :back, :class => 'btn back'
 .page-header
   - if @episode.new_record?
     %h1= t('admin.episodes')

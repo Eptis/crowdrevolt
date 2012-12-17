@@ -1,6 +1,9 @@
 class Text < ActiveRecord::Base
-  # Image select
-  # image_select
+  include ImageSelect
+  image_select
+
+  attr_accessible :title, :allow_body, :allow_title, :allow_images, :description, :body, :image_select
+
 
   # Scopes
   default_scope order(:position)
