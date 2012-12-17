@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121215133455) do
+ActiveRecord::Schema.define(:version => 20121217104610) do
 
   create_table "admins", :force => true do |t|
     t.string   "username"
@@ -73,10 +73,10 @@ ActiveRecord::Schema.define(:version => 20121215133455) do
     t.string   "title"
     t.text     "description"
     t.integer  "points"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
     t.integer  "channel_id"
-    t.boolean  "active"
+    t.boolean  "active",      :default => true
   end
 
   create_table "changemakers", :force => true do |t|
@@ -234,6 +234,7 @@ ActiveRecord::Schema.define(:version => 20121215133455) do
     t.boolean  "allow_images"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+    t.string   "key_title"
   end
 
   create_table "user_blogitems", :force => true do |t|
@@ -277,7 +278,7 @@ ActiveRecord::Schema.define(:version => 20121215133455) do
     t.boolean  "optin"
     t.string   "name"
     t.text     "bio"
-    t.integer  "score",                           :default => 0,    :null => false
+    t.integer  "score",                           :default => 0
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
