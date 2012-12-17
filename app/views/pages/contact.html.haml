@@ -6,18 +6,19 @@
         .span12.offset1=f.input :email, :input_html => {:class => "fullwidth"}
         =f.input :message
         =f.submit :class => "pull-right btn more"
-  .span10.offset1
-    %h2= t("contact.faq")
-    #accordion2.accordion
-      -@faqs.each_with_index do |faq, i|
-        .accordion-group
-          .accordion-heading.faq
-            %a{ :class=>"accordion-toggle", :href =>"#collapse#{i}", :data=> {:toggle=>"collapse", :parent=>"#accordion2"}}
-              =faq.question
+  -unless @faqs.empty?
+    .span10.offset1
+      %h2= t("contact.faq")
+      #accordion2.accordion
+        -@faqs.each_with_index do |faq, i|
+          .accordion-group
+            .accordion-heading.faq
+              %a{ :class=>"accordion-toggle", :href =>"#collapse#{i}", :data=> {:toggle=>"collapse", :parent=>"#accordion2"}}
+                =faq.question
 
-          .accordion-body.collapse{:id => "collapse#{i}"}
-            .accordion-inner.faq.shadow
-              =raw faq.answer
+            .accordion-body.collapse{:id => "collapse#{i}"}
+              .accordion-inner.faq.shadow
+                =raw faq.answer
 
 
 
