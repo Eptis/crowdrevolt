@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
   has_many :ideas
   has_many :solutions
   has_many :rewards
-  has_many :messages
+  has_many :messages, :as => :author
   has_many :questions
   has_many :comments, :dependent => :destroy
   has_many :appreciables

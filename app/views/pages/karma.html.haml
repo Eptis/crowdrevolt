@@ -1,13 +1,11 @@
 .spacing
-
-
   %section.span24
     %article
       .span12
-        =image_tag "karma_icon_large.png", :style => "margin:0 auto; display:block"
-      .span12
         %h1=raw text_values(:karma).title
         %p.inleiding=raw text_values(:karma).body
+      .span12
+        .spacing=image_tag "karma_icon_large.png", :style => "margin:0 auto; display:block"
 
 
 

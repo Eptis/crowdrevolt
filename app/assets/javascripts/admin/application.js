@@ -19,11 +19,6 @@ $(document).on('nested:fieldAdded', function(event){
 
 $(document).ready(function(){
 
-  $('.check_box_question').change(function(){
-    $(this).closest('form').submit();
-    $(this).next('button').remove();
-    $(this).remove();
-  });
 
   $('.changer').live("change", function(){
     select = $(this);

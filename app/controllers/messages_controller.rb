@@ -6,28 +6,36 @@ class MessagesController < ActionController::Base
   end
 
   def create
-    @message = Message.new(params[:message])
-    if current_user
-      @message.user_id = current_user
-      @message.name = nil
-      @message.email = nil
-    end
+    if @episode.live
+      @message = Message.new(params[:message])
+      if current_user
+        @message.author_id = current_user.id
+        @message.author_type = "User"
+        @message.name = nil
+        @message.email = nil
+      elsif
+        @message.author_id = current_admin.id
+        @message.author_type = "Admin"
+        @message.name = nil
+        @message.email = nil
+      end
 
-    if @channel && @episode
-      @message.chattable_id = @episode.id
-      @message.chattable_type = @episode.class.to_s
-    else
-      @message.chattable_id = @channel.id
-      @message.chattable_type = @channel.class.to_s
-    end
-    if @message.chattable_type == "Episode"
-      @fayechannel = @episode.id.to_s + @episode.title.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '') + "/episode"
-    else
-      @fayechannel = @channel.id.to_s + @channel.title.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '') + "/channel"
-    end
-    @message.save
-    respond_to do |format|
-      format.js
+      if @channel && @episode
+        @message.chattable_id = @episode.id
+        @message.chattable_type = @episode.class.to_s
+      else
+        @message.chattable_id = @channel.id
+        @message.chattable_type = @channel.class.to_s
+      end
+      if @message.chattable_type == "Episode"
+        @fayechannel = @episode.id.to_s + @episode.title.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '') + "/episode"
+      else
+        @fayechannel = @channel.id.to_s + @channel.title.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '') + "/channel"
+      end
+      @message.save
+      respond_to do |format|
+        format.js
+      end
     end
   end
 private

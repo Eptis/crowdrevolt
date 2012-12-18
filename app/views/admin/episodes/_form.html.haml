@@ -1,24 +1,28 @@
 = link_to t('back', :default => t("helpers.links.back")), :back, :class => 'btn back'
+
 .page-header
+  .pull-right
+    -if !@episode.new_record?
+      = link_to t('.destroy', :default => t("helpers.links.destroy")), [:admin, @channel, @episode], :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'
   - if @episode.new_record?
     %h1= t('admin.episodes')
   - else
     %h1= @episode.title
+
 = simple_nested_form_for([:admin, @channel, @episode ]) do |f|
   .row-fluid
     - if @episode.errors.any?
       -@episode.errors.each do |message|
         %p= message
-  .row-fluid
-    .span6
-      = f.input :title
-      = f.image_select
-      = f.input :airdate, :as => :datetimepicker
-    .span18
 
+
+  .row-fluid
+    .span7
+      .livebar= f.input :live
+      = f.input :title, :input_html => {:class => "fullwidth"}
+      = f.image_select
+      = f.input :airdate, :as => :datetimepicker, :input_html => {:class => "fullwidth"}
+    .span16.offset1
       = f.input :description, :as => :editor, :required => false
       = f.input :livestream_embedcode
-      = f.input :live
     .pull-right= f.submit(:class => 'btn btn-primary')
-    -if !@episode.new_record?
-      = link_to t('.destroy', :default => t("helpers.links.destroy")), [:admin, @channel, @episode], :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'

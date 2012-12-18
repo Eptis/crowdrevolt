@@ -1,5 +1,6 @@
-
+$('<%= escape_javascript "#question#{@question.id} .content" %>').html("Deze vraag is goedgekeurd")
 <% broadcast ("/#{@fayechannel.to_s}") do %>
   $("#questions").append("<%= escape_javascript render(@question) %>");
 <%end%>
 $("#new_question")[0].reset();
+

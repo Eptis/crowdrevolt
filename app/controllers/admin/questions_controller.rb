@@ -29,6 +29,11 @@ class Admin::QuestionsController < AdminController
       end
     end
   end
+  def destroy
+    @question = Question.find(params[:id])
+    @question.destroy
+    redirect_to [:admin, @episode.channel, @episode]
+  end
 private
 
   def find_episode

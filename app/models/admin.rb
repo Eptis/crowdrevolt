@@ -4,6 +4,7 @@ class Admin < ActiveRecord::Base
 
   has_many :posts
   has_many :comments
+  has_many :messages, :as => :author
   has_and_belongs_to_many :channels
 
 

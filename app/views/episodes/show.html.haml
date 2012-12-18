@@ -9,95 +9,100 @@
           .row-fluid
             %article.span24
               %h1.pageheader= @episode.title
+              -unless @episode.live
+                .text=raw @episode.description
               .row-fluid
-                -if @episode.live
-                  .span15{:class => ("offset9" unless @episode.live)}
-                    -if @episode.images.present? && (@episode.airdate > Time.now)
-                      =image_tag @episode.images.first.url(:front)
-                    -else
-                      .videoWrapper=raw @episode.live_stream_embedcode
-                    .row-fluid
-                      %article.vraag_stellen
 
-                        #accordion2.accordion.hideforlive
-                          .accordion-group
-                            .accordion-heading.toggleBtn
-                              %a{ :class=>"accordion-toggle", :href =>"#collapseOne", :data=> {:toggle=>"collapse", :parent=>"#accordion2"}}
-                                = t("episodes.ask_question_header")
+                .span15{:class => ("offset4" unless @episode.live)}
+                  -if @episode.images.present? && (@episode.airdate > Time.now)
+                    =image_tag @episode.images.first.url(:front)
+                  -else
+                    .videoWrapper=raw @episode.live_stream_embedcode
+                  .row-fluid
+                    %article.vraag_stellen
 
-                            #collapseOne.accordion-body.collapse.in
-                              .accordion-inner
-                                .orangebg
-                                  -if @episode.live
-                                    %h3= t("episodes.ask_question")
-                                    =form_for [@episode.channel, @episode, Question.new], :remote => true do |f|
-                                      - unless current_user
-                                        .row-fluid
-                                          .span6
-                                            %label Naam
-                                          .span18
-                                            =f.text_field :name, :class => "fullwidth"
-                                      =f.text_field :question, :id => "new_question", :placeholder => "Welke vraag heb jij voor Crowdrevolt?", :class => "fullwidth"
+                      #accordion2.accordion.hideforlive
+                        .accordion-group
+                          .accordion-heading.toggleBtn
+                            %a{ :class=>"accordion-toggle btn more", :href =>"#collapseOne", :data=> {:toggle=>"collapse", :parent=>"#accordion2"}}
+                              = t("episodes.ask_question_header")
+
+                          #collapseOne.accordion-body.collapse.in
+                            .accordion-inner
+                              .orangebg
+                                -if @episode.live
+                                  %h3= t("episodes.ask_question")
+                                  =form_for [@episode.channel, @episode, Question.new], :remote => true do |f|
+                                    - unless current_user
+                                      .row-fluid
+                                        .span6
+                                          %label Naam
+                                        .span18
+                                          =f.text_field :name, :class => "fullwidth"
+                                    =f.text_field :question, :id => "new_question", :placeholder => "Welke vraag heb jij voor Crowdrevolt?", :class => "fullwidth"
+                                    -unless current_user
                                       %p.pull-right.helper
                                         niet steeds je naam invullen?
                                         %span=link_to "registreren", :register
                                         \-
                                         %span=link_to "inloggen", :user_login
-                                      .clear
+                                    .row-fluid.clear
                                       =f.submit "Stuur vraag in", :class => "btn pull-right"
 
 
 
-                                .row-fluid
-                                  %article.span24.vragen
-                                    -if @episode.questions.present? || @episode.live
-                                      %h3 Onlangs gestelde vragen
-                                      #questions
-                                        =render :partial => 'admin/questions/question', :collection => @episode.questions, :as => :question
+                              .row-fluid
+                                %article.span24.vragen
+                                  %h3 Onlangs gestelde vragen
+                                  #questions
+                                    =render :partial => 'admin/questions/question', :collection => @episode.questions, :as => :question
 
-
-                -else
-                  .span15
-                    .text=raw @episode.description
 
 
                 -if @episode.live
-                  .span9.chat
-                    -if current_user && current_user.skypename
+                  .span9
+                    -if current_user && current_user.skypename.present?
                       #skypeBtn
-                        .skypeBtn.btn= t("available_for_skype")
+                        #skypeButton.skypeBtn.iconBtn
+                          =image_tag "skype.png", :class => "skypeicon"
+                          %span= t("available_for_skype")
                         #skypeForm
                           =form_tag :available, :method => 'post', :remote => true do |f|
                             / =check_box_tag :available, :id => "available"
                             =submit_tag "Send", :class => "btn hidden"
-                    .sloper.black
-                      .slopershape
-                    .smallspacing
-                      %h3 Live chat
-                      %ul#chatBox
-                        -if @episode.messages.present?
-                          = render @episode.messages
-                      .chatForm.input-append
-                        =form_for [@episode.channel, @episode, Message.new], :remote => true do |f|
-                          - unless current_user
-                            .span24
-                              .span6
-                                %label Naam
-                              .span18
-                                =f.text_field :name
-                            .span24
-                              .span6
-                                %label E-mail
-                              .span18
-                                =f.email_field :email
+                    -elsif current_user
+                      %p
+                        om mee te doen in de uitzending moet je je skypenaam invullen.
+                        =link_to "Bewerk profiel", current_user
+                    .chat
+                      .sloper.black
+                        .slopershape
+                      .smallspacing
+                        %h3 Live chat
+                        %ul#chatBox
+                          -if @episode.messages.present?
+                            = render @episode.messages
+                        .chatForm.input-append
+                          =form_for [@episode.channel, @episode, Message.new], :remote => true do |f|
+                            - unless current_user
+                              .span24
+                                .span6
+                                  %label Naam
+                                .span18
+                                  =f.text_field :name
+                              .span24
+                                .span6
+                                  %label E-mail
+                                .span18
+                                  =f.email_field :email
 
-                          .span24
-                            .chatfield.nom.pull-left
-                              =f.text_field :content, :class => "message_clear"
+                            .span24
+                              .chatfield.nom.pull-left
+                                =f.text_field :content, :class => "message_clear"
 
-                            =f.submit "Send", :class => "chatsend nom pull-left"
-                    .slopel.black
-                      .slopelshape
+                              =f.submit "Send", :class => "chatsend nom pull-left"
+                      .slopel.black
+                        .slopelshape
 
 
   %aside.span6.sidebar
@@ -110,14 +115,9 @@
           %p=@episode.channel.status
 
       %section.over_dit_kanaal
-        -if @episode.live
-          %article
-            %h4= t("episodes.about_episode")
-            .text=raw @episode.description
-        -else
-          %article
-            %h4= t("episodes.about_channel")
-            .text=raw @episode.channel.description
+        %article
+          %h4= t("episodes.about_channel")
+          .text=raw @episode.channel.description
 
       %section.changemakers
         %h4= t("channels.changemakers")
@@ -153,6 +153,9 @@
       eval(data);
     });
   })
+
+  var chat = document.getElementById('chatBox');
+  chat.scrollTop = chat.scrollHeight;
 
   $("available").change(function(){
     $(this).closest("form").submit();

@@ -1,11 +1,21 @@
 - if question.approved == false
-  =form_for [:admin, @episode.channel, @episode, question], :method => "put", :remote => true do |f|
-    %h5= question.user.username
-    %p= question.question
-    =f.check_box :approved, :class => "check_box_question"
-    =f.submit "Send"
+  %li{:id => "question#{question.id}"}
+    =form_for [:admin, @episode.channel, @episode, question],:class => "questionform", :method => "put", :remote => true do |f|
+      %h5.pull-left= question.user.username
+      %h5.pull-left= question.name
+      %p.pull-left= question.question
+      .pull-right.content
+        .pull-left
+          =f.check_box :approved, :checked => true, :class => "check_box_question pull-left hidden"
+          / %label.pull-left goedgekeurd?
+        .pull-left=f.submit "Keur goed", :class => 'btn btn-primary approveBtn'
+      .clear
 -if question.approved == true
   %li
-    %h5= question.user.username
+    %h5=question.user.username
     %p=question.question
+    -unless @episode.live
+      =link_to t('.destroy'), [:admin, @channel, @episode, question], :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Dit ververst de pagina, weet je het zeker?')) }, :class => 'btn btn-mini btn-danger'
+    .clear
+
 

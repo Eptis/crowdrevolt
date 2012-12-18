@@ -20,7 +20,7 @@ $(document).ready(function(){
   });
 
   $(".skypeBtn").on("click", function(){
-    $(this).html("Beschikbaar voor skype").addClass("skypeAvailable");
+    $(this).addClass("skypeAvailable").find("span").html("Je bent aangemeld");
     $("#skypeForm").find("form").submit().remove();
   });
 
@@ -143,5 +143,8 @@ function toggleSlides(){
   }
 }
 function submitSearch(){
-    $("#search_field").closest("form").submit();
+    if($("#search_field").val() !== ""){
+      $("#search_field").closest("form").submit();
+    }
+
 }

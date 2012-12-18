@@ -40,7 +40,7 @@ class Admin::EpisodesController < AdminController
   def update
     @episode = Episode.find(params[:id])
     if @episode.update_attributes(params[:episode])
-      redirect_to([:admin, @channel])
+      redirect_to([:admin, @channel, @episode])
     else
       render("edit")
     end

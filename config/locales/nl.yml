@@ -10,6 +10,7 @@ nl:
   error_message: "Er zijn wat dingen fout gegaan:"
   appreciate: "Beloon dit!"
   no_results: "Helaas, we hebben niks kunnen vinden"
+  available_for_skype: "Meld mij aan om mee te doen"
 
 
   activerecord:

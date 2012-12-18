@@ -27,6 +27,9 @@ $input_grey:#222222;
   display:none;
 }
 
+.fullwidth{
+  width:100%;
+}
 
 .table-striped tbody tr:nth-child(odd) td, .table-striped tbody tr:nth-child(odd) th{
   background:#000 !important;
@@ -355,11 +358,45 @@ span.checkbox {
 
 ul.itemlist{
   padding-right:6% !important;
+  list-style: none;
   li{padding:6px 2% !important; border-bottom: 1px solid #e8e8e8; width:96% !important;}
 }
+#questions{
+  li{
+    h5{float:left; padding:0 !important; margin:7px 15px 0 0 !important;}
+    p{float:left;  margin:7px 15px 0 0 !important;}
+    .btn{float: right!important}
+  }
+  label{margin-right:15px;}
+
+}
+.clear{clear:both};
+
 
 textarea{width:96%;}
 .spacing{padding:15px;}
+
+#chatBox{
+  height:300px;
+  width:94%;
+  overflow: scroll;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  list-style: none;
+  margin-left:0;
+  padding:15px;
+  background:#e8e8e8;
+
+  li{
+    padding:6px 0;
+    margin:0 3%;
+    strong{text-transform: uppercase;}
+    border-bottom:1px solid #d0d0d0;
+  }
+
+}
+
+.livebar{ background: $oranje; padding:15px; *{color:#fff;}}
 
 .collection .checkbox{ float:left; margin-right:15px; width:150px;}
 /*******************************************************************

@@ -28,7 +28,7 @@ $slopeheight:90px;
 .chatsend{width:20% !important;}
 .hint{color:$timecolor;}
 
-.back{color:#fff !important;}
+// .back{color:#fff !important;}
 .error{
   *{color:$red;}
   color:$red;
@@ -228,7 +228,14 @@ p, .text{
   text-align: center;
   padding:0 1em;
 }
-
+#notice{
+  color:#44ce50;
+  *{color:#44ce50;}
+}
+#alert{
+  color:$red;
+  *{color:$red;}
+}
 
 .login {
   float: right;
@@ -236,7 +243,8 @@ p, .text{
 }
 
 .back {
-  margin-bottom: 20px;
+  margin-bottom: 20px !important;
+  display: block;
 }
 
 .password_toggle {
@@ -324,9 +332,14 @@ p, .text{
   overflow: scroll;
   overflow-x: hidden;
   overflow-y: scroll;
-  ul{
-    width:100%;
+
+  li{
+    padding:6px 0;
+    margin:0 3%;
+    strong{text-transform: uppercase;}
+    border-bottom:1px solid #BD3E00;
   }
+
 }
 
 
@@ -759,6 +772,7 @@ input[type="submit"]:hover{background:$oranje !important}
 
 
 
+
 //holy button
 @-webkit-keyframes pulsate
 {
@@ -799,22 +813,44 @@ input[type="submit"]:hover{background:$oranje !important}
   -o-animation: pulsate 2s; /* Opera */
 }
 
-.skypeAvailable{background: #ff0000;} //class wanneer je geklikt hebt
+// .skypeAvailable{background: #ff0000;} //class wanneer je geklikt hebt
+
 #skypeBtn{
-  .btn {
-    background: #e3e3e3!important;
-    border: 1px solid #bbb;
-    border-radius: 3px;
-    -webkit-box-shadow: inset 0 0 1px 1px #f6f6f6;
-    box-shadow: inset 0 0 1px 1px #f6f6f6;
-    color: #333;
-    font: bold 12px/1 "helvetica neue", helvetica, arial, sans-serif;
-    padding: 8px 0 9px;
+  #skypeButton {
+    padding:15px;
     text-align: center;
-    text-shadow: 0 1px 0 #fff;
-    width: 150px;
+    background: $grijs_donker;
+    font-weight:bold;
+    text-transform: uppercase;
+    // text-shadow: 1px 1px 3px #666666 !important;
+   //  border: solid #63afed 1px !important;
+   //  background:#75e0ff;
+   //  padding: 0.6em !important;
+   //  display:inline !important;
+   //  font-weight:bold !important;
+   //  text-transform: uppercase !important;
+   //  font-size:0.9em !important;
   }
-} //class wanneer je geklikt hebt
+  .skypeicon{margin-right:6px;}
+}
+
+// // skypeBtn
+// #skypeBtn{
+//   text-shadow: 1px 1px 3px #666666;
+//   border: solid #63afed 1px;
+ //  background: -webkit-gradient(linear, 0 0, 0 100%, from(#2accfb), to(#0bbdf1));
+ //  background: -moz-linear-gradient(top, #2accfb, #0bbdf1);
+//   padding: 0.6em;
+//   display:inline;
+//   font-weight:bold;
+//   text-transform: uppercase;
+//   font-size:0.9em;
+// }
+// .iconSkype:hover {
+//   background: #75e0ff;
+//   text-shadow: 1px 1px 3px #111111;
+// }
+
 .imgselect a{color:#fff;}
 .vraag_text {border-bottom: 1px solid $timecolor; .avatar{width:20% !important; }}
 
@@ -1026,3 +1062,4 @@ noscript p{ text-align: center !important; color: $red; max-width:100% !importan
   width: 100%;
   height: 100%;
 }
+

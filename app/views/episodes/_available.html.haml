@@ -1,3 +1,6 @@
 %li
-  %h5=available.username
-  %h6=available.skypename
+  %h5.pull-left="#{available.username} - "
+
+  %h5
+    %a{ :href=>"skype:#{available.skypename}?call"}
+      = "Bel " + available.skypename.to_s

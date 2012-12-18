@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121217115959) do
+ActiveRecord::Schema.define(:version => 20121218114640) do
 
   create_table "admins", :force => true do |t|
     t.string   "username"
@@ -167,11 +167,12 @@ ActiveRecord::Schema.define(:version => 20121217115959) do
     t.text     "content"
     t.string   "name"
     t.string   "email"
-    t.integer  "user_id"
+    t.integer  "author_id"
     t.integer  "chattable_id"
     t.string   "chattable_type"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+    t.string   "author_type"
   end
 
   create_table "pages", :force => true do |t|
