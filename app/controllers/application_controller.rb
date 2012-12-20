@@ -4,6 +4,10 @@ class ApplicationController < ActionController::Base
   before_filter :retrieve_channels
 
 
+  helper_method :current_admin
+  def current_admin
+    @current_admin ||= Admin.find_by_id(session[:admin_id]) if session[:admin_id]
+  end
 
   def search
     # unless params[:search] == ""

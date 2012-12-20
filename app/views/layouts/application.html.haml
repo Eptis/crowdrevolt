@@ -10,12 +10,18 @@
     = javascript_include_tag("application")
     = javascript_include_tag("http://localhost:9292/faye.js")
     = javascript_include_tag("/ckeditor/ckeditor")
-    <!--[if lt IE 9]>
-    / = javascript_include_tag("ie.js")
-    / = stylesheet_link_tag("ie.css")
-    <![endif]-->
-    /[if lt IE 9]
-      %script{ :src => "http://html5shiv.googlecode.com/svn/trunk/html5.js", :type => "text/javascript"}
+    :erb
+      <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+        <style>
+          body{min-width:980px; margin:0 auto; *width:980px}
+        </style>
+        <script type="text/javascript">
+          $("html").addClass("ie")
+        </script>
+      <![endif]-->
+
     = csrf_meta_tags
     %meta{ :name => "viewport", :content => "width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" }
   %body

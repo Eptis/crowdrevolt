@@ -13,7 +13,7 @@
       =image_tag comment.user.avatar.url(:portrait)
     -else
       %img{:src => "http://placehold.it/150x150"}
-  - if comment.user == current_user && logged_in?
+  - if (comment.user == current_user && logged_in?) || current_admin
     =link_to "X", path, :method => :delete, :class => "pull-right"
   .content
 

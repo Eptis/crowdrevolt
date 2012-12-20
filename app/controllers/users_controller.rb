@@ -37,7 +37,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      redirect_to :root, :notice => 'User was successfully created.'
+      redirect_to :karma, :notice => 'User was successfully created.'
     else
       render :action => "new"
     end

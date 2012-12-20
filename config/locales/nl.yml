@@ -153,9 +153,9 @@ nl:
   time:
     formats:
       default: "%d-%m-%Y %H:%M"
-      full: "%d %B %Y - %H:%M uur"
-      short: "%d %b %Y - %H:%M uur"
-      small: "%d-%m-%Y %H:%M uur"
+      full: "%d %B %Y - %H:%M"
+      short: "%d %b %Y - %H:%M"
+      small: "%d-%m-%Y %H:%M"
   date:
     abbr_day_names:
     - zon

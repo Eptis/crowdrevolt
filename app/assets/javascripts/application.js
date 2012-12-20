@@ -7,11 +7,15 @@
 //= require jquery.iframe-transport
 //= require jquery.remotipart
 //= require bootstrap.min
+//= require modernizr
 //= require animation_and_svg_check
 //= require admin/default
 
 
 $(document).ready(function(){
+
+var isMSIE = /*@cc_on!@*/0;
+
 
 
   $("#appreciableBtn").on("click", function(){
@@ -88,25 +92,42 @@ $('.changer').live("change", function(){
   });
 
 // stretch textarea's
-  $('textarea').live('keyup keypress', function() {
-      $(this).height('');
-      var brCount = this.value.split('\n').length;
-      this.rows = brCount+1; //++ To remove twitching
-      var areaH = this.scrollHeight,
-          lineHeight = $(this).css('line-height').replace('px',''),
-          calcRows = Math.floor(areaH/lineHeight);
-      this.rows = calcRows;
-  });
 
-  $('textarea').each(function(){
+
+
+  if ($("html").hasClass("ie")) {
+    $("textarea").each(function(){
+      $(this).attr("rows", 6)
+    })
+
+} else {
+$('textarea').live('keyup keypress', function() {
     $(this).height('');
-      var brCount = this.value.split('\n').length;
-      this.rows = brCount+1; //++ To remove twitching
-      var areaH = this.scrollHeight,
-          lineHeight = $(this).css('line-height').replace('px',''),
-          calcRows = Math.floor(areaH/lineHeight);
-      this.rows = calcRows;
-  })
+    var brCount = this.value.split('\n').length;
+    this.rows = brCount+1; //++ To remove twitching
+    var areaH = this.scrollHeight,
+        lineHeight = $(this).css('line-height').replace('px',''),
+        calcRows = Math.floor(areaH/lineHeight);
+    this.rows = calcRows;
+});
+
+$('textarea').each(function(){
+  $(this).height('');
+    var brCount = this.value.split('\n').length;
+    this.rows = brCount+1; //++ To remove twitching
+    var areaH = this.scrollHeight,
+        lineHeight = $(this).css('line-height').replace('px',''),
+        calcRows = Math.floor(areaH/lineHeight);
+        if(calcRows <= 0){
+          CalcRows = 2;
+        }
+        console.log(calcRows);
+        console.log(this.rows);
+    this.rows = calcRows;
+})
+}
+
+
 
 });
 

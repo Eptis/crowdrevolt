@@ -633,7 +633,7 @@ ul{
 
 
 
-.avatar{float:left; margin-right:9px; margin-bottom: 9px; }
+.avatar{float:left; margin-right:9px; margin-bottom: 9px; img{max-width:100px;} }
 .highlight .nextup{ color:$zwart !important;}
 .floatleft{float:left !important;}
 .karmascore{float:left; padding-left:9px;}
@@ -662,6 +662,7 @@ input[type="text"], input[type="password"], input[type="email"], textarea{
 textarea{
   width: 96% !important;
   padding:0.5em 2% !important;
+  white-space:pre-wrap !important;
   &:focus{color:#fff !important;}
 }
 
