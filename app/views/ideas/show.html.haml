@@ -29,7 +29,8 @@
               .span16.offset1.ideacontent
                 .text=raw @idea.description
                 .image
-                  %img{:src => "http://placehold.it/660x360"}
+                  - if @idea.image.present?
+                    =image_tag @idea.image.url(:front)
                 .row-fluid
                   %article
                     - @idea.blogitems.each do |item|
