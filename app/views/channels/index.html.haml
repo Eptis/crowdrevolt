@@ -9,7 +9,7 @@
           %h1.span24=raw text_values(:homepage).title
           .span8.pull-right.text
             %p=raw text_values(:homepage).body
-            .btn Meld je aan!
+            =link_to "Meld je aan!", :register, :class => "btn more"
             .homespacefix
 .row-fluid.spacefix
   .slopel.orange
