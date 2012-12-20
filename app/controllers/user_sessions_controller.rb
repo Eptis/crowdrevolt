@@ -9,11 +9,7 @@ class UserSessionsController < ApplicationController
     # raise params[:user].inspect
       if @user = login(params[:username], params[:password], params[:remember])
         # redirect_to(:back)
-        if request.referer
-          redirect_to request.referer, :notice => 'Je bent nu ingelogd.'
-        else
-          redirect_back_or_to(:root, :notice => 'Je bent nu ingelogd.')
-        end
+        redirect_back_or_to(:root, :notice => 'Je bent nu ingelogd.')
       else
         # render :root => "new"
         redirect_to( :user_login, :alert => "Er is wat fout gegaan")

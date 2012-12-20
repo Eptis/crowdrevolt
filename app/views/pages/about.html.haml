@@ -7,7 +7,7 @@
       %h1=raw text_values(:about).title
       - if text_values(:about).images.first
         =image_tag text_values(:about).images.first.url(:front)
-      %p.inleiding=raw text_values(:about).body
+      .text.inleiding=raw text_values(:about).body
 
 
     %section.span12
@@ -15,14 +15,14 @@
         %h3=raw text_values(:about_person_1).title
         - if text_values(:about_person_1).images.first
           =image_tag text_values(:about_person_1).images.first.url(:front)
-        %p.karmapagina=raw text_values(:about_person_1).body
+        .text.karmapagina=raw text_values(:about_person_1).body
 
 
       %article
         %h3=raw text_values(:about_person_2).title
         - if text_values(:about_person_2).images.first
           =image_tag text_values(:about_person_2).images.first.url(:front)
-        %p.karmapagina=raw text_values(:about_person_2).body
+        .text.karmapagina=raw text_values(:about_person_2).body
 
 
 

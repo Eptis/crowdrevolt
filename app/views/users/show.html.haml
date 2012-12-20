@@ -1,101 +1,102 @@
 - content_for :breadcrumbs do
   %li=link_to t("home"), :root
-
-%section.span24.content
-  .slopel.orange
-    .slopelshape
-  .row-fluid.highlight
-    .spacing.blogcenter
-      %artile.profiel
-        .row-fluid
-          %article.span6
-            -if @user.avatar.present?
-              =image_tag @user.avatar.url(:portrait)
-            -else
-              =image_tag "no_avatar.jpg"
-            - if current_user
-              =link_to :user_logout, :class => "btn btn-danger" do
-                %i.icon-off.icon-white
-                =t("logout")
-              -if @user == current_user
-                = link_to edit_user_path(@user), :class => "btn" do
-                  %i.icon-pencil.icon-white
-                  = t("edit")
-          %article.span18
-            - if @user.name
-              %h1= @user.name + " - " + @user.username
-            - else @user.name
-              %h1= @user.username
-            .karmascore.row-fluid.spacing
-              .icon.grey.Karma
-              = @user.score
-            %h3= karmarank(@user.score)
-            %h4= @user.skypename if @user.show_skype
-
-            .text= @user.bio
-  .sloper.orange
-    .slopershape
-.homespacefix
 .row-fluid
-  .spacing
-    %h2= t("users.by_this_user", :username => @user.username)
+  %section.span24.content
+    .slopel.orange
+      .slopelshape
+    .row-fluid.highlight
+      .spacing.blogcenter
+        %artile.profiel
+          .row-fluid
+            %article.span6
+              -if @user.avatar.present?
+                =image_tag @user.avatar.url(:portrait)
+              -else
+                =image_tag "no_avatar.jpg"
+              - if current_user
+                =link_to :user_logout, :class => "btn btn-danger" do
+                  %i.icon-off.icon-white
+                  =t("logout")
+                -if @user == current_user
+                  = link_to edit_user_path(@user), :class => "btn" do
+                    %i.icon-pencil.icon-white
+                    = t("edit")
+            %article.span18
+              .smallspacing
+                - if @user.name
+                  %h1= @user.name + " - " + @user.username
+                - else @user.name
+                  %h1= @user.username
+                .karmascore.row-fluid.spacing
+                  .icon.grey.Karma
+                  = @user.score
+                %h3= karmarank(@user.score)
+                %h4= @user.skypename if @user.show_skype
 
-    .span24
-      .span12
-        %h3
-          .icon.Solution
-          = t("solutions.solutions")
-        .row-fluid
-          %ul.span24.itemlist
-            .row-fluid
-            - @solutions.each do |sol|
+                .text= @user.bio
+    .sloper.orange
+      .slopershape
+  .homespacefix
+  .row-fluid
+    .spacing
+      %h2= t("users.by_this_user", :username => @user.username)
+
+      .span24
+        .span12
+          %h3
+            .icon.Solution
+            = t("solutions.solutions")
+          .row-fluid
+            %ul.span24.itemlist
               .row-fluid
-                %li.span24
+              - @solutions.each do |sol|
+                .row-fluid
+                  %li.span24
+                    .smallspacing
+                      .span12
+                        %h4=link_to sol.title,[sol.challenge.channel, sol.challenge, sol]
+                        .text=smart_truncate(strip_tags(sol.description), :words => 20).html_safe
+                        =link_to t("more"), [sol.challenge.channel, sol.challenge, sol]
+                      .span12
+                        - if sol.image.present?
+                          =link_to [sol.challenge.channel, sol.challenge, sol] do
+                            %div=image_tag sol.image.url(:front)
+              - if @solutions.empty?
+                %p=t("user.no_solutions")
+
+              - if @user.solutions.present?
+                %li.clearfix
                   .smallspacing
-                    .span12
-                      %h4=link_to sol.title,[sol.challenge.channel, sol.challenge, sol]
-                      .text=smart_truncate(strip_tags(sol.description), :words => 20).html_safe
-                      =link_to t("more"), [sol.challenge.channel, sol.challenge, sol]
-                    .span12
-                      - if sol.image.present?
-                        =link_to [sol.challenge.channel, sol.challenge, sol] do
-                          %div=image_tag sol.image.url(:front)
-            - if @solutions.empty?
-              %p=t("user.no_solutions")
-
-            - if @user.solutions.present?
-              %li.clearfix
-                .smallspacing
-                  =link_to :user_solutions,:class => "btn iconbtn more pull-right" do
-                    .icon.Solution.white
-                    =t("users.more_solutions", :username => @user.username)
+                    =link_to :user_solutions,:class => "btn iconbtn more pull-right" do
+                      .icon.Solution.white
+                      =t("users.more_solutions", :username => @user.username)
 
 
-      .span12
-        %h3
-          .icon.Idea
-          = t("ideas.ideas")
-        .row-fluid
-          %ul.span24.itemlist
-            - @ideas.each do |idea|
-              .row-fluid
-                %li.span24
+        .span12
+          %h3
+            .icon.Idea
+            = t("ideas.ideas")
+          .row-fluid
+            %ul.span24.itemlist
+              - @ideas.each do |idea|
+                .row-fluid
+                  %li.span24
+                    .smallspacing
+                      .span12
+                        %h4=link_to idea.title,[idea.channel, idea]
+                        .text=smart_truncate(strip_tags(idea.description), :words => 20).html_safe
+                        =link_to t("more"), [idea.channel, idea]
+                      .span12
+                        - if idea.image.present?
+                          =link_to [idea.channel, idea] do
+                            %div=image_tag idea.image.url(:front)
+              - if @ideas.empty?
+                %p=t("user.no_ideas")
+
+              - if @user.ideas.present?
+                %li.clearfix
                   .smallspacing
-                    .span12
-                      %h4=link_to idea.title,[idea.channel, idea]
-                      .text=smart_truncate(strip_tags(idea.description), :words => 20).html_safe
-                      =link_to t("more"), [idea.channel, idea]
-                    .span12
-                      - if idea.image.present?
-                        =link_to [idea.channel, idea] do
-                          %div=image_tag idea.image.url(:front)
-            - if @ideas.empty?
-              %p=t("user.no_ideas")
-
-            - if @user.ideas.present?
-              %li.clearfix
-                .smallspacing
-                  =link_to :user_solutions,:class => "btn iconbtn more pull-right" do
-                    .icon.Idea.white
-                    =t("users.more_ideas", :username => @user.username)
+                    =link_to :user_solutions,:class => "btn iconbtn more pull-right" do
+                      .icon.Idea.white
+                      =t("users.more_ideas", :username => @user.username)
 
