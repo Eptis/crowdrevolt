@@ -36,6 +36,7 @@
           %ul.breadcrumbs
             =content_for :breadcrumbs
         / .spacing
-        = yield
+        .row-fluid
+          = yield
       =render "footer"
       =content_for(:imageselector)

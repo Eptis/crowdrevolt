@@ -16,7 +16,9 @@
 
             .row-fluid
               %aside.span7.karma
-                %author#author= render :partial => "users/user", :locals => {:user => @solution.user}
+                %author#author
+                  = render :partial => "users/user", :locals => {:user => @solution.user}
+                  .clear
                 -if @solution.user == current_user
                   .clearfix=link_to t("solutions.edit_solution"), [:edit, @channel, @solution.challenge, @solution] ,:class => "pull-right btn more"
                 -elsif logged_in?
@@ -36,6 +38,7 @@
                     .clear
                     =link_to "registreren", :register,:class => "btn more"
                     =link_to "inloggen", :login,:class => "btn more"
+
               .span16.offset1.ideacontent
                 .text=simple_format(clean(@solution.description))
                 -if @solution.images.present?

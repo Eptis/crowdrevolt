@@ -16,6 +16,7 @@ class Admin::PostsController < AdminController
   def create
     @post = Post.new(params[:post])
     @post.channel = @channel
+    @post.admin = current_admin
 
     if @post.save
       redirect_to([:admin, @channel], :flash => :success)

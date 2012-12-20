@@ -66,23 +66,42 @@ user-select: none;
 
 .icon{
   background: url(image_path("icons.png"));
-  background-position-y: -30px;
+  background-position:-30px -30px;
   width:50px !important;
   height:50px !important;
   margin:0 6px -0.3em 0;
   margin-bottom:-8px;
   @extend %inlineblock;
-}
-.icon.white{background-position-y: -90px;}
-.icon.grey{background-position-y: -150px;}
 
-.icon.Channel{background-position-x: -30px}
-.icon.Episode{background-position-x: -90px}
-.icon.Challenge{background-position-x: -150px}
-.icon.Solution{background-position-x: -210px}
-.icon.Karma{background-position-x: -270px}
-.icon.Idea{background-position-x: -330px}
-.icon.Post{background-position-x: -390px}
+  &.Channel{background-position: -30px -30px}
+  &.Episode{background-position: -90px -30px}
+  &.Challenge{background-position: -150px -30px}
+  &.Solution{background-position: -210px -30px}
+  &.Karma{background-position: -270px -30px}
+  &.Idea{background-position: -330px -30px}
+  &.Post{background-position: -390px -30px}
+}
+.icon.white{background-position:-30px -90px;
+  &.Channel{background-position: -30px -90px}
+  &.Episode{background-position: -90px -90px}
+  &.Challenge{background-position: -150px -90px}
+  &.Solution{background-position: -210px -90px}
+  &.Karma{background-position: -270px -90px}
+  &.Idea{background-position: -330px -90px}
+  &.Post{background-position: -390px -90px}
+}
+
+.icon.grey{background-position:-30px -150px;
+  &.Channel{background-position: -30px -150px}
+  &.Episode{background-position: -90px -150px}
+  &.Challenge{background-position: -150px -150px}
+  &.Solution{background-position: -210px -150px}
+  &.Karma{background-position: -270px -150px}
+  &.Idea{background-position: -330px -150px}
+  &.Post{background-position: -390px -150px}
+}
+
+
 
 .iconbtn{
   height: 50px;
@@ -614,7 +633,7 @@ ul{
 
 
 
-.avatar{float:left; margin-right:9px; margin-bottom: 9px}
+.avatar{float:left; margin-right:9px; margin-bottom: 9px; }
 .highlight .nextup{ color:$zwart !important;}
 .floatleft{float:left !important;}
 .karmascore{float:left; padding-left:9px;}
@@ -756,7 +775,7 @@ input[type="submit"]:hover{background:$oranje !important}
 
 .user{max-width:420px; float: left; width:100%;}
 .karma{
-  author{margin:2em 0; float:left;}
+  author{margin:1em 0; display: block;}
 }
 
 .comment{
