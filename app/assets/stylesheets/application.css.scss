@@ -244,7 +244,7 @@ p, .text{
 
 .back {
   margin-bottom: 20px !important;
-  display: block;
+  display: inline;
 }
 
 .password_toggle {
@@ -1063,3 +1063,11 @@ noscript p{ text-align: center !important; color: $red; max-width:100% !importan
   height: 100%;
 }
 
+// breadcrumbs
+ul.breadcrumbs{
+  padding:0 2% !important;
+  width:96% !important;
+  clear:both;
+  li{float:left; margin-right:3px;&:after{content:">"; color:$timecolor !important; margin-left:2px !important;}}
+
+}

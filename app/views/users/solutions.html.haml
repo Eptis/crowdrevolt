@@ -1,5 +1,7 @@
+- content_for :breadcrumbs do
+  %li=link_to t("home"), :root
+  %li=link_to @user.username, [@user]
 .spacing
-  =link_to (t("back") + " naar #{@user.username}"), @user
   %h2
     .icon.Solution
     = @user.username + " - "+ t("solutions.all_solutions")

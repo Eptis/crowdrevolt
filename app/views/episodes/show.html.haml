@@ -1,4 +1,8 @@
-.spacing.nov=link_to (t("back") + " naar #{@channel.title}"), @channel
+- content_for :breadcrumbs do
+  %li=link_to t("home"), :root
+  %li=link_to @episode.channel.title, [@episode.channel]
+
+/ .spacing.nov=link_to (t("back") + " naar #{@channel.title}"), @channel
 
 .row-fluid
   %section.span18.content
@@ -17,7 +21,7 @@
                   -if @episode.images.present? && (@episode.airdate > Time.now)
                     =image_tag @episode.images.first.url(:front)
                   -else
-                    .videoWrapper=raw @episode.live_stream_embedcode
+                    .videoWrapper=raw @episode.livestream_embedcode
                   .row-fluid
                     %article.vraag_stellen
 

@@ -1,5 +1,9 @@
+- content_for :breadcrumbs do
+  %li=link_to t("home"), :root
+  %li=link_to @challenge.channel.title, [@challenge.channel]
+  %li=link_to @challenge.title, [@challenge.channel, @challenge]
+  %li=link_to @solution.title, [@challenge.channel, @challenge, @solution]
 .spacing
-  = link_to t('back'), :back, :class => 'btn back'
   .row-fluid
     %h2
       .icon.Solution

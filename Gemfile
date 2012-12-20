@@ -31,6 +31,7 @@ gem 'acts-as-taggable-on', '~> 2.3.1'
 # gem 'twitter-bootstrap-rails'
 gem 'bootstrap_flash_messages', '0.0.3'
 gem "nested_form"
+gem "breadcrumbs_on_rails"
 
 #auth
 gem 'sorcery'

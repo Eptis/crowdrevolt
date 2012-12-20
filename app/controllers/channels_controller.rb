@@ -1,6 +1,8 @@
 class ChannelsController < ApplicationController
   skip_before_filter :require_login
+
   def index
+
    @channels = Channel.where(:archived => false)
    @recent = []
    @live = Episode.where("live = true").order('airdate asc').first

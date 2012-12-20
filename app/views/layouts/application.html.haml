@@ -32,6 +32,9 @@
           .loader4
       #searchresults
       .row-fluid
+        .row-fluid
+          %ul.breadcrumbs
+            =content_for :breadcrumbs
         / .spacing
         = yield
       =render "footer"

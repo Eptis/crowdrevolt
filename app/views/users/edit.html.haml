@@ -1,3 +1,6 @@
+- content_for :breadcrumbs do
+  %li=link_to t("home"), :root
+
 .spacing
   %h1 Editing user
   = link_to t("back"), @user

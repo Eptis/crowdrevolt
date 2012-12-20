@@ -1,3 +1,6 @@
+- content_for :breadcrumbs do
+  %li=link_to t("home"), :root
+  %li=link_to @post.channel.title, [@post.channel]
 .row-fluid
   %section.span18
     .spacing

@@ -36,6 +36,7 @@ GEM
     bcrypt-ruby (3.0.1)
     bcrypt-ruby (3.0.1-x86-mingw32)
     bootstrap_flash_messages (0.0.3)
+    breadcrumbs_on_rails (2.2.0)
     builder (3.0.3)
     cocaine (0.2.1)
     cookiejar (0.3.0)
@@ -190,6 +191,7 @@ DEPENDENCIES
   acts_as_list
   bcrypt-ruby
   bootstrap_flash_messages (= 0.0.3)
+  breadcrumbs_on_rails
   faye
   haml-rails
   jquery-rails

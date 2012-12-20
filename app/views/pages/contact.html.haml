@@ -1,3 +1,6 @@
+- content_for :breadcrumbs do
+  %li=link_to t("home"), :root
+
 .spacing
   .span13
     = simple_form_for @contact, :controller => "contacts", :action => "message" do |f|

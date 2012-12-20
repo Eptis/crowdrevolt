@@ -1,5 +1,8 @@
+- content_for :breadcrumbs do
+  %li=link_to t("home"), :root
+  %li=link_to @channel.title, [@channel]
+
 .spacing
-  = link_to t('back'), :back, :class => 'back'
   %h1.pageheader= t('ideas.new_ideas')
   .blogcenter
     .text=raw text_values(:new_idea).body

@@ -1,3 +1,6 @@
+- content_for :breadcrumbs do
+  %li=link_to t("home"), :root
+  %li=link_to @challenge.channel.title, [@challenge.channel]
 // De titel, te verdienen punten en omschrijving kun je zo laten, hieromheen de layout bouwen
 %section.span16.content
   .slopel.orange

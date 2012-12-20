@@ -1,3 +1,7 @@
+- content_for :breadcrumbs do
+  %li=link_to t("home"), :root
+  %li=link_to @channel.title, [@channel]
+
 .spacing
   =link_to (t("back") + " naar #{@channel.title}"), @channel
   %h2

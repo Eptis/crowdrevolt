@@ -1,10 +1,11 @@
+- content_for :breadcrumbs do
+  %li=link_to t("home"), :root
+
 .spacing
-
-
   %section.span24
     %article.span12
       %h1=raw text_values(:about).title
-      - if text_values(:about).images.first 
+      - if text_values(:about).images.first
         =image_tag text_values(:about).images.first.url(:front)
       %p.inleiding=raw text_values(:about).body
 

@@ -1,5 +1,9 @@
+- content_for :breadcrumbs do
+  %li=link_to t("home"), :root
+  %li=link_to @idea.channel.title, [@idea.channel]
+  %li=link_to @idea.title, [@idea.channel, @idea]
+
 .spacing
-  = link_to t('back'), :back, :class => 'btn back'
   %h1.pageheader= t('ideas.edit_idea')
 
   .clear= render :partial => "form"
