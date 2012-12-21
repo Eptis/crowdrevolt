@@ -108,7 +108,11 @@
                     %h4=link_to channel.episodes.first.title, [channel, channel.episodes.first]
                     .row-fluid
                       .span12
-                        %img{:src => "http://placehold.it/250x140"}
+                        -if channel.images.present?
+                          /- raise channel.images.inspect
+                          =image_tag channel.image.url(:front)
+                        -else
+                          %img{:src => "http://placehold.it/250x140"}
                       .span12
 
                         %time= l(channel.episodes.first.airdate, :format => :full)

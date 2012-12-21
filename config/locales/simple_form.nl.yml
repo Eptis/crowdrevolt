@@ -89,6 +89,8 @@ nl:
     hints:
       user:
         skypename: "Als je een skypenaam opgeeft kan je makkelijk via skype meedoen tijdens de livestreams"
+      channel:
+        links: "Dit kunnen links zijn naar andere interessante personen of bronnen."
     #   image:
     #     image: "Kies een groot beeld, zodat je gemakkelijker uitsneden kunt maken (max. 10MB JPG, PNG of GIF). Upload een ZIP met meerdere beelden om meerdere beelden tegelijk toe te voegen."
 

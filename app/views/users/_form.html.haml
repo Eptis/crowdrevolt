@@ -12,6 +12,7 @@
     .field
       = f.input :email, :input_html => { :class => "makeitbig"}
     .field
+      = f.input :name
       %label{:for => 'user_avatar'} Profiel foto
       = f.file_field :avatar, :input_html => {:class => "btn imgselector", :style => "display:block"}
       / .input-append

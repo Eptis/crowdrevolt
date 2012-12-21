@@ -23,7 +23,8 @@ class ChannelsController < ApplicationController
   def show
     @channel = Channel.find(params[:id])
     @live = Episode.where(:live => true, :channel_id => @channel.id).order('airdate asc').first
-    @upcoming = Episode.where("airdate > ?", Time.now && :channel_id => @channel.id).first
+    @upcoming = Episode.where("airdate > ?", Time.now).where(:channel_id => @channel.id).first
+
     @posts = Post.find(:all, :limit => 3, :order => "updated_at DESC", :conditions => {:channel_id => @channel.id})
     @ideas = Idea.find(:all, :limit => 3, :order => "updated_at DESC", :conditions => {:channel_id => @channel.id})
 

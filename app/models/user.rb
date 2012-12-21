@@ -1,12 +1,12 @@
 class User < ActiveRecord::Base
   authenticates_with_sorcery!
-  attr_accessible :crypted_password, :email, :salt, :username, :password, :password_confirmation, :active, :skypename, :show_skype, :activation_state, :avatar, :optin, :bio
+  attr_accessible :crypted_password, :email, :salt, :username, :password, :password_confirmation, :active, :skypename, :show_skype, :activation_state, :avatar, :optin, :bio, :name
   has_attached_file :avatar, :styles => {
     :portrait => ["300x300#", :jpg],
   }, :url => "/uploads/avatars/:id/:style.:extension"
 
   #validatie
-  validates_presence_of :username, :avatar
+  validates_presence_of :username, :avatar, :email, :password
   validates_length_of :password, :minimum => 3, :message => "Je wachtwoord moet minstens 6 karakters lang zijn"
   validates_confirmation_of :password, :message => "Je bevestiging was niet gelijk aan je ingevulde wachtwoord"
   validates_uniqueness_of :email, :on => :create

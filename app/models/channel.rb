@@ -1,5 +1,5 @@
 class Channel < ActiveRecord::Base
-  attr_accessible :title, :description, :image_select, :status, :admin_ids
+  attr_accessible :title, :description, :image_select, :status, :admin_ids, :links
 
   #validatie
   validates_presence_of :title, :description, :image_select

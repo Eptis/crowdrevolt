@@ -33,6 +33,7 @@ nl:
         skype_name: "Skype gebruikersnaam"
         bio: "Vertel wat over jezelf"
         optin: "Ja ik wil de nieuwsbrief ontvangen"
+        name: "Volledige naam"
 
   contact:
     faq: "Veel gestelde vragen"

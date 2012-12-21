@@ -19,6 +19,7 @@ class ImagesController < ApplicationController
 
   def create
     @image = Image.new(params[:image])
+    @image.user_id = current_user.id
     if @image.extract_zip_or_save
       respond_to do |format|
         format.js

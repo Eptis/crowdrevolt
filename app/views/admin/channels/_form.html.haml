@@ -21,5 +21,7 @@
     .span18.offset6
       .spacing
       .collection= f.association :admins,:label_method => :username,   :as => :check_boxes
+      .clear
+      .spacing= f.input :links, :as => :editor, :required => false
 
     .pull-right= f.submit(:class => "btn btn-primary")

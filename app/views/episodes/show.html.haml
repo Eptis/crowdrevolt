@@ -17,12 +17,12 @@
                 .row-fluid
                   .text{:class => ("offset4 span15" unless @episode.live)}=raw @episode.description
               .row-fluid
-
                 .span15{:class => ("offset4" unless @episode.live)}
                   -if @episode.images.present? && (@episode.airdate > Time.now)
                     =image_tag @episode.images.first.url(:front)
                   -else
-                    .videoWrapper=raw @episode.livestream_embedcode
+                    .clear
+                      .videoWrapper=raw @episode.livestream_embedcode
                   .row-fluid
                     %article.vraag_stellen
 
