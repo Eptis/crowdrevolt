@@ -22,6 +22,7 @@ gem 'haml-rails'
 gem 'acts_as_list'
 gem 'simple_form', '2.0.2'
 gem 'will_paginate', '~> 3.0'
+gem 'therubyracer', :platforms => :ruby
 gem 'paperclip', '2.7.0'
 gem 'rmagick', '2.13.1', :require => 'RMagick'
 gem 'remotipart', '~> 1.0'
