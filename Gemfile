@@ -19,6 +19,7 @@ gem 'progress_bar'
 
 # custom:
 gem 'haml-rails'
+gem 'foreman'
 gem 'acts_as_list'
 gem 'simple_form', '2.0.2'
 gem 'will_paginate', '~> 3.0'
