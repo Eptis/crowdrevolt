@@ -6,6 +6,7 @@ class UserSessionsController < ApplicationController
   end
 
   def create
+    reset_session
     # raise params[:user].inspect
       if @user = login(params[:username], params[:password], params[:remember])
         # redirect_to(:back)
