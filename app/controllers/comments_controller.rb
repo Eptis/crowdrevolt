@@ -24,6 +24,12 @@ class CommentsController < ApplicationController
     end
   end
 
+  def destroy
+    @comment = current_user.comments.find(params[:id])
+    @comment.destroy
+    redirect_to request.referer
+  end
+
 
   private
     def current_post
