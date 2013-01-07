@@ -226,7 +226,7 @@
 - @channel_clean = @channel.id.to_s + @channel.title.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '') + "/channel"
 :javascript
   $(function(){
-    var faye = new Faye.Client('http://localhost:9292/faye');
+    var faye = new Faye.Client('http://87.255.36.139:9292/faye');
 
     faye.subscribe("/#{@channel_clean.to_s}", function(data) {
       eval(data);

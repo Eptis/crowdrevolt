@@ -69,7 +69,7 @@
 
 :javascript
   $(function(){
-    var faye = new Faye.Client('http://localhost:9292/faye');
+    var faye = new Faye.Client('http://87.255.36.139:9292/faye');
     faye.subscribe("/#{@episode_chat.to_s}", function(data) {
       eval(data);
     });

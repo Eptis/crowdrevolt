@@ -151,7 +151,7 @@
 - @episode_clean = @episode.id.to_s + @episode.title.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '') + "/episode"
 :javascript
   $(function(){
-    var faye = new Faye.Client('http://localhost:9292/faye');
+    var faye = new Faye.Client('http://87.255.36.139:9292/faye');
 
     faye.subscribe("/#{@episode_clean.to_s}", function(data) {
       eval(data);
