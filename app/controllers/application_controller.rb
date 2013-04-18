@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  before_filter :require_login, :except => :search
+  # before_filter :require_login, :except => :search
   before_filter :retrieve_channels
 
 

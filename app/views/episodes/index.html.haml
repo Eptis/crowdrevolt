@@ -18,6 +18,7 @@
           %article.span8
             .smallspacing
               %h2= episode.title
+              = l(episodes.airdate, :format => :full)
               -if episode.image.present?
                 =image_tag episode.image.url(:front)
               .text=smart_truncate(strip_tags(episode.description), :words => 45).html_safe

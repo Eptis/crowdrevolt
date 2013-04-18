@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.3'
+gem 'rails', '3.2.11'
 gem 'rake'
 gem 'jquery-rails'
 gem 'mysql2'
@@ -19,9 +19,11 @@ gem 'progress_bar'
 
 # custom:
 gem 'haml-rails'
+gem 'foreman'
 gem 'acts_as_list'
 gem 'simple_form', '2.0.2'
 gem 'will_paginate', '~> 3.0'
+gem 'therubyracer', :platforms => :ruby
 gem 'paperclip', '2.7.0'
 gem 'rmagick', '2.13.1', :require => 'RMagick'
 gem 'remotipart', '~> 1.0'

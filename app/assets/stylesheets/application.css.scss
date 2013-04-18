@@ -357,6 +357,11 @@ p, .text{
     padding:6px 0;
     margin:0 3%;
     strong{text-transform: uppercase;}
+    p{
+      max-width:100% !important;
+      width:auto;
+      color:#fff;
+    }
     border-bottom:1px solid #BD3E00;
   }
 
@@ -1019,8 +1024,8 @@ noscript p{ text-align: center !important; color: $red; max-width:100% !importan
       li{ width:46% !important; padding:0 2% !important; float: left !important; }
     }
   }
-
-  .usermenu{width:100% !important; margin-top:9px; float:left !important;
+ #menuAccordion{width:100% !important;}
+  .usermenu{width:100% !important; margin-top:9px; margin-left:0 !important; float:left !important;
     .submenu:first-child{ float:right; li{float:right !important; margin-right:6px;}}
     .user_credentials{float: right;  width:50% !important;}
   }
