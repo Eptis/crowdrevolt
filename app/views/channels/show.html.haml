@@ -144,32 +144,32 @@
 
 
                   %section.span24.challenges
-                    .spacing
-                      %article
-                        %h2.clearfix
-                          .icon.Challenge
-                          = t("challenges.challenges_and_ideas")
-                        %p.text=raw text_values(:ideas_and_challenges).body
-                        .clearfix
-                          =link_to [:new, @channel, :idea], :class => "btn more iconbtn" do
-                            .icon.Idea.white
-                            =t("ideas.new_idea")
-                        / .row-fluid.challengeindex
-                        /   .span14= t("challenges.challenge")
-                        /   .span6= t("challenges.solutions")
-                        /   .span4= t("challenges.points")
-                        / %ul.clearfix.itemlist.challenges
-                        %table.challenges
-                          %tr
-                            %th= t("challenges.challenge")
-                            %th= t("challenges.solutions")
-                            %th= t("challenges.points")
-                          - @channel.challenges.each do |challenge|
-                            -if challenge.active
-                              %tr
-                                %td=link_to (challenge.title + " >"), [@channel, challenge]
-                                %td=link_to challenge.solutions.count, [@channel, challenge]
-                                %td= challenge.points
+                    / .spacing
+                    %article
+                      %h2.clearfix
+                        .icon.Challenge
+                        = t("challenges.challenges_and_ideas")
+                      %p.text=raw text_values(:ideas_and_challenges).body
+                      .clearfix
+                        =link_to [:new, @channel, :idea], :class => "btn more iconbtn" do
+                          .icon.Idea.white
+                          =t("ideas.new_idea")
+                      / .row-fluid.challengeindex
+                      /   .span14= t("challenges.challenge")
+                      /   .span6= t("challenges.solutions")
+                      /   .span4= t("challenges.points")
+                      / %ul.clearfix.itemlist.challenges
+                      %table.challenges
+                        %tr
+                          %th= t("challenges.challenge")
+                          %th= t("challenges.solutions")
+                          %th= t("challenges.points")
+                        - @channel.challenges.each do |challenge|
+                          -if challenge.active
+                            %tr
+                              %td=link_to (challenge.title + " >"), [@channel, challenge]
+                              %td=link_to challenge.solutions.count, [@channel, challenge]
+                              %td= challenge.points
 
                 -if @episodes.present?
                   .row-fluid
