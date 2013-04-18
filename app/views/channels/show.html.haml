@@ -51,70 +51,6 @@
                           =link_to t("more"), [@channel, @upcoming], :class => "btn more pull-right"
         .sloper.orange
           .slopershape
-    .row-fluid
-
-      %section.span9.chat
-        %article
-
-          .sloper.black
-            .slopershape
-          .spacing
-            %h2= t("channels.chat")
-            %ul#chatBox
-              -if @channel.messages.present?
-                = render @channel.messages
-
-            .chatForm.input-append
-              =form_for [@channel, Message.new], :remote => true do |f|
-                - unless current_user
-                  .span24
-                    .span6
-                      %label Naam
-                    .span18
-                      =f.text_field :name, :required => true
-                  .span24
-                    .span6
-                      %label E-mail
-                    .span18
-                      =f.email_field :email, :required => true
-
-                .span24
-                  .chatfield.nom.pull-left
-                    =f.text_field :content, :class => "message_clear"
-
-                  =f.submit "Send", :class => "chatsend nom pull-left"
-          .slopel.black
-            .slopelshape
-
-
-      %section.span15.challenges
-        .spacing
-          %article
-            %h2.clearfix
-              .icon.Challenge
-              = t("challenges.challenges_and_ideas")
-            %p.text=raw text_values(:ideas_and_challenges).body
-            .clearfix
-              =link_to [:new, @channel, :idea], :class => "btn more iconbtn" do
-                .icon.Idea.white
-                =t("ideas.new_idea")
-            / .row-fluid.challengeindex
-            /   .span14= t("challenges.challenge")
-            /   .span6= t("challenges.solutions")
-            /   .span4= t("challenges.points")
-            / %ul.clearfix.itemlist.challenges
-            %table.challenges
-              %tr
-                %th= t("challenges.challenge")
-                %th= t("challenges.solutions")
-                %th= t("challenges.points")
-              - @channel.challenges.each do |challenge|
-                -if challenge.active
-                  %tr
-                    %td=link_to (challenge.title + " >"), [@channel, challenge]
-                    %td=link_to challenge.solutions.count, [@channel, challenge]
-                    %td= challenge.points
-
       .row-fluid
         .span24
           .row-fluid
@@ -189,6 +125,70 @@
                               -if episode.image
                                 =image_tag episode.image.url(:front)
                         .span24.smallspacing=link_to t("channels.previous_episodes"), [@channel, :episodes], :class => "btn pull-right more "
+
+      .row-fluid
+
+        / %section.span9.chat
+        /   %article
+
+        /     .sloper.black
+        /       .slopershape
+        /     .spacing
+        /       %h2= t("channels.chat")
+        /       %ul#chatBox
+        /         -if @channel.messages.present?
+        /           = render @channel.messages
+
+        /       .chatForm.input-append
+        /         =form_for [@channel, Message.new], :remote => true do |f|
+        /           - unless current_user
+        /             .span24
+        /               .span6
+        /                 %label Naam
+        /               .span18
+        /                 =f.text_field :name, :required => true
+        /             .span24
+        /               .span6
+        /                 %label E-mail
+        /               .span18
+        /                 =f.email_field :email, :required => true
+
+        /           .span24
+        /             .chatfield.nom.pull-left
+        /               =f.text_field :content, :class => "message_clear"
+
+        /             =f.submit "Send", :class => "chatsend nom pull-left"
+        /     .slopel.black
+        /       .slopelshape
+
+
+        %section.span15.challenges
+          .spacing
+            %article
+              %h2.clearfix
+                .icon.Challenge
+                = t("challenges.challenges_and_ideas")
+              %p.text=raw text_values(:ideas_and_challenges).body
+              .clearfix
+                =link_to [:new, @channel, :idea], :class => "btn more iconbtn" do
+                  .icon.Idea.white
+                  =t("ideas.new_idea")
+              / .row-fluid.challengeindex
+              /   .span14= t("challenges.challenge")
+              /   .span6= t("challenges.solutions")
+              /   .span4= t("challenges.points")
+              / %ul.clearfix.itemlist.challenges
+              %table.challenges
+                %tr
+                  %th= t("challenges.challenge")
+                  %th= t("challenges.solutions")
+                  %th= t("challenges.points")
+                - @channel.challenges.each do |challenge|
+                  -if challenge.active
+                    %tr
+                      %td=link_to (challenge.title + " >"), [@channel, challenge]
+                      %td=link_to challenge.solutions.count, [@channel, challenge]
+                      %td= challenge.points
 
   %aside.span6.sidebar
     .sloper.black
